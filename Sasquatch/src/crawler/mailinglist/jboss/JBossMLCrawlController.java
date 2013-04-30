@@ -27,4 +27,5 @@ public class JBossMLCrawlController extends MailingListCrawlController {
 		this.setMaxPagesToFetch(maxPages);
 		this.setRootFolder(root);
 	}
+	
 }

@@ -10,23 +10,30 @@ public abstract class AbstractCrawlController implements ICrawlController {
 	private String rootFolder;
 	private long delay;
 	
+	@Override
 	public abstract void run();
 	
+	@Override
 	public void setSeedDomains(String[] seeds) {
 		this.domains = seeds;
 	}
 	
+	@Override
 	public void setRootFolder(String root) {
 		this.rootFolder = root;
 	}
 	
+	@Override
 	public void setMaxPagesToFetch(int max) {
 		maxPages = max;
 	}
 	
+	@Override
 	public void setDelay(long delay) {
 		this.delay = delay;
 	}
+	
+	@Override
 	public void setNumberOfCrawlers(int no) {
 		this.numberOfCrawlers = no;
 	}

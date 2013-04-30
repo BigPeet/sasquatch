@@ -1,10 +1,7 @@
 package crawler.mailinglist;
 
-import crawler.interfaces.ICrawler;
+import crawler.general.AbstractCrawler;
 
-public abstract class MailingListCrawler implements ICrawler {
+public abstract class MailingListCrawler extends AbstractCrawler {
 
-	public void configure(String[] domains) {
-		
-	}
 }

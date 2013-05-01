@@ -1,18 +1,15 @@
 package crawler.mailinglist.jboss;
 
+import parser.mail.jboss.JBossMLParser;
+import crawler.mailinglist.Mail;
 import crawler.mailinglist.MailingListCrawler;
-import edu.uci.ics.crawler4j.crawler.Page;
-import edu.uci.ics.crawler4j.url.WebURL;
+import edu.uci.ics.crawler4j.parser.HtmlParseData;
 
 public class JBossMLCrawler extends MailingListCrawler {
 
 	@Override
-	public boolean shouldVisit(WebURL url) {
-		return false;
+	protected String trimContent(HtmlParseData htmlContent) {
+		return htmlContent.getText();
 	}
 
-	@Override
-	public void visit(Page page) {
-		
-	}
 }

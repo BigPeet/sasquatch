@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mails>
+  <mail>
+    <header>[jboss-dev-forums] [jBPM Development] - Why complete the human task with contentdata, however the process variable is null</header>
+    <body>Hi! I'm using the local task service with jBPM5.3 version. Question is when I complete the task with contentdata with the following code, the process variable is null. Through kcontext.getVariable("quantity"), I get null. I'm confused about the relationship between the process variables and contentdata. Could anyone help me, please? Any help is appreciated. Thank you! Best Regards</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [jBPM Development] - Re: Why complete the human task with contentdata, however the process variable is null</header>
+    <body>Hi! I tried to remove all parameter mappings and result mappings in the bpmn file. And it worked. How could it be? I'm confused about the mapping relationship between the process variables and contentdata. Could anyone help me, please? Any help is appreciated! Best Regards</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [JBoss ESB Development] - Sending a message	through Scheduler</header>
+    <body>Hi, I am quite new to ESB and I would like to send messages from a service through simple scheduler. I have a class that has method which sends and ESB aware message: +public void sendMessage(String message) throws Exception+ +      // Create the delivery adapter for the target service (cache it)+ +      System.setProperty("javax.xml.registry.ConnectionFactoryClass",+ +            "org.apache.ws.scout.registry.ConnectionFactoryImpl");+ +      // Create the delivery adapter for the target service (cache it)+ +      ServiceInvoker deliveryAdapter = new ServiceInvoker("FirstServiceESB",+ +            "SimpleListener");+ +      // Create and populate the request message...+ +      Message requestMessage = MessageFactory.getInstance().getMessage(+ +            MessageType.JBOSS_XML);+ +      requestMessage.getBody().add(message);+ +      // Deliver the request message synchronously - timeout after 20+ +      // seconds...+ +      deliveryAdapter.deliverAsync(requestMessage);+ I found only very vague tutorials on how to implement Scheduler (I mean in jboss-esb.xml file). How do I trigger this method? Can you show me and example jboss-esb.xml configuration taht would call *sendMessage()* function multiple times?+ +</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [JBoss ESB Development] - Re: Sending a message	through Scheduler</header>
+    <body>Martin, I'd take a look at the schedule-provider ( http://docs.jboss.org/jbossesb/docs/4.11/manuals/html/Programmers_Guide/index.html#d0e1801 http://docs.jboss.org/jbossesb/docs/4.11/manuals/html/Programmers_Guide/index.html#d0e1801).       There's a few quickstarts that make use of it (helloworld_ftp_action / transform_EDI2XML_Groovy_XSL) if you want to try and use their jboss-esb.xml as an example. --Tom</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [JBoss ESB Development] - Re: Sending a message	through Scheduler</header>
+    <body>Thanks, I got it working. It always takes me awfuly long since all the tutorials I found are very vague...</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [JBoss ESB Development] - Re: How to download a file from esb service ?</header>
+    <body>Ju, There's a number of ways to do this, depending on whether you need a synchronous response or not.       Take a look at the HttpGateway ( https://community.jboss.org/docs/DOC-14036#Synchronous_Responses https://community.jboss.org/wiki/HTTPGateway#Synchronous_Responses). What's the use case here?    Is the user invoking something through http, which enters the bus, and then you want the response as a downloadable file?</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [jBPM Development] - Re: Why complete the human task with contentdata, however the process variable is null</header>
+    <body>Have you mapped the task output with your process variable?</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [jBPM Development] - Re: Why complete the human task with contentdata, however the process variable is null</header>
+    <body>https://community.jboss.org/servlet/JiveServlet/showImage/2-811521-20715/result+mapping.png  https://community.jboss.org/servlet/JiveServlet/downloadImage/2-811521-20715/450-67/result+mapping.png</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [JBoss ESB Development] - Setting EPR to a	message</header>
+    <body>Hi, this may be a silly question but I got stuck with a very basic thing. I am sending an esb-aware message and I would like to add an EPR to its header like: But how do I find what EPR belongs to the sending service? Is there any function that returns it? I was looking in the documentation but it doesnt seem that a service comes provided with that kind of function (like this.getEPR() or something like that), Thanks for any tips...</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [JBoss Web Development] - Re: Disable wsdl	publication</header>
+    <body>It's possible to use JBossWeb's  https://access.redhat.com/site/solutions/189423 RewriteValve to have JBossWeb intercept WSDL requests and return an HTTP 403 forbidden response before the request is passed on to JBossWS. An example rewrite valve's rewrite pattern to disable access to "?wsdl" pages by providing a 403 forbidden access response: &lt;subsystem xmlns="urn:jboss:domain:web:1.2" default-virtual-server="default-host" native="false"&gt; *        &lt;rewrite pattern="(.*)" substitution="-" flags="F"&gt;* *        &lt;/rewrite&gt;* &lt;/subsystem&gt; ?</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [JBoss AS 7 Development] - Logging Id's</header>
+    <body>Logging id ranges for JBoss AS7 i18n message interfaces. ||  %1,3% *Status* || | C | = | Complete | | I | = | In Progress | | P | = | Merged, but not complete | | W | = | Waiting Merge | || *Range* || *Subsystem * || *Status * || | *10100 - 10199* | *Transaction* | C | | *10200 - 10399 * | *Clustering (https://community.jboss.org/docs/DOC-48622)** * | C | | *10400 - 10499* | *Connector** * | C | | *10500 - 10599* | *CLI (not applicable) * | N/A | | *10600 - 10699* | *Controller Client* | C | | *10700 - 10799*, *18500 - 18699, 18800-18999* | *CMP* | C | | *10800 - 10899* | *Host Controller (domain packages)* | C | | *10900 - 10999, 16500 - 16599* | *Host Controller (host packages)* | C | | *11000 - 11099, 16700 - 16799* | *EE* | C | | *11100 - 11199* | *Embedded* | C | | *11200 - 11299* | *JAXRS* | C | | *11300 - 11399* | *JMX* | C | | *11400 - 11499* | *JPA* | C | | *11500 - 11599* | *Logging* | C | | *11600 - 11699* | *Messaging* | C | | *11700 - 11799* | *mod_cluster* | C | | *11800 - 11899* | *Naming* | C | | *11900 - 11999* | *OSGi* | C | | *12000 - 12099, 16600 - 16699* | *Process Controller* | C | | *12100 - 12199* | *Protocol* | C | | *12200 - 12299* | *Management Client Content* | C | | *12300 - 12399* | *Platform MBeans* | C | | *12400 - 12499* | *Threads* | C | | *12500 - 12599* | *PicketLink* | I | | *12600 - 12699* | *JSF (proposed)* | | | *12700 - 13100* | *IIOP Common (proposed)* | | |  *13100 - 13199* | *JDR* | C | | *13200 - 13299* | *AppClient* | C | | *13300 - 13399* | **Security* * | C | | *13400 - 13499, 14600 - 14899* | *Controller* | C | | available block(s) | | | | *14000 - 14099* | *JAXR* | W | | *14100 - 14599* | *Ejb3* | P | | **13400 - 13499, 14600 - 14899** | *Controller* | C | | *14900 - 14999* | *Deployment Repository* | C | | *15000 - 15099* | *Deployment Scanner* | C | | *15100 - 15199* | *Domain Management HTTP Interface* | C | | *15200 - 15299* | *Deployment Management* | C | | *15300 - 15399* | *Network* | C | | *15400 - 15499* | *Mail* | C | | *15500 - 15699* | *Web Services (AS subsystem)* | C | | *15700 - 15999*, *18700 - 18799* | *Server* | C | | *1**6000 - 16099* | *Weld* | C | | *16100 - 16199* | *EE Deployment* | C | | *16200 - 16299* | *Configadmin* | C | | *16300 - 16499* | *Jacorb* | C | | *10900 - 10999, 16500 - 16599* | *Host Controller (host packages)* | C | | *12000 - 12099, 16600 - 16699* | *Process Controller* | C | | *11000 - 11099, 16700 - 16799* | *EE* | C | | *16800 - 16899* | *Patching (Library)* | C | | *16900 - 16999* | *Patching (Server)* | | | *17000 - 17099* | *POJO* | C | | *17100 - 17199* | *Remoting* | W | | *17200 - 17299* | *SAR* | W | | *17300 - 17699* | *Web/Undertow (reserved)* | I | | available block(s) | | | | *18000 - 18399* | *Web* | C | | *18400 - 18499* | *Xts* | C | | *15700 - 15999, 18700 - 18799* | *Server* | C | | available block(s) | | | | *19000-19999* | *JSR-77* | I | | *20000-20199* | *Camel* | I | | *20200-20299* | *JipiJapa* | I | | *20300-20399* | *Provision* | |</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [JMX Development] - Deploying a .ear in domain mode (vs standalone) using remoting-jmx</header>
+    <body>Hi, In JBoss AS7, i'm using this: service:jmx:remoting-jmx://my_host_name:port to connect to either a standalone mode server or a domain mode server. In standalone mode: I can retreive the MBean jboss.as:deployment=myEar.ear, and then able to deploy, redeploy, undeploy or remove myEar.ear This works great ! However, In domain mode: I have 3-4 ears deployed on this server, belonging to different server groups. There is only a few MBeans (not interesting for deploying) availables, and mainly, no jboss.as:deployment=myEar.ear available, or any MBeans related to server-groups or cluster etc... I'm thinking that there must be a xml configuration file (domain.xml,host.xml,....) somewhere to offer the wanted MBeans ? Why standalone mode has the jboss.as:deployment MBean and not the domain mode ? JBoss AS7 is installed on Linux 2.6.32-279.5.2.el6.x86_64 Any idea ?</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [Javassist Development] - Probleme avec le	Hotswap de Javassist</header>
+    <body>logging et voila ce que sa donne dans eclipse: Listening for transport dt_socket at address: 8000 hello world ** reload a logging version HelloWorld Exception in thread "HotSwap" java.lang.NoClassDefFoundError: class names do not match Exception in thread "main" java.lang.RuntimeException: failed to reload: HelloWorld Sachant que Hello world a le code suivant : Pourquoi ces exceptions sont-ils apparus ??? Merci.</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [jBPM Development] - Signal doesn't triggers</header>
+    <body>Hi, I am using JBPM 5.4. My problem is that Intemediate Signal are not getting triggered all the time. Sometimes the signal get triggered and sometimes the signal is never triggered. I have checked that some rows get empty in EventTypes table for my processInstanceId. Screenshot attached. What makes JBPM to empty the event value in eventtypes table?</body>
+  </mail>
+  <mail>
+    <header>[jboss-dev-forums] [jBPM Development] - JBPM 5.4 Why EventType is rmeoved from EventTypes Table</header>
+    <body>Hi, I am using JBPM 5.4. My problem is that Intemediate Signal are not getting triggered all the time. Sometimes the signal get triggered and sometimes the signal is never triggered. I have checked that some rows get *empty* in *EventTypes* table for my processInstanceId. Screenshot attached. What makes JBPM to empty the event value in eventtypes table?</body>
+  </mail>
+</mails>
+

@@ -65,13 +65,14 @@ public abstract class MailingListCrawlController extends AbstractCrawlController
 			controller.start(this.getConfig().getCrawlerClass(), this.getConfig().getNumberOfCrawlers());
 			
 			System.out.println("Done crawling.");
-			
 			List<Object> crawlersLocalData = controller.getCrawlersLocalData();
+			parser.clearFile();
 			for (Object o : crawlersLocalData) {
 				TextCollector c = (TextCollector) o;
 				for (String t : c.getTextData()) {
 					Mail m = parser.parseMail(t);
-					System.out.println(m);
+					//System.out.println(m);
+					parser.writeMailToFile(m);
 				}
 			}
 		}

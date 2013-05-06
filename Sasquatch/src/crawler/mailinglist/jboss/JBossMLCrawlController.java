@@ -23,6 +23,7 @@ public class JBossMLCrawlController extends MailingListCrawlController {
 	private static int NUM_OF_CRAWLERS = 5;
 	private static int MAX_DEPTH = 2;
 	private static long DELAY = 200;
+	private static String PATH = "res/mails/jboss.xml";
 	private static Class<? extends WebCrawler> CRAWLER = JBossMLCrawler.class;
 	
 	public JBossMLCrawlController(String[] domains,
@@ -43,7 +44,7 @@ public class JBossMLCrawlController extends MailingListCrawlController {
 		GeneralControllerConfiguration config = new GeneralControllerConfiguration(domains, numberOfCrawlers, maxPages, 
 				maxDepth, rootFolder, storageFolder, delay, crawler, filters, trigger);
 		this.setConfig(config);
-		this.setParser(new JBossMLParser());
+		this.setParser(new JBossMLParser(PATH));
 	}
 	
 }

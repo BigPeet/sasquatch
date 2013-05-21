@@ -1,7 +1,7 @@
 package parser.mail;
 
-import crawler.mailinglist.Mail;
 import parser.general.AbstractParser;
+import systems.source.mail.Mail;
 
 public abstract class MailParser extends AbstractParser {
 	

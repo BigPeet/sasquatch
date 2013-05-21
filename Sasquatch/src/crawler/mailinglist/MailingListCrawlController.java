@@ -1,8 +1,10 @@
 package crawler.mailinglist;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import parser.mail.MailParser;
+import systems.source.mail.Mail;
 import crawler.general.AbstractCrawlController;
 import crawler.general.AbstractCrawler;
 import crawler.general.GeneralControllerConfiguration;
@@ -12,10 +14,11 @@ import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 
-public abstract class MailingListCrawlController extends AbstractCrawlController {
+public class MailingListCrawlController extends AbstractCrawlController {
 
 	private String storageFolder;
 	private MailParser parser;
+	private ArrayList<Mail> mails = new ArrayList<Mail>();
 
 	public MailingListCrawlController() {
 
@@ -65,17 +68,25 @@ public abstract class MailingListCrawlController extends AbstractCrawlController
 			controller.start(this.getConfig().getCrawlerClass(), this.getConfig().getNumberOfCrawlers());
 			
 			System.out.println("Done crawling.");
+			
+			
 			List<Object> crawlersLocalData = controller.getCrawlersLocalData();
 			parser.clearFile();
 			for (Object o : crawlersLocalData) {
 				TextCollector c = (TextCollector) o;
 				for (String t : c.getTextData()) {
 					Mail m = parser.parseMail(t);
-					//System.out.println(m);
-					parser.writeMailToFile(m);
+					if (!mails.contains(m)) {
+						mails.add(m);
+						parser.writeMailToFile(m);
+					}
 				}
 			}
 		}
+	}
+	
+	public Mail[] getMails() {
+		return mails.toArray(new Mail[mails.size()]);
 	}
 
 	/**

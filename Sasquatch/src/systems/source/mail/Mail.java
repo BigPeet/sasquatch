@@ -1,6 +1,8 @@
-package crawler.mailinglist;
+package systems.source.mail;
 
-public class Mail {
+import systems.source.Source;
+
+public class Mail extends Source {
 	
 	private String header = "";
 	private String body = "";
@@ -42,6 +44,17 @@ public class Mail {
 	 */
 	public void setHeader(String header) {
 		this.header = header;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		boolean equals = false;
+		if (o instanceof Mail) {
+			Mail m = (Mail) o;
+			equals = header.equals(m.header) && body.equals(m.body) 
+					&& sender.equals(m.sender) && date.equals(m.date);
+		}
+		return equals;
 	}
 	
 	

@@ -16,7 +16,6 @@ public abstract class MailingListCrawler extends AbstractCrawler {
 		if (checkTrigger(href)) {
 			/*Here has to be the routine that saves the data to the storage OR
 			parses them first*/
-			System.out.println(href);
 			HtmlParseData htmlContent = (HtmlParseData) page.getParseData();
 			String text = trimContent(htmlContent);
 			getCrawlStat().addData(text);

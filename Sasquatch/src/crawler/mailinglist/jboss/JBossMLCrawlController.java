@@ -19,7 +19,7 @@ public class JBossMLCrawlController extends MailingListCrawlController {
 	private static String ROOT = "res\\crawler\\root\\jboss";
 	private static String STORAGE = "res\\crawler\\storage\\jboss";
 	private static Pattern[] FILTERS = {gzPattern, threadPattern, startPattern};
-	private static int MAX_PAGES = 100;
+	private static int MAX_PAGES = 3000;
 	private static int NUM_OF_CRAWLERS = 5;
 	private static int MAX_DEPTH = 2;
 	private static long DELAY = 200;

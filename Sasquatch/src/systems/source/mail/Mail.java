@@ -57,5 +57,10 @@ public class Mail extends Source {
 		return equals;
 	}
 	
+	@Override
+	public String getText() {
+		return header + "\n" + body;
+	}
+	
 	
 }

@@ -1,5 +1,6 @@
 package systems.source;
 
-public class Source {
-
+public abstract class Source {
+	
+	public abstract String getText();
 }

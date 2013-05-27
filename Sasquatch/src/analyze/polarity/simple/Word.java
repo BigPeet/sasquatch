@@ -13,7 +13,7 @@ public class Word implements Comparable {
 		isPositive = value > 0;
 		isNegative = value < 0;
 	}
-	
+
 	public boolean isPositive() {
 		return isPositive;
 	}
@@ -73,6 +73,10 @@ public class Word implements Comparable {
 			compare = word.compareTo(w.word);
 		}
 		return compare;
+	}
+	
+	public String toString() {
+		return word + " : " + value;
 	}
 	
 }

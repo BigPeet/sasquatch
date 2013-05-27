@@ -32,7 +32,7 @@ public class AnalyzerTest {
 		
 		Mail m = new Mail("header", BODY_1);
 		Source[] sources = {m};
-		SimpleResult result = new SimpleResult(sources);
+		SimplePolarityResult result = new SimplePolarityResult(sources);
 
 		File indexDir = new File(INDEX_PATH);
 		SimpleSourceIndexer indexer = new SimpleMailIndexer(indexDir);
@@ -49,7 +49,7 @@ public class AnalyzerTest {
 			  3. Return that and then use it here to update the Result.
 		 */
 		for (File dict : dictionaries) {
-			DictionaryParser parser = new DictionaryParser(dict);
+			Dictionary parser = new Dictionary(dict);
 			Word[] words = parser.getWords();
 			for (Word word : words) {
 				Source[] results = querier.query(word.getWord());

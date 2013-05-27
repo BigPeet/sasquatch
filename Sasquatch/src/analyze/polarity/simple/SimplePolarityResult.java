@@ -5,17 +5,26 @@ import java.util.ArrayList;
 import systems.source.Source;
 import analyze.polarity.PolarityResult;
 
-public class SimpleResult extends PolarityResult {
+public class SimplePolarityResult extends PolarityResult {
 	
 	private ArrayList<ScoredSource> scoredSources = new ArrayList<ScoredSource>();
 	private int positive = 0;
 	private int negative = 0;
 	private int neutral = 0;
+	private int notUsed = 0;
 	
-	public SimpleResult(Source[] sources) {
+	public SimplePolarityResult(Source[] sources) {
 		for (Source s : sources) {
 			scoredSources.add(new ScoredSource(s));
 		}
+	}
+	
+	public SimplePolarityResult(Source s) {
+		scoredSources.add(new ScoredSource(s));
+	}
+	
+	public ScoredSource[] getResults() {
+		return scoredSources.toArray(new ScoredSource[scoredSources.size()]);
 	}
 	
 	public void addQueryResult(Word w, Source[] results) {
@@ -26,10 +35,9 @@ public class SimpleResult extends PolarityResult {
 			//addWord to this ss
 			if (ss != null) {
 				ss.addWord(w);
+				//change pos or negative
+				updateScore();
 			}
-			
-			//change pos or negative
-			updateScore();
 		}
 	}
 
@@ -37,14 +45,20 @@ public class SimpleResult extends PolarityResult {
 		positive = 0;
 		negative = 0;
 		neutral = 0;
+		notUsed = 0;
 		for (ScoredSource ss : scoredSources) {
-			int score = ss.getScore();
-			if (score > 0) {
-				positive++;
-			} else if (score < 0) {
-				negative++;
-			} else {
-				neutral++;
+			if (ss.hasBeenUsed()) {
+				int score = ss.getScore();
+				if (score > 0) {
+					positive++;
+				} else if (score < 0) {
+					negative++;
+				} else {
+					neutral++;
+				}
+			}
+			else {
+				notUsed++;
 			}
 		}
 	}
@@ -65,6 +79,7 @@ public class SimpleResult extends PolarityResult {
 		System.out.println("Positive: " + positive);
 		System.out.println("Negative: " + negative);
 		System.out.println("Neutral: " + neutral);
+		System.out.println("Not Used: " + notUsed);
 	}
 	
 	

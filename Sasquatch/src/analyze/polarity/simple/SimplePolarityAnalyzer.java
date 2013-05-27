@@ -3,9 +3,9 @@ package analyze.polarity.simple;
 import java.io.File;
 
 import systems.SoftwareSystem;
-import systems.source.SimpleSourceIndexer;
-import systems.source.SimpleSourceQuery;
 import systems.source.Source;
+import systems.source.SourceIndexer;
+import systems.source.SourceQuery;
 import systems.source.mail.SimpleMailIndexer;
 import systems.source.mail.SimpleMailQuery;
 
@@ -22,33 +22,26 @@ public class SimplePolarityAnalyzer extends PolarityAnalyzer {
 	private static final File VERBS = new File(DICT_PATH + "verb_dictionary1.11.txt");
 	
 	//Some of the dictionaries need some work...parse better in Word-Class.
-	private static File[] dictionaries = {ADJECTIVES, NOUNS};
+	private static File[] dictionaries = {ADJECTIVES, NOUNS, ADVERBS, INTS, VERBS};
 	private static String INDEX_PATH = "res/lucene/mail";
 	
 	public SimplePolarityAnalyzer() {
 		
 	}
 
-
-	@Override
-	public int analyze(Source s) {
-		String text = s.getText();
-		return 0;
-	}
-
-
+	//TODO: Indexer und Query irgendwo setzen, damit man hier nicht festlegen muss, was das ist.
 	@Override
 	public AnalysisResult analyze(SoftwareSystem ss) {
 		
-		SimpleResult result = new SimpleResult(ss.getSources());
+		SimplePolarityResult result = new SimplePolarityResult(ss.getSources());
 		
 		File indexDir = new File(INDEX_PATH);
-		SimpleSourceIndexer indexer = new SimpleMailIndexer(indexDir);
+		SourceIndexer indexer = new SimpleMailIndexer(indexDir);
 		for (Source s : ss.getSources()) {
 			indexer.addSource(s);
 		}
 		indexer.close();
-		SimpleSourceQuery querier = new SimpleMailQuery(indexDir);
+		SourceQuery querier = new SimpleMailQuery(indexDir);
 		
 		/*Maybe use BooleanQueries to combine words to one query instead.
 		Somehow I need to get the score applied differently. 
@@ -57,8 +50,8 @@ public class SimplePolarityAnalyzer extends PolarityAnalyzer {
 			  3. Return that and then use it here to update the Result.
 		*/
 		for (File dict : dictionaries) {
-			DictionaryParser parser = new DictionaryParser(dict);
-			Word[] words = parser.getWords();
+			Dictionary dictionary = new Dictionary(dict);
+			Word[] words = dictionary.getWords();
 			for (Word word : words) {
 				Source[] results = querier.query(word.getWord());
 				result.addQueryResult(word, results);

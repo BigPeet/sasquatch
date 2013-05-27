@@ -16,6 +16,10 @@ public class ScoredSource extends Source {
 		this.source = s;
 		this.score = 0;
 	}
+	
+	public boolean hasBeenUsed() {
+		return words.size() != 0;
+	}
 
 	@Override
 	public String getText() {

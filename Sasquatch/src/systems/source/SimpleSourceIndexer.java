@@ -1,4 +1,4 @@
-package systems.source.mail;
+package systems.source;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,6 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
@@ -15,16 +14,13 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
-import systems.source.Source;
-import systems.source.SourceIndexer;
-
-public class MailIndexer extends SourceIndexer {
+public class SimpleSourceIndexer extends SourceIndexer {
 	
 	private static Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_43);
 	
-	public MailIndexer(File indexDir) {
+	public SimpleSourceIndexer(File indexDir) {
 		if (indexDir.isDirectory()) {
-			//clearDirectory(indexDir);
+			clearDirectory(indexDir);
 			try {
 				Directory dir = FSDirectory.open(indexDir);
 				IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_43, analyzer);
@@ -36,8 +32,6 @@ public class MailIndexer extends SourceIndexer {
 		}
 	}
 
-	
-	@SuppressWarnings("unused")
 	private void clearDirectory(File dir) {
 		for (File f : dir.listFiles()) {
 			f.delete();
@@ -46,20 +40,18 @@ public class MailIndexer extends SourceIndexer {
 	
 	@Override
 	public void addSource(Source s) {
-		if (s instanceof Mail) {
-			addMail((Mail) s);
-		}
-	}
-
-	private void addMail(Mail m) {
-		Document doc = new Document();
-		doc.add(new TextField("body", m.getBody(), Field.Store.YES));
-		doc.add(new TextField("header", m.getHeader(), Field.Store.YES));
+		Document doc = getDocument(s);
 		try {
 			getWriter().addDocument(doc);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	protected Document getDocument(Source s) {
+		Document doc = new Document();
+		doc.add(new TextField("text", s.getText(), Field.Store.YES));
+		return doc;
 	}
 
 }

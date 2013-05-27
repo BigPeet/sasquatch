@@ -25,7 +25,7 @@ import java.io.IOException;
 
 public class HelloLucene {
 
-	private static String indexLocation = "res/lucene";
+	private static String indexLocation = "res/lucene/test";
 	
 	public static void main(String[] args) throws IOException, ParseException {
 
@@ -38,17 +38,18 @@ public class HelloLucene {
 		Directory index = FSDirectory.open(new File(indexLocation));
 
 
-		IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_43, analyzer);
+//		IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_43, analyzer);
 
-		IndexWriter w = new IndexWriter(index, config);
-		addDoc(w, "Lucene in Action", "193398817");
-		addDoc(w, "Lucene for Dummies", "55320055Z");
-		addDoc(w, "Managing Gigabytes", "55063554A");
-		addDoc(w, "The Art of Computer Science", "9900333X");
-		w.close();
+//		IndexWriter w = new IndexWriter(index, config);
+//		addDoc(w, "Lucene in Action", "193398817");
+//		addDoc(w, "Lucene for Dummies", "55320055Z");
+//		addDoc(w, "Managing Gigabytes", "55063554A");
+//		addDoc(w, "The Art of Computer Science", "9900333X");
+//		addDoc(w, "Lucene in Lucene", "1231231289X");
+//		w.close();
 
 		// 2. query
-		String querystr = args.length > 0 ? args[0] : "55063554A";
+		String querystr = args.length > 0 ? args[0] : "lucene";
 
 		// the "title" arg specifies the default field to use
 		// when no field is explicitly specified in the query.
@@ -66,8 +67,9 @@ public class HelloLucene {
 		System.out.println("Found " + hits.length + " hits.");
 		for(int i=0;i<hits.length;++i) {
 			int docId = hits[i].doc;
+			float score = hits[i].score;
 			Document d = searcher.doc(docId);
-			System.out.println((i + 1) + ". " + d.get("isbn") + "\t" + d.get("title"));
+			System.out.println((i + 1) + ". " + d.get("isbn") + "\t" + d.get("title") + "\t" + score);
 		}
 
 		// reader can only be closed when there

@@ -1,5 +1,7 @@
 package systems.source;
 
+import java.io.IOException;
+
 import org.apache.lucene.index.IndexWriter;
 
 public abstract class SourceIndexer {
@@ -14,6 +16,16 @@ public abstract class SourceIndexer {
 	
 	protected void setWriter(IndexWriter writer) {
 		this.writer = writer;
+	}
+	
+	public void close() {
+		if (writer != null) {
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

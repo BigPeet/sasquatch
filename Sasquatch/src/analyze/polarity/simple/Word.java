@@ -4,10 +4,35 @@ public class Word implements Comparable {
 
 	private String word;
 	private int value;
+	private boolean isPositive;
+	private boolean isNegative;
 	
 	public Word(String word, int value) {
 		this.word = word;
 		this.value = value;
+		isPositive = value > 0;
+		isNegative = value < 0;
+	}
+	
+	public boolean isPositive() {
+		return isPositive;
+	}
+	
+	public boolean isNegative() {
+		return isNegative;
+	}
+	
+	public boolean isNeutral() {
+		return !isPositive && !isNegative;
+	}
+	
+	public boolean equals(Object  o) {
+		boolean equals = false;
+		if (o instanceof Word) {
+			Word w = (Word) o;
+			equals = this.word.equals(w.word);
+		}
+		return equals;
 	}
 
 	/**
@@ -36,6 +61,8 @@ public class Word implements Comparable {
 	 */
 	public void setValue(int value) {
 		this.value = value;
+		isPositive = value > 0;
+		isNegative = value < 0;
 	}
 
 	@Override

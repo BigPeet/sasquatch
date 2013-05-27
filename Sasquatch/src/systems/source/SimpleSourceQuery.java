@@ -1,4 +1,4 @@
-package systems.source.mail;
+package systems.source;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,16 +22,14 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
-import systems.source.Source;
-import systems.source.SourceQuery;
+import systems.source.mail.Mail;
 
-public class MailQuery extends SourceQuery {
+public abstract class SimpleSourceQuery extends SourceQuery {
 
-	private static final Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_43);
+	protected static final Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_43);
 	private static int hitsPerPage = 10000;
-	private static final String[] keyWords = {"body", "header"};
 	
-	public MailQuery(File indexDir) {
+	public SimpleSourceQuery(File indexDir) {
 		if (indexDir.isDirectory()) {
 			try {
 				Directory dir = FSDirectory.open(indexDir);
@@ -73,14 +71,12 @@ public class MailQuery extends SourceQuery {
 		return sources;
 	}
 	
-	private Mail parseDocument(Document doc) {
-		return new Mail(doc.get("header"), doc.get("body"));
-	}
+	protected abstract Source parseDocument(Document doc);
 
-	private Query parseQuery(String query) {
+	protected Query parseQuery(String query) {
 		Query q = null;
 		try {
-			q = new MultiFieldQueryParser(Version.LUCENE_43, keyWords, analyzer).parse(query);
+			q = new QueryParser(Version.LUCENE_43, "text", analyzer).parse(query);
 		} catch (org.apache.lucene.queryparser.classic.ParseException e) {
 			e.printStackTrace();
 		}

@@ -14,7 +14,6 @@ public abstract class AbstractCrawlController implements ICrawlController {
 		this.setConfig(config);
 	}
 	
-	@Override
 	public abstract void run();
 
 	public GeneralControllerConfiguration getConfig() {

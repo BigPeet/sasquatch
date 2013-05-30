@@ -1,13 +1,38 @@
 package parser.mail;
 
+import java.io.File;
+
 import parser.general.AbstractParser;
+import systems.source.mail.LocalMailHandler;
 import systems.source.mail.Mail;
 
 public abstract class MailParser extends AbstractParser {
 	
+	private File target;
+	private LocalMailHandler handler;
+	
+	public MailParser() {
+		
+	}
+	
+	public MailParser(String path) {
+		this.target = new File(path);
+		this.handler = new LocalMailHandler(target);
+	}
+	
 	public abstract Mail parseMail(String text);
 
-	public abstract void writeMailToFile(Mail m);
+	public void writeMailToFile(Mail m) {
+		if (!m.getBody().isEmpty()) {
+			handler.addMail(m);
+		}
+	}
 	
-	public abstract void clearFile();
+	public void clearFile() {
+		handler.clear();
+	}
+	
+	public LocalMailHandler getHandler() {
+		return this.handler;
+	}
 }

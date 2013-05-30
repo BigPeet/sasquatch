@@ -1,44 +1,15 @@
 package parser.mail.jboss;
 
-import java.io.File;
 import parser.mail.MailParser;
 import systems.source.mail.Mail;
-import systems.source.mail.LocalMailHandler;
 
 public class JBossMLParser extends MailParser {
 
 	private String separator = "--------------------------------------------------------------\n";
 	private String separator2 = "--------------------------------------------------\n";
-	private File target;
-	private LocalMailHandler handler;
 	
 	public JBossMLParser(String path) {
-		target = new File(path);
-		handler = new LocalMailHandler(target);
-	}
-	
-	public void clearFile() {
-		handler.clear();
-//		SAXBuilder builder = new SAXBuilder();
-//		Document doc = null;
-//		try {
-//			doc = builder.build(target);
-//		} catch (JDOMException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		if (doc != null) {
-//			Element root = doc.getRootElement();
-//			root.removeContent();
-//			XMLOutputter xmlOutput = new XMLOutputter();
-//			xmlOutput.setFormat(Format.getPrettyFormat());
-//			try {
-//				xmlOutput.output(doc, new FileWriter(target));
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
+		super(path);
 	}
 	
 	@Override
@@ -97,44 +68,6 @@ public class JBossMLParser extends MailParser {
 			ret = separator2;
 		}
 		return ret;
-	}
-
-	@Override
-	public void writeMailToFile(Mail m) {
-		if (!m.getBody().isEmpty()) {
-			handler.addMail(m);
-//			SAXBuilder builder = new SAXBuilder();
-//			Document doc = null;
-//			try {
-//				InputStream inputStream= new FileInputStream(target);
-//	    	    Reader reader = new InputStreamReader(inputStream,"UTF-8");
-//				doc = builder.build(reader);
-//			} catch (JDOMException e) {
-//				System.out.println("Parser Error: " + m.getBody());
-//				//e.printStackTrace();
-//				
-//			} catch (IOException e) {
-//				System.out.println("Parser Error: " + m.getBody());
-//				e.printStackTrace();
-//			}
-//			if (doc != null) {
-//				Element root = doc.getRootElement();
-//				Element mail = new Element("mail");
-//				mail.addContent(new Element("header").setText(m.getHeader()));
-//				mail.addContent(new Element("body").setText(m.getBody()));
-//				root.addContent(mail);
-//				XMLOutputter xmlOutput = new XMLOutputter();
-//				xmlOutput.setFormat(Format.getPrettyFormat());
-//				try {
-//					FileOutputStream os = new FileOutputStream(target);
-//					OutputStreamWriter writer = new OutputStreamWriter(os, "UTF8");
-//					xmlOutput.output(doc, writer);
-//					writer.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-		}
 	}
 
 }

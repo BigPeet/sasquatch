@@ -9,6 +9,7 @@ public abstract class SourceIndexer {
 	private IndexWriter writer;
 	
 	public abstract void addSource(Source s);
+	public abstract boolean open();
 	
 	public IndexWriter getWriter() {
 		return writer;
@@ -17,6 +18,8 @@ public abstract class SourceIndexer {
 	protected void setWriter(IndexWriter writer) {
 		this.writer = writer;
 	}
+	
+	
 	
 	public void close() {
 		if (writer != null) {

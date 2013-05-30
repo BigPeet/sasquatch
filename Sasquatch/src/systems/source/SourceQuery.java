@@ -9,6 +9,7 @@ public abstract class SourceQuery {
 	private IndexReader reader;
 	
 	public abstract Source[] query(String q);
+	public abstract boolean open();
 	
 	public IndexReader getReader() {
 		return reader;

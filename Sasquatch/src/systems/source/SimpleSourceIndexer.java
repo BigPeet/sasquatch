@@ -15,21 +15,13 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
 public class SimpleSourceIndexer extends SourceIndexer {
-	
+
 	private static Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_43);
-	
+
+	private File indexDir;
+
 	public SimpleSourceIndexer(File indexDir) {
-		if (indexDir.isDirectory()) {
-			clearDirectory(indexDir);
-			try {
-				Directory dir = FSDirectory.open(indexDir);
-				IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_43, analyzer);
-				IndexWriter writer = new IndexWriter(dir, config);
-				setWriter(writer);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		this.indexDir = indexDir;
 	}
 
 	private void clearDirectory(File dir) {
@@ -37,7 +29,7 @@ public class SimpleSourceIndexer extends SourceIndexer {
 			f.delete();
 		}
 	}
-	
+
 	@Override
 	public void addSource(Source s) {
 		Document doc = getDocument(s);
@@ -47,11 +39,29 @@ public class SimpleSourceIndexer extends SourceIndexer {
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected Document getDocument(Source s) {
 		Document doc = new Document();
 		doc.add(new TextField("text", s.getText(), Field.Store.YES));
 		return doc;
+	}
+
+	@Override
+	public boolean open() {
+		boolean success = false;
+		if (indexDir.isDirectory()) {
+			clearDirectory(indexDir);
+			try {
+				Directory dir = FSDirectory.open(indexDir);
+				IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_43, analyzer);
+				IndexWriter writer = new IndexWriter(dir, config);
+				setWriter(writer);
+				success = true;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return success;
 	}
 
 }

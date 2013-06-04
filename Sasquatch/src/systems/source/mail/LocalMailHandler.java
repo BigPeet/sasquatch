@@ -31,6 +31,10 @@ public class LocalMailHandler extends LocalSourceHandler {
 		this.target = target;
 	}
 	
+	public File getFile() {
+		return target;
+	}
+	
 	public void addMail(Mail m) {
 		Document doc = getDocument(target);
 		

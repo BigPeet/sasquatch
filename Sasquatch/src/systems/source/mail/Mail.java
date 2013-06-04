@@ -10,6 +10,7 @@ public class Mail extends Source {
 	private String date = "";
 	
 	public Mail(String header, String body) {
+		super(header + "\n" + body);
 		this.header = header;
 		this.body = body;
 	}
@@ -55,11 +56,6 @@ public class Mail extends Source {
 					&& sender.equals(m.sender) && date.equals(m.date);
 		}
 		return equals;
-	}
-	
-	@Override
-	public String getText() {
-		return header + "\n" + body;
 	}
 	
 	

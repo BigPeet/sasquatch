@@ -15,13 +15,18 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 
 public class MailingListCrawlController extends AbstractCrawlController {
-
+	
+	//Not used yet
 	private String storageFolder;
 	private MailParser parser;
 	private ArrayList<Mail> mails = new ArrayList<Mail>();
 
 	public MailingListCrawlController() {
 
+	}
+	
+	public MailingListCrawlController(MailParser parser) {
+		this.parser = parser;
 	}
 
 	public MailingListCrawlController(GeneralControllerConfiguration config) {
@@ -45,6 +50,7 @@ public class MailingListCrawlController extends AbstractCrawlController {
 		config.setMaxPagesToFetch(this.getConfig().getMaxPages());
 		config.setPolitenessDelay((int) this.getConfig().getDelay());
 		config.setMaxDepthOfCrawling(this.getConfig().getMaxDepth());
+		config.setIncludeHttpsPages(true);
 		
 		PageFetcher pageFetcher = new PageFetcher(config);
 		RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
@@ -101,5 +107,10 @@ public class MailingListCrawlController extends AbstractCrawlController {
 	 */
 	public void setParser(MailParser parser) {
 		this.parser = parser;
+	}
+
+	@Override
+	public Object[] getData() {
+		return getMails();
 	}
 }

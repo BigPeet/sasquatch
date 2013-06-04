@@ -4,7 +4,7 @@ import crawler.general.AbstractCrawler;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
 
-public abstract class MailingListCrawler extends AbstractCrawler {
+public class MailingListCrawler extends AbstractCrawler {
 	
 	public MailingListCrawler() {
 		setCrawlStat(new TextCollector());
@@ -22,6 +22,8 @@ public abstract class MailingListCrawler extends AbstractCrawler {
 		}
 	}
 
-	protected abstract String trimContent(HtmlParseData htmlContent);
+	protected String trimContent(HtmlParseData htmlContent) {
+		return htmlContent.getText();
+	}
 	
 }

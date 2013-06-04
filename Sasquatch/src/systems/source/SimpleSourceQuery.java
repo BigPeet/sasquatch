@@ -24,21 +24,15 @@ import org.apache.lucene.util.Version;
 
 import systems.source.mail.Mail;
 
-public abstract class SimpleSourceQuery extends SourceQuery {
+public class SimpleSourceQuery extends SourceQuery {
 
 	protected static final Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_43);
 	private static int hitsPerPage = 10000;
 	
+	private File indexDir;
+	
 	public SimpleSourceQuery(File indexDir) {
-		if (indexDir.isDirectory()) {
-			try {
-				Directory dir = FSDirectory.open(indexDir);
-				IndexReader reader = DirectoryReader.open(dir);
-				setReader(reader);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		this.indexDir = indexDir;
 	}
 	
 	@Override
@@ -71,7 +65,9 @@ public abstract class SimpleSourceQuery extends SourceQuery {
 		return sources;
 	}
 	
-	protected abstract Source parseDocument(Document doc);
+	protected Source parseDocument(Document doc) {
+		return new Source(doc.get("text"));
+	}
 
 	protected Query parseQuery(String query) {
 		Query q = null;
@@ -89,6 +85,22 @@ public abstract class SimpleSourceQuery extends SourceQuery {
 	
 	private TopScoreDocCollector getCollector() {
 		return TopScoreDocCollector.create(hitsPerPage, true);
+	}
+
+	@Override
+	public boolean open() {
+		boolean success = false;
+		if (indexDir.isDirectory()) {
+			try {
+				Directory dir = FSDirectory.open(indexDir);
+				IndexReader reader = DirectoryReader.open(dir);
+				setReader(reader);
+				success = true;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return success;
 	}
 
 }

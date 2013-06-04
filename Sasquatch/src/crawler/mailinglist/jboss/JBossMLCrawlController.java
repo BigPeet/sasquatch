@@ -2,10 +2,11 @@ package crawler.mailinglist.jboss;
 
 import java.util.regex.Pattern;
 
-import parser.mail.jboss.JBossMLParser;
+import parser.mail.MailParser;
 
 import crawler.general.GeneralControllerConfiguration;
 import crawler.mailinglist.MailingListCrawlController;
+import crawler.mailinglist.MailingListCrawler;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 
 public class JBossMLCrawlController extends MailingListCrawlController {
@@ -19,11 +20,12 @@ public class JBossMLCrawlController extends MailingListCrawlController {
 	private static String STORAGE = "res\\crawler\\storage\\jboss";
 	private static Pattern[] FILTERS = {gzPattern, threadPattern, startPattern};
 	private static int MAX_PAGES = 6000;
-	private static int NUM_OF_CRAWLERS = 5;
+	private static int NUM_OF_CRAWLERS = 6;
 	private static int MAX_DEPTH = 2;
 	private static long DELAY = 200;
-	private static String PATH = "res/mails/jboss.xml";
-	private static Class<? extends WebCrawler> CRAWLER = JBossMLCrawler.class;
+	private static Class<? extends WebCrawler> CRAWLER = MailingListCrawler.class;
+	//private static String PATH = "res/mails/jboss.xml";
+	
 	
 	public JBossMLCrawlController(String[] domains,
 			int numberOfCrawlers, int maxPages, int maxDepth,
@@ -36,6 +38,11 @@ public class JBossMLCrawlController extends MailingListCrawlController {
 		initialize(DOMAINS, NUM_OF_CRAWLERS, MAX_PAGES, MAX_DEPTH, ROOT, STORAGE, DELAY, CRAWLER, FILTERS, TRIGGER);
 	}
 	
+	public JBossMLCrawlController(MailParser parser) {
+		super(parser);
+		initialize(DOMAINS, NUM_OF_CRAWLERS, MAX_PAGES, MAX_DEPTH, ROOT, STORAGE, DELAY, CRAWLER, FILTERS, TRIGGER);
+	}
+	
 	private void initialize(String[] domains,
 			int numberOfCrawlers, int maxPages, int maxDepth,
 			String rootFolder, String storageFolder, long delay,
@@ -43,7 +50,6 @@ public class JBossMLCrawlController extends MailingListCrawlController {
 		GeneralControllerConfiguration config = new GeneralControllerConfiguration(domains, numberOfCrawlers, maxPages, 
 				maxDepth, rootFolder, storageFolder, delay, crawler, filters, trigger);
 		this.setConfig(config);
-		this.setParser(new JBossMLParser(PATH));
 	}
 	
 }

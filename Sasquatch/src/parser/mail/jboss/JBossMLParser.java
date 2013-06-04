@@ -1,6 +1,7 @@
 package parser.mail.jboss;
 
 import parser.mail.MailParser;
+import systems.source.mail.LocalMailHandler;
 import systems.source.mail.Mail;
 
 public class JBossMLParser extends MailParser {
@@ -10,6 +11,10 @@ public class JBossMLParser extends MailParser {
 	
 	public JBossMLParser(String path) {
 		super(path);
+	}
+	
+	public JBossMLParser(LocalMailHandler handler) {
+		super(handler);
 	}
 	
 	@Override

@@ -8,7 +8,7 @@ import systems.source.mail.Mail;
 
 public abstract class MailParser extends AbstractParser {
 	
-	private File target;
+	//private File target;
 	private LocalMailHandler handler;
 	
 	public MailParser() {
@@ -16,8 +16,12 @@ public abstract class MailParser extends AbstractParser {
 	}
 	
 	public MailParser(String path) {
-		this.target = new File(path);
-		this.handler = new LocalMailHandler(target);
+		//this.target = new File(path);
+		this.handler = new LocalMailHandler(new File(path));
+	}
+	
+	public MailParser(LocalMailHandler handler) {
+		this.handler = handler;
 	}
 	
 	public abstract Mail parseMail(String text);

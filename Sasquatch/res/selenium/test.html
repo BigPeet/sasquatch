@@ -1,0 +1,4542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en" class="no-js">
+  <!--<![endif]-->  <head>
+    <meta charset="utf-8"/>
+    <!--SourceForge.net: Find and Build Open Source Software-->    <!--Copyright (c) 1999-2013 SourceForge, Inc. All rights reserved.-->    <!-- Create Server: sfs-web-12 -->    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="dom4j is a simple and flexible open source library for working with XML, XPath and XSLT on the Java platform using the Java Collections Framework with full integration with DOM, SAX and JAXP."/>
+    <meta name="keywords" content="dom4j: flexible XML framework for Java, Communications, Internet, Software Development, Open Source, Development, Community, Source Code, Downloads, Software"/>
+    <title>
+      SourceForge.net: dom4j: flexible XML framework for Java: dom4j-dev
+    </title>
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:regular,bold" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+      
+            @font-face {
+                font-family: "Pictos";
+                src: url('http://static.sourceforge.net/include/fonts/sftheme/pictos-web.eot');
+                src: local("?"), url('http://static.sourceforge.net/include/fonts/sftheme/pictos-web.woff') format('woff'), url('http://static.sourceforge.net/include/fonts/sftheme/pictos-web.ttf') format('truetype'), url('http://static.sourceforge.net/include/fonts/sftheme/pictos-web.svg') format('svg');
+            }
+            #site-header .logo span {
+              background-image: url("http://static.sourceforge.net/images/neotheme/sftheme/logo.png");
+            }
+            #site-footer .wrapper {
+              background-image: url("http://static.sourceforge.net/images/neotheme/sftheme/sf-footer-logo.png") !important;
+            }
+        
+    </style>
+    <link rel="stylesheet" type="text/css" href="http://static.sourceforge.net/css/develop/style.php?secure=0&amp;1368537130" media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://static.sourceforge.net/css/develop/global.php?secure=0&amp;1368537130" media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://static.sourceforge.net/css/neotheme/sfx.css?1368537130" media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://static.sourceforge.net/css/phoneix/table.php?secure=0&amp;1368537130" media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://static.sourceforge.net/css/develop/droppy.php?secure=0&amp;1368537130" media="all"/>
+    <!--   -->    <script type="text/javascript" src="http://static.sourceforge.net/include/js/sftheme/modernizr.custom.90514.js">
+    </script>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/jquery/jquery-1.3.2.min.js">
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+
+            
+                jQuery.noConflict();
+            
+        
+//]]>
+    </script>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/jquery/jquery.cookie.js">
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+
+          jQuery(function() {
+            jQuery('#fad19 p, .project_summary .downloadbar, .vertical_widget, .horizontal_widget').wrap('<div class="sc"><div class="l1"><div class="l2"><div class="l3"><div class="l4"></div></div></div></div></div>');
+          });
+        
+//]]>
+    </script>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/jquery/jquery.droppy.js">
+    </script>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/js/sylvester.js">
+    </script>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/js/pb.transformie.js">
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+
+            jQuery(function(){
+                jQuery('.b-hornav > li:last-child').addClass('last');
+                jQuery('.b-hornav > li').each(function() {
+                    jQuery('li[class!=disabled]', this).eq(0).addClass('first');
+                });
+                jQuery('.b-hornav').droppy({speed:0, delay:0});
+            });
+        
+//]]>
+    </script>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/c_jquerytabs.js">
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+
+        
+            jQuery(function(){
+                jQuery('.vertical_widget_content ul.tab, #container2 ul.tab, #container3 ul.tab, #container4 ul.tab').tabs({ selected: 0 });
+            });
+        
+        
+//]]>
+    </script>
+    <link rel="stylesheet" type="text/css" href="http://static.sourceforge.net/include/jquery/jquery.tabs.css?secure=0&amp;1368537130" media="all"/>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/js/preferences.js">
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+
+                        var _visitor = "";
+            var jsonly = document.createElement('link');
+            jsonly.setAttribute('rel', 'stylesheet');
+            jsonly.setAttribute('type', 'text/css');
+            jsonly.setAttribute('href', 'http://static.sourceforge.net/css/phoneix/jsonly.css?secure=0&amp;1368537130');
+            document.getElementsByTagName('head')[0].appendChild(jsonly);
+                    
+//]]>
+    </script>
+    <!-- DoubleClick Random Number -->    <script type="text/javascript">
+//<![CDATA[
+var dfp_ord=Math.random()*10000000000000000; var dfp_tile = 1; var dfp_ptile = 1;
+//]]>
+    </script>
+    <!-- End DoubleClick Random Number -->    <!-- After META tags -->    <script type="text/javascript" src="http://static.sourceforge.net/sfx.js">
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+
+                        var _gaq = _gaq || [];
+                        _gaq.push(['t1._setAccount', 'UA-32013-6']);
+                        _gaq.push(['t1._trackPageview']);
+                        _gaq.push(['t2._setAccount', 'UA-36130941-1']);
+                        _gaq.push(['t2._trackPageview']);
+                        (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+            })();
+        
+//]]>
+    </script>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/jquery/jquery.notify.js">
+    </script>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/js/header.js">
+    </script>
+  </head>
+  <body id="c2" class="short-head">
+    <!--[if IE 7]><div id="ie7only"><![endif]-->    <!--[if IE 6]><div id="ie6only"><![endif]-->    <!--[if IE]><div id="ieonly"><![endif]-->    <div class="mail_archive">
+      <header id="site-header">
+        <div class="wrapper">
+          <a href="/" class="logo">
+            <span>
+              SourceForge
+            </span>
+          </a>
+          <form method="get" action="/directory/">
+            <input type="text" id="words" name="q" placeholder="Search"/>
+          </form>
+          <nav id="nav-site">
+            <a href="/directory/" title="Browse our software.">
+              Browse
+            </a>
+            <a href="/directory/enterprise" title="Browse our Enterprise software.">
+              Enterprise
+            </a>
+            <a href="/blog/" title="Read the latest news from the SF HQ.">
+              Blog
+            </a>
+            <a href="/support" title="Contact us for help and feedback.">
+              Help
+            </a>
+            <a href="/jobs?source=header" title="Search 80k+ tech jobs." class="featured-link">
+              Jobs
+            </a>
+          </nav>
+          <nav id="nav-account">
+            <div class="logged_out">
+              <a href="https://sourceforge.net/account/login.php">
+                Log In
+              </a>
+              <span>
+                or
+              </span>
+              <a href="https://sourceforge.net/user/registration">
+                Join
+              </a>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <header id="site-sec-header">
+        <div class="wrapper">
+          <nav id="nav-hubs">
+            <h4>
+              Solution Centers
+            </h4>
+            <a href="http://ibmsmartercommerce.sourceforge.net/">
+              Smarter Commerce
+            </a>
+            <a href="http://goparallel.sourceforge.net/">
+              Go Parallel
+            </a>
+            <a href="http://html5center.sourceforge.net/">
+              HTML5
+            </a>
+            <a href="http://ibmsmarteritservices.sourceforge.net/">
+              Smarter IT
+            </a>
+          </nav>
+          <nav id="nav-collateral">
+            <a href="http://library.geeknetmedia.com">
+              Resources
+            </a>
+            <a href="https://sourceforge.net/user/registration/">
+              Newsletters
+            </a>
+          </nav>
+        </div>
+      </header>
+      <!-- DoubleClick Ad Tag -->      <script type="text/javascript">
+
+//<![CDATA[
+    document.write('<script src="http://ad.doubleclick.net/adj/ostg.sourceforge/sf_pg_mailarchive_leader;pg=/mailarchive/forum.php;psrch=0;logged_in=0;tile='+dfp_tile+';sz=728x90;ord='+dfp_ord+'?" type="text/javascript"><\/script>');
+    dfp_tile++;
+//]]>
+
+      </script>
+      <!-- End DoubleClick Ad Tag -->      <div id="page-body">
+        <div id="bd" class="inner-bd">
+          <div id="doc4" class="yui-t6">
+            <div id="breadcrumbs">
+              <a href="/">
+                Home
+              </a>
+              
+ / 
+              <a href="/directory/">
+                Browse
+              </a>
+              
+ / 
+              <a href="/projects/dom4j/">
+                dom4j: flexible XML framework for Java
+              </a>
+              
+ / 
+              <a href="/mail/?group_id=16035">
+                Mail
+              </a>
+              
+ / 
+              <a href="/mailarchive/forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110" class="selected">
+                Archive
+              </a>
+            </div>
+            <!-- begin content -->            <a name="projectnav"/>
+            <div id="project_nav_container">
+              <div class="b-proj__side">
+                <span class="award-bar">
+                </span>
+              </div>
+              <h1>
+                <a href="/projects/dom4j/">
+                  dom4j: flexible XML framework for Java
+                </a>
+              </h1>
+              <div class="firstwave">
+                <ul class="b-hornav">
+                  <li id="menu_consume_summary">
+                    <a href="/projects/dom4j/">
+                      <span>
+                        <span>
+                          Summary
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li id="menu_consume_files">
+                    <a href="/projects/dom4j/files/">
+                      <span>
+                        <span>
+                          Files
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li id="menu_consume_reviews">
+                    <a href="/projects/dom4j/reviews/">
+                      <span>
+                        <span>
+                          Reviews
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li id="menu_project_support">
+                    <a href="/projects/dom4j/support">
+                      <span>
+                        <span>
+                          Support
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li id="menu_project_develop">
+                    <a href="/projects/dom4j/develop">
+                      <span>
+                        <span>
+                          Develop
+                        </span>
+                      </span>
+                    </a>
+                    <ul>
+                    </ul>
+                  </li>
+                  <li id="menu_project_website">
+                    <a href="http://dom4j.sourceforge.net">
+                      Web Site
+                    </a>
+                  </li>
+                  <li id="menu_project_screenshots" class="disabled" style="display: none;">
+                    <a href="/project/screenshots.php?group_id=16035">
+                      Screenshots
+                    </a>
+                  </li>
+                  <li id="menu_project_news">
+                    <a href="/news/?group_id=16035">
+                      News
+                    </a>
+                  </li>
+                  <li id="menu_stats">
+                    <a href="/projects/dom4j/stats/traffic">
+                      Project Statistics
+                    </a>
+                  </li>
+                  <li id="menu_download_stats_dist">
+                    <a href="/downloads/dom4j/stats_timeline">
+                      Download Stats
+                    </a>
+                  </li>
+                </ul>
+                <li id="menu_hostedapps" class="disabled tier" style="display: none;">
+                  <a href="/hostedapp/?group_id=16035">
+                    <span>
+                      <span>
+                        Hosted Apps
+                      </span>
+                    </span>
+                  </a>
+                </li>
+                <li id="menu_tracker">
+                  <a href="/tracker/?group_id=16035">
+                    <span>
+                      <span>
+                        Tracker
+                      </span>
+                    </span>
+                  </a>
+                  <ul>
+                  </ul>
+                </li>
+                <li id="menu_tracker_116035">
+                  <a href="/tracker/?group_id=16035&amp;atid=116035">
+                    Bugs
+                  </a>
+                </li>
+                <li id="menu_tracker_366035">
+                  <a href="/tracker/?group_id=16035&amp;atid=366035">
+                    Feature Requests
+                  </a>
+                </li>
+                <li id="menu_tracker_316035">
+                  <a href="/tracker/?group_id=16035&amp;atid=316035">
+                    Patches
+                  </a>
+                </li>
+                <li id="menu_tracker_216035">
+                  <a href="/tracker/?group_id=16035&amp;atid=216035">
+                    Support Requests
+                  </a>
+                </li>
+                <li id="menu_tracker_stats" class="tools">
+                  <a href="/projects/dom4j/stats/tracker">
+                    Statistics for Trackers
+                  </a>
+                </li>
+                <li id="menu_tracker_reports" class="disabled" style="display: none;">
+                  <a href="/tracker/reporting/?group_id=16035">
+                    Reporting for Trackers
+                  </a>
+                </li>
+                <li id="menu_tracker_search">
+                  <a href="/search/?group_id=16035&amp;type_of_search=artifact">
+                    Search Trackers
+                  </a>
+                </li>
+                <li id="menu_mail" class="selected tier">
+                  <a href="/mail/?group_id=16035">
+                    <span>
+                      <span>
+                        Mailing Lists
+                      </span>
+                    </span>
+                  </a>
+                  <ul>
+                  </ul>
+                </li>
+                <li id="menu_mlist_dom4j-commits">
+                  <a href="/mailarchive/forum.php?forum_name=dom4j-commits">
+                    dom4j-commits
+                  </a>
+                </li>
+                <li id="menu_mlist_dom4j-dev">
+                  <a href="/mailarchive/forum.php?forum_name=dom4j-dev">
+                    dom4j-dev
+                  </a>
+                </li>
+                <li id="menu_mlist_dom4j-user">
+                  <a href="/mailarchive/forum.php?forum_name=dom4j-user">
+                    dom4j-user
+                  </a>
+                </li>
+                <li id="menu_mail_search" class="tools">
+                  <a href="/search/?group_id=16035&amp;type_of_search=mlists">
+                    Search Mail Lists
+                  </a>
+                </li>
+                <div class="diamond">
+                </div>
+                <li id="menu_forums">
+                  <a href="/projects/dom4j/forums">
+                    <span>
+                      <span>
+                        Forums
+                      </span>
+                    </span>
+                  </a>
+                  <ul>
+                  </ul>
+                </li>
+                <li id="menu_forum_131562">
+                  <a href="/projects/dom4j/forums/forum/131562">
+                    dom4j-dev
+                  </a>
+                </li>
+                <li id="menu_forum_131563">
+                  <a href="/projects/dom4j/forums/forum/131563">
+                    dom4j-user
+                  </a>
+                </li>
+                <li id="menu_forum_50866">
+                  <a href="/projects/dom4j/forums/forum/50866">
+                    Help
+                  </a>
+                </li>
+                <li id="menu_forum_50865">
+                  <a href="/projects/dom4j/forums/forum/50865">
+                    Open Discussion
+                  </a>
+                </li>
+                <li id="menu_forums_stats" class="tools">
+                  <a href="/projects/dom4j/stats/forums">
+                    Statistics for Forums
+                  </a>
+                </li>
+                <li id="menu_forums_search">
+                  <a href="/search/?group_id=16035&amp;type_of_search=forums">
+                    Search Forums
+                  </a>
+                </li>
+                <li id="menu_code">
+                  <a href="#">
+                    <span>
+                      <span>
+                        Code
+                      </span>
+                    </span>
+                  </a>
+                  <ul>
+                  </ul>
+                </li>
+                <li id="menu_git_about" class="disabled" style="display: none;">
+                  <a href="/scm/?type=git&amp;group_id=16035">
+                    Git
+                  </a>
+                </li>
+                <li id="menu_git_browse" class="disabled" style="display: none;">
+                  <a href="http://dom4j.git.sourceforge.net/">
+                    Git Browse
+                  </a>
+                </li>
+                <li id="menu_git_stats" class="disabled" style="display: none;">
+                  <a href="/projects/dom4j/stats/scm?repo=GitRepository">
+                    Git Statistics
+                  </a>
+                </li>
+                <li id="menu_hg_about">
+                  <a href="/scm/?type=hg&amp;group_id=16035">
+                    Mercurial
+                  </a>
+                </li>
+                <li id="menu_hg_browse">
+                  <a href="http://dom4j.hg.sourceforge.net/hgweb/dom4j/">
+                    Mercurial Browse
+                  </a>
+                </li>
+                <li id="menu_hg_stats">
+                  <a href="/projects/dom4j/stats/scm?repo=HgRepository">
+                    Mercurial Statistics
+                  </a>
+                </li>
+                <li id="menu_bzr_about" class="disabled" style="display: none;">
+                  <a href="/scm/?type=bzr&amp;group_id=16035">
+                    Bazaar
+                  </a>
+                </li>
+                <li id="menu_bzr_browse" class="disabled" style="display: none;">
+                  <a href="http://dom4j.bzr.sourceforge.net/bzr/dom4j/">
+                    Bazaar Browse
+                  </a>
+                </li>
+                <li id="menu_bzr_stats" class="disabled" style="display: none;">
+                  <a href="/projects/dom4j/stats/scm?repo=BazaarBranch">
+                    Bazaar Statistics
+                  </a>
+                </li>
+                <li id="menu_cvs_about">
+                  <a href="/scm/?type=cvs&amp;group_id=16035">
+                    CVS
+                  </a>
+                </li>
+                <li id="menu_cvs_browse">
+                  <a href="http://dom4j.cvs.sourceforge.net/dom4j/">
+                    CVS Browse
+                  </a>
+                </li>
+                <li id="menu_cvs_stats">
+                  <a href="/projects/dom4j/stats/scm?repo=CVSRepository">
+                    CVS Statistics
+                  </a>
+                </li>
+                <li id="menu_svn_about" class="disabled" style="display: none;">
+                  <a href="/scm/?type=svn&amp;group_id=16035">
+                    SVN
+                  </a>
+                </li>
+                <li id="menu_svn_browse" class="disabled" style="display: none;">
+                  <a href="http://dom4j.svn.sourceforge.net/viewvc/dom4j/">
+                    SVN Browse
+                  </a>
+                </li>
+                <li id="menu_svn_stats" class="disabled" style="display: none;">
+                  <a href="/projects/dom4j/stats/scm?repo=SVNRepository">
+                    SVN Statistics
+                  </a>
+                </li>
+                <li id="menu_newadmin" class="disabled tier" style="display: none;">
+                  <a href="/project/admin/?group_id=16035">
+                    <span>
+                      <span>
+                        Project Admin
+                      </span>
+                    </span>
+                  </a>
+                  <ul>
+                  </ul>
+                </li>
+                <li id="menu_editgroupinfo" class="disabled" style="display: none;">
+                  <a href="/project/admin/public_info.php?group_id=16035">
+                    Settings
+                  </a>
+                </li>
+                <li id="menu_features" class="disabled" style="display: none;">
+                  <a href="/project/admin/features.php?group_id=16035">
+                    Features
+                  </a>
+                </li>
+                <li id="menu_userperms" class="disabled" style="display: none;">
+                  <a href="/project/admin/project_membership.php?group_id=16035">
+                    Members
+                  </a>
+                </li>
+                <li id="menu_stats_admin" class="disabled" style="display: none;">
+                  <a href="/project/admin/stats.php?group_id=16035">
+                    Analytics
+                  </a>
+                </li>
+              </div>
+            </div>
+            <div style="clear: both;">
+            </div>
+            <p>
+            </p>
+            <h3>
+              Email Archive: 
+              <a href="forum.php?forum_name=dom4j-dev">
+                <!-- google_ad_section_start -->                dom4j-dev
+                <!-- google_ad_section_end -->              </a>
+               (read-only)
+
+            </h3>
+            <p/>
+            <table width="450" border="0">
+              <tbody align="left">
+                <tr>
+                  <td>
+                    <table width="100%" border="1" cellpadding="1" cellspacing="0">
+                      <tbody align="left"/>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2001:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#cccccc">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <b>
+                      <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110">
+                        (20)
+                      </a>
+                    </b>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200111">
+                      (22)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200112">
+                      (22)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2002:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200201">
+                      (15)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200202">
+                      (15)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200203">
+                      (16)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200204">
+                      (30)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200205">
+                      (22)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200206">
+                      (54)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200207">
+                      (13)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200208">
+                      (13)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200209">
+                      (10)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200210">
+                      (34)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200211">
+                      (25)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200212">
+                      (9)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2003:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200301">
+                      (6)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200302">
+                      (25)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200303">
+                      (9)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200304">
+                      (64)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200305">
+                      (19)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200306">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200307">
+                      (5)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200308">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200310">
+                      (7)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200311">
+                      (6)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200312">
+                      (17)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2004:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200401">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200402">
+                      (14)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200403">
+                      (21)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200404">
+                      (19)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200405">
+                      (10)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200406">
+                      (66)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200407">
+                      (8)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200408">
+                      (9)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200409">
+                      (19)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200410">
+                      (17)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200411">
+                      (43)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200412">
+                      (29)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2005:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200501">
+                      (12)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200502">
+                      (27)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200503">
+                      (29)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200504">
+                      (52)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200505">
+                      (33)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200506">
+                      (18)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200507">
+                      (36)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200508">
+                      (7)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200509">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200510">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200511">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200512">
+                      (10)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2006:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200601">
+                      (6)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200602">
+                      (7)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200603">
+                      (16)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200604">
+                      (8)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200605">
+                      (14)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200606">
+                      (5)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200607">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200608">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200609">
+                      (6)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200610">
+                      (25)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200611">
+                      (7)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200612">
+                      (18)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2007:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200701">
+                      (45)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200702">
+                      (7)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200703">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200704">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200706">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200708">
+                      (8)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200710">
+                      (8)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200711">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200712">
+                      (12)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2008:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200801">
+                      (4)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200802">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200803">
+                      (5)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200805">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200806">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200807">
+                      (11)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200808">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200809">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200810">
+                      (7)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200811">
+                      (10)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200812">
+                      (3)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2009:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200902">
+                      (34)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200903">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200904">
+                      (4)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200905">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200906">
+                      (5)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200907">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200908">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2010:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201001">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201002">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201003">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201004">
+                      (13)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201006">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201007">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201008">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201011">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2011:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201101">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201102">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201103">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201105">
+                      (3)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201106">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201109">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201110">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201112">
+                      (6)
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <center>
+                      <b>
+                        2012:
+                      </b>
+                    </center>
+                  </th>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jan
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201201">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Feb
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Mar
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Apr
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      May
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201205">
+                      (1)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jun
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Jul
+                    </sub>
+                    <br/>
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=201207">
+                      (2)
+                    </a>
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Aug
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Sep
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Oct
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Nov
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                  <td bgcolor="#eeeeee">
+                    <sub>
+                      Dec
+                    </sub>
+                    <br/>
+                    
+									   
+								
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table width="100%" border="1" cellpadding="1" cellspacing="0">
+              <tbody align="left">
+                <tr>
+                  <th colspan="7">
+                  </th>
+                </tr>
+                <tr>
+                  <th bgcolor="#cccccc">
+                    S
+                  </th>
+                  <th bgcolor="#cccccc">
+                    M
+                  </th>
+                  <th bgcolor="#cccccc">
+                    T
+                  </th>
+                  <th bgcolor="#cccccc">
+                    W
+                  </th>
+                  <th bgcolor="#cccccc">
+                    T
+                  </th>
+                  <th bgcolor="#cccccc">
+                    F
+                  </th>
+                  <th bgcolor="#cccccc">
+                    S
+                  </th>
+                </tr>
+                <tr>
+                  <th bgcolor="#eeeeee">
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			1
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			2
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			3
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			4
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			5
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			6
+		
+                  </th>
+                </tr>
+                <tr>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                </tr>
+                <tr>
+                  <th bgcolor="#eeeeee">
+                    
+			7
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			8
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			9
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			10
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			11
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			12
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			13
+		
+                  </th>
+                </tr>
+                <tr>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110&amp;viewday=8">
+                      
+					(2)
+					
+                    </a>
+                  </td>
+                  <td align="center">
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110&amp;viewday=9">
+                      
+					(2)
+					
+                    </a>
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110&amp;viewday=12">
+                      
+					(2)
+					
+                    </a>
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                </tr>
+                <tr>
+                  <th bgcolor="#eeeeee">
+                    
+			14
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			15
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			16
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			17
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			18
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			19
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			20
+		
+                  </th>
+                </tr>
+                <tr>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110&amp;viewday=20">
+                      
+					(2)
+					
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th bgcolor="#eeeeee">
+                    
+			21
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			22
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			23
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			24
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			25
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			26
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			27
+		
+                  </th>
+                </tr>
+                <tr>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110&amp;viewday=25">
+                      
+					(3)
+					
+                    </a>
+                  </td>
+                  <td align="center">
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110&amp;viewday=26">
+                      
+					(3)
+					
+                    </a>
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                </tr>
+                <tr>
+                  <th bgcolor="#eeeeee">
+                    
+			28
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			29
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			30
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                    
+			31
+		
+                  </th>
+                  <th bgcolor="#eeeeee">
+                  </th>
+                  <th bgcolor="#eeeeee">
+                  </th>
+                  <th bgcolor="#eeeeee">
+                  </th>
+                </tr>
+                <tr>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    <a href="forum.php?forum_name=dom4j-dev&amp;max_rows=100&amp;style=nested&amp;viewmonth=200110&amp;viewday=29">
+                      
+					(6)
+					
+                    </a>
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                  <td align="center">
+                    
+							 
+				
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <form action="/mailarchive/forum.php" method="get">
+              <input type="hidden" name="set" value="custom"/>
+              <input type="hidden" name="viewmonth" value="200110"/>
+              <input type="hidden" name="viewday" value=""/>
+              <table border="0" width="500">
+                <tbody align="left">
+                  <tr>
+                    <td>
+                      <small>
+                        <select name="forum_name">
+                          <option value="dom4j-commits">
+                            dom4j-commits
+                          </option>
+                          <option value="dom4j-user">
+                            dom4j-user
+                          </option>
+                          <option value="dom4j-dev" selected="selected">
+                            dom4j-dev
+                          </option>
+                        </select>
+                      </small>
+                    </td>
+                    <td>
+                      <small>
+                        <select name="style">
+                          <option value="nested" selected="selected">
+                            Nested
+                          </option>
+                          <option value="flat">
+                            Flat
+                          </option>
+                          <option value="threaded">
+                            Threaded
+                          </option>
+                          <option value="ultimate">
+                            Ultimate
+                          </option>
+                        </select>
+                      </small>
+                    </td>
+                    <td>
+                      <small>
+                        <select name="max_rows">
+                          <option value="25">
+                            Show 25
+                          </option>
+                          <option value="50">
+                            Show 50
+                          </option>
+                          <option value="75">
+                            Show 75
+                          </option>
+                          <option value="100" selected="selected">
+                            Show 100
+                          </option>
+                        </select>
+                      </small>
+                    </td>
+                    <td>
+                      <small>
+                        <input type="submit" name="submit" value="Change View"/>
+                      </small>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060969">
+                              [dom4j-dev] stack trace code in saxreader
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: Brian W. Young &lt;byoung@de...&gt; -	2001-10-29 21:51
+                        </small>
+                        <br/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        I'm new to the mailing list and not sure if this has been addressed, but 
+in  v 1.35 of SaxReader, there is a printStackTrace() that is probably 
+not appropriate... line # 308, the read(InputSource in).
+
+I had to comment this out to contain uncontrolled stack traces when 
+plugging in Xerces for validation against a DTD.  The stack trace to 
+system out should be left up to the user of the API, I would think.
+
+Great API otherwise.  Integrated XPath has been a big help.   Thanks.
+
+
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <ul>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060970">
+                                  Re: [dom4j-dev] stack trace code in saxreader
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-29 22:08
+                            </small>
+                            <br/>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            Hi Brian
+
+Thanks for spotting that! Whoops, that looks like something that got left in
+the code after a debugging run. Its gone now.
+
+I've committed the change to CVS and its available in the daily build.
+
+James
+----- Original Message -----
+From: "Brian W. Young" &lt;byoung@...&gt;
+To: &lt;dom4j-dev@...&gt;
+Sent: Monday, October 29, 2001 9:51 PM
+Subject: [dom4j-dev] stack trace code in saxreader
+
+
+&gt; I'm new to the mailing list and not sure if this has been addressed, but
+&gt; in  v 1.35 of SaxReader, there is a printStackTrace() that is probably
+&gt; not appropriate... line # 308, the read(InputSource in).
+&gt;
+&gt; I had to comment this out to contain uncontrolled stack traces when
+&gt; plugging in Xerces for validation against a DTD.  The stack trace to
+&gt; system out should be left up to the user of the API, I would think.
+&gt;
+&gt; Great API otherwise.  Integrated XPath has been a big help.   Thanks.
+&gt;
+&gt;
+&gt;
+&gt; _______________________________________________
+&gt; dom4j-dev mailing list
+&gt; dom4j-dev@...
+&gt; 
+                            <a href="https://lists.sourceforge.net/lists/listinfo/dom4j-dev" target="_new">
+                              https://lists.sourceforge.net/lists/listinfo/dom4j-dev
+                            </a>
+                            
+&gt;
+
+
+_________________________________________________________
+Do You Yahoo!?
+Get your free @yahoo.com address at 
+                            <a href="http://mail.yahoo.com" target="_new">
+                              http://mail.yahoo.com
+                            </a>
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+              </ul>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060957">
+                              [dom4j-dev] getNodeValue not getting complete node value
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: Doug Hoppes &lt;DougHoppes@cr...&gt; -	2001-10-29 16:48
+                        </small>
+                        <br/>
+                        <br/>
+                        <small>
+                          <b>
+                            Attachments:
+                          </b>
+                          <a href="attachment.php?list_name=dom4j-dev&amp;message_id=3A9933B568A24543B6AD9E02C7E6ADA022E0F3%40moe.crd.com&amp;counter=1">
+                            Message as HTML
+                          </a>
+                               
+	  			  		
+                        </small>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        Hi all,
+=20
+      I posted last week about a problem with the .valueOf("text()") not
+getting the correct node.  I finally got back to the problem and wrote a
+quick java program to read my data file and show what is happening.
+Where would the best place be to post the data file and java code?
+=20
+    Using the code to write out my Xml Tree:
+=20
+            FileOutputStream out =3D new FileOutputStream("data.out");
+            OutputFormat format =3D OutputFormat.createPrettyPrint();
+            XMLWriter writer =3D new XMLWriter(out,format);
+            writer.write(_domTree);
+            writer.close();
+            out.close();
+
+        I get the Xml portion (in question) to be:=20
+                  .....
+                  &lt;row id=3D"22"&gt;
+                       &lt;value&gt;601133922&lt;/value&gt;
+                        &lt;value&gt;US Dollar&lt;/value&gt;
+                        &lt;value&gt;3&lt;/value&gt;
+                        &lt;value&gt;601133902&lt;/value&gt;
+                        &lt;value&gt;null&lt;/value&gt;
+                        &lt;value&gt;Category&lt;/value&gt;
+                        &lt;value&gt;Currency List&lt;/value&gt;
+                    .....
+=20
+    When I use: _columnNode.valueOf("."), I get 60 1133902
+                      _columnNode.valueOf("text()"), I get 60
+                     _columnNode.getStringValue(), I get 60 1133902
+=20
+    The Xml file I'm trying to parse through is approximately 176K.  If
+there is anyone that could help me with this problem as soon as
+possible, I would greatly greatly appreciate it. =20
+=20
+ Doug Hoppes
+Charles River Development
+781-238-0099 x269
+=20
+
+
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <ul>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060961">
+                                  Re: [dom4j-dev] getNodeValue not getting complete node value
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-29 17:44
+                            </small>
+                            <br/>
+                            <br/>
+                            <small>
+                              <b>
+                                Attachments:
+                              </b>
+                              <a href="attachment.php?list_name=dom4j-dev&amp;message_id=06b001c160a1%24147e7ec0%249865fea9%40spiritsoft.com&amp;counter=1">
+                                Message as HTML
+                              </a>
+                                   
+	  			  		
+                            </small>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            MessageThis sounds very wierd. It seems like you might have multiple =
+text nodes to me. e.g. is there a newline between the "60" and the =
+"113392" text in your XML document that you're parsing? That could =
+explain why both node.valueOf( "." ) and node.getStringValue() are =
+concatenating the text values whereas node.valueOf( "text()" ) is =
+returning the just text of the first (text) node.
+
+Could you send the XML document and a snippet of code you're using to =
+actually get hold of "_currentNode" so we can try it out?
+
+James
+  ----- Original Message -----=20
+  From: Doug Hoppes=20
+  To: dom4j-dev@...
+  Sent: Monday, October 29, 2001 4:48 PM
+  Subject: [dom4j-dev] getNodeValue not getting complete node value
+
+
+  Hi all,
+
+        I posted last week about a problem with the .valueOf("text()") =
+not getting the correct node.  I finally got back to the problem and =
+wrote a quick java program to read my data file and show what is =
+happening.  Where would the best place be to post the data file and java =
+code?
+
+      Using the code to write out my Xml Tree:
+
+              FileOutputStream out =3D new FileOutputStream("data.out");
+              OutputFormat format =3D OutputFormat.createPrettyPrint();
+              XMLWriter writer =3D new XMLWriter(out,format);
+              writer.write(_domTree);
+              writer.close();
+              out.close();
+
+          I get the Xml portion (in question) to be:=20
+                    .....
+                    &lt;row id=3D"22"&gt;
+                         &lt;value&gt;601133922&lt;/value&gt;
+                          &lt;value&gt;US Dollar&lt;/value&gt;
+                          &lt;value&gt;3&lt;/value&gt;
+                          &lt;value&gt;601133902&lt;/value&gt;
+                          &lt;value&gt;null&lt;/value&gt;
+                          &lt;value&gt;Category&lt;/value&gt;
+                          &lt;value&gt;Currency List&lt;/value&gt;
+                      .....
+
+      When I use: _columnNode.valueOf("."), I get 60 1133902
+                        _columnNode.valueOf("text()"), I get 60
+                       _columnNode.getStringValue(), I get 60 1133902
+
+      The Xml file I'm trying to parse through is approximately 176K.  =
+If there is anyone that could help me with this problem as soon as =
+possible, I would greatly greatly appreciate it. =20
+
+   Doug Hoppes
+  Charles River Development
+  781-238-0099 x269
+
+
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060963">
+                                  Re: [dom4j-dev] getNodeValue not getting complete node value
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: bob mcwhirter &lt;bob@we...&gt; -	2001-10-29 17:45
+                            </small>
+                            <br/>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            text() will attempt to do a recursive walk of the sub-tree,
+and assemble only the text portion.  text() applied to
+your &lt;row&gt; element should produce something like:
+
+	601133922 US Dollar 3 601133902 null Category Currently List
+
+text() applied to a &lt;value&gt; tag should get the text within it,
+but since you have a fairly flat hierarchy, getTextTrim() might
+also be a good solution for you, since you don't need the semantics
+of recursion.
+
+columnNode.getTextTrim() would produce 601133922 for the first
+&lt;value&gt; child of &lt;row&gt;.
+
+Does that help at all?
+
+	-bob
+
+On Mon, 29 Oct 2001, Doug Hoppes wrote:
+
+&gt; Hi all,
+&gt;  
+&gt;       I posted last week about a problem with the .valueOf("text()") not
+&gt; getting the correct node.  I finally got back to the problem and wrote a
+&gt; quick java program to read my data file and show what is happening.
+&gt; Where would the best place be to post the data file and java code?
+&gt;  
+&gt;     Using the code to write out my Xml Tree:
+&gt;  
+&gt;             FileOutputStream out = new FileOutputStream("data.out");
+&gt;             OutputFormat format = OutputFormat.createPrettyPrint();
+&gt;             XMLWriter writer = new XMLWriter(out,format);
+&gt;             writer.write(_domTree);
+&gt;             writer.close();
+&gt;             out.close();
+&gt; 
+&gt;         I get the Xml portion (in question) to be: 
+&gt;                   .....
+&gt;                   &lt;row id="22"&gt;
+&gt;                        &lt;value&gt;601133922&lt;/value&gt;
+&gt;                         &lt;value&gt;US Dollar&lt;/value&gt;
+&gt;                         &lt;value&gt;3&lt;/value&gt;
+&gt;                         &lt;value&gt;601133902&lt;/value&gt;
+&gt;                         &lt;value&gt;null&lt;/value&gt;
+&gt;                         &lt;value&gt;Category&lt;/value&gt;
+&gt;                         &lt;value&gt;Currency List&lt;/value&gt;
+&gt;                     .....
+&gt;  
+&gt;     When I use: _columnNode.valueOf("."), I get 60 1133902
+&gt;                       _columnNode.valueOf("text()"), I get 60
+&gt;                      _columnNode.getStringValue(), I get 60 1133902
+&gt;  
+&gt;     The Xml file I'm trying to parse through is approximately 176K.  If
+&gt; there is anyone that could help me with this problem as soon as
+&gt; possible, I would greatly greatly appreciate it.  
+&gt;  
+&gt;  Doug Hoppes
+&gt; Charles River Development
+&gt; 781-238-0099 x269
+&gt;  
+&gt;
+
+
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060966">
+                                  Re: [dom4j-dev] getNodeValue not getting complete node value
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-29 18:54
+                            </small>
+                            <br/>
+                            <br/>
+                            <small>
+                              <b>
+                                Attachments:
+                              </b>
+                              <a href="attachment.php?list_name=dom4j-dev&amp;message_id=074301c160aa%24ce02c780%249865fea9%40spiritsoft.com&amp;counter=1">
+                                Message as HTML
+                              </a>
+                                   
+	  			  		
+                            </small>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            MessageA quick heads up for anyone following this thread; it seems this =
+could be a classpath issue. Doug's mailed me a sample program to =
+demonstrate the problem which works fine for me against dom4j 1.0 so it =
+could well be a classpath problem or an issue caused by weblogic doing =
+something strange.
+
+James
+  ----- Original Message -----=20
+  From: James Strachan=20
+  To: Doug Hoppes ; dom4j-dev@...
+  Sent: Monday, October 29, 2001 5:42 PM
+  Subject: Re: [dom4j-dev] getNodeValue not getting complete node value
+
+
+  This sounds very wierd. It seems like you might have multiple text =
+nodes to me. e.g. is there a newline between the "60" and the "113392" =
+text in your XML document that you're parsing? That could explain why =
+both node.valueOf( "." ) and node.getStringValue() are concatenating the =
+text values whereas node.valueOf( "text()" ) is returning the just text =
+of the first (text) node.
+
+  Could you send the XML document and a snippet of code you're using to =
+actually get hold of "_currentNode" so we can try it out?
+
+  James
+    ----- Original Message -----=20
+    From: Doug Hoppes=20
+    To: dom4j-dev@...
+    Sent: Monday, October 29, 2001 4:48 PM
+    Subject: [dom4j-dev] getNodeValue not getting complete node value
+
+
+    Hi all,
+
+          I posted last week about a problem with the .valueOf("text()") =
+not getting the correct node.  I finally got back to the problem and =
+wrote a quick java program to read my data file and show what is =
+happening.  Where would the best place be to post the data file and java =
+code?
+
+        Using the code to write out my Xml Tree:
+
+                FileOutputStream out =3D new =
+FileOutputStream("data.out");
+                OutputFormat format =3D =
+OutputFormat.createPrettyPrint();
+                XMLWriter writer =3D new XMLWriter(out,format);
+                writer.write(_domTree);
+                writer.close();
+                out.close();
+
+            I get the Xml portion (in question) to be:=20
+                      .....
+                      &lt;row id=3D"22"&gt;
+                           &lt;value&gt;601133922&lt;/value&gt;
+                            &lt;value&gt;US Dollar&lt;/value&gt;
+                            &lt;value&gt;3&lt;/value&gt;
+                            &lt;value&gt;601133902&lt;/value&gt;
+                            &lt;value&gt;null&lt;/value&gt;
+                            &lt;value&gt;Category&lt;/value&gt;
+                            &lt;value&gt;Currency List&lt;/value&gt;
+                        .....
+
+        When I use: _columnNode.valueOf("."), I get 60 1133902
+                          _columnNode.valueOf("text()"), I get 60
+                         _columnNode.getStringValue(), I get 60 1133902
+
+        The Xml file I'm trying to parse through is approximately 176K.  =
+If there is anyone that could help me with this problem as soon as =
+possible, I would greatly greatly appreciate it. =20
+
+     Doug Hoppes
+    Charles River Development
+    781-238-0099 x269
+
+
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+              </ul>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060942">
+                              [dom4j-dev] valueOf("text()") not getting full value?
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: Doug Hoppes &lt;DougHoppes@cr...&gt; -	2001-10-25 11:41
+                        </small>
+                        <br/>
+                        <br/>
+                        <small>
+                          <b>
+                            Attachments:
+                          </b>
+                          <a href="attachment.php?list_name=dom4j-dev&amp;message_id=3A9933B568A24543B6AD9E02C7E6ADA022DDB8%40moe.crd.com&amp;counter=1">
+                            Message as HTML
+                          </a>
+                               
+	  			  		
+                        </small>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        Hi all,
+=20
+    Has anyone had any problems with the
+[_currentNode.valueOf("text()")] not getting the entire value (or if it
+is, the value is not being stored in the Xml Dom tree properly?
+=20
+    I have a really really really large Xml Dom tree and looping through
+a bunch of nodes to extract some values (results from a database table:
+60 columns by 4000 rows).  Some of my datavalues are coming out at "nul"
+or "n" as opposed to "null".  I checked  the xml string before building
+the dom and there are no "nul" or "n" values (The xml string correctly
+shows the "null").  However, when I use the valueOf("text()") method, I
+get only part of my value.
+=20
+    Any ideas would be greatly appreciated.
+=20
+Doug Hoppes
+Charles River Development
+781-238-0099 x269
+=20
+
+
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <ul>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060944">
+                                  Re: [dom4j-dev] valueOf("text()") not getting full value?
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-25 12:08
+                            </small>
+                            <br/>
+                            <br/>
+                            <small>
+                              <b>
+                                Attachments:
+                              </b>
+                              <a href="attachment.php?list_name=dom4j-dev&amp;message_id=0fc901c15d4d%247e5ca3f0%249865fea9%40spiritsoft.com&amp;counter=1">
+                                Message as HTML
+                              </a>
+                                   
+	  			  		
+                            </small>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            MessageHi Doug
+
+Firstly if you want the XPath string value of a node you can just call =
+the getStringValue() method.
+
+node.getStringValue();
+
+Secondly the valueOf() method always returns the XPath string value of =
+the XPath expression you give so that
+
+node.valueOf( "'." )
+
+should pretty much equate to the same thing.
+
+Though neither of these things explain your problem. Is there any way =
+you can create a fragment of XML and demonstrate the problem with a =
+snippet of code? Maybe you are actually adding null Strings to the XML =
+document?
+
+Element element =3D ...;
+element.addText ( null );
+
+If this is the case then maybe we should explicitly check for null =
+strings and quitely ignore them...
+
+James
+  ----- Original Message -----=20
+  From: Doug Hoppes=20
+  To: dom4j-dev@...
+  Sent: Thursday, October 25, 2001 12:41 PM
+  Subject: [dom4j-dev] valueOf("text()") not getting full value?
+
+
+  Hi all,
+
+      Has anyone had any problems with the =
+[_currentNode.valueOf("text()")] not getting the entire value (or if it =
+is, the value is not being stored in the Xml Dom tree properly?
+
+      I have a really really really large Xml Dom tree and looping =
+through a bunch of nodes to extract some values (results from a database =
+table: 60 columns by 4000 rows).  Some of my datavalues are coming out =
+at "nul" or "n" as opposed to "null".  I checked  the xml string before =
+building the dom and there are no "nul" or "n" values (The xml string =
+correctly shows the "null").  However, when I use the valueOf("text()") =
+method, I get only part of my value.
+
+      Any ideas would be greatly appreciated.
+
+  Doug Hoppes
+  Charles River Development
+  781-238-0099 x269
+
+
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060947">
+                                  Re: [dom4j-dev] valueOf("text()") not getting full value?
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: Dennis Sosnoski &lt;dms@so...&gt; -	2001-10-25 17:41
+                            </small>
+                            <br/>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            &lt;!doctype html public "-//w3c//dtd html 4.0 transitional//en"&gt;
+&lt;html&gt;
+&lt;body text="#000099" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000"&gt;
+Hi James,
+&lt;p&gt;It might be cleaner to make null an illegal value for the addText()
+call, and throw an IllegalArgumentException (or other exception) for it.
+Silently ignoring the call might create problems down the line ("I make
+three addText() calls, but there are only two text nodes in the result
+- what's going on?").
+&lt;p&gt;&amp;nbsp; - Dennis
+&lt;p&gt;James Strachan wrote:
+&lt;blockquote TYPE=CITE&gt;&lt;style&gt;&lt;/style&gt;
+&amp;nbsp;&lt;font face="Arial"&gt;&lt;font size=-1&gt;Element
+element = ...;&lt;/font&gt;&lt;/font&gt;&lt;font face="Arial"&gt;&lt;font size=-1&gt;element.addText
+( null );&lt;/font&gt;&lt;/font&gt;&amp;nbsp;&lt;font face="Arial"&gt;&lt;font size=-1&gt;If this is
+the case then maybe we should explicitly check for null strings and quitely
+ignore them...&lt;/font&gt;&lt;/font&gt;&amp;nbsp;
+&lt;br&gt;James&lt;/blockquote&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060951">
+                                  Re: [dom4j-dev] valueOf("text()") not getting full value?
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-26 09:55
+                            </small>
+                            <br/>
+                            <br/>
+                            <small>
+                              <b>
+                                Attachments:
+                              </b>
+                              <a href="attachment.php?list_name=dom4j-dev&amp;message_id=04e701c15e04%240adb5130%249865fea9%40spiritsoft.com&amp;counter=1">
+                                Message as HTML
+                              </a>
+                                   
+	  			  		
+                            </small>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            Hi Dennis
+
+Yes I think you're right, this is the right thing to do - though I =
+always feel bad about 'breaking' peoples code.
+
+I guess once developers get the new IllegalArgumentException its going =
+to be pretty obvious which line of code is passing in the offending null =
+string so its pretty easy to wrap an extra if () around the code as =
+follows...
+
+String s =3D ...;
+if ( s !=3D null ) {
+    element.addText( s );
+}
+
+So yes I think we should do this.
+
+James
+  ----- Original Message -----=20
+  From: Dennis Sosnoski=20
+  To: James Strachan=20
+  Cc: Doug Hoppes ; dom4j-dev@...
+  Sent: Thursday, October 25, 2001 6:35 PM
+  Subject: Re: [dom4j-dev] valueOf("text()") not getting full value?
+
+
+  Hi James,=20
+  It might be cleaner to make null an illegal value for the addText() =
+call, and throw an IllegalArgumentException (or other exception) for it. =
+Silently ignoring the call might create problems down the line ("I make =
+three addText() calls, but there are only two text nodes in the result - =
+what's going on?").=20
+
+    - Dennis=20
+
+  James Strachan wrote:=20
+
+     Element element =3D ...;element.addText ( null ); If this is the =
+case then maybe we should explicitly check for null strings and quitely =
+ignore them... =20
+    James
+
+
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060954">
+                                  Re: [dom4j-dev] valueOf("text()") not getting full value?
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-26 10:30
+                            </small>
+                            <br/>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            OK I've implemented the patch such that attempts to add a Text node to an
+Element with a null String will throw an IllegalArgumentException. Its
+available in the daily build right now if anyone wants to try it out.
+
+The change has been made in the DocumentFactory.createText() method.
+If this change has a big impact on anyone you could always provide your own
+DocumentFactory, or Element derivation to either quietly ignore null strings
+or swap them with empty strings as a temporary work around.
+
+James
+----- Original Message -----
+From: James Strachan
+To: Dennis Sosnoski
+Cc: Doug Hoppes ; dom4j-dev@...
+Sent: Friday, October 26, 2001 10:53 AM
+Subject: Re: [dom4j-dev] valueOf("text()") not getting full value?
+
+
+Hi Dennis
+
+Yes I think you're right, this is the right thing to do - though I always
+feel bad about 'breaking' peoples code.
+
+I guess once developers get the new IllegalArgumentException its going to be
+pretty obvious which line of code is passing in the offending null string so
+its pretty easy to wrap an extra if () around the code as follows...
+
+String s = ...;
+if ( s != null ) {
+    element.addText( s );
+}
+
+So yes I think we should do this.
+
+James
+----- Original Message -----
+From: Dennis Sosnoski
+To: James Strachan
+Cc: Doug Hoppes ; dom4j-dev@...
+Sent: Thursday, October 25, 2001 6:35 PM
+Subject: Re: [dom4j-dev] valueOf("text()") not getting full value?
+
+
+Hi James,
+It might be cleaner to make null an illegal value for the addText() call,
+and throw an IllegalArgumentException (or other exception) for it. Silently
+ignoring the call might create problems down the line ("I make three
+addText() calls, but there are only two text nodes in the result - what's
+going on?").
+  - Dennis
+James Strachan wrote:
+ Element element = ...;element.addText ( null ); If this is the case then
+maybe we should explicitly check for null strings and quitely ignore them...
+James
+
+
+_________________________________________________________
+Do You Yahoo!?
+Get your free @yahoo.com address at 
+                            <a href="http://mail.yahoo.com" target="_new">
+                              http://mail.yahoo.com
+                            </a>
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+              </ul>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060948">
+                              [dom4j-dev] Re: [dom4j-user] using JDBC results with dom4j
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-26 09:53
+                        </small>
+                        <br/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        Hi Casey
+
+A few people have been thinking about mapping a JDBC ResultSet to an XML
+representation lately, it was mentioned recently on the Jaxen list
+
+
+                        <a href="http://www.mail-archive.com/jaxen-interest%40lists.sourceforge.net/msg00212" target="_new">
+                          http://www.mail-archive.com/jaxen-interest%40lists.sourceforge.net/msg00212
+                        </a>
+                        .
+html
+
+as well as on the standard JSP tag library expert group.
+
+I've added this idea to the developers to do list, TODO.txt, in CVS...
+
+
+                        <a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/dom4j/dom4j/" target="_new">
+                          http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/dom4j/dom4j/
+                        </a>
+                        
+
+So hopefully someone will dive in and get it done at some point.
+
+Any developers out there fancy having a go?
+
+I would have thought a RowSetElement and a RowElement would be pretty much
+most of whats needed, with maybe a RowSetList to maintain the list of
+RowElements using JDBC's row by row access model.
+
+James
+----- Original Message -----
+From: "JSP Insider" &lt;jspinsider@...&gt;
+To: &lt;dom4j-user@...&gt;
+Sent: Thursday, October 25, 2001 8:56 AM
+Subject: [dom4j-user] using JDBC results with dom4j
+
+
+&gt; I am reviewing the various Java XML API's
+&gt;
+&gt; One feature I am looking for is the ability to take a JDBC ResultSet and
+&gt; have a builder class convert the results straight into the Java XML
+&gt; representation.
+&gt;
+&gt; While I know it would be easy to build such a beast
+&gt; (for example there is a test module like this at JDOM).
+&gt; I was wondering if anyone has built such a module for dom4j? Or if such a
+&gt; feature is planned for dom4j? I haven't seen mention of this feature, but
+&gt; seems like one which would be extremely useful.
+&gt;
+&gt; Thanks for your time.
+&gt;
+&gt;
+&gt; Casey Kochmer
+&gt; JspInsider@...
+&gt;
+&gt;
+&gt; _________________________________________________________________
+&gt; Get your FREE download of MSN Explorer at 
+                        <a href="http://explorer.msn.com/intl.asp" target="_new">
+                          http://explorer.msn.com/intl.asp
+                        </a>
+                        
+&gt;
+&gt;
+&gt; _______________________________________________
+&gt; dom4j-user mailing list
+&gt; dom4j-user@...
+&gt; 
+                        <a href="https://lists.sourceforge.net/lists/listinfo/dom4j-user" target="_new">
+                          https://lists.sourceforge.net/lists/listinfo/dom4j-user
+                        </a>
+                        
+&gt;
+
+
+_________________________________________________________
+Do You Yahoo!?
+Get your free @yahoo.com address at 
+                        <a href="http://mail.yahoo.com" target="_new">
+                          http://mail.yahoo.com
+                        </a>
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060938">
+                              [dom4j-dev] why insertBefore(Node newNode, Node refNode)   not supported in DefaultElement level?
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: Amber, Zhao Yuan Yuan &lt;yyzhao@ne...&gt; -	2001-10-20 03:35
+                        </small>
+                        <br/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        hi,
+
+I have a problem using dom4j to insert a new node into a specific position
+in the tree.
+
+This is because the insertBefore(Node newNode, Node refNode) is not defined
+in com.dom4j.Node interface,
+but only implemented in "org.dom4j.dom.DOMElement", which is derived from
+"org.dom4j.tree.DefaultElement".
+
+
+But the default implementation of dom4j seems to be creating DefaultElement
+instead of DOMElement.
+If you get an object from method like
+		Element test = Element.clone()   or
+		Element test = DOMDocument.getRootElement();
+
+You can't cast test into DOMElement, because internally it is created as
+DefultElement.
+Therefore, you can't do a test.insertBefore(newNode, refNode) on test,
+because inserBefore() is only supported in DOMElement level.
+
+I have checked dom4j.Node interface and found insertBefore() is not defined
+there.
+I think insertBefore is a very important feature that has been define in DOM
+Node, so I think it should
+be included into the dom4j.Node interface.
+
+
+Anyone encounter similia problem and knows a way to round about this?
+
+
+thx,
+amber
+
+
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <ul>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060940">
+                                  Re: [dom4j-dev] why insertBefore(Node newNode, Node refNode)   not supported in DefaultElement level?
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: bob mcwhirter &lt;bob@we...&gt; -	2001-10-20 03:46
+                            </small>
+                            <br/>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            Typically, with dom4j, you work with the live lists.
+
+	List elements = test.elements();
+
+	elements.add( elements.indexOf( refNode ), newNode );
+
+Maybe a tad more verbose, but you get the flexibility of using
+java.util.List methods to do whatever you please.
+
+	-bob
+
+On Sat, 20 Oct 2001, Amber, Zhao Yuan Yuan wrote:
+
+&gt; hi,
+&gt; 
+&gt; I have a problem using dom4j to insert a new node into a specific position
+&gt; in the tree.
+&gt; 
+&gt; This is because the insertBefore(Node newNode, Node refNode) is not defined
+&gt; in com.dom4j.Node interface,
+&gt; but only implemented in "org.dom4j.dom.DOMElement", which is derived from
+&gt; "org.dom4j.tree.DefaultElement".
+&gt; 
+&gt; 
+&gt; But the default implementation of dom4j seems to be creating DefaultElement
+&gt; instead of DOMElement.
+&gt; If you get an object from method like
+&gt; 		Element test = Element.clone()   or
+&gt; 		Element test = DOMDocument.getRootElement();
+&gt; 
+&gt; You can't cast test into DOMElement, because internally it is created as
+&gt; DefultElement.
+&gt; Therefore, you can't do a test.insertBefore(newNode, refNode) on test,
+&gt; because inserBefore() is only supported in DOMElement level.
+&gt; 
+&gt; I have checked dom4j.Node interface and found insertBefore() is not defined
+&gt; there.
+&gt; I think insertBefore is a very important feature that has been define in DOM
+&gt; Node, so I think it should
+&gt; be included into the dom4j.Node interface.
+&gt; 
+&gt; 
+&gt; Anyone encounter similia problem and knows a way to round about this?
+&gt; 
+&gt; 
+&gt; thx,
+&gt; amber
+&gt; 
+&gt; 
+&gt; _______________________________________________
+&gt; dom4j-dev mailing list
+&gt; dom4j-dev@...
+&gt; 
+                            <a href="https://lists.sourceforge.net/lists/listinfo/dom4j-dev" target="_new">
+                              https://lists.sourceforge.net/lists/listinfo/dom4j-dev
+                            </a>
+                            
+&gt;
+
+
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+              </ul>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060935">
+                              [dom4j-dev] Re:
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-12 10:24
+                        </small>
+                        <br/>
+                        <br/>
+                        <small>
+                          <b>
+                            Attachments:
+                          </b>
+                          <a href="attachment.php?list_name=dom4j-dev&amp;message_id=066a01c15307%24de86d7a0%249865fea9%40spiritsoft.com&amp;counter=1">
+                            Message as HTML
+                          </a>
+                               
+	  			  		
+                        </small>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        This is a class loader problem. The class loader used to load dom4j =
+doesn't seem capable of finding saxpath which is part of the =
+dom4j-full.jar. Could you try adding dom4j-full.jar to your system =
+classpath instead.=20
+
+I'm not really sure what JavaWebServer2.0 is or how its class loading =
+works. Certainly dom4j 1.0 seems to work fine in Servlet 2.2 &amp; Servlet =
+2.3 standard servlet engines, like tomcat 4.0, when using =
+web-applications and putting dom4j-full.jar in the WEB-INF/lib. If ever =
+you have a doubt about some thorny servlet-based classloader issue, one =
+workaround is add your jar to the system classpath.
+
+James
+  ----- Original Message -----=20
+  From: Minal Ashar=20
+  To: Minal Ashar ; James Strachan=20
+  Sent: Friday, July 09, 1999 11:29 PM
+  Subject: Re:=20
+
+
+  Hi,
+
+  I am using dom4j-1.0 .My servlet runs on JavaWebServer2.0.Have placed =
+the dom4j-full.jar in the JavaWebServer2.0\lib directory.I tried placing =
+the dom4j.jar as well but with no results.
+
+  Minal.
+
+
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060932">
+                              [dom4j-dev] Re: servlet classloading issue
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-12 09:01
+                        </small>
+                        <br/>
+                        <br/>
+                        <small>
+                          <b>
+                            Attachments:
+                          </b>
+                          <a href="attachment.php?list_name=dom4j-dev&amp;message_id=062201c152fc%243f14f9a0%249865fea9%40spiritsoft.com&amp;counter=1">
+                            Message as HTML
+                          </a>
+                               
+	  			  		
+                        </small>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        Hi Minal
+
+I'm CC'ing the dom4j-dev list just in case anyone else gets this problem =
+too.
+
+Which version of dom4j are you using? And is dom4j.jar in your =
+WEB-INF/lib directory?
+
+James
+  ----- Original Message -----=20
+  From: Minal Ashar=20
+  To: James Strachan=20
+  Sent: Friday, July 09, 1999 9:40 PM
+
+
+  Hi James,
+
+  Its Minal once again.This time my query is regarding XPath.
+  My Servlet application is as follows:-
+
+  1) I accept inputs from the user to insert the values into an xml file =
+which i use to store my data in.
+
+  2) Before inserting the data i need to check if the data already =
+exists in the file.I want to use XPath to reach the particular node =
+which holds my content.
+
+  3)The problem that I am facing is that the XPath =
+function-selectSingleNode(Object obj) works absolutely fine in a =
+Standalone application.However within Servlets the usage of this =
+function generates this exception: -
+
+  java.lang.Class: method =
+forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; not =
+found=20
+
+    java.lang.NoSuchMethodError: java.lang.Class: method =
+forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; not =
+found at =
+org.saxpath.helpers.XPathReaderFactory.createReader(XPathReaderFactory.ja=
+va:87) at =
+org.saxpath.helpers.XPathReaderFactory.createReader(XPathReaderFactory.ja=
+va:60) at org.jaxen.JaXPath.(JaXPath.java:20) at =
+org.jaxen.BaseXPath.(BaseXPath.java:16) at =
+org.jaxen.dom4j.XPath.(XPath.java:13) at =
+org.dom4j.xpath.DefaultXPath.parse(DefaultXPath.java:284) at =
+org.dom4j.xpath.DefaultXPath.(DefaultXPath.java:60) at =
+SystemConfig1.doPost(SystemConfig1.java:95) at =
+javax.servlet.http.HttpServlet.service(HttpServlet.java:747) at =
+javax.servlet.http.HttpServlet.service(HttpServlet.java:840) at =
+com.sun.server.ServletState.callService(ServletState.java:226) at =
+com.sun.server.ServletManager.callServletService(ServletManager.java:936)=
+ at =
+com.sun.server.http.servlet.InvokerServlet.service(InvokerServlet.java:13=
+7) at javax.servlet.http.HttpServlet.service(HttpServlet.java:840) at =
+com.sun.server.ServletState.callService(ServletState.java:226) at =
+com.sun.server.ServletManager.callServletService(ServletManager.java:936)=
+ at =
+com.sun.server.ProcessingState.invokeTargetServlet(ProcessingState.java:4=
+23) at =
+com.sun.server.http.HttpProcessingState.execute(HttpProcessingState.java:=
+79) at com.sun.server.http.stages.Runner.process(Runner.java:79) at =
+com.sun.server.ProcessingSupport.process(Compiled Code) at =
+com.sun.server.Service.process(Service.java:204) at =
+com.sun.server.http.HttpServiceHandler.handleRequest(HttpServiceHandler.j=
+ava:374) at =
+com.sun.server.http.HttpServiceHandler.handleRequest(Compiled Code) at =
+com.sun.server.HandlerThread.run(Compiled Code)=20
+
+    My code piece :-
+
+     Element root=3Ddocument.getRootElement();
+     DefaultXPath path=3Dnew DefaultXPath("/Content");
+      Node noo=3Dpath.selectSingleNode(root);
+
+    The above piece works fine within a standalone.
+
+    Where could I be going wrong?
+
+    Please help.
+
+    Thanx,
+    Minal
+
+
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060928">
+                              [dom4j-dev] Using ElementHandlers and XPath predicates simultaneously.
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: PJ Fanning &lt;pj.fanning@XI...&gt; -	2001-10-09 13:36
+                        </small>
+                        <br/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        When using the ElementHandler feature of the SAXReader, there is only a
+subset of XPath available (eg no element predicates can be used). Is there
+any documentation on what can and can't be used?
+I think it would be useful if this feature was available via the
+SAXContentHandler also.
+In my application, I have a SAX event stream and want to build a Document
+without having to reparse it.
+I suppose it would be possible for me to write a dummy implementation of
+XMLReader which just passed my SAX event stream to the SAXReader directly.
+
+Thanks in advance,
+PJ Fanning
+
+                        <a href="http://www.polarlake.com" target="_new">
+                          http://www.polarlake.com
+                        </a>
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <ul>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060930">
+                                  Re: [dom4j-dev] Using ElementHandlers and XPath predicates simultaneously.
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-09 14:37
+                            </small>
+                            <br/>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            Hi PJ
+
+&gt; When using the ElementHandler feature of the SAXReader, there is only a
+&gt; subset of XPath available (eg no element predicates can be used). Is there
+&gt; any documentation on what can and can't be used?
+
+It only supports simple, element name based addressing right now like
+/foo/bar
+
+&gt; I think it would be useful if this feature was available via the
+&gt; SAXContentHandler also.
+
+Yes, Laurent Caillette and myself have been exchanging some ideas and emails
+lately, we hope to get a full implementation of XPath based pattern
+notification working really soon now, its probably a week or two away. So
+you'll soon be able to do more complex notifications based on XPaths such as
+
+a//b[@x='12]/c
+
+
+&gt; In my application, I have a SAX event stream and want to build a Document
+&gt; without having to reparse it.
+&gt; I suppose it would be possible for me to write a dummy implementation of
+&gt; XMLReader which just passed my SAX event stream to the SAXReader directly.
+
+You mean you want to pass SAX events straight into SAXReader without
+reparsing it? Sounds a good idea to me. The SAXContentHandler implements the
+SAX interfaces, ContentHandler, LexicalHandler and so on, so you could just
+use that class explicitly.
+
+Do let us know if there's anything we can do to make SAXContentHandler
+easier to use stand-alone.
+
+James
+
+
+_________________________________________________________
+Do You Yahoo!?
+Get your free @yahoo.com address at 
+                            <a href="http://mail.yahoo.com" target="_new">
+                              http://mail.yahoo.com
+                            </a>
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+              </ul>
+              <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=3060919">
+                              Re: [dom4j-dev] Java document model performance
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: Thomas Nichols &lt;nx10mail@ya...&gt; -	2001-10-08 09:40
+                        </small>
+                        <br/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        At 08:29 05/10/2001 +0100, James Strachan wrote:
+&gt;Hi Dennis
+&gt;
+&gt; &gt; I'll update the results on my web site, at least. I'll forward separately
+&gt;a
+&gt; &gt; couple of emails from the JDOM list discussing how XMLS could be made the
+&gt;normal
+&gt; &gt; serialization method while still allowing people to use default
+&gt;serialization if
+&gt; &gt; they want (useful if they're associating extra information with the
+&gt;document
+&gt; &gt; components and aren't too concerned about performance).
+&gt;
+&gt;Cool. Maybe we could use DocumentFactory to store the 'serializer' of a
+&gt;document or document fragment which would use XMLS if its on the CLASSPATH
+&gt;otherwise just use the default mechanism. Then people deriving their own
+&gt;DocumentFactory classes could explicitly set what kind of serializer should
+&gt;be used.
+&gt;
+&gt;
+&gt; &gt; I think the whitespace option I mention at the end of the dW article is
+&gt; &gt; something to consider, too. The idea here is to allow applications to
+&gt;discard
+&gt; &gt; isolated whitespace (whitespace that's not embedded in non-whitespace) as
+&gt;the
+&gt; &gt; document is parsed. For middleware applications this type of whitespace is
+&gt;only
+&gt; &gt; there to make the documents readable and is ignored by the application.
+&gt; &gt;
+&gt; &gt; Electric XML has been discarding it all along, apparently without anyone
+&gt; &gt; noticing before. That's not a good approach, since it breaks handling of
+&gt;some
+&gt; &gt; types of documents (and violates the XML recommendation). Making this an
+&gt;option
+&gt; &gt; under the application's control seems a good alternative. It'd be even
+&gt;better if
+&gt; &gt; it could be implemented in the parser rather than the document model.
+&gt;
+&gt;The cheats ;-)
+&gt;
+&gt;Yes I like this idea too and it should be fairly easy to add as a
+&gt;configurable option to dom4j's SAXReader, though hopefully this could be a
+&gt;SAX parser property so everyone can benefit.
+&gt;
+&gt;The problem is though, without access to a DTD its a bit hard to know if you
+&gt;can trim whitespace. Though I guess often we know its OK. e.g.
+&gt;
+&gt;&lt;body&gt;
+&gt;     &lt;p&gt;hello&lt;i&gt;there!&lt;/i&gt;&lt;/p&gt;
+&gt;&lt;/body&gt;
+&gt;
+&gt;The text node before and after the &lt;p&gt; element could be trimmed. So only
+&gt;remove text nodes which are just whitespace, seems a reasonable configurable
+&gt;option.
+
+
+Ummm... not sure you how can tell this can be trimmed? In this case 
+(assuming this is the XHTML) the DTD defines it to be ok, but I had thought 
+that the XML spec made whitespace significant - so it can't be trimmed in 
+the general case. Please do correct me if I've misunderstood.
+
+It is of course possible to apply an XSL filter to the input stream to 
+remove whitespace, though doing this during document reading would be great.
+
+Best Regards,
+Thomas.
+
+
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <ul>
+                <p>
+                  <!--
+/mailarchive/nested_messages.html - Copyright 1999-2006 (c) Open Source Technology Group
+@version $Id$
+-->                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody align="left">
+                      <tr>
+                        <td width="0">
+                        </td>
+                        <td>
+                          <table width="100%" border="0">
+                            <tbody align="left"/>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#DDDDDD" nowrap="">
+                          <div class="forum">
+                            <div>
+                              <b>
+                                <!-- google_ad_section_start -->                                <a href="/mailarchive/message.php?msg_id=3060924">
+                                  Re: [dom4j-dev] Java document model performance
+                                </a>
+                                <!-- google_ad_section_end -->                              </b>
+                            </div>
+                            <small>
+                              From: James Strachan &lt;james_strachan@ya...&gt; -	2001-10-08 09:52
+                            </small>
+                            <br/>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email_body">
+                          <!-- google_ad_section_start -->                          <pre>
+                            ----- Original Message -----
+From: "Thomas Nichols" &lt;nx10mail@...&gt;
+&gt; &gt;Yes I like this idea too and it should be fairly easy to add as a
+&gt; &gt;configurable option to dom4j's SAXReader, though hopefully this could be
+a
+&gt; &gt;SAX parser property so everyone can benefit.
+&gt; &gt;
+&gt; &gt;The problem is though, without access to a DTD its a bit hard to know if
+you
+&gt; &gt;can trim whitespace. Though I guess often we know its OK. e.g.
+&gt; &gt;
+&gt; &gt;&lt;body&gt;
+&gt; &gt;     &lt;p&gt;hello&lt;i&gt;there!&lt;/i&gt;&lt;/p&gt;
+&gt; &gt;&lt;/body&gt;
+&gt; &gt;
+&gt; &gt;The text node before and after the &lt;p&gt; element could be trimmed. So only
+&gt; &gt;remove text nodes which are just whitespace, seems a reasonable
+configurable
+&gt; &gt;option.
+&gt;
+&gt;
+&gt; Ummm... not sure you how can tell this can be trimmed?
+
+Without access to a DTD you can't know what whitespace is significant thanks
+to 'mixed content' where tags are embedded inside text.
+
+&gt; In this case
+&gt; (assuming this is the XHTML) the DTD defines it to be ok, but I had
+thought
+&gt; that the XML spec made whitespace significant - so it can't be trimmed in
+&gt; the general case. Please do correct me if I've misunderstood.
+
+You're understanding is correct. I was thinking of cases where a developer
+knew up front what kinds of documents they were parsing and so they
+themselves turned on whitespace-trimming mode, fully aware of the
+consequences. Any whitespace trimming technique should be used with extreme
+care. Though for data-centric applications, trimming whitespace could be
+really useful.
+
+e.g.
+
+&lt;customer&gt;
+    &lt;name&gt;James&lt;/name&gt;
+    &lt;location&gt;UK&lt;/location&gt;
+&lt;/customer&gt;
+
+If trimming of whitespace-only text nodes was enabled, the above would not
+have 3 extra Text nodes added. This could only be done safely if the DTD was
+like this
+
+&lt;!ELEMENT customer (name, location) &gt;
+
+though it could be enabled by hand if the developer understood what they
+were doing.
+
+
+&gt; It is of course possible to apply an XSL filter to the input stream to
+&gt; remove whitespace, though doing this during document reading would be
+great.
+
+It would be easy to turn on as a configurable option if you know that
+whitespace isn't important. Normally DTDs are used to make that call.
+
+James
+
+
+_________________________________________________________
+Do You Yahoo!?
+Get your free @yahoo.com address at 
+                            <a href="http://mail.yahoo.com" target="_new">
+                              http://mail.yahoo.com
+                            </a>
+                          </pre>
+                          <!-- google_ad_section_end -->                          <br/>
+                          <br/>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </div>
+      <footer id="site-footer">
+        <div class="wrapper">
+          <nav>
+            <h5>
+              SourceForge
+            </h5>
+            <a href="/about">
+              About
+            </a>
+            <a href="/blog/category/sitestatus/">
+              Site Status
+            </a>
+            <a href="http://twitter.com/sfnet_ops">
+              @sfnet_ops
+            </a>
+          </nav>
+          <nav>
+            <h5>
+              Find and Develop Software
+            </h5>
+            <a href="/create/">
+              Create a Project
+            </a>
+            <a href="/directory/">
+              Software Directory
+            </a>
+            <a href="/top">
+              Top Downloaded Projects
+            </a>
+          </nav>
+          <nav>
+            <h5>
+              Community
+            </h5>
+            <a href="/blog/">
+              Blog
+            </a>
+            <a href="http://twitter.com/sourceforge">
+              @sourceforge
+            </a>
+            <a href="/jobs?source=footer">
+              Job Board
+            </a>
+          </nav>
+          <nav>
+            <h5>
+              Help
+            </h5>
+            <a href="http://p.sf.net/sourceforge/docs">
+              Site Documentation
+            </a>
+            <a href="/support">
+              Support Request
+            </a>
+            <a href="http://p.sf.net/sourceforge/irc">
+              Real-Time Support
+            </a>
+          </nav>
+        </div>
+      </footer>
+      <footer id="site-copyright-footer">
+        <div class="wrapper">
+          <div id="copyright">
+            
+                Copyright © 2013 SourceForge. All Rights Reserved.
+            <br/>
+            
+                SourceForge is a 
+            <a href="http://www.diceholdingsinc.com/phoenix.zhtml?c=211152&amp;p=irol-landing">
+              Dice Holdings, Inc.
+            </a>
+             company.
+            
+          </div>
+          <nav>
+            <a href="http://slashdotmedia.com/terms-of-use">
+              Terms
+            </a>
+            <a href="http://slashdotmedia.com/privacy-statement/">
+              Privacy
+            </a>
+            <a href="http://slashdotmedia.com/opt-out-choices">
+              Cookies/Opt Out
+            </a>
+            <a href="http://slashdotmedia.com">
+              Advertise
+            </a>
+            <a href="http://sourceforge.jp/">
+              SourceForge.JP
+            </a>
+          </nav>
+        </div>
+      </footer>
+      <!--[if lt IE 7 ]>
+    <script type="text/javascript" src="http://static.sourceforge.net/include/js/sftheme/dd_belatedpng.js"></script>
+    <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+    <![endif]-->      <!--[if IE]></div><![endif]-->      <!--[if IE 6]></div><![endif]-->      <!--[if IE 7]></div><![endif]-->      <!-- Begin comScore Tag -->      <script>
+//<![CDATA[
+
+        document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+    
+//]]>
+      </script>
+      <script>
+//<![CDATA[
+
+        COMSCORE.beacon({
+            c1:2,
+            c2:6035546,
+            c3:"",
+            c4:"",
+            c5:"",
+            c6:"",
+            c15:""
+        });
+    
+//]]>
+      </script>
+      <noscript>
+        <img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=6035546&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cj=1"/>
+      </noscript>
+      <!-- End comScore Tag -->    </div>
+  </body>
+</html>

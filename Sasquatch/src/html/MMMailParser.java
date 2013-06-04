@@ -11,6 +11,7 @@ import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
 import parser.mail.MailParser;
+import systems.source.mail.LocalMailHandler;
 import systems.source.mail.Mail;
 
 public class MMMailParser extends MailParser {
@@ -21,6 +22,10 @@ public class MMMailParser extends MailParser {
 
 	public MMMailParser(String path) {
 		super(path);
+	}
+	
+	public MMMailParser(LocalMailHandler handler) {
+		super(handler);
 	}
 
 	@Override

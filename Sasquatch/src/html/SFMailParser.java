@@ -2,17 +2,16 @@ package html;
 
 import parser.mail.MailParser;
 
-import org.htmlparser.Node;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.AndFilter;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.TagNameFilter;
-import org.htmlparser.nodes.TagNode;
 import org.htmlparser.tags.Div;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
+import systems.source.mail.LocalMailHandler;
 import systems.source.mail.Mail;
 
 public class SFMailParser extends MailParser {
@@ -23,6 +22,10 @@ public class SFMailParser extends MailParser {
 	
 	public SFMailParser(String path) {
 		super(path);
+	}
+	
+	public SFMailParser(LocalMailHandler handler) {
+		super(handler);
 	}
 
 	@Override

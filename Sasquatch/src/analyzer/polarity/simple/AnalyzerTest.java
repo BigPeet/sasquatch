@@ -2,6 +2,9 @@ package analyzer.polarity.simple;
 
 import java.io.File;
 
+import analyzer.dictionary.SimpleFileDictionary;
+import analyzer.dictionary.Word;
+
 import manager.systems.source.SimpleSourceIndexer;
 import manager.systems.source.SimpleSourceQuery;
 import manager.systems.source.Source;
@@ -49,7 +52,7 @@ public class AnalyzerTest {
 			  3. Return that and then use it here to update the Result.
 		 */
 		for (File dict : dictionaries) {
-			Dictionary parser = new Dictionary(dict);
+			SimpleFileDictionary parser = new SimpleFileDictionary(dict);
 			Word[] words = parser.getWords();
 			for (Word word : words) {
 				Source[] results = querier.query(word.getWord());

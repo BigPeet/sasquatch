@@ -3,6 +3,7 @@ package analyzer.polarity.simple;
 import java.util.ArrayList;
 
 import manager.systems.source.Source;
+import analyzer.dictionary.Word;
 import analyzer.polarity.PolarityResult;
 
 public class SimplePolarityResult extends PolarityResult {

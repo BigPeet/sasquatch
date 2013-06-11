@@ -2,6 +2,8 @@ package analyzer.polarity.simple;
 
 import java.util.ArrayList;
 
+import analyzer.dictionary.Word;
+
 import manager.systems.source.Source;
 
 public class ScoredSource extends Source {

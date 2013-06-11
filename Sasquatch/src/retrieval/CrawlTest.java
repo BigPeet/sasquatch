@@ -1,6 +1,6 @@
 package retrieval;
 
-import retrieval.mailinglist.jboss.JBossMLCrawlController;
+import retrieval.mailinglist.pipermail.JBossMLCrawlController;
 
 public class CrawlTest {
 

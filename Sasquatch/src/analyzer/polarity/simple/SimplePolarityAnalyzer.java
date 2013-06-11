@@ -12,6 +12,8 @@ import manager.systems.source.mail.SimpleMailIndexer;
 import manager.systems.source.mail.SimpleMailQuery;
 
 import analyzer.AnalysisResult;
+import analyzer.dictionary.SimpleFileDictionary;
+import analyzer.dictionary.Word;
 import analyzer.polarity.PolarityAnalyzer;
 
 public class SimplePolarityAnalyzer extends PolarityAnalyzer {
@@ -55,7 +57,7 @@ public class SimplePolarityAnalyzer extends PolarityAnalyzer {
 		//Query index
 		if (querier.open()) {
 			for (File dict : dictionaries) {
-				Dictionary dictionary = new Dictionary(dict);
+				SimpleFileDictionary dictionary = new SimpleFileDictionary(dict);
 				Word[] words = dictionary.getWords();
 				for (Word word : words) {
 					Source[] results = querier.query(word.getWord());

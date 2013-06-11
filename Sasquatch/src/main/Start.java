@@ -4,6 +4,7 @@ import java.io.File;
 
 import analyzer.AnalysisResult;
 import analyzer.SentimentAnalyzer;
+import analyzer.interfaces.IAnalysisResult;
 import analyzer.polarity.simple.SimplePolarityAnalyzer;
 
 
@@ -41,9 +42,9 @@ public class Start {
 		SentimentAnalyzer analyzer = new SimplePolarityAnalyzer(indexer, querier);	
 		
 		/* Now we will analyze the 3 systems and show the results.*/
-		AnalysisResult jbossResult = analyzer.analyze(jboss);
-		AnalysisResult jdomResult = analyzer.analyze(jdom);
-		AnalysisResult dom4jResult = analyzer.analyze(dom4j);
+		IAnalysisResult jbossResult = analyzer.analyze(jboss);
+		IAnalysisResult jdomResult = analyzer.analyze(jdom);
+		IAnalysisResult dom4jResult = analyzer.analyze(dom4j);
 		
 		System.out.println("JBoss Size: " + jboss.getSources().length);
 		jbossResult.show();

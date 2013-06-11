@@ -1,9 +1,11 @@
 package analyzer;
 
+import analyzer.interfaces.IAnalysisResult;
+import analyzer.interfaces.IAnalyzer;
 import manager.systems.SoftwareSystem;
 
-public abstract class SentimentAnalyzer {
+public abstract class SentimentAnalyzer implements IAnalyzer {
 	
-	public abstract AnalysisResult analyze(SoftwareSystem ss);
+	public abstract IAnalysisResult analyze(SoftwareSystem ss);
 
 }

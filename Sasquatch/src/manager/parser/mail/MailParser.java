@@ -2,11 +2,12 @@ package manager.parser.mail;
 
 import java.io.File;
 
-import manager.parser.general.AbstractParser;
+import manager.parser.general.SourceParser;
+import manager.systems.source.Source;
 import manager.systems.source.mail.LocalMailHandler;
 import manager.systems.source.mail.Mail;
 
-public abstract class MailParser extends AbstractParser {
+public abstract class MailParser extends SourceParser {
 	
 	//private File target;
 	private LocalMailHandler handler;
@@ -38,5 +39,17 @@ public abstract class MailParser extends AbstractParser {
 	
 	public LocalMailHandler getHandler() {
 		return this.handler;
+	}
+	
+	@Override
+	public Source parseSource(String text) {
+		return parseMail(text);
+	}
+
+	@Override
+	public void saveSource(Source source) {
+		if (source instanceof Mail) {
+			writeMailToFile((Mail) source);
+		}
 	}
 }

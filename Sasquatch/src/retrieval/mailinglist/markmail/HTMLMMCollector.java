@@ -1,6 +1,8 @@
-package retrieval.general;
+package retrieval.mailinglist.markmail;
 
 import java.util.ArrayList;
+
+import retrieval.general.CrawlStat;
 
 
 public class HTMLMMCollector extends CrawlStat {

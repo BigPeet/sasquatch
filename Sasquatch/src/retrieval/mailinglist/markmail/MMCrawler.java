@@ -15,7 +15,6 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import retrieval.general.CrawlStat;
-import retrieval.general.HTMLMMCollector;
 import retrieval.interfaces.ICrawler;
 
 public class MMCrawler implements ICrawler {
@@ -25,11 +24,17 @@ public class MMCrawler implements ICrawler {
 	private static final String searchURL = "/search/?page=";
 	private static final String messageURL = "/message/";
 	private static final String NEXT_MESSAGES_BUTTON = "Next Messages";
+	
 	private CrawlStat stat = new HTMLMMCollector();
 	private WebDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_17);
-
-	public MMCrawler() {
+	private String listName;
+	private int pages;
+	
+	
+	public MMCrawler(String listName, int pages) {
 		driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
+		this.listName = listName;
+		this.pages = pages;
 	}
 
 
@@ -38,11 +43,10 @@ public class MMCrawler implements ICrawler {
 		return stat;
 	}
 
-	public void run(String listName, int pages) {
+	public void run() {
 		int i = 1;
 		boolean done = false;
 		while (!done && (i <= pages || pages < 0)) {
-			System.out.println("Crawling Page " + i);
 			driver.get(getPageLink(listName, i));
 			String content = driver.getPageSource();
 			String[] links = getMailLinks(listName, content);

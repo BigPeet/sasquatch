@@ -15,15 +15,15 @@ import manager.systems.source.mail.LocalMailHandler;
 import manager.systems.source.mail.Mail;
 
 public class SFMailParser extends MailParser {
-	
+
 	public SFMailParser() {
-		
+
 	}
-	
+
 	public SFMailParser(String path) {
 		super(path);
 	}
-	
+
 	public SFMailParser(LocalMailHandler handler) {
 		super(handler);
 	}
@@ -64,7 +64,13 @@ public class SFMailParser extends MailParser {
 			}
 		}
 		return ret;
+
 	}
+
+	//	private boolean isEnd(String line) {
+	//		line = line.trim();
+	//		return line.equals("---------------------------------------------------------------------");
+	//	}
 
 	private boolean isEmpty(String line) {
 		return line.isEmpty();

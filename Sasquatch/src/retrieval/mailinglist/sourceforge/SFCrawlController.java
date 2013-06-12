@@ -11,7 +11,7 @@ import retrieval.interfaces.ICrawlController;
 
 public class SFCrawlController implements ICrawlController {
 	
-	private SFCrawler crawler = new SFCrawler();
+	private SFCrawler crawler;
 	private MailParser parser = null;
 	private String listName;
 	private int start;
@@ -23,6 +23,7 @@ public class SFCrawlController implements ICrawlController {
 		this.listName = listName;
 		this.start = startYear;
 		this.end = endYear;
+		crawler = new SFCrawler(listName, startYear, endYear);
 	}
 	
 	public SFCrawlController(MailParser parser, String listName, int startYear, int endYear) {
@@ -30,17 +31,19 @@ public class SFCrawlController implements ICrawlController {
 		this.listName = listName;
 		this.start = startYear;
 		this.end = endYear;
+		crawler = new SFCrawler(listName, startYear, endYear);
 	}
 	
 	public SFCrawlController(String listName, int startYear, int endYear) {
 		this.listName = listName;
 		this.start = startYear;
 		this.end = endYear;
+		crawler = new SFCrawler(listName, startYear, endYear);
 	}
 
 	@Override
 	public void run() {
-		crawler.run(listName, start, end);
+		crawler.run();
 		CrawlStat runStat = (CrawlStat) crawler.getMyLocalData();
 		if (parser != null) {
 			parser.clearFile();

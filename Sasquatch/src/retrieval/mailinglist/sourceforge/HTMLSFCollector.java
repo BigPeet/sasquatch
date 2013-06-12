@@ -1,4 +1,4 @@
-package retrieval.general;
+package retrieval.mailinglist.sourceforge;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,6 +13,8 @@ import org.htmlparser.tags.FormTag;
 import org.htmlparser.tags.TableTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
+
+import retrieval.general.CrawlStat;
 
 
 public class HTMLSFCollector extends CrawlStat {

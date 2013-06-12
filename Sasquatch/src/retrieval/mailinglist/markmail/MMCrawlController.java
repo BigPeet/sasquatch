@@ -10,7 +10,7 @@ import retrieval.interfaces.ICrawlController;
 
 public class MMCrawlController implements ICrawlController {
 	
-	private MMCrawler crawler = new MMCrawler();
+	private MMCrawler crawler;
 	private MailParser parser = null;
 	private String listName;
 	private int pages;
@@ -20,34 +20,40 @@ public class MMCrawlController implements ICrawlController {
 		parser = new MMMailParser(path);
 		this.listName = listName;
 		this.pages = pages;
+		crawler = new MMCrawler(listName, pages);
 	}
 	
 	public MMCrawlController(String path, String listName) {
 		parser = new MMMailParser(path);
 		this.listName = listName;
 		this.pages = -1;
+		crawler = new MMCrawler(listName, pages);
 	}
 	
 	public MMCrawlController(MailParser parser, String listName, int pages) {
 		this.parser = parser;
 		this.listName = listName;
 		this.pages = pages;
+		crawler = new MMCrawler(listName, pages);
 	}
 	
 	public MMCrawlController(MailParser parser, String listName) {
 		this.parser = parser;
 		this.listName = listName;
 		this.pages = -1;
+		crawler = new MMCrawler(listName, pages);
 	}
 	
 	public MMCrawlController(String listName, int pages) {
 		this.listName = listName;
 		this.pages = pages;
+		crawler = new MMCrawler(listName, pages);
 	}
 	
 	public MMCrawlController(String listName) {
 		this.listName = listName;
 		this.pages = -1;
+		crawler = new MMCrawler(listName, pages);
 	}
 	
 	public Mail[] getMails() {
@@ -56,7 +62,7 @@ public class MMCrawlController implements ICrawlController {
 	
 	@Override
 	public void run() {
-		crawler.run(listName, pages);
+		crawler.run();
 		CrawlStat runStat = (CrawlStat) crawler.getMyLocalData();
 		if (parser != null) {
 			parser.clearFile();

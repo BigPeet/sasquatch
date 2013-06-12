@@ -12,10 +12,10 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import retrieval.general.CrawlStat;
-import retrieval.general.HTMLSFCollector;
 import retrieval.interfaces.ICrawler;
 
 public class SFCrawler implements ICrawler {
+	
 	private static final String baseURL = "http://sourceforge.net";
 	private static final String mailURL = "/mailarchive/forum.php?forum_name=";
 	private static final String rowURL = "&max_rows=";
@@ -24,11 +24,19 @@ public class SFCrawler implements ICrawler {
 	private static final String STRONG_START = "<strong>";
 	private static final String STRONG_END = "</strong>";
 	private static final String NEXT_MESSAGES_BUTTON = "Next Messages";
+	
+	
 	private CrawlStat stat = new HTMLSFCollector();
 	private WebDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_17);
+	private String listName;
+	private int start;
+	private int end;
 
-	public SFCrawler() {
+	public SFCrawler(String listName, int start, int end) {
 		driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
+		this.listName = listName;
+		this.start = start;
+		this.end = end;
 	}
 
 	@Override
@@ -37,15 +45,16 @@ public class SFCrawler implements ICrawler {
 	}
 
 
-	private String buildMonthLink(String listName, int year, int month) {
+	private String buildMonthLink(int year, int month) {
 		String dMonth = String.format("%02d", month);
 		return baseURL + mailURL + listName + rowURL + nRow + restURL + year + dMonth;
 	}
 
-	public void run(String listName, int startYear, int endYear) {
+	@Override
+	public void run() {
 		driver.get(baseURL + mailURL + listName);
 		
-		for (String link : getPageLinks(listName, startYear, endYear)) {
+		for (String link : getPageLinks()) {
 			
 			driver.get(link);
 			String content = driver.getPageSource();
@@ -68,11 +77,11 @@ public class SFCrawler implements ICrawler {
 			&& content.contains(STRONG_END);
 	}
 
-	private String[] getPageLinks(String listName, int start, int end) {
+	private String[] getPageLinks() {
 		ArrayList<String> pages = new ArrayList<String>();
 		for (int year = start; year <= end; year++) {
 			for (int month = 1; month < 13; month++) {
-				pages.add(buildMonthLink(listName, year, month));
+				pages.add(buildMonthLink(year, month));
 			}
 		}
 		return pages.toArray(new String[pages.size()]);

@@ -1,7 +1,9 @@
 package retrieval;
 
-import retrieval.mailinglist.apache.ApacheCrawlController;
-import retrieval.mailinglist.pipermail.JBossMLCrawlController;
+import retrieval.interfaces.ICrawlController;
+import retrieval.mailinglist.pipermail.PiperMailCrawlController;
+import manager.parser.mail.MailParser;
+import manager.parser.mail.pipermail.PiperMailParser;
 
 public class CrawlTest {
 
@@ -9,12 +11,16 @@ public class CrawlTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		JBossMLCrawlController controller = new JBossMLCrawlController();
+		
+		String hibernatePath = "http://lists.jboss.org/pipermail/jboss-user/";
+		String[] domains = {hibernatePath};
+		
+		MailParser parser = new PiperMailParser("res/mails/jboss.xml");
+		
+		ICrawlController controller = new PiperMailCrawlController(domains, parser);
+		
 		controller.run();
-//		String listName = "hc-httpclient-users";
-//		String path = "res/mails/httpclient.xml";
-//		ApacheCrawlController controller = new ApacheCrawlController(path, listName, 2013, 2013);
-//		controller.run();
+		controller.saveData();
 	}
 
 }

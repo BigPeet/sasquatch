@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mails>
+  <mail>
+    <header>[hibernate-dev] [BVAL-RI] Unit Test Failure</header>
+    <body>Test set: org.hibernate.validation.engine.groups.GroupTest -----------------</body>
+  </mail>
+  <mail>
+    <header>[hibernate-dev] Branch 3.3 build fails</header>
+    <body>[ERROR] BUILD FAILURE [INFO] ----------</body>
+  </mail>
+  <mail>
+    <header>[hibernate-dev] hibernate-tessuite testing errors:</header>
+    <body>Test set: org.hibernate.test.cfg.ConfigurationPerformanceTest -----------------</body>
+  </mail>
+  <mail>
+    <header>[hibernate-dev] want to join hibernate development community</header>
+    <body>                     Add more friends to your messenger and enjoy! Invite               them now.        &lt;http://in.rd.yahoo.com/tagline_messenger_6/*http://messenger.yahoo.com/invite/&gt;                      _______________________________________________                      hibernate-dev mailing list        hibernate-dev at lists.jboss.org        &lt;mailto:hibernate-dev at lists.jboss.org&gt;        &lt;mailto:hibernate-dev at lists.jboss.org        &lt;mailto:hibernate-dev at lists.jboss.org&gt;&gt;        &lt;/mc/compose?to=hibernate-dev at lists.jboss.org        &lt;mailto:hibernate-dev at lists.jboss.org&gt;        &lt;mailto:hibernate-dev at lists.jboss.org        &lt;mailto:hibernate-dev at lists.jboss.org&gt;&gt;&gt;        https://lists.jboss.org/mailman/listinfo/hibernate-dev                     ----------</body>
+  </mail>
+  <mail>
+    <header>[hibernate-dev] Compiling latest hibernate search</header>
+    <body>[INFO] Building Hibernate Search [INFO]    task-segment: [install] [INFO] ----------</body>
+  </mail>
+  <mail>
+    <header>[hibernate-dev] Checkstyle breaking the OGM build</header>
+    <body>[INFO] Reactor Summary: [INFO] [INFO] Hibernate OGM Aggregator .......................... SUCCESS [3.493s] [INFO] Hibernate Object Grid Mapper ...................... FAILURE [28.596s] [INFO] Hibernate OGM Ehcache integration ................. SKIPPED [INFO] Hibernate OGM Infinispan integration .............. SKIPPED [INFO] Hibernate OGM Module .............................. SKIPPED [INFO] Hibernate OGM Integration and performance Tests ... SKIPPED [INFO] Hibernate OGM Integration Test case ............... SKIPPED [INFO] ----------</body>
+  </mail>
+</mails>
+

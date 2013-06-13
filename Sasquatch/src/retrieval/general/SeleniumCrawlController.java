@@ -1,16 +1,10 @@
 package retrieval.general;
 
-import java.util.ArrayList;
-
 import manager.parser.mail.MailParser;
-import manager.systems.source.mail.Mail;
-import retrieval.interfaces.ICrawlController;
 
-public abstract class SeleniumCrawlController implements ICrawlController {
+public abstract class SeleniumCrawlController extends GeneralMailCrawlController {
 
 	private SeleniumCrawler crawler;
-	private MailParser parser;
-	private ArrayList<Mail> mails = new ArrayList<Mail>();
 	private String listName;
 	private int start;
 	private int end;
@@ -29,14 +23,14 @@ public abstract class SeleniumCrawlController implements ICrawlController {
 	}
 	
 	public SeleniumCrawlController(MailParser parser, String listName, int startYear, int endYear) {
-		this.parser = parser;
+		setParser(parser);
 		this.listName = listName;
 		this.start = startYear;
 		this.end = endYear;	
 	}
 	
 	public SeleniumCrawlController(MailParser parser, SeleniumCrawler crawler, String listName, int startYear, int endYear) {
-		this.parser = parser;
+		setParser(parser);
 		this.crawler = crawler;
 		this.listName = listName;
 		this.start = startYear;
@@ -47,44 +41,10 @@ public abstract class SeleniumCrawlController implements ICrawlController {
 	@Override
 	public void run() {
 		crawler.run();
-		CrawlStat runStat = (CrawlStat) crawler.getMyLocalData();
-		if (parser != null) {
-			parser.clearFile();
-			for (Object o : runStat.getData()) {
-				String s = (String) o;
-				Mail m = parser.parseMail(s);
-				if (!mails.contains(m)) {
-					mails.add(m);
-					parser.writeMailToFile(m);
-				}
-			}
-		}
-	}
-	
-	public Mail[] getMails() {
-		return mails.toArray(new Mail[mails.size()]);
+		CrawlStat[] runStat = {(CrawlStat) crawler.getMyLocalData()};
+		collectResults(runStat);
 	}
 
-	@Override
-	public Object[] getData() {
-		return getMails();
-	}
-
-	@Override
-	public void saveData() {
-		if (parser != null && parser.getHandler() != null) {
-			for (Mail m : mails) {
-				parser.writeMailToFile(m);
-			}
-		}
-	}
-	
-	/**
-	 * @return the parser
-	 */
-	public MailParser getParser() {
-		return parser;
-	}
 
 	/**
 	 * @return the listName
@@ -105,13 +65,6 @@ public abstract class SeleniumCrawlController implements ICrawlController {
 	 */
 	public int getEnd() {
 		return end;
-	}
-
-	/**
-	 * @param parser the parser to set
-	 */
-	public void setParser(MailParser parser) {
-		this.parser = parser;
 	}
 
 	/**

@@ -37,8 +37,8 @@ public class JBossMLCrawlController extends JBossCrawlController {
 	}
 	
 	public JBossMLCrawlController(MailParser parser) {
-		super(parser);
 		initialize(DOMAINS, NUM_OF_CRAWLERS, MAX_PAGES, MAX_DEPTH, ROOT, STORAGE, DELAY, CRAWLER, FILTERS, TRIGGER);
+		setParser(parser);
 	}
 	
 	private void initialize(String[] domains,

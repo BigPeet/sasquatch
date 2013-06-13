@@ -1,16 +1,10 @@
 package retrieval.mailinglist.sourceforge;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-
-import retrieval.general.CrawlStat;
 import retrieval.general.SeleniumCrawler;
+import retrieval.mailinglist.TextCollector;
 
 public class SFCrawler extends SeleniumCrawler {
 	
@@ -24,45 +18,36 @@ public class SFCrawler extends SeleniumCrawler {
 	private static final String NEXT_MESSAGES_BUTTON = "Next Messages";
 	
 	
-	private CrawlStat stat = new HTMLSFCollector();
-	private WebDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_17);
-	private String listName;
 	private int start;
 	private int end;
 
 	public SFCrawler(String listName, int start, int end) {
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
-		this.listName = listName;
+		super(listName);
 		this.start = start;
 		this.end = end;
+		setStat(new TextCollector());
 	}
-
-	@Override
-	public Object getMyLocalData() {
-		return stat;
-	}
-
 
 	private String buildMonthLink(int year, int month) {
 		String dMonth = String.format("%02d", month);
-		return baseURL + mailURL + listName + rowURL + nRow + restURL + year + dMonth;
+		return baseURL + mailURL + getListName() + rowURL + nRow + restURL + year + dMonth;
 	}
 
 	@Override
 	public void run() {
-		driver.get(baseURL + mailURL + listName);
+		getDriver().get(baseURL + mailURL + getListName());
 		
 		for (String link : getPageLinks()) {
 			
-			driver.get(link);
-			String content = driver.getPageSource();
-			stat.addData(content);
+			getDriver().get(link);
+			String content = getDriver().getPageSource();
+			getStat().addData(content);
 			
 			while (hasNextPage(content)) {
-				WebElement e = driver.findElement(By.linkText(NEXT_MESSAGES_BUTTON));
+				WebElement e = getDriver().findElement(By.linkText(NEXT_MESSAGES_BUTTON));
 				e.click();
-				content = driver.getPageSource();
-				stat.addData(content);
+				content = getDriver().getPageSource();
+				getStat().addData(content);
 			}
 		}
 		//Not sure this is a good idea.

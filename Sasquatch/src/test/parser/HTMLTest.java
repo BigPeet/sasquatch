@@ -18,7 +18,5 @@ public class HTMLTest {
 		int startYear = 2001;
 		int endYear = 2013;
 		
-		ICrawlController controller = new MMCrawlController(path, listName, pages);
-		controller.run();
 	}
 }

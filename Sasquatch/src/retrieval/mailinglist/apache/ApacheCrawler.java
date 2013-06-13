@@ -1,8 +1,6 @@
 package retrieval.mailinglist.apache;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
 import org.htmlparser.Parser;
 import org.htmlparser.filters.AndFilter;
 import org.htmlparser.filters.HasAttributeFilter;
@@ -11,12 +9,7 @@ import org.htmlparser.tags.LinkTag;
 import org.htmlparser.tags.TableColumn;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import retrieval.general.CrawlStat;
 import retrieval.general.SeleniumCrawler;
-import retrieval.interfaces.ICrawler;
 import retrieval.mailinglist.TextCollector;
 
 public class ApacheCrawler extends SeleniumCrawler {
@@ -25,40 +18,31 @@ public class ApacheCrawler extends SeleniumCrawler {
 	private static final String mailURL = ".mbox/thread?0";
 	private static final String mailView = ".mbox/ajax/";
 
-
-	private CrawlStat stat = new TextCollector();
-	private WebDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_17);
-	private String listName;
 	private int start;
 	private int end;
 
 	public ApacheCrawler(String listName, int start, int end) {
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
-		this.listName = listName;
+		super(listName);
 		this.start = start;
 		this.end = end;
-	}
-
-	@Override
-	public Object getMyLocalData() {
-		return stat;
+		setStat(new TextCollector());
 	}
 
 	@Override
 	public void run() {
 		for (String link : getPageLinks()) {
-			driver.get(link);
-			for (String mailLink : getMailLinks(link, driver.getPageSource())) {
-				driver.get(mailLink);
-				String content = driver.getPageSource();
-				stat.addData(content);
+			getDriver().get(link);
+			for (String mailLink : getMailLinks(link, getDriver().getPageSource())) {
+				getDriver().get(mailLink);
+				String content = getDriver().getPageSource();
+				getStat().addData(content);
 			}
 		}
 	}
 
 	private String buildMonthLink(int year, int month) {
 		String dMonth = String.format("%02d", month);
-		return baseURL + listName + "/" + year + dMonth + mailURL;
+		return baseURL + getListName() + "/" + year + dMonth + mailURL;
 	}
 	
 	private String buildMailLink(String base, String href) {

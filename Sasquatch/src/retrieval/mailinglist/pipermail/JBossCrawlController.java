@@ -116,7 +116,7 @@ public class JBossCrawlController extends Crawler4jCrawlController {
 	}
 
 	@Override
-	public void setSaveOption(boolean saveOn) {
+	public void saveData() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,21 +2,12 @@ package retrieval.mailinglist.markmail;
 
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
 import org.htmlparser.Parser;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.tags.Div;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-
-import retrieval.general.CrawlStat;
 import retrieval.general.SeleniumCrawler;
-import retrieval.interfaces.ICrawler;
 import retrieval.mailinglist.TextCollector;
 
 public class MMCrawler extends SeleniumCrawler {
@@ -25,37 +16,27 @@ public class MMCrawler extends SeleniumCrawler {
 	private static final String baseURL = ".markmail.org";
 	private static final String searchURL = "/search/?page=";
 	private static final String messageURL = "/message/";
-	private static final String NEXT_MESSAGES_BUTTON = "Next Messages";
 	
-	private CrawlStat stat = new TextCollector();
-	private WebDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_17);
-	private String listName;
 	private int pages;
 	
 	
 	public MMCrawler(String listName, int pages) {
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
-		this.listName = listName;
+		super(listName);
 		this.pages = pages;
-	}
-
-
-	@Override
-	public Object getMyLocalData() {
-		return stat;
+		setStat(new TextCollector());
 	}
 
 	public void run() {
 		int i = 1;
 		boolean done = false;
 		while (!done && (i <= pages || pages < 0)) {
-			driver.get(getPageLink(listName, i));
-			String content = driver.getPageSource();
-			String[] links = getMailLinks(listName, content);
+			getDriver().get(getPageLink(getListName(), i));
+			String content = getDriver().getPageSource();
+			String[] links = getMailLinks(getListName(), content);
 			for (String link : links) {
-				driver.get(link);
-				String mailPage = driver.getPageSource();
-				stat.addData(mailPage);
+				getDriver().get(link);
+				String mailPage = getDriver().getPageSource();
+				getStat().addData(mailPage);
 			}
 			if (!hasNextPage(content)) {
 				done = true;

@@ -1,10 +1,5 @@
 package retrieval.mailinglist.sourceforge;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.htmlparser.Parser;
@@ -14,11 +9,11 @@ import org.htmlparser.tags.TableTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
-import retrieval.general.CrawlStat;
+import retrieval.mailinglist.TextCollector;
 
 
-public class HTMLSFCollector extends CrawlStat {
-	
+public class HTMLSFCollector extends TextCollector {
+
 	private static String TABLE_WITDH = "width";
 	private static String TABLE_BORDER = "border";
 	private static String TABLE_PADDING = "cellpadding";
@@ -31,8 +26,8 @@ public class HTMLSFCollector extends CrawlStat {
 
 	private Parser parser;
 	private ArrayList<String> texts = new ArrayList<String>();
-	
-	
+
+
 	public HTMLSFCollector() {
 		this.parser = new Parser();
 	}
@@ -116,43 +111,11 @@ public class HTMLSFCollector extends CrawlStat {
 		return form;
 	}
 
-	@SuppressWarnings("unused")
-	private static String readFile(String path) {
-		String content = "";
-		String line = "";
-		File f = new File(path);
-		if (f.exists() && f.canRead()) {
-			try {
-				BufferedReader reader = new BufferedReader(new FileReader(f));
-				while((line = reader.readLine()) != null) {
-					content += line;
-				}
-				reader.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return content;
-	}
-
 	@Override
-	public ArrayList<Object> getData() {
-		ArrayList<Object> retList = new ArrayList<Object>();
-		for (String m : texts) {
-			retList.add(m);
-		}
-		return retList;
-	}
-
-	@Override
-	public void addData(Object o) {
-		if (o instanceof String) {
-			String[] tables = extractLocalData((String) o);
-			for (String t : tables) {
-				texts.add(t);
-			}
+	public void addData(String text) {
+		String[] tables = extractLocalData(text);
+		for (String t : tables) {
+			texts.add(t);
 		}
 	}
 

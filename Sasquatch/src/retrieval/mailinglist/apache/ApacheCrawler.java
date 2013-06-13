@@ -16,16 +16,16 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import retrieval.general.CrawlStat;
 import retrieval.interfaces.ICrawler;
+import retrieval.mailinglist.TextCollector;
 
 public class ApacheCrawler implements ICrawler {
 
 	private static final String baseURL = "http://mail-archives.apache.org/mod_mbox/";
 	private static final String mailURL = ".mbox/thread?0";
 	private static final String mailView = ".mbox/ajax/";
-	//"hc-httpclient-users/201306
 
 
-	private CrawlStat stat = new ApacheCollector();
+	private CrawlStat stat = new TextCollector();
 	private WebDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_17);
 	private String listName;
 	private int start;
@@ -43,15 +43,6 @@ public class ApacheCrawler implements ICrawler {
 		return stat;
 	}
 
-	private String buildMonthLink(int year, int month) {
-		String dMonth = String.format("%02d", month);
-		return baseURL + listName + "/" + year + dMonth + mailURL;
-	}
-	
-	private String buildMailLink(String base, String href) {
-		return base.replace(mailURL, mailView) + href;
-	}
-
 	@Override
 	public void run() {
 		for (String link : getPageLinks()) {
@@ -63,7 +54,16 @@ public class ApacheCrawler implements ICrawler {
 			}
 		}
 	}
+
+	private String buildMonthLink(int year, int month) {
+		String dMonth = String.format("%02d", month);
+		return baseURL + listName + "/" + year + dMonth + mailURL;
+	}
 	
+	private String buildMailLink(String base, String href) {
+		return base.replace(mailURL, mailView) + href;
+	}
+
 	private String[] getMailLinks(String base, String pageSource) {
 		ArrayList<String> pages = new ArrayList<String>();
 		try {

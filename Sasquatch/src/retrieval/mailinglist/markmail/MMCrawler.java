@@ -16,6 +16,7 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import retrieval.general.CrawlStat;
 import retrieval.interfaces.ICrawler;
+import retrieval.mailinglist.TextCollector;
 
 public class MMCrawler implements ICrawler {
 
@@ -25,7 +26,7 @@ public class MMCrawler implements ICrawler {
 	private static final String messageURL = "/message/";
 	private static final String NEXT_MESSAGES_BUTTON = "Next Messages";
 	
-	private CrawlStat stat = new HTMLMMCollector();
+	private CrawlStat stat = new TextCollector();
 	private WebDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_17);
 	private String listName;
 	private int pages;

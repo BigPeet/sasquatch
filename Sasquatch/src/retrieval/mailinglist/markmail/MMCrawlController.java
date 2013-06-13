@@ -82,5 +82,11 @@ public class MMCrawlController implements ICrawlController {
 		return getMails();
 	}
 
+	@Override
+	public void setSaveOption(boolean saveOn) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

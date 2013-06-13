@@ -23,8 +23,8 @@ public class TextCollector extends CrawlStat {
 	@Override
 	public void addData(Object o) {
 		if (o instanceof String) {
-			String m = (String) o;
-			addData(m);
+			String text = (String) o;
+			addData(text);
 		}
 	}
 	

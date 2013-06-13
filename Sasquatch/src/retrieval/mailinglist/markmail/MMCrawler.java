@@ -15,10 +15,11 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import retrieval.general.CrawlStat;
+import retrieval.general.SeleniumCrawler;
 import retrieval.interfaces.ICrawler;
 import retrieval.mailinglist.TextCollector;
 
-public class MMCrawler implements ICrawler {
+public class MMCrawler extends SeleniumCrawler {
 
 	private static final String startURL = "http://";
 	private static final String baseURL = ".markmail.org";

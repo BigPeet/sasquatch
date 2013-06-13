@@ -7,9 +7,9 @@ import manager.systems.source.mail.Mail;
 import manager.parser.mail.MailParser;
 import manager.parser.mail.sourceforge.SFMailParser;
 import retrieval.general.CrawlStat;
-import retrieval.interfaces.ICrawlController;
+import retrieval.general.SeleniumCrawlController;
 
-public class SFCrawlController implements ICrawlController {
+public class SFCrawlController extends SeleniumCrawlController {
 	
 	private SFCrawler crawler;
 	private MailParser parser = null;

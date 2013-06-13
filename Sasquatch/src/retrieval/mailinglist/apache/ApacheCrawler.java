@@ -15,10 +15,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import retrieval.general.CrawlStat;
+import retrieval.general.SeleniumCrawler;
 import retrieval.interfaces.ICrawler;
 import retrieval.mailinglist.TextCollector;
 
-public class ApacheCrawler implements ICrawler {
+public class ApacheCrawler extends SeleniumCrawler {
 
 	private static final String baseURL = "http://mail-archives.apache.org/mod_mbox/";
 	private static final String mailURL = ".mbox/thread?0";

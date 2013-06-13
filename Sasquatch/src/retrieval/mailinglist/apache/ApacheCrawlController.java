@@ -3,11 +3,11 @@ package retrieval.mailinglist.apache;
 import manager.parser.mail.MailParser;
 import manager.parser.mail.apache.ApacheMailParser;
 import retrieval.general.CrawlStat;
-import retrieval.interfaces.ICrawlController;
+import retrieval.general.SeleniumCrawlController;
 import java.util.ArrayList;
 import manager.systems.source.mail.Mail;
 
-public class ApacheCrawlController implements ICrawlController {
+public class ApacheCrawlController extends SeleniumCrawlController {
 	
 	private ApacheCrawler crawler;
 	private MailParser parser = null;
@@ -23,10 +23,6 @@ public class ApacheCrawlController implements ICrawlController {
 		this.start = startYear;
 		this.end = endYear;
 		crawler = new ApacheCrawler(listName, startYear, endYear);
-	}
-	
-	public void setSaveOption(boolean saveData) {
-		this.saveOption = saveData;
 	}
 	
 	public ApacheCrawlController(MailParser parser, String listName, int startYear, int endYear) {
@@ -118,6 +114,10 @@ public class ApacheCrawlController implements ICrawlController {
 		this.end = end;
 	}
 	
+	public void setSaveOption(boolean saveData) {
+		this.saveOption = saveData;
+	}
+
 	private boolean saveData() {
 		return saveOption && parser != null && parser.getHandler() != null;
 	}

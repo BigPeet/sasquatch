@@ -6,9 +6,9 @@ import manager.parser.mail.MailParser;
 import manager.parser.mail.markmail.MMMailParser;
 import manager.systems.source.mail.Mail;
 import retrieval.general.CrawlStat;
-import retrieval.interfaces.ICrawlController;
+import retrieval.general.SeleniumCrawlController;
 
-public class MMCrawlController implements ICrawlController {
+public class MMCrawlController extends SeleniumCrawlController {
 	
 	private MMCrawler crawler;
 	private MailParser parser = null;

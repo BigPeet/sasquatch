@@ -2,8 +2,6 @@ package retrieval.mailinglist.sourceforge;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,9 +10,9 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import retrieval.general.CrawlStat;
-import retrieval.interfaces.ICrawler;
+import retrieval.general.SeleniumCrawler;
 
-public class SFCrawler implements ICrawler {
+public class SFCrawler extends SeleniumCrawler {
 	
 	private static final String baseURL = "http://sourceforge.net";
 	private static final String mailURL = "/mailarchive/forum.php?forum_name=";

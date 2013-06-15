@@ -1,5 +1,7 @@
 package manager.systems.source.mail;
 
+import java.util.Date;
+
 import manager.systems.source.Source;
 
 public class Mail extends Source {
@@ -7,14 +9,23 @@ public class Mail extends Source {
 	private String header = "";
 	private String body = "";
 	private String sender = "";
-	private String date = "";
+	private Date date;
 	
 	public Mail(String header, String body) {
 		super(header + "\n" + body);
 		this.header = header;
 		this.body = body;
+		this.date = new Date();
+	}
+
+	public Mail(String header, String body, Date date) {
+		super(header + "\n" + body);
+		this.header = header;
+		this.body = body;
+		this.date = date;
 	}
 	
+	@Override
 	public String toString() {
 		return "Header: " + header + "\nBody: " + body;
 	}

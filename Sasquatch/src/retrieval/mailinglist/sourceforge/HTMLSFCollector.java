@@ -25,8 +25,6 @@ public class HTMLSFCollector extends TextCollector {
 	private static String TABLE_SPACING_VALUE = "0";
 
 	private Parser parser;
-	private ArrayList<String> texts = new ArrayList<String>();
-
 
 	public HTMLSFCollector() {
 		this.parser = new Parser();
@@ -115,7 +113,7 @@ public class HTMLSFCollector extends TextCollector {
 	public void addData(String text) {
 		String[] tables = extractLocalData(text);
 		for (String t : tables) {
-			texts.add(t);
+			super.addData(t);
 		}
 	}
 

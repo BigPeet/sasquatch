@@ -26,6 +26,7 @@ public class MMCrawler extends SeleniumCrawler {
 		setStat(new TextCollector());
 	}
 
+	@Override
 	public void run() {
 		int i = 1;
 		boolean done = false;

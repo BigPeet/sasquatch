@@ -16,8 +16,8 @@ public class PiperMailCrawlController extends Crawler4jCrawlController {
 	private static String ROOT = "res\\crawler\\root\\jboss";
 	private static String STORAGE = "res\\crawler\\storage\\jboss";
 	private static Pattern[] FILTERS = {gzPattern, threadPattern, startPattern};
-	private static int MAX_PAGES = 6000;
-	private static int NUM_OF_CRAWLERS = 6;
+	private static int MAX_PAGES = 8000;
+	private static int NUM_OF_CRAWLERS = 4;
 	private static int MAX_DEPTH = 2;
 	private static long DELAY = 200;
 	private static Class<? extends WebCrawler> CRAWLER = PiperMailCrawler.class;

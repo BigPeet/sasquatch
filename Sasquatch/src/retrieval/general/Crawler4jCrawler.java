@@ -38,7 +38,7 @@ public abstract class Crawler4jCrawler extends WebCrawler implements ICrawler {
 
 	@Override
 	public boolean shouldVisit(WebURL url) {
-		String href = url.getURL().toLowerCase();
+		String href = url.getURL().toLowerCase();	
 		return checkFilters(href) &&
 				checkDomains(href);
 	}

@@ -1,8 +1,5 @@
 package retrieval.mailinglist.yahoo;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-
 import retrieval.general.SeleniumCrawler;
 import retrieval.mailinglist.TextCollector;
 
@@ -34,9 +31,6 @@ public class YahooCrawler extends SeleniumCrawler {
 			getDriver().get(getPageLink(getListName(), mailNo));
 			String content = getDriver().getPageSource();
 			String[] mailForms = getMailForms(mailNo, content);
-			
-			write(mailForms[0]);
-			
 			for (String form : mailForms) {
 				getStat().addData(form);
 			}
@@ -77,20 +71,6 @@ public class YahooCrawler extends SeleniumCrawler {
 
 	private String getMailFormStart(int mailNo) {
 		return "\n#" + mailNo + "\n";
-	}
-
-	private void write(String content) {
-		String path = "res/mails/test3.html";
-		try{
-			// Create file 
-			FileWriter fstream = new FileWriter(path);
-			BufferedWriter out = new BufferedWriter(fstream);
-			out.write(content);
-			//Close the output stream
-			out.close();
-		}catch (Exception e){//Catch exception if any
-			System.err.println("Error: " + e.getMessage());
-		}
 	}
 
 	private boolean hasNextPage(int currentMailNumber) {

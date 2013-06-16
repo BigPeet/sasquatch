@@ -3,7 +3,6 @@ package manager.systems.source.mail;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -19,36 +18,41 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 import manager.systems.source.LocalSourceHandler;
-import manager.systems.source.SourceHandler;
 import manager.systems.source.Source;
 
 
 public class LocalMailHandler extends LocalSourceHandler {
-	
+
 	private File target;
-	
+
 	public LocalMailHandler(File target) {
 		this.target = target;
 	}
-	
+
 	public File getFile() {
 		return target;
 	}
-	
+
 	public void addMail(Mail m) {
 		Document doc = getDocument(target);
-		
 		if (doc != null) {
 			Element root = doc.getRootElement();
-			Element mail = new Element("mail");
-			mail.addContent(new Element("header").setText(m.getHeader()));
-			mail.addContent(new Element("body").setText(m.getBody()));
-			root.addContent(mail);
-			writeDocument(doc, target);
+			Element mail = null;
+			try {
+				mail = new Element("mail");
+				mail.addContent(new Element("header").setText(m.getHeader()));
+				mail.addContent(new Element("body").setText(m.getBody()));
+				root.addContent(mail);
+			}  catch (org.jdom.IllegalDataException e) {
+				mail = null;
+			}
+			if (mail != null) {
+				writeDocument(doc, target);
+			}
 		}
-		
+
 	}
-	
+
 	public Mail[] getMails() {
 		Document doc = getDocument(target);
 		ArrayList<Mail> mails = new ArrayList<Mail>();
@@ -63,7 +67,7 @@ public class LocalMailHandler extends LocalSourceHandler {
 		}
 		return mails.toArray(new Mail[mails.size()]);
 	}
-	
+
 	public void clear() {
 		Document doc = getDocument(target);
 		if (doc != null) {
@@ -72,7 +76,7 @@ public class LocalMailHandler extends LocalSourceHandler {
 			writeDocument(doc, target);
 		}
 	}
-	
+
 	private static void writeDocument(Document doc, File f) {
 		XMLOutputter xmlOutput = new XMLOutputter();
 		xmlOutput.setFormat(Format.getPrettyFormat());
@@ -85,13 +89,13 @@ public class LocalMailHandler extends LocalSourceHandler {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static Document getDocument(File f) {
 		SAXBuilder builder = new SAXBuilder();
 		Document doc = null;
 		try {
 			InputStream inputStream= new FileInputStream(f);
-    	    Reader reader = new InputStreamReader(inputStream,"UTF-8");
+			Reader reader = new InputStreamReader(inputStream,"UTF-8");
 			doc = builder.build(reader);
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -112,5 +116,5 @@ public class LocalMailHandler extends LocalSourceHandler {
 			addMail((Mail) s);
 		}
 	}
-	
+
 }

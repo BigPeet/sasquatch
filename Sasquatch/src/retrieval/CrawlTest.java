@@ -6,8 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import retrieval.interfaces.ICrawlController;
+import retrieval.mailinglist.eclipseList.EclipseListCrawlController;
 import retrieval.mailinglist.javanet.JavaNetCrawlController;
 import manager.parser.mail.MailParser;
+import manager.parser.mail.eclipseList.EclipseListMailParser;
 import manager.parser.mail.javanet.JavaNetMailParser;
 
 public class CrawlTest {
@@ -17,12 +19,11 @@ public class CrawlTest {
 	 */
 	public static void main(String[] args) {
 		
-		String listName = "javaserverfaces/lists/users";
-		MailParser parser = new JavaNetMailParser("res/mails/jsf.xml");
-		ICrawlController controller = new JavaNetCrawlController(parser, listName, 2004, 2013);
+		String listName = "jetty-users";
+		MailParser parser = new EclipseListMailParser("res/mails/jetty.xml");
+		ICrawlController controller = new EclipseListCrawlController(parser, listName, 2004, 2013, 10);
 		
 		controller.run();
-		controller.saveData();
 		
 //		String[] domains = {"http://lists.apple.com/archives/quartz-dev/"};
 //		MailParser parser = new AppleListMailParser("res/mails/quartz.xml");

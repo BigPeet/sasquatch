@@ -1,8 +1,10 @@
 package manager.systems.source.mail;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -33,6 +35,10 @@ public class LocalMailHandler extends LocalSourceHandler {
 
 	public LocalMailHandler(File target) {
 		this.target = target;
+		//Maybe put this in the addMail-Method
+		if (!target.exists()) {
+			createEmptyFile(target);
+		}
 	}
 
 	public File getFile() {
@@ -40,6 +46,7 @@ public class LocalMailHandler extends LocalSourceHandler {
 	}
 
 	public void addMail(Mail m) {
+
 		Document doc = getDocument(target);
 		if (doc != null) {
 			Element root = doc.getRootElement();
@@ -60,18 +67,33 @@ public class LocalMailHandler extends LocalSourceHandler {
 		}
 
 	}
+	
+	private void createEmptyFile(File f) {
+		if (!f.exists()) {
+			try {
+				f.createNewFile();
+				BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+				writer.write("<mails></mails>");
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public Mail[] getMails() {
-		Document doc = getDocument(target);
 		ArrayList<Mail> mails = new ArrayList<Mail>();
-		if (doc != null) {
-			Element root = doc.getRootElement();
-			for (Object o : root.getChildren("mail")) {
-				Element e = (Element) o;
-				String header = e.getChildText("header");
-				String body = e.getChildText("body");
-				Date date = convertDate(e.getChildText("date"));
-				mails.add(new Mail(header, body, date));
+		if (target.exists()) {
+			Document doc = getDocument(target);
+			if (doc != null) {
+				Element root = doc.getRootElement();
+				for (Object o : root.getChildren("mail")) {
+					Element e = (Element) o;
+					String header = e.getChildText("header");
+					String body = e.getChildText("body");
+					Date date = convertDate(e.getChildText("date"));
+					mails.add(new Mail(header, body, date));
+				}
 			}
 		}
 		return mails.toArray(new Mail[mails.size()]);
@@ -89,11 +111,13 @@ public class LocalMailHandler extends LocalSourceHandler {
 	}
 
 	public void clear() {
-		Document doc = getDocument(target);
-		if (doc != null) {
-			Element root = doc.getRootElement();
-			root.removeContent();
-			writeDocument(doc, target);
+		if (target.exists()) {
+			Document doc = getDocument(target);
+			if (doc != null) {
+				Element root = doc.getRootElement();
+				root.removeContent();
+				writeDocument(doc, target);
+			}
 		}
 	}
 

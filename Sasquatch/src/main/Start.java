@@ -31,9 +31,9 @@ public class Start {
 		SourceHandler dom4jHandler = new LocalMailHandler(new File(DOM4J));
 		
 		/* Create software systems using the handlers. */
-		SoftwareSystem jboss = new SoftwareSystem(jbossHandler);
-		SoftwareSystem jdom = new SoftwareSystem(jdomHandler);
-		SoftwareSystem dom4j = new SoftwareSystem(dom4jHandler);
+		SoftwareSystem jboss = new SoftwareSystem("jboss", jbossHandler);
+		SoftwareSystem jdom = new SoftwareSystem("jdom", jdomHandler);
+		SoftwareSystem dom4j = new SoftwareSystem("dom4j", dom4jHandler);
 		
 		/* We will use a SimplePolarityAnalzyer. We need Lucene-Indexes.*/
 		File indexDir = new File(INDEX_PATH);

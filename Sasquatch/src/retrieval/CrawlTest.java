@@ -10,6 +10,7 @@ import retrieval.mailinglist.apache.ApacheCrawlController;
 import retrieval.mailinglist.appleList.AppleListCrawlController;
 import retrieval.mailinglist.eclipseList.EclipseListCrawlController;
 import retrieval.mailinglist.javanet.JavaNetCrawlController;
+import retrieval.mailinglist.mailArchive.MailArchiveCrawlController;
 import retrieval.mailinglist.markmail.MMCrawlController;
 import retrieval.mailinglist.pipermail.PiperMailCrawlController;
 import retrieval.mailinglist.sourceforge.SFCrawlController;
@@ -19,6 +20,7 @@ import manager.parser.mail.apache.ApacheMailParser;
 import manager.parser.mail.appleList.AppleListMailParser;
 import manager.parser.mail.eclipseList.EclipseListMailParser;
 import manager.parser.mail.javanet.JavaNetMailParser;
+import manager.parser.mail.mailArchive.MailArchiveParser;
 import manager.parser.mail.markmail.MMMailParser;
 import manager.parser.mail.pipermail.PiperMailParser;
 import manager.parser.mail.sourceforge.SFMailParser;
@@ -30,8 +32,8 @@ public class CrawlTest {
 	 */
 	public static void main(String[] args) {
 		
-		MailParser parser = new SFMailParser("res/mails/htmlunit.xml");
-//		parser.parseMail(read("res/mails/tests/sf.txt"));
+//		MailParser parser = new MailArchiveParser("res/mails/resin.xml");
+//		parser.parseMail(read("res/mails/tests/mailarchive.html"));
 		
 //		ICrawlController httpClientControler = new ApacheCrawlController(parser, "hc-httpclient-users", 2013, 2013);
 //		
@@ -42,10 +44,10 @@ public class CrawlTest {
 //		
 //		easyMockController.run();
 //		
-		ICrawlController htmlUnitController = new SFCrawlController(parser, "htmlunit-user", 2012, 2013);
-		
-		htmlUnitController.run();
-		htmlUnitController.saveData();
+//		ICrawlController htmlUnitController = new SFCrawlController(parser, "htmlunit-user", 2012, 2013);
+//		
+//		htmlUnitController.run();
+//		htmlUnitController.saveData();
 //		
 //		String[] domains = {"http://lists.apple.com/archives/quartz-dev/"};
 //		ICrawlController quartzController = new AppleListCrawlController(domains, parser);
@@ -74,6 +76,10 @@ public class CrawlTest {
 //		
 //		jdomController.run();
 //		jdomController.saveData();
+//		
+//		ICrawlController resinController = new MailArchiveCrawlController(parser, "resin-interest@caucho.com", 2008, 2013, 1);
+//		resinController.run();
+//		resinController.saveData();
 		
 	}
 

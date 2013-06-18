@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import retrieval.general.SeleniumCrawler;
-import retrieval.mailinglist.TextCollector;
 
 public class SFCrawler extends SeleniumCrawler {
 	
@@ -25,7 +24,7 @@ public class SFCrawler extends SeleniumCrawler {
 		super(listName);
 		this.start = start;
 		this.end = end;
-		setStat(new TextCollector());
+		setStat(new HTMLSFCollector());
 	}
 
 	private String buildMonthLink(int year, int month) {

@@ -22,7 +22,7 @@ public class PiperMailCrawler extends Crawler4jCrawler {
 	}
 
 	protected String trimContent(HtmlParseData htmlContent) {
-		return htmlContent.getText();
+		return htmlContent.getHtml();
 	}
 	
 }

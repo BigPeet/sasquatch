@@ -16,7 +16,7 @@ public class AppleListCrawlController extends Crawler4jCrawlController {
 	private static String ROOT = "res\\crawler\\root\\apple";
 	private static String STORAGE = "res\\crawler\\storage\\apple";
 	private static Pattern[] FILTERS = {threadPattern};
-	private static int MAX_PAGES = 8000;
+	private static int MAX_PAGES = 1000;
 	private static int NUM_OF_CRAWLERS = 4;
 	private static int MAX_DEPTH = 3;
 	private static long DELAY = 200;
@@ -25,6 +25,14 @@ public class AppleListCrawlController extends Crawler4jCrawlController {
 	private String[] domains;
 
 	public AppleListCrawlController(String[] domains, MailParser parser) {
+		super(MAX_PAGES);
+		this.domains = domains;
+		setConfig(createStandardConfig());
+		setParser(parser);
+	}
+	
+	public AppleListCrawlController(String[] domains, MailParser parser, int maxPages) {
+		super(maxPages);
 		this.domains = domains;
 		setConfig(createStandardConfig());
 		setParser(parser);
@@ -39,7 +47,7 @@ public class AppleListCrawlController extends Crawler4jCrawlController {
 	}
 	
 	protected Crawler4jControllerConfiguration createStandardConfig() {
-		return createConfig(domains, NUM_OF_CRAWLERS, MAX_PAGES, MAX_DEPTH, ROOT, STORAGE, DELAY, CRAWLER, FILTERS, TRIGGER);
+		return createConfig(domains, NUM_OF_CRAWLERS, getMaxPages(), MAX_DEPTH, ROOT, STORAGE, DELAY, CRAWLER, FILTERS, TRIGGER);
 	}
 	
 	public Crawler4jControllerConfiguration createConfig(String[] domains,

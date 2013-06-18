@@ -6,11 +6,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import retrieval.interfaces.ICrawlController;
+import retrieval.mailinglist.apache.ApacheCrawlController;
+import retrieval.mailinglist.appleList.AppleListCrawlController;
 import retrieval.mailinglist.eclipseList.EclipseListCrawlController;
 import retrieval.mailinglist.javanet.JavaNetCrawlController;
+import retrieval.mailinglist.markmail.MMCrawlController;
+import retrieval.mailinglist.pipermail.PiperMailCrawlController;
+import retrieval.mailinglist.sourceforge.SFCrawlController;
+import retrieval.mailinglist.yahoo.YahooCrawlController;
 import manager.parser.mail.MailParser;
+import manager.parser.mail.apache.ApacheMailParser;
+import manager.parser.mail.appleList.AppleListMailParser;
 import manager.parser.mail.eclipseList.EclipseListMailParser;
 import manager.parser.mail.javanet.JavaNetMailParser;
+import manager.parser.mail.markmail.MMMailParser;
+import manager.parser.mail.pipermail.PiperMailParser;
+import manager.parser.mail.sourceforge.SFMailParser;
 
 public class CrawlTest {
 
@@ -19,48 +30,51 @@ public class CrawlTest {
 	 */
 	public static void main(String[] args) {
 		
-		String listName = "jetty-users";
-		MailParser parser = new EclipseListMailParser("res/mails/jetty.xml");
-		ICrawlController controller = new EclipseListCrawlController(parser, listName, 2004, 2013, 10);
+		MailParser parser = new SFMailParser("res/mails/htmlunit.xml");
+//		parser.parseMail(read("res/mails/tests/sf.txt"));
 		
-		controller.run();
+//		ICrawlController httpClientControler = new ApacheCrawlController(parser, "hc-httpclient-users", 2013, 2013);
+//		
+//		httpClientControler.run();
+//		httpClientControler.saveData();
+//		
+//		ICrawlController easyMockController = new YahooCrawlController("easymock", 2013, 2013, 10);
+//		
+//		easyMockController.run();
+//		
+		ICrawlController htmlUnitController = new SFCrawlController(parser, "htmlunit-user", 2012, 2013);
 		
+		htmlUnitController.run();
+		htmlUnitController.saveData();
+//		
 //		String[] domains = {"http://lists.apple.com/archives/quartz-dev/"};
-//		MailParser parser = new AppleListMailParser("res/mails/quartz.xml");
-//		ICrawlController controller = new AppleListCrawlController(domains, parser);
+//		ICrawlController quartzController = new AppleListCrawlController(domains, parser);
 //		
-//		Date start = new Date();
-//		controller.run();
-//		int size = controller.getData().length;
-//		Date end = new Date();
-//		controller.saveData();
-//		long mills = end.getTime() - start.getTime();
-//		System.out.println("Time: " + TimeUnit.SECONDS.convert(mills, TimeUnit.MILLISECONDS));
-//		System.out.println("Size: " + size);
+//		quartzController.run();
+//		quartzController.saveData();
+//		
+//		
+//		ICrawlController jettyController = new EclipseListCrawlController(parser, "jetty-users", 2013, 2013, 1);
+//		
+//		jettyController.run();
+//		jettyController.saveData();
+//		
+//		ICrawlController jpaController = new JavaNetCrawlController(parser, "jpa-spec/lists/users", 2013, 2013);
+//		
+//		jpaController.run();
+//		jpaController.saveData();
+//		
+//		String[] piperdomains = {"http://lists.jboss.org/pipermail/hibernate-dev/"};
+//		ICrawlController hibernateController = new PiperMailCrawlController(piperdomains, parser);
+//		
+//		hibernateController.run();
+//		hibernateController.saveData();
+//		
+//		ICrawlController jdomController = new MMCrawlController(parser, "jdom", 2013, 2013, 1);
+//		
+//		jdomController.run();
+//		jdomController.saveData();
 		
-//		String listName = "easymock";
-//		String path = "res/mails/easymock.xml";
-//		ICrawlController controller = new YahooCrawlController(path, listName, 0, 0, 100);
-//		
-//		controller.run();
-//		controller.saveData();
-		
-//		String hibernatePath = "http://lists.jboss.org/pipermail/jboss-user/";
-//		String[] domains = {hibernatePath};
-//		
-//		MailParser parser = new PiperMailParser("res/mails/jboss.xml");
-//		
-//		ICrawlController controller = new PiperMailCrawlController(domains, parser);
-//		
-//		Date start = new Date();
-//		controller.run();
-//		int size = controller.getData().length;
-//		Date end = new Date();
-//		controller.saveData();
-//		
-//		long mills = end.getTime() - start.getTime();
-//		System.out.println("Time: " + TimeUnit.SECONDS.convert(mills, TimeUnit.MILLISECONDS));
-//		System.out.println("Size: " + size);
 	}
 
 	private static String read(String string) {

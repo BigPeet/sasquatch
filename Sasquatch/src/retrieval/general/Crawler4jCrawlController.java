@@ -14,10 +14,11 @@ public abstract class Crawler4jCrawlController extends GeneralMailCrawlControlle
 
 	private Crawler4jControllerConfiguration config;
 	private String storageFolder;
+	private int maxPages;
 
 	
-	public Crawler4jCrawlController() {
-		
+	public Crawler4jCrawlController(int maxPages) {
+		this.maxPages = maxPages;
 	}
 	
 	public Crawler4jCrawlController(Crawler4jControllerConfiguration config) {
@@ -91,5 +92,19 @@ public abstract class Crawler4jCrawlController extends GeneralMailCrawlControlle
 	 */
 	public void setStorageFolder(String storageFolder) {
 		this.storageFolder = storageFolder;
+	}
+
+	/**
+	 * @return the maxPages
+	 */
+	public int getMaxPages() {
+		return maxPages;
+	}
+
+	/**
+	 * @param maxPages the maxPages to set
+	 */
+	public void setMaxPages(int maxPages) {
+		this.maxPages = maxPages;
 	}
 }

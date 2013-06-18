@@ -16,7 +16,7 @@ public class PiperMailCrawlController extends Crawler4jCrawlController {
 	private static String ROOT = "res\\crawler\\root\\jboss";
 	private static String STORAGE = "res\\crawler\\storage\\jboss";
 	private static Pattern[] FILTERS = {gzPattern, threadPattern, startPattern};
-	private static int MAX_PAGES = 8000;
+	private static int MAX_PAGES = 500;//8000;
 	private static int NUM_OF_CRAWLERS = 4;
 	private static int MAX_DEPTH = 2;
 	private static long DELAY = 200;
@@ -26,6 +26,14 @@ public class PiperMailCrawlController extends Crawler4jCrawlController {
 	private String[] domains;
 
 	public PiperMailCrawlController(String[] domains, MailParser parser) {
+		super(MAX_PAGES);
+		this.domains = domains;
+		setConfig(createStandardConfig());
+		setParser(parser);
+	}
+	
+	public PiperMailCrawlController(String[] domains, MailParser parser, int maxPages) {
+		super(maxPages);
 		this.domains = domains;
 		setConfig(createStandardConfig());
 		setParser(parser);
@@ -49,7 +57,7 @@ public class PiperMailCrawlController extends Crawler4jCrawlController {
 	}
 	
 	protected Crawler4jControllerConfiguration createStandardConfig() {
-		return createConfig(domains, NUM_OF_CRAWLERS, MAX_PAGES, MAX_DEPTH, ROOT, STORAGE, DELAY, CRAWLER, FILTERS, TRIGGER);
+		return createConfig(domains, NUM_OF_CRAWLERS, getMaxPages(), MAX_DEPTH, ROOT, STORAGE, DELAY, CRAWLER, FILTERS, TRIGGER);
 	}
 
 

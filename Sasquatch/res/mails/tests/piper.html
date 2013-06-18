@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [hibernate-dev] Checkstyle breaking the OGM build
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:hibernate-dev%40lists.jboss.org?Subject=Re:%20%5Bhibernate-dev%5D%20Checkstyle%20breaking%20the%20OGM%20build&In-Reply-To=%3CCAJoPwXczMSD_pK-CAnW3-k_aZ12J8exDT4KDHHC5KhdZJXXd3w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="009775.html">
+   <LINK REL="Next"  HREF="009777.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[hibernate-dev] Checkstyle breaking the OGM build</H1>
+    <B>Guillaume SCHEIBEL</B> 
+    <A HREF="mailto:hibernate-dev%40lists.jboss.org?Subject=Re:%20%5Bhibernate-dev%5D%20Checkstyle%20breaking%20the%20OGM%20build&In-Reply-To=%3CCAJoPwXczMSD_pK-CAnW3-k_aZ12J8exDT4KDHHC5KhdZJXXd3w%40mail.gmail.com%3E"
+       TITLE="[hibernate-dev] Checkstyle breaking the OGM build">guillaume.scheibel at gmail.com
+       </A><BR>
+    <I>Thu May  2 18:41:18 EDT 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="009775.html">[hibernate-dev] Checkstyle breaking the OGM build
+</A></li>
+        <LI>Next message: <A HREF="009777.html">[hibernate-dev] Checkstyle breaking the OGM build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9776">[ date ]</a>
+              <a href="thread.html#9776">[ thread ]</a>
+              <a href="subject.html#9776">[ subject ]</a>
+              <a href="author.html#9776">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Emmanuel,
+
+Sorry I can't reproduce it and both maven &amp; intellij plugins are telling me
+the Label class respects the rules.
+
+Guillaume
+
+
+2013/5/3 Emmanuel Bernard &lt;<A HREF="https://lists.jboss.org/mailman/listinfo/hibernate-dev">emmanuel at hibernate.org</A>&gt;
+
+&gt;<i> Taking OGM master, I get a checkstyle failure on one of the test file.
+</I>&gt;<i> But what is surprising is that I don't see new lines at the end of the
+</I>&gt;<i> described file.
+</I>&gt;<i>
+</I>&gt;<i> Can you guys reproduce?
+</I>&gt;<i>
+</I>&gt;<i> Emmanuel
+</I>&gt;<i>
+</I>&gt;<i> [INFO] --- maven-resources-plugin:2.5:resources (default-resources) @
+</I>&gt;<i> hibernate-ogm-core ---
+</I>&gt;<i> [debug] execute contextualize
+</I>&gt;<i> [INFO] Using 'UTF-8' encoding to copy filtered resources.
+</I>&gt;<i> [INFO] Copying 2 resources
+</I>&gt;<i> [INFO]
+</I>&gt;<i> [INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @
+</I>&gt;<i> hibernate-ogm-core ---
+</I>&gt;<i> [INFO] Compiling 150 source files to
+</I>&gt;<i> /Users/emmanuel/Code/ogm/hibernate-ogm-core/target/classes
+</I>&gt;<i> [INFO]
+</I>&gt;<i> [INFO] --- maven-checkstyle-plugin:2.10:checkstyle (check-style) @
+</I>&gt;<i> hibernate-ogm-core ---
+</I>&gt;<i> [INFO] Starting audit...
+</I>&gt;<i>
+</I>&gt;<i> /Users/emmanuel/Code/ogm/hibernate-ogm-core/src/test/java/org/hibernate/ogm/test/id/Label.java:64:
+</I>&gt;<i> Only one new line is allowed at the end of a file
+</I>&gt;<i> Audit done.
+</I>&gt;<i>
+</I>&gt;<i> [INFO]
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> [INFO] Reactor Summary:
+</I>&gt;<i> [INFO]
+</I>&gt;<i> [INFO] Hibernate OGM Aggregator .......................... SUCCESS
+</I>&gt;<i> [3.493s]
+</I>&gt;<i> [INFO] Hibernate Object Grid Mapper ...................... FAILURE
+</I>&gt;<i> [28.596s]
+</I>&gt;<i> [INFO] Hibernate OGM Ehcache integration ................. SKIPPED
+</I>&gt;<i> [INFO] Hibernate OGM Infinispan integration .............. SKIPPED
+</I>&gt;<i> [INFO] Hibernate OGM Module .............................. SKIPPED
+</I>&gt;<i> [INFO] Hibernate OGM Integration and performance Tests ... SKIPPED
+</I>&gt;<i> [INFO] Hibernate OGM Integration Test case ............... SKIPPED
+</I>&gt;<i> [INFO]
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> [INFO] BUILD FAILURE
+</I>&gt;<i> [INFO]
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> [INFO] Total time: 33.217s
+</I>&gt;<i> [INFO] Finished at: Fri May 03 00:14:08 CEST 2013
+</I>&gt;<i> [INFO] Final Memory: 36M/335M
+</I>&gt;<i> [INFO]
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> [ERROR] Failed to execute goal
+</I>&gt;<i> org.apache.maven.plugins:maven-checkstyle-plugin:2.10:checkstyle
+</I>&gt;<i> (check-style) on project hibernate-ogm-core: An error has occurred in
+</I>&gt;<i> Checkstyle report generation. Failed during checkstyle execution: There
+</I>&gt;<i> are 1 checkstyle errors. -&gt; [Help 1]
+</I>&gt;<i> [ERROR]
+</I>&gt;<i> [ERROR] To see the full stack trace of the errors, re-run Maven with the
+</I>&gt;<i> -e switch.
+</I>&gt;<i> [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+</I>&gt;<i> [ERROR]
+</I>&gt;<i> [ERROR] For more information about the errors and possible solutions,
+</I>&gt;<i> please read the following articles:
+</I>&gt;<i> [ERROR] [Help 1]
+</I>&gt;<i> <A HREF="http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException">http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException</A>
+</I>&gt;<i> [ERROR]
+</I>&gt;<i> [ERROR] After correcting the problems, you can resume the build with the
+</I>&gt;<i> command
+</I>&gt;<i> [ERROR]   mvn &lt;goals&gt; -rf :hibernate-ogm-core
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> hibernate-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.jboss.org/mailman/listinfo/hibernate-dev">hibernate-dev at lists.jboss.org</A>
+</I>&gt;<i> <A HREF="https://lists.jboss.org/mailman/listinfo/hibernate-dev">https://lists.jboss.org/mailman/listinfo/hibernate-dev</A>
+</I>&gt;<i>
+</I></PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="009775.html">[hibernate-dev] Checkstyle breaking the OGM build
+</A></li>
+	<LI>Next message: <A HREF="009777.html">[hibernate-dev] Checkstyle breaking the OGM build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9776">[ date ]</a>
+              <a href="thread.html#9776">[ thread ]</a>
+              <a href="subject.html#9776">[ subject ]</a>
+              <a href="author.html#9776">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.jboss.org/mailman/listinfo/hibernate-dev">More information about the hibernate-dev
+mailing list</a><br>
+</body></html>

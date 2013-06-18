@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+  <head>
+    <title>
+      Re: [jdom-interest] XPathExpression question - Rolf Lear - org.jdom.jdom-interest - MarkMail
+    </title>
+    <link rel="search" type="application/opensearchdescription+xml" title="MarkMail" href="/BrowserPlugins/markmail.xml"/>
+    <link href="http://markmail.org/css/base_1327703363.css" rel="stylesheet" type="text/css"/>
+    <link href="http://markmail.org/css/canvas_1327703363.css" rel="stylesheet" type="text/css"/>
+    <link href="http://markmail.org/css/print_message_1327703363.css" rel="stylesheet" media="print" type="text/css"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <script type="text/javascript">
+//<![CDATA[
+
+						var _gaq = _gaq || [];
+						var w = window.innerWidth | document.documentElement.clientWidth;
+						_gaq.push(
+							['_setAccount', 'UA-2762294-1'],
+							['_setCustomVar', 1, "Page-width", "" + w, 2],
+							['_trackPageview'],
+							['_trackPageLoadTime']
+						);
+						(function() {
+							var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+							ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+							(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+						})();
+					
+//]]>
+    </script>
+  </head>
+  <body>
+    <div id="header">
+      <div style="position: absolute; top: 0px; left: 0px; float: left; width: 1000px;">
+         
+      </div>
+      <div style="float: right; padding-top: 12px; padding-right: 12px;">
+        <form name="searchbox" action="/search/">
+          <div>
+            Search for:
+            <input id="templatesearch" type="text" size="50" name="q" value=""/>
+            <input class="submit" type="image" src="/images/search_red.gif" value="Search" onclick="document.searchbox.submit(); return false;"/>
+            <img class="help section-searchhelp" src="/images/help_red.png"/>
+          </div>
+        </form>
+      </div>
+      <div class="logo">
+        <a href="http://markmail.org/">
+          <img src="/images/logo_white.gif" alt="MarkMail"/>
+        </a>
+      </div>
+    </div>
+    <div id="nav">
+      <div style="position: absolute; left: 0px; width: 98%; z-index:100;">
+        <div style="margin-left: auto; margin-right: auto; width: 25em; text-align: center; font-size: 0.9em; margin-top: 3px;">
+          <a href="/survey/" style="color: white; text-decoration: none;">
+            Want your own MarkMail? Tell us about it.
+          </a>
+        </div>
+      </div>
+      <div id="loginlinks" style="position: relative; z-index: 100;">
+        <span style="display: none">
+          <span>
+            Hello 
+            <a class="username mklink" href="http://markmail.org/account/profile.xqy" title="Your Account">
+              Nobody
+            </a>
+          </span>
+          <span class="userctl logout mklink">
+            Logout
+          </span>
+        </span>
+        <span style="display: inline">
+          <span class="userctl login mklink refresh">
+            Sign In
+          </span>
+           or 
+          <span class="userctl signup mklink">
+            Sign Up
+          </span>
+           (
+          <a class="help section-why">
+            Why?
+          </a>
+          )
+						
+        </span>
+      </div>
+      <div id="homebutton" style="position: relative; z-index: 100;">
+        <a href="/">
+          <img src="/images/home_arrow.gif" alt="Home"/>
+        </a>
+        <span>
+          <a href="/">
+            Home
+          </a>
+        </span>
+      </div>
+      <div id="slideleft" style="position: relative; z-index: 100;">
+        <img src="/images/slide_left.gif" alt="Refine Search"/>
+        <span>
+          Refine Search
+        </span>
+      </div>
+      <div id="slideright" style="position: relative; z-index: 100;">
+        <img src="/images/slide_right.gif" alt="View Message"/>
+      </div>
+    </div>
+    <div id="main">
+      <div id="window">
+        <div id="please">
+          <div id="facetscol" style="display: none;">
+            <div class="container">
+              <div id="facets">
+                <div id="dateholder">
+                  <div class="label">
+                    <div class="rbg">
+                       
+                    </div>
+                    <div id="cleardates">
+                       
+                    </div>
+                    <div class="lbg">
+                       
+                    </div>
+                    <div class="title">
+                      Messages per Month
+                    </div>
+                  </div>
+                  <div id="dates">
+                    <span id="dateschild" title="">
+                       
+                    </span>
+                  </div>
+                </div>
+                <table cellspacing="5" id="matrix">
+                  <tbody align="left">
+                    <tr class="matrixrow">
+                      <td class="facet" colspan="2">
+                         
+                      </td>
+                    </tr>
+                    <tr class="matrixrow">
+                      <td class="facet">
+                         
+                      </td>
+                      <td class="facet">
+                         
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div id="resultscol" style="display: none;">
+            <div class="container">
+              <div id="results">
+                <div class="label">
+                  <img class="loading" src="/images/arrow_loader.gif" alt=""/>
+                  <a target="_blank" class="atom" href="">
+                    <img width="14" height="14" src="/images/feed-icon-14x14.png" alt="atom feed" title="Atom RSS feed for this search"/>
+                  </a>
+                  <a target="_blank" class="setlink actions" href="#" onclick="return false;">
+                    <img width="16" height="10" src="/images/set.gif" alt="sets" title="Save, include, or exclude this search to/from a set..."/>
+                  </a>
+                  <a target="_blank" class="permalink" href="">
+                    <img width="17" height="8" src="/images/permalink.gif" alt="permalink" title="Permalink for this search"/>
+                  </a>
+                  <span class="info">
+                     
+                  </span>
+                  <span>
+                    Sort by 
+                  </span>
+                  <select id="orderoption">
+                    <option class="relevance" value="" selected="selected">
+                      
+									Relevance 
+                    </option>
+                    <option class="date-forward" value="">
+                      
+									Date, Forward 
+                    </option>
+                    <option class="date-backward" value="">
+                      
+									Date, Backward 
+                    </option>
+                  </select>
+                  <div id="searchactions" class="actionsdropdown">
+                    <table width="90%">
+                      <tbody align="left">
+                        <tr>
+                          <td class="icon">
+                            <img width="16" height="10" src="/images/set.gif"/>
+                          </td>
+                          <td>
+                            <a id="start-set" class="setlinksave">
+                              Start a set with this search
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="icon">
+                            <img width="16" height="10" src="/images/set_include.gif"/>
+                          </td>
+                          <td>
+                            <a id="add-to-set" class="setlinkinc">
+                              Include this search in one of my sets
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="icon">
+                            <img width="16" height="10" src="/images/set_exclude.gif"/>
+                          </td>
+                          <td>
+                            <a id="exclude-from-set" class="setlinkexc">
+                              Exclude this search from one of my sets
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="close">
+                      <img src="/images/close.gif"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="values">
+                  <div class="noresults">
+                    
+									 
+								
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="messagecol">
+            <div class="container">
+              <div id="thread">
+                <div class="label">
+                  <img class="loading" src="/images/arrow_loader.gif" alt=""/>
+                  <a id="atom-link" target="_blank" class="atom" href="http://markmail.org/atom/thread:cljkhl27ll6jweyz">
+                    <img width="14" height="14" src="/images/feed-icon-14x14.png" alt="atom feed" title="Atom RSS feed for this thread"/>
+                  </a>
+                  <a id="thread-link" target="_blank" class="permalink" href="http://markmail.org/thread/cljkhl27ll6jweyz">
+                    <img width="17" height="8" src="/images/permalink.gif" alt="permalink" title="Permalink for this thread"/>
+                  </a>
+                  <span class="info">
+                    4 messages in org.jdom.jdom-interest
+                  </span>
+                  <span class="subject">
+                    Re: [jdom-interest] XPathExpression q...
+                  </span>
+                </div>
+                <div class="values">
+                  <table>
+                    <tbody align="left">
+                      <tr>
+                        <th>
+                          From
+                        </th>
+                        <th>
+                          Sent On
+                        </th>
+                        <th>
+                          Attachments
+                        </th>
+                      </tr>
+                      <tr id="row-cljkhl27ll6jweyz" class="threadmessage othermessage">
+                        <td>
+                          <a href="/message/cljkhl27ll6jweyz" onclick="return false">
+                            Keeney, Wayne
+                          </a>
+                        </td>
+                        <td>
+                          Jun  7, 2013 11:35 am
+                        </td>
+                        <td>
+                           
+                        </td>
+                      </tr>
+                      <tr id="row-osry62fqdbpdcq5e" class="threadmessage othermessage">
+                        <td>
+                          <a href="/message/osry62fqdbpdcq5e" onclick="return false">
+                            jdom
+                          </a>
+                        </td>
+                        <td>
+                          Jun  7, 2013 11:48 am
+                        </td>
+                        <td>
+                           
+                        </td>
+                      </tr>
+                      <tr id="row-k5qvafdlpgmroq7z" class="threadmessage othermessage">
+                        <td>
+                          <a href="/message/k5qvafdlpgmroq7z" onclick="return false">
+                            Rolf Lear
+                          </a>
+                        </td>
+                        <td>
+                          Jun  8, 2013  8:02 am
+                        </td>
+                        <td>
+                           
+                        </td>
+                      </tr>
+                      <tr id="row-viedqk3s6mn3x5th" class="threadmessage currentmessage">
+                        <td>
+                          <a href="/message/viedqk3s6mn3x5th" onclick="return false">
+                            Rolf Lear
+                          </a>
+                        </td>
+                        <td>
+                          Jun  8, 2013 10:35 am
+                        </td>
+                        <td>
+                           
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="sep">
+                <!-- empty -->              </div>
+              <div id="message">
+                <div class="values">
+                  <div>
+                    <table id="headers">
+                      <tbody align="left">
+                        <tr>
+                          <th>
+                            Subject:
+                          </th>
+                          <td>
+                            <a class="subject" href="http://markmail.org/message/viedqk3s6mn3x5th">
+                              Re: [jdom-interest] XPathExpression question
+                            </a>
+                          </td>
+                          <td class="actions">
+                            <a id="perma-link" target="_blank" class="permalink" href="http://markmail.org/message/viedqk3s6mn3x5th">
+                              <img width="17" height="8" src="/images/permalink.gif" alt="permalink" title="Permalink for this message"/>
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            From:
+                          </th>
+                          <td colspan="2">
+                            Rolf Lear (
+                            <span>
+                              jd
+                              <a class="email mklink">
+                                ...
+                              </a>
+                              @tuis.net
+                            </span>
+                            )
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            Date:
+                          </th>
+                          <td colspan="2">
+                            Jun  8, 2013 10:35:18 am
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            List:
+                          </th>
+                          <td colspan="2">
+                            <span>
+                              org.jdom.jdom-interest
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div id="body" class="messagebody">
+                      <div class="pws">
+                        <p>
+                           Hi Wayne, all.
+
+
+                        </p>
+                        <p>
+                           I created an issue: [1]
+                          <a class="exlink mklink" href="https://github.com/hunterhacker/jdom/issues/120" rel="nofollow">
+                            https://github.com/hunterhacker/jdom/issues/120
+                          </a>
+                           and I
+ have pushed a fix
+ [2]
+                          <a class="exlink mklink" href="https://github.com/hunterhacker/jdom/commit/7d009dea5c1bf3c2c450bb6f4ded551610b7039b" rel="nofollow">
+                            https://github.com/hunterhacker/jdom/commit/7d009dea5c1bf3c2c450bb6f4ded551610b7039b
+                          </a>
+                          
+ for this issue up to github. I will release 2.0.6 in about two weeks, unless
+ something else comes up first (this is a 'normal' process for JDOM - to delay
+ a release to see if anything else is found first).
+
+
+                        </p>
+                        <p>
+                           Feel free to pull/build the code yourself (pull branch 2.0.x) in the mean
+ time, or to work around the problem. If you want, I can e-mail you a hot-fix
+ jar for JDOM that would contain the fix.
+
+
+                        </p>
+                        <p>
+                           Rolf
+
+
+                        </p>
+                        <p>
+                           On 08/06/2013 11:02 AM, Rolf Lear wrote:
+
+
+                        </p>
+                        <p>
+                             Hi Wayne.
+
+
+                        </p>
+                        <p>
+                             This is a bug.... thanks. The clone() method of the default (Jaxen)
+   implementation does not do a correct clone().
+
+
+                        </p>
+                        <p>
+                             Technically, the Jaxen API requires a Variable 'context', and while the
+   clone() operation successfully duplicates the variable context, and querying
+   the JDOM wrapper for variable values successfully returns the correct data
+   (different sets of variables for the original and the clone), the actual
+   Jaxen API is *always* given the context from the original instance. The JDOM
+   test cases made sure that the right values were set in the new instance, and
+   that they were independant of the original instance, but did not run through
+   the Jaxen code that had the wrong instance....
+
+
+                        </p>
+                        <p>
+                             I will fix this asap.
+
+
+                        </p>
+                        <p>
+                             If you want a workaround.... it seems that a thread-local is a good option:
+
+
+                        </p>
+                        <p>
+                                 private static final ThreadLocal&lt;Map&lt;String,XPathExpression&lt;Element&gt;&gt;&gt;
+   tl_pathMap =
+               new ThreadLocal&lt;Map&lt;String,XPathExpression&lt;Element&gt;&gt;&gt;() {
+           protected Map&lt;String,org.jdom2.xpath.XPathExpression&lt;Element&gt;&gt;
+   initialValue() {
+               XPathFactory fac = XPathFactory.instance();
+               HashMap&lt;String,org.jdom2.xpath.XPathExpression&lt;Element&gt;&gt; init =
+   new HashMap&lt;String, XPathExpression&lt;Element&gt;&gt;();
+               init.put("method_a", fac.compile(....));
+               ......
+               return init;
+           }
+       };
+
+
+                        </p>
+                        <p>
+                             then you can use it with:
+
+
+                        </p>
+                        <p>
+                                                     XPathExpression&lt;Element&gt; xPath =
+   tl_pathMap.get().get(method);
+
+
+                        </p>
+                        <p>
+                                                     xPath.setVariable("variable", namespace, "fString");
+
+
+                        </p>
+                        <p>
+                                                     List&lt;Element&gt; elems =
+   xPath.evaluate(model.asDocument());
+
+
+                        </p>
+                        <p>
+                             Rolf
+
+
+                        </p>
+                        <p>
+                             On 07/06/2013 2:35 PM, Keeney, Wayne wrote:
+
+
+                        </p>
+                        <p>
+                               Here's hoping this question gets to the right place.
+
+
+                        </p>
+                        <p>
+                               We are using JDOM2 (2.0.3) and it's my understanding that instances of
+     XPathExpression are not thread safe.  We were using clone as a (hopefully)
+     more efficient method of getting our "own" instance of a pre compiled
+     XPathExpression safe from other thread access.  This is not my main
+     question, but is it more efficient?
+
+
+                        </p>
+                        <p>
+                               My main question has to do with setting variables on the XPathExpression.
+     I could not get the variable setting to work on a cloned copy of an
+     XPathExpression, but it works if I set the variable before cloning.  The
+     problem with this, is of course, thread safety.
+
+
+                        </p>
+                        <p>
+                               Is this a known bug, maybe fixed?
+
+
+                        </p>
+                        <p>
+                               This works (but opens an opportunity for threading problems since we're
+     using precompiled static instances):
+
+
+                        </p>
+                        <p>
+                                                       XPathExpression&lt;Element&gt; xPath =
+     pathMap.get(method);
+
+
+                        </p>
+                        <p>
+                                                       xPath.setVariable("variable", namespace,
+     "fString");
+
+
+                        </p>
+                        <p>
+                                                       List&lt;Element&gt; elems =
+     xPath.clone().evaluate(model.asDocument());
+
+
+                        </p>
+                        <p>
+                               But this doesn't work, it doesn't seem to recognize the variable
+     replacement:
+
+
+                        </p>
+                        <p>
+                                                       XPathExpression&lt;Element&gt; xPath =
+     pathMap.get(method).clone();
+
+
+                        </p>
+                        <p>
+                                                       xPath.setVariable("variable", namespace,
+     "fString");
+
+
+                        </p>
+                        <p>
+                                                       List&lt;Element&gt; elems =
+     xPath.evaluate(model.asDocument());
+
+
+                        </p>
+                        <p>
+                               pathmap is just a map of precompiled XPathExpressions.
+
+
+                        </p>
+                        <p>
+                               Thanks,
+
+
+                        </p>
+                        <p>
+                               Wayne Keeney
+
+
+                        </p>
+                        <p>
+                               SAT Services
+
+
+                        </p>
+                        <p>
+                           _______________________________________________
+ To control your jdom-interest membership:
+ [3]http://www.jdom.org/mailman/options/jdom-interest/
+                          <span>
+                            your
+                            <a class="email mklink">
+                              ...
+                            </a>
+                            @yourhost.com
+                          </span>
+                        </p>
+                        <p>
+                           _______________________________________________
+ To control your jdom-interest membership:
+ [4]http://www.jdom.org/mailman/options/jdom-interest/
+                          <span>
+                            your
+                            <a class="email mklink">
+                              ...
+                            </a>
+                            @yourhost.com
+                          </span>
+                        </p>
+                        <p>
+                          References
+
+
+                        </p>
+                        <p>
+                             Visible links
+   1. 
+                          <a class="exlink mklink" href="https://github.com/hunterhacker/jdom/issues/120" rel="nofollow">
+                            https://github.com/hunterhacker/jdom/issues/120
+                          </a>
+                          
+   2.
+                          <br/>
+                          <a class="exlink mklink" href="https://github.com/hunterhacker/jdom/commit/7d009dea5c1bf3c2c450bb6f4ded551610b7039b" rel="nofollow">
+                            https://github.com/hunterhacker/jdom/commit/7d009dea5c1bf3c2c450bb6f4ded551610b7039b
+                          </a>
+                          
+   3. http://www.jdom.org/mailman/options/jdom-interest/
+                          <span>
+                            your
+                            <a class="email mklink">
+                              ...
+                            </a>
+                            @yourhost.com
+                          </span>
+                          
+   4. http://www.jdom.org/mailman/options/jdom-interest/
+                          <span>
+                            your
+                            <a class="email mklink">
+                              ...
+                            </a>
+                            @yourhost.com
+                          </span>
+                        </p>
+                        <div class="footer list-management">
+                          <p>
+                            _______________________________________________
+To control your jdom-interest membership:
+http://www.jdom.org/mailman/options/jdom-interest/
+                            <span>
+                              your
+                              <a class="email mklink">
+                                ...
+                              </a>
+                              @yourhost.com
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="sidebarcol" style="width:0">
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <span id="copy">
+          <span style="display: none">
+            Mon 09:36:46 | cache-1.a | 0.03 seconds |
+          </span>
+           
+						© 2007-2011 MarkLogic Corporation. All rights reserved.
+					
+        </span>
+        <span id="links">
+          <span>
+            <a href="http://markmail.org/">
+              Home
+            </a>
+             |
+		
+            <a href="/">
+              jdom Home
+            </a>
+             | 
+            <a href="http://markmail.org/browse">
+              Browse
+            </a>
+             |
+		
+            <span>
+              <a href="/docs/faq.xqy">
+                FAQ
+              </a>
+               |
+				
+              <a href="/docs/advertising.xqy">
+                Advertising
+              </a>
+               |
+				
+              <a href="http://markmail.blogspot.com/">
+                Blog
+              </a>
+               |
+				
+              <a href="/docs/feedback.xqy">
+                Feedback
+              </a>
+               |
+				
+              <a href="/docs/terms-of-use.xqy">
+                MarkMail™ Legalese
+              </a>
+               |
+			
+            </span>
+            <a href="http://www.marklogic.com/products/mmoverview.html">
+              About MarkLogic Server
+            </a>
+          </span>
+        </span>
+      </div>
+      <script type="text/javascript">
+//<![CDATA[
+var MochiKit = {__export__: false};
+//]]>
+      </script>
+      <script src="http://markmail.org/js/mk_1327703363.js" type="text/javascript">
+//<![CDATA[
+ 
+//]]>
+      </script>
+      <script src="http://markmail.org/js/base_1327703363.js" type="text/javascript">
+//<![CDATA[
+ 
+//]]>
+      </script>
+      <script type="text/javascript">
+//<![CDATA[
+mm.version = "1327703363"
+//]]>
+      </script>
+      <script type="text/javascript">
+//<![CDATA[
+mm.isLoggedIn = false
+//]]>
+      </script>
+      <script src="http://markmail.org/js/rsh_1327703363.js" type="text/javascript">
+//<![CDATA[
+ 
+//]]>
+      </script>
+      <script src="http://markmail.org/js/so_1327703363.js" type="text/javascript">
+//<![CDATA[
+ 
+//]]>
+      </script>
+      <script src="http://markmail.org/js/canvas_1327703363.js" type="text/javascript">
+//<![CDATA[
+ 
+//]]>
+      </script>
+      <script src="http://markmail.org/js/attachment_1327703363.js" type="text/javascript">
+//<![CDATA[
+ 
+//]]>
+      </script>
+      <script src="http://markmail.org/js/DragAndDrop_1327703363.js" type="text/javascript">
+//<![CDATA[
+ 
+//]]>
+      </script>
+      <script type="text/javascript">
+//<![CDATA[
+
+					_gaq.push(['_trackEvent', "list", 'org.jdom.jdom-interest', 'viedqk3s6mn3x5th']);
+				
+//]]>
+      </script>
+    </div>
+  </body>
+</html>

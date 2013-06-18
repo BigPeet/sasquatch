@@ -37,12 +37,14 @@ public class EclipseListCrawlController extends SeleniumCrawlController {
 	public EclipseListCrawlController(String listName, int startYear, int endYear, int pages) {
 		super(listName, startYear, endYear);
 		this.pages = pages;
+		setParser(new EclipseListMailParser());
 		setCrawler(new EclipseListCrawler(listName, pages));
 	}
 	
 	public EclipseListCrawlController(String listName, int startYear, int endYear) {
 		super(listName, startYear, endYear);
 		this.pages = -1;
+		setParser(new EclipseListMailParser());
 		setCrawler(new EclipseListCrawler(listName, pages));
 	}
 }

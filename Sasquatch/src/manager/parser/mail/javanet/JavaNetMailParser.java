@@ -1,7 +1,15 @@
 package manager.parser.mail.javanet;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import org.htmlparser.Parser;
 import org.htmlparser.filters.HasAttributeFilter;
+import org.htmlparser.filters.TagNameFilter;
+import org.htmlparser.tags.Bullet;
 import org.htmlparser.tags.HeadingTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
@@ -16,6 +24,8 @@ public class JavaNetMailParser extends MailParser {
 	private static final String BODY_END = "<!--X-Body-of-Message-End-->";
 	private static final String BLOCKQUOUTE_OPENING = "<blockquote style=\"border-left: #5555EE solid 0.2em; margin: 0em; padding-left: 0.85em\">";
 	private static final String BLOCKQUOUTE_CLOSING = "</blockquote>";
+	private static final String DATE_START = "Date";
+	private static final String DATE_FORMAT = "EEE, dd MMM yyyy HH:mm:ss z";
 
 	private int openQuoteBlocks = 0;
 
@@ -36,7 +46,42 @@ public class JavaNetMailParser extends MailParser {
 		String header = getHeader(text);
 		String body = getBody(text);
 		body = parseBody(body);
-		return new Mail(header, body);
+		Date date = convertDate(getDate(text));
+		return new Mail(header, body, date);
+	}
+
+	private Date convertDate(String dateText) {
+		Date date = null;
+		if (!dateText.isEmpty()) {
+			try {
+				DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+				date = formatter.parse(dateText);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		return date;
+	}
+
+	private String getDate(String text) {
+		String date = "";
+		try {
+			Parser parser = new Parser(text);
+			TagNameFilter filter = new TagNameFilter("li");
+			NodeList list = parser.parse(filter);
+			for (int i = 0; i < list.size(); i++) {
+				Bullet b = (Bullet) list.elementAt(i);
+				String content = b.toPlainTextString();
+				content = content.replace("\n", "").trim();
+				if (content.startsWith(DATE_START)) {
+					date = content.substring(content.indexOf(":") + 2);
+					break;
+				}
+			}
+		} catch (ParserException e) {
+			e.printStackTrace();
+		} 
+		return date;
 	}
 
 	private String getBody(String text) {

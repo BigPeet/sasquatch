@@ -19,6 +19,7 @@ public class SFCrawlController extends SeleniumCrawlController {
 	
 	public SFCrawlController(String listName, int startYear, int endYear) {
 		super(listName, startYear, endYear);
+		setParser(new SFMailParser());
 		setCrawler(new SFCrawler(listName, startYear, endYear));
 	}
 }

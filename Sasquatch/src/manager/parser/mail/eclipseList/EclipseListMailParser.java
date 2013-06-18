@@ -1,7 +1,14 @@
 package manager.parser.mail.eclipseList;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import org.htmlparser.Parser;
 import org.htmlparser.filters.TagNameFilter;
+import org.htmlparser.tags.Bullet;
 import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
@@ -16,6 +23,8 @@ public class EclipseListMailParser extends MailParser {
 	private static final String BODY_END = "<!--X-Body-of-Message-End-->";
 	private static final String BLOCKQUOUTE_OPENING = "<blockquote class=\"gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\">";
 	private static final String BLOCKQUOUTE_CLOSING = "</blockquote>";
+	private static final String DATE_START = "Date                : ";
+	private static final String DATE_FORMAT = "EEE, dd MMM yyyy HH:mm:ss z";
 	
 	private int openQuoteBlocks = 0;
 	
@@ -33,15 +42,44 @@ public class EclipseListMailParser extends MailParser {
 
 	@Override
 	public Mail parseMail(String text) {
-		
 		String header = getHeader(text);
+		Date date = convertDate(getDateText(text));
 		String body = getBody(text);
 		body = parseBody(body);
-		return new Mail(header, body);
+		return new Mail(header, body, date);
+	}
+	
+	private String getDateText(String text) {
+		String date = "";
+		try {
+			Parser parser = new Parser(text);
+			TagNameFilter filter = new TagNameFilter("li");
+			NodeList list = parser.parse(filter);
+			for (int i = 0; i < list.size(); i++) {
+				Bullet b = (Bullet) list.elementAt(i);
+				String content = b.toPlainTextString().replace("\n", "").trim();
+				if (content.startsWith(DATE_START)) {
+					date = content.substring(DATE_START.length());
+				}
+			}
+		} catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+	
+	private Date convertDate(String dateText) {
+		Date date = null;
+		try {
+			DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+			date = formatter.parse(dateText);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
 	}
 
 	private String getBody(String text) {
-
 		String body = "";
 
 		int start = text.indexOf(BODY_START) + BODY_START.length();

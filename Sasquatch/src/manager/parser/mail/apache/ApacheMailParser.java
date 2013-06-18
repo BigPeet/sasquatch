@@ -1,10 +1,18 @@
 package manager.parser.mail.apache;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import manager.parser.mail.MailParser;
 import manager.systems.source.mail.LocalMailHandler;
 import manager.systems.source.mail.Mail;
 
 public class ApacheMailParser extends MailParser {
+	
+	private static final String DATE_FORMAT = "EEE, dd MMM yyyy HH:mm:ss z";
 
 	public ApacheMailParser() {
 
@@ -23,11 +31,25 @@ public class ApacheMailParser extends MailParser {
 	public Mail parseMail(String text) {
 		String header = "";
 		String body = "";
+		Date date = null;
 		String subject = getTagText(text, "subject");
 		header = subject;
 		String content = getTagText(text, "contents");
+		date= convertDate(getTagText(text, "date"));
 		body = parseBody(content);
-		return new Mail(header, body);
+		return new Mail(header, body, date);
+	}
+
+
+	private Date convertDate(String tagText) {
+		Date date = null;
+		try {
+			DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+			date = formatter.parse(tagText);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
 	}
 
 

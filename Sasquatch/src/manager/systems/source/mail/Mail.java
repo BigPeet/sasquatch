@@ -43,6 +43,10 @@ public class Mail extends Source {
 	public void setBody(String text) {
 		this.body = text;
 	}
+	
+	public Date getDate() {
+		return date;
+	}
 
 	/**
 	 * @return the header

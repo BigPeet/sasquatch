@@ -37,12 +37,14 @@ public class YahooCrawlController extends SeleniumCrawlController {
 	public YahooCrawlController(String listName, int startYear, int endYear, int pages) {
 		super(listName, startYear, endYear);
 		this.pages = pages;
+		setParser(new YahooMailParser());
 		setCrawler(new YahooCrawler(listName, pages));
 	}
 	
 	public YahooCrawlController(String listName, int startYear, int endYear) {
 		super(listName, startYear, endYear);
 		this.pages = -1;
+		setParser(new YahooMailParser());
 		setCrawler(new YahooCrawler(listName, pages));
 	}
 

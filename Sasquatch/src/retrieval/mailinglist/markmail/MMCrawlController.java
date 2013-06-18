@@ -37,12 +37,14 @@ public class MMCrawlController extends SeleniumCrawlController {
 	public MMCrawlController(String listName, int startYear, int endYear, int pages) {
 		super(listName, startYear, endYear);
 		this.pages = pages;
+		setParser(new MMMailParser());
 		setCrawler(new MMCrawler(listName, pages));
 	}
 	
 	public MMCrawlController(String listName, int startYear, int endYear) {
 		super(listName, startYear, endYear);
 		this.pages = -1;
+		setParser(new MMMailParser());
 		setCrawler(new MMCrawler(listName, pages));
 	}
 }

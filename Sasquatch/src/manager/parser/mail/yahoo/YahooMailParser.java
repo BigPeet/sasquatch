@@ -11,6 +11,7 @@ public class YahooMailParser extends MailParser {
 	private static final String BODY_START = "\n                <pre>";
 	private static final String BODY_END = "\n                </pre>";
 	private static final Object END_LINE = "[Non-text portions of this message have been removed]";
+	private boolean isFirst = true;
 	
 	public YahooMailParser() {
 
@@ -26,6 +27,10 @@ public class YahooMailParser extends MailParser {
 
 	@Override
 	public Mail parseMail(String text) {
+		if (isFirst  ) {
+			MailParser.write(text, "res/mails/tests/yahoo.txt");
+			isFirst = false;
+		}
 		String header = "";
 		String body = "";
 		header = getHeader(text);

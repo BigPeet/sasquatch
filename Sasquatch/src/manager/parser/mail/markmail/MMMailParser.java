@@ -1,21 +1,30 @@
 package manager.parser.mail.markmail;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.AndFilter;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.TagNameFilter;
-import org.htmlparser.tags.Div;
-import org.htmlparser.tags.LinkTag;
+import org.htmlparser.tags.TableColumn;
+import org.htmlparser.tags.TableHeader;
+import org.htmlparser.tags.TableRow;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
 import manager.parser.mail.MailParser;
-import manager.systems.source.Source;
 import manager.systems.source.mail.LocalMailHandler;
 import manager.systems.source.mail.Mail;
 
 public class MMMailParser extends MailParser {
+	
+	private static final String DATE_START = "Date:";
+	private static final String DATE_FORMAT = "MMM d, yyyy h:m:s aaa";
 
 	public MMMailParser() {
 
@@ -24,7 +33,7 @@ public class MMMailParser extends MailParser {
 	public MMMailParser(String path) {
 		super(path);
 	}
-	
+
 	public MMMailParser(LocalMailHandler handler) {
 		super(handler);
 	}
@@ -33,14 +42,49 @@ public class MMMailParser extends MailParser {
 	public Mail parseMail(String text) {
 		String header = "";
 		String body = "";
+		header = getHeader(text);
+		body = getBody(text);
+		Date date = convertDate(getDate(text));
+		return new Mail(header, body, date);
+	}
+
+	private Date convertDate(String dateText) {
+		Date date = null;
 		try {
-			Parser parser = new Parser(text);
-			header = getHeader(parser);
-			body = getBody(text);
-		} catch (ParserException e) {
+			DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+			date = formatter.parse(dateText);
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return new Mail(header, body);
+		return date;
+	}
+
+	private String getDate(String text) {
+		String date = "";
+		try {
+			Parser parser = new Parser(text);
+			TagNameFilter filter = new TagNameFilter("tr");
+			NodeList list = parser.parse(filter);
+			for (int i = 0; i < list.size(); i++) {
+				TableRow row = (TableRow) list.elementAt(i);
+				if (row.getStringText().contains(DATE_START)) {
+					NodeList headers = row.searchFor(TableHeader.class, false);
+					NodeList cols = row.searchFor(TableColumn.class, false);
+					if (headers.size() == 1 && cols.size() == 1) {
+						TableHeader header = (TableHeader) headers.elementAt(0);
+						TableColumn col = (TableColumn) cols.elementAt(0);
+						String headerText = header.getStringText().trim();
+						if (headerText.equals(DATE_START)) {
+							date = col.getStringText().trim() 	;
+						}
+					}
+				}
+			}
+
+		} catch (ParserException e) {
+			e.printStackTrace();
+		} 
+		return date;
 	}
 
 	private String getBody(String text) {
@@ -58,14 +102,14 @@ public class MMMailParser extends MailParser {
 		}
 		return body;
 	}
-	
+
 	private String parseBody(String text) {
 		String ret = "";
 		text = text.replace("<p>", "");
 		text = text.replace("</p>", "");
-		
+
 		//replace other html-tags like <a>
-		
+
 		text = text.trim();
 		String[] lines = text.split("\n");
 		for (String line : lines) {
@@ -85,17 +129,18 @@ public class MMMailParser extends MailParser {
 	}
 
 	private boolean isCode(String line) {
-//		boolean leadingSpaces = line.startsWith("   ");
+		//		boolean leadingSpaces = line.startsWith("   ");
 		line = line.trim();
 		return /*leadingSpaces ||*/ line.endsWith(";") || line.contains("{") || line.contains("}") || line.startsWith("&lt;");
 	}
 
-	private String getHeader(Parser parser) {
+	private String getHeader(String text) {
 		String header = "";
 		HasAttributeFilter attrFilter = new HasAttributeFilter("class", "subject");
 		TagNameFilter tagFilter = new TagNameFilter("a");
 		AndFilter filter = new AndFilter(attrFilter, tagFilter);
 		try {
+			Parser parser = new Parser(text);
 			NodeList list = parser.parse(filter);
 			Node node = list.elementAt(0);
 			header = node.toPlainTextString();

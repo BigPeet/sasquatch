@@ -1,8 +1,15 @@
 package manager.parser.mail.appleList;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import org.htmlparser.Parser;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.BodyTag;
+import org.htmlparser.tags.Bullet;
 import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
@@ -16,7 +23,11 @@ public class AppleListMailParser extends MailParser {
 	private static final String UNDERLINE = "\n<hr>\n";
 	private static final String BLOCKQUOUTE_OPENING = "<blockquote style=\"border-left: #5555EE solid 0.2em; margin: 0em; padding-left: 0.85em\">";
 	private static final String BLOCKQUOUTE_CLOSING = "</blockquote>";
-	private static final Object MAIL_END = "_______________________________________________";
+	private static final String MAIL_END = "_______________________________________________";
+	private static final String DATE_FORMAT = "EEE, dd MMM yyyy HH:mm:ss z";
+	private static final String DATE_START = "Date: ";
+	
+	
 	private int openQuoteBlocks = 0;
 	
 	public AppleListMailParser() {
@@ -36,12 +47,45 @@ public class AppleListMailParser extends MailParser {
 	public Mail parseMail(String text) {
 		String header = getHeader(text);
 		String body = getBody(text);
+		Date date = convertDate(getDate(text));
 		body = parseBody(body);
-		System.out.println(header);
-		System.out.println(body);
-		return new Mail(header, body);
+		return new Mail(header, body, date);
 	}
 	
+	private Date convertDate(String dateText) {
+		Date date = null;
+		try {
+			DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+			date = formatter.parse(dateText);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+
+
+	private String getDate(String text) {
+		String date = "";
+		try {
+			Parser parser = new Parser(text);
+			TagNameFilter filter = new TagNameFilter("li");
+			NodeList list = parser.parse(filter);
+			for (int i = 0; i < list.size(); i++) {
+				Bullet b = (Bullet) list.elementAt(i);
+				String content = b.getStringText();
+				if (content.startsWith(DATE_START)) {
+					date = content.substring(DATE_START.length());
+					break;
+				}
+			}
+			
+		} catch (ParserException e) {
+			e.printStackTrace();
+		} 
+		return date;
+	}
+
+
 	private String parseBody(String text) {
 		openQuoteBlocks = 0;
 		String ret = "";

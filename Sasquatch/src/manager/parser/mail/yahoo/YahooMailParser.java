@@ -1,5 +1,11 @@
 package manager.parser.mail.yahoo;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import manager.parser.mail.MailParser;
 import manager.systems.source.mail.LocalMailHandler;
 import manager.systems.source.mail.Mail;
@@ -10,8 +16,10 @@ public class YahooMailParser extends MailParser {
 	private static final String HEADER_END_ALT = "\n    </a>";
 	private static final String BODY_START = "\n                <pre>";
 	private static final String BODY_END = "\n                </pre>";
-	private static final Object END_LINE = "[Non-text portions of this message have been removed]";
-	private boolean isFirst = true;
+	private static final String END_LINE = "[Non-text portions of this message have been removed]";
+	private static final String TAG = "<span class=\"smalltype\">";
+	private static final String DATE_START = "Date:";
+	private static final String DATE_FORMAT = "EEE MMM dd, yyyy hh:mm a";
 	
 	public YahooMailParser() {
 
@@ -27,16 +35,47 @@ public class YahooMailParser extends MailParser {
 
 	@Override
 	public Mail parseMail(String text) {
-		if (isFirst  ) {
-			MailParser.write(text, "res/mails/tests/yahoo.txt");
-			isFirst = false;
-		}
 		String header = "";
 		String body = "";
 		header = getHeader(text);
 		body = getBody(text);
 		body = parseBody(body);
-		return new Mail(header, body);
+		Date date = convertDate(getDateText(text));
+		return new Mail(header, body, date);
+	}
+
+	private Date convertDate(String dateText) {
+		Date date = null;
+		if (!dateText.isEmpty()) {
+			dateText = dateText.replace(" ", " ");
+			try {
+				DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+				date = formatter.parse(dateText);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		return date;
+	}
+
+	private String getDateText(String text) {
+		String date = "";
+		
+		int first = text.indexOf(TAG);
+		if (first != -1) {
+			int start = text.indexOf(TAG, first + TAG.length());
+			if (start != -1) {
+				int end = text.indexOf(TAG, start + TAG.length());
+				text = text.substring(start + TAG.length(), end);
+				if (text.contains(DATE_START)) {
+					String[] lines = text.split("\n");
+					if (lines.length == 9 && lines[2].trim().equals(DATE_START)) {
+						date = lines[6].trim();
+					}
+				}
+			}
+		}
+		return date;
 	}
 
 	private String parseBody(String text) {

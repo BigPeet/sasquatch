@@ -33,7 +33,7 @@ Wed Jun 22, 2011 11:20 pm
                   </a>
                 </span>
                 <br/>
-                <a href="/group/easymock/post?postID=mFlptl5Eg7E6rRzAJkYBLAWkaueT7FJ-j2Sf_Z4G0s5wjMZ0V91uylMFXhP6nu11EDSw64Tpv_JxHW1ZD2KlP7ElvtzCCUQmP7m0FuAj-lYbywE" class="smalltype ygrp-nowrap" title="Send Email">
+                <a href="/group/easymock/post?postID=dgyS4Lj9DpEnpGEgasBrIIQlgY7Xf4IjImjDEwC6hhbEqTwel9BoDU8YzpTpaCuOqawObVl0pc5yalA1BdxrRCSeIyLAtaLsgjB7_3HRQ0Yh" class="smalltype ygrp-nowrap" title="Send Email">
                   <img src="http://l.yimg.com/kq/static/images/yg/img/ui/sendemail.gif" width="12" height="12" alt="Send Email"/>
                    Send Email
                 </a>

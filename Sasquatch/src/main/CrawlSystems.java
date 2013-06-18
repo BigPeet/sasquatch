@@ -1,6 +1,7 @@
 package main;
 
 import java.io.File;
+import java.util.Date;
 
 import retrieval.interfaces.ICrawlController;
 import retrieval.mailinglist.apache.ApacheCrawlController;
@@ -40,7 +41,7 @@ public class CrawlSystems {
 	private static SoftwareSystem glassFishUsers = new SoftwareSystem("glassfish", "glassfish/lists/users", 2005, 2013, Archive.JAVANET);
 	private static SoftwareSystem resinUsers = new SoftwareSystem("resin", "resin-interest@caucho.com", 2008, 2013, Archive.MAIL_ARCHIVE);
 
-	private static SoftwareSystem[] userSystems = {httpClientUsers, log4jUsers, httpClientUsers, htmlparserUsers,
+	private static SoftwareSystem[] userSystems = {/*httpClientUsers, log4jUsers, httpClientUsers,*/ htmlparserUsers,
 		htmlunitUsers, httpunitUsers, jettyUsers, tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
 		nekohtmlUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers};
 
@@ -79,9 +80,16 @@ public class CrawlSystems {
 	 */
 	public static void main(String[] args) {
 		
+
+		Date start = new Date();
+//		SoftwareSystem test = new SoftwareSystem("httpclient", "hc-httpclient-users", 2004, 2013, Archive.APACHE);
+//		crawlSystem(test, new LocalMailHandler(new File("res/mails/" + test.getName() + ".xml")));
 		crawlUserSystems();
 		crawlDevSystems();
 		crawlUndefinedSystems();
+		Date end = new Date();
+		long millis = (end.getTime() - start.getTime()) / (60 * 1000);
+		System.out.println("Crawling finished after : " + millis + " min.");
 
 	}
 
@@ -102,9 +110,9 @@ public class CrawlSystems {
 	private static void crawlSystem(SoftwareSystem s, LocalMailHandler handler) {
 		s.setHandler(getWebMailHandler(s));
 		Source[] sources = s.getSources();
-		for (Source source : sources) {
-			handler.addSource(source);
-		}
+		System.out.printf("System %s crawled. %d Results. ", s.getName(), s.getSources().length);
+		handler.addSources(sources);
+		System.out.printf("Written on File.\n");
 	}
 
 	private static void crawlUserSystems() {

@@ -52,7 +52,7 @@ public class SoftwareSystem {
 	public Source[] getSources() {
 		if (sources == null && handler != null) {
 			sources = handler.getSources();
-		} else {
+		} else if (sources == null){
 			return new Source[0];
 		}
 		return sources;

@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>Re: CGImageCreateWithImageInRect() performance</title>
+<link rev="made" href="mailto:email@hidden">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<table border="0" CELLSPACING="2" WIDTH="100%">
+<tr><td align="right" valign="top" width="25%" BGCOLOR="#CCCCCC">
+<FONT SIZE="-1">
+[<a href="msg00060.html">Date Prev</a>][<a href="msg00062.html">Date Next</a>][<a href="msg00059.html">Thread Prev</a>][<a href="msg00062.html">Thread Next</a>][<A
+HREF="index.html#00061">Date Index</A>][<A
+HREF="threads.html#00061">Thread Index</A>]
+</FONT>
+</TD></TR>
+</TABLE>
+
+<h1>Re: CGImageCreateWithImageInRect() performance</h1>
+<hr>
+<ul>
+<li><b>Subject</b>: <b>Re: CGImageCreateWithImageInRect() performance</b></li>
+<li>From: David Duncan &lt;<a href="mailto:email@hidden">email@hidden</a>&gt;</li>
+<li>Date: Sun, 31 May 2009 12:41:19 -0700</li>
+<li>Delivered-to: email@hidden</li>
+<li>Delivered-to: email@hidden</li>
+</ul>
+<hr>
+<pre style="margin: 0em;">On May 31, 2009, at 12:04 PM, Hamish Allan wrote:</pre><br>
+<blockquote style="border-left: #5555EE solid 0.2em; margin: 0em; padding-left: 0.85em"><pre style="margin: 0em;">I am doing the former. I've looked at CATiledLayer previously, but I
+haven't really got my head around it.
+</pre></blockquote><tt><br>Tiled Layers are intended to be simple in the case where you just
+substitute CALayer for CATiledLayer and use either subclassing or
+delegation to draw. If you are doing either, then it is really just as
+simple as drawing the same content every time you are asked. For an
+example, see the CALayerEssentials sample at &lt;<a  href="http://developer.apple.com/samplecode/CALayerEssentials/index.html">http://developer.apple.com/samplecode/CALayerEssentials/index.html</a>
+&gt;</tt><br>
+<br>
+<blockquote style="border-left: #5555EE solid 0.2em; margin: 0em; padding-left: 0.85em"><pre style="margin: 0em;">(though UIScrollView
+seems to make the whole thing more complicated than it needs to be by
+altering the private zoomScale property of the scroll view's zoom
+content view, which alters the transform of its layer -- maybe I'm
+missing something?)
+</pre></blockquote><tt><br>There are basically two ways to zoom content, you can either resize
+the content to draw into the same area, or resize the content that is
+already contains. UIScrollView takes the latter approach, with enough
+hooks to know the zoom scale, which allows you to get away with
+certain things as long as your content is small enough (for example,
+if you had a small and large version of the image, you could watch the
+zoom scale and replace the small with the large or vice versa and the
+scaling should just work).</tt><br>
+<br>
+<blockquote style="border-left: #5555EE solid 0.2em; margin: 0em; padding-left: 0.85em"><pre style="margin: 0em;">However, for an image larger than the capacity of a single layer it
+seems natural to use tiled sublayers.
+</pre></blockquote><tt><br>And in many cases that is a good solution, but you want to only use as
+many layers as will fill the screen, as otherwise all those layers are
+going to consume a considerable amount of memory. Additionally, you
+may find that performance is less than you desire if you simply send a
+huge amount of image data that is meant to be rendered into a small
+area. This is one area where the tiled layer allows you to easily
+avoid the problem by creating multiple resolutions of data.</tt><br>
+<br>
+<blockquote style="border-left: #5555EE solid 0.2em; margin: 0em; padding-left: 0.85em"><pre style="margin: 0em;">At the end of the day, now that I'm only causing the JPEG to be
+decoded once, I can't see how less work could be required of Core
+Animation. I'm slicing the image into pieces the same size as or less
+than the maximum texture size of the iPhone's GPU, and setting each
+tile layer's contents exactly once, so each pixel of the original
+image should only ever be copied to the GPU once.
+</pre></blockquote><tt><br>The problem is twofold. One is that you are slicing these images up in
+a way that is likely to require a second copy. The second is that you
+are working with 27MB of image content, and trying to cram it into a
+320x480 area. That is simply not going to be fast.</tt><br>
+<br>
+<tt>The tiled layer offers you a way to at least amortize the slicing
+issue, as it will allow you to leverage Quartz to do the slicing
+(although if you preslice the images, then Quartz will have even less
+to do) and it will do so on a background thread allowing your UI to
+remain responsive.</tt><br>
+<br>
+<tt>If you are going to decompress the image when you get it, then you
+should slice the image into the mapped file, rather than saving the
+image data in its original organization. But this is perhaps an
+optimization to make after you've determined that the copying is a big
+enough hit.</tt><br>
+<br>
+<blockquote style="border-left: #5555EE solid 0.2em; margin: 0em; padding-left: 0.85em"><blockquote style="border-left: #5555EE solid 0.2em; margin: 0em; padding-left: 0.85em"><tt>That said, without seeing a<br>
+sampler trace or other performance metrics than just how long your
+content<br>
+is taking to setup makes it harder to understand what might be
+going wrong.
+</tt></blockquote><tt><br>I'll try again to get a Shark analysis with more than just &quot;Unknown
+Library&quot;!
+</tt></blockquote><pre style="margin: 0em;"><br></pre><br>
+<pre style="margin: 0em;">Try the Instruments Sampler tool as well.
+--
+David Duncan
+Apple DTS Animation and Printing</pre><br>
+<pre style="margin: 0em;">_______________________________________________
+Do not post admin requests to the list. They will be ignored.
+Quartz-dev mailing list      (email@hidden)
+Help/Unsubscribe/Update your Subscription:
+<tt>This email sent to email@hidden
+</tt>
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00062" href="msg00062.html">Re: CGImageCreateWithImageInRect() performance</a></strong>
+<ul><li><em>From:</em> Hamish Allan &lt;email@hidden&gt;</li></ul></li>
+</ul></li></ul>
+<TABLE WIDTH="100%" BORDER="0">
+<TR><TD><B>References:</B></TD><TD>&nbsp;</TD></TR>
+<TR><TD>&nbsp;</TD><TD>><B><a name="00053" href="msg00053.html">CGImageCreateWithImageInRect() performance</a></B> (From: Hamish Allan &lt;email@hidden&gt;)</TD></TR>
+<TR><TD>&nbsp;</TD><TD>><B><a name="00055" href="msg00055.html">Re: CGImageCreateWithImageInRect() performance</a></B> (From: Dave Camp &lt;email@hidden&gt;)</TD></TR>
+<TR><TD>&nbsp;</TD><TD>><B><a name="00056" href="msg00056.html">Re: CGImageCreateWithImageInRect() performance</a></B> (From: Hamish Allan &lt;email@hidden&gt;)</TD></TR>
+<TR><TD>&nbsp;</TD><TD>><B><a name="00057" href="msg00057.html">Re: CGImageCreateWithImageInRect() performance</a></B> (From: David Duncan &lt;email@hidden&gt;)</TD></TR>
+<TR><TD>&nbsp;</TD><TD>><B><a name="00059" href="msg00059.html">Re: CGImageCreateWithImageInRect() performance</a></B> (From: Hamish Allan &lt;email@hidden&gt;)</TD></TR>
+</TABLE>
+<BR>
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00060.html">Re: CGImageCreateWithImageInRect() performance</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00062.html">Re: CGImageCreateWithImageInRect() performance</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00059.html">Re: CGImageCreateWithImageInRect() performance</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00062.html">Re: CGImageCreateWithImageInRect() performance</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="index.html#00061"><strong>Date</strong></a></li>
+<li><a href="threads.html#00061"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>
+
+
+<!-- BEGIN MAILING LISTS FOOTER -->
+<center>
+<br>
+<table width="680" border="0" cellpadding="0" cellspacing="0" id="nav">
+  <tr align="center" valign="middle">
+   <td nowrap id="one"><a href="http://lists.apple.com">Home</a></td>
+   <td nowrap id="two"><a href="http://lists.apple.com/archives/">Archives</a></td>
+   <td nowrap id="four"><a href="http://lists.apple.com/tc.html">Terms/Conditions</a></td>
+   <td nowrap id="five"><a href="http://lists.apple.com/contact.html">Contact</a></td>
+   <td nowrap id="six"><a href="http://rss.lists.apple.com">RSS</a></td>
+   <td nowrap id="seven"><a href="http://lists.apple.com/mailman/listinfo">Lists</a></td>
+   <td nowrap id="eight"><a href="http://lists.apple.com/about.html">About</a></td>
+ </tr>
+</table>
+
+<!-- COPYRIGHT INFORMATION -->
+<br>
+<font size="1" COLOR="black">
+<p>Visit the Apple Store <a href="http://www.apple.com/store/">online</a> or at <a href="http://www.apple.com/retail/">retail</a> locations.<br>
+1-800-MY-APPLE</p>
+<p><a href="http://www.apple.com/contact/">Contact Apple</a>&nbsp;|&nbsp;<a href="http://www.apple.com/legal/">Terms of Use</a>&nbsp;|&nbsp;<a href="http
+://www.apple.com/legal/privacy/">Privacy Policy</a></p>
+<p class="sosumi">Copyright &copy; 2011 Apple Inc. All rights reserved.</p>
+</div>
+</font>
+</center>
+<!-- END COPYRIGHT INFORMATION -->
+

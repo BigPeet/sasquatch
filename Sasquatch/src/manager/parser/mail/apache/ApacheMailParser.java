@@ -18,7 +18,6 @@ public class ApacheMailParser extends MailParser {
 
 	}
 
-
 	public ApacheMailParser(String path) {
 		super(path);
 	}
@@ -35,7 +34,8 @@ public class ApacheMailParser extends MailParser {
 		String subject = getTagText(text, "subject");
 		header = subject;
 		String content = getTagText(text, "contents");
-		date= convertDate(getTagText(text, "date"));
+		String dateText = getTagText(text, "date");
+		date= convertDate(dateText);
 		body = parseBody(content);
 		return new Mail(header, body, date);
 	}
@@ -43,11 +43,13 @@ public class ApacheMailParser extends MailParser {
 
 	private Date convertDate(String tagText) {
 		Date date = null;
-		try {
-			DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
-			date = formatter.parse(tagText);
-		} catch (ParseException e) {
-			e.printStackTrace();
+		if (!tagText.isEmpty()) {
+			try {
+				DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+				date = formatter.parse(tagText);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 		return date;
 	}

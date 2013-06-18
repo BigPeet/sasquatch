@@ -55,7 +55,12 @@ public class LocalMailHandler extends LocalSourceHandler {
 				mail = new Element("mail");
 				mail.addContent(new Element("header").setText(m.getHeader()));
 				//maybe define the format for the string representation here.
-				mail.addContent(new Element("date").setText(m.getDate().toString()));
+				//Dont add "empty Mails"
+				String date = "";
+				if (m.getDate() != null) {
+					date = m.getDate().toString();
+				}
+				mail.addContent(new Element("date").setText(date));
 				mail.addContent(new Element("body").setText(m.getBody()));
 				root.addContent(mail);
 			}  catch (org.jdom.IllegalDataException e) {
@@ -66,6 +71,32 @@ public class LocalMailHandler extends LocalSourceHandler {
 			}
 		}
 
+	}
+	
+	public void addMails(Mail[] mails) {
+		Document doc = getDocument(target);
+		if (doc != null) {
+			Element root = doc.getRootElement();
+			Element mail = null;
+			try {
+				for (Mail m : mails) {
+					mail = new Element("mail");
+					mail.addContent(new Element("header").setText(m.getHeader()));
+					//maybe define the format for the string representation here.
+					//Dont add "empty Mails"
+					String date = "";
+					if (m.getDate() != null) {
+						date = m.getDate().toString();
+					}
+					mail.addContent(new Element("date").setText(date));
+					mail.addContent(new Element("body").setText(m.getBody()));
+					root.addContent(mail);
+				}
+			}  catch (org.jdom.IllegalDataException e) {
+				mail = null;
+			}
+			writeDocument(doc, target);
+		}
 	}
 	
 	private void createEmptyFile(File f) {
@@ -158,6 +189,13 @@ public class LocalMailHandler extends LocalSourceHandler {
 	public void addSource(Source s) {
 		if (s instanceof Mail) {
 			addMail((Mail) s);
+		}
+	}
+
+	@Override
+	public void addSources(Source[] sources) {
+		if (sources instanceof Mail[]) {
+			addMails((Mail[])sources);
 		}
 	}
 

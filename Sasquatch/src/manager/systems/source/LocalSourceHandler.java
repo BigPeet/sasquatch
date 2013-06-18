@@ -4,4 +4,5 @@ public abstract class LocalSourceHandler extends SourceHandler {
 
 	public abstract void clear();
 	public abstract void addSource(Source s);
+	public abstract void addSources(Source[] sources);
 }

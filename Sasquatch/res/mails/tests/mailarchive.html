@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en">
+  <head>
+    <title>
+      Re: [Resin-interest] Up-to-date remote deploy strategy
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="contents" href="index.html#05704"/>
+    <link rel="index" href="maillist.html#05704"/>
+    <link rel="prev" href="msg05703.html"/>
+    <link rel="next" href="msg05705.html"/>
+    <link rel="alternate" title="resin-interest RSS" href="#" type="application/rss+xml"/>
+    <link rel="canonical" href="http://www.mail-archive.com/resin-interest@caucho.com/msg05704.html"/>
+    <link rel="stylesheet" href="/normalize.css" media="screen"/>
+    <link rel="stylesheet" href="/master.css" media="screen"/>
+    <!--[if lt IE 9]>
+<link rel="stylesheet" href="/ie.css" media="screen">
+<![endif]-->  </head>
+  <body>
+    <div class="container">
+      <div class="skipLink">
+        <a href="#nav">
+          Skip to site navigation (Press enter)
+        </a>
+      </div>
+      <div class="content" role="main">
+        <div class="msgHead">
+          <h1>
+            <span class="subject">
+              <a href="/search?l=resin-interest@caucho.com&amp;q=subject:%22Re%3A+%5BResin-interest%5D+Up-to-date+remote+deploy+strategy%22" rel="nofollow">
+                Re: [Resin-interest] Up-to-date remote deploy strategy
+              </a>
+            </span>
+          </h1>
+          <p class="darkgray font13">
+            <span class="sender pipe">
+              <a href="/search?l=resin-interest@caucho.com&amp;q=from:%22Scott+Ferguson%22" rel="nofollow">
+                Scott Ferguson
+              </a>
+            </span>
+            <span class="date">
+              <a href="/search?l=resin-interest@caucho.com&amp;q=date:20120921" rel="nofollow">
+                Fri, 21 Sep 2012 10:37:57 -0700
+              </a>
+            </span>
+          </p>
+        </div>
+        <div class="msgBody">
+          <!--X-Body-of-Message-->          <pre>
+            On 09/20/2012 01:33 AM, Mattias Jiderhamn wrote:
+&gt; What is the current recommended approach for remote deploying from
+&gt; Hudson/Jenkins to recent Resin versions (4.0.29+)?
+&gt; It looks like the resin-maven-plugin [1] (which may have been
+&gt; preferable) has been abandoned? Latest version is 4.0.17 and does not
+&gt; seem to be working.
+&gt; Is command line deploy [2] the latest and greatest? What would be the
+&gt; recommended approach for invoking from Hudson/Jenkins?
+          </pre>
+          <pre>
+            
+
+Command line is the best. It's current and tested nightly as part of our 
+automated testing.
+
+The ant/maven was before we upgraded the CLI.
+
+&gt; exec-maven-plugin with exec:java or exec:exec?
+
+Probably exec. On our .deb and .rpm install "resinctl" is installed in 
+the normal search path, so exec would give the installed version.
+
+&gt; Is the same Resin version required on both machines?
+
+Yes, it's a good idea. We have upgraded the communication several times.
+
+-- Scott
+&gt;
+&gt; 1: 
+            <a rel="nofollow" href="http://caucho.com/resin-4.0/admin/deploy-ant-maven.xtp">
+              http://caucho.com/resin-4.0/admin/deploy-ant-maven.xtp
+            </a>
+            
+&gt; 2: 
+            <a rel="nofollow" href="http://caucho.com/resin-4.0/admin/deploy-command-line.xtp">
+              http://caucho.com/resin-4.0/admin/deploy-command-line.xtp
+            </a>
+            
+&gt;
+
+
+
+_______________________________________________
+resin-interest mailing list
+resin-interest@caucho.com
+
+            <a rel="nofollow" href="http://maillist.caucho.com/mailman/listinfo/resin-interest">
+              http://maillist.caucho.com/mailman/listinfo/resin-interest
+            </a>
+          </pre>
+        </div>
+        <div class="msgButtons margintopdouble">
+          <h2 class="hidden">
+            
+				Navigate to other messages
+
+          </h2>
+          <ul class="overflow">
+            <li class="msgButtonItems">
+              <a class="button buttonleft " accesskey="p" href="msg05703.html">
+                Previous message
+              </a>
+            </li>
+            <li class="msgButtonItems textaligncenter">
+              <a class="button" accesskey="c" href="index.html#05704">
+                View by thread
+              </a>
+            </li>
+            <li class="msgButtonItems textaligncenter">
+              <a class="button" accesskey="i" href="maillist.html#05704">
+                View by date
+              </a>
+            </li>
+            <li class="msgButtonItems textalignright">
+              <a class="button buttonright " accesskey="n" href="msg05705.html">
+                Next message
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a name="tslice"/>
+        <div class="tSliceLiset margintopdouble">
+          <h2 class="hidden">
+            
+				Navigate to other messages within this thread
+
+          </h2>
+          <ul class="icons monospace">
+            <li class="icons-email">
+              <span class="subject">
+                <a href="msg05703.html">
+                  [Resin-interest] Up-to-date remote deploy strategy
+                </a>
+              </span>
+              <span class="sender italic">
+                Mattias Jiderhamn
+              </span>
+            </li>
+            <li>
+              <ul>
+              </ul>
+            </li>
+            <li class="icons-email tSliceCur">
+              <span class="subject">
+                Re: [Resin-interest] Up-to-date remote deploy strat...
+              </span>
+              <span class="sender italic">
+                Scott Ferguson
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="overflow msgActions margintopdouble">
+          <div class="msgShare">
+            <h2>
+              
+					Share
+
+            </h2>
+            <iframe id="fblikeframe" src="http://www.facebook.com/plugins/like.php?app_id=247560681926847&amp;href=http%3A%2F%2Fwww.mail-archive.com%2Fresin-interest%40caucho.com%2Fmsg05704.html&amp;send=false&amp;layout=button_count&amp;action=recommend&amp;width=140&amp;show_faces=false&amp;colorscheme=light&amp;font&amp;height=21&amp;ref=fbliketop" style="border:none; overflow:hidden; width:140px; height:21px;">
+            </iframe>
+            <script type="text/javascript">
+//<![CDATA[
+document.getElementById('fblikeframe').allowTransparency = true;
+//]]>
+            </script>
+          </div>
+          <div class="msgReply">
+            <h2>
+              
+					Reply via email to
+
+            </h2>
+            <form method="POST" action="/mailto.php">
+              <input type="hidden" name="subject" value="Re: [Resin-interest] Up-to-date remote deploy strategy"/>
+              <input type="hidden" name="msgid" value="505CA5DC.7070104@caucho.com"/>
+              <input type="submit" value=" Scott Ferguson "/>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="aside" role="complementary">
+        <div class="logo">
+          <a href="/">
+            <img src="/logo.png" width="247" height="88" alt="The Mail Archive"/>
+          </a>
+        </div>
+        <form class="overflow" action="/search" method="get">
+          <input type="hidden" name="l" value="resin-interest@caucho.com"/>
+          <label class="hidden" for="q">
+            Search the site
+          </label>
+          <input class="submittext" type="text" id="q" name="q" placeholder="Search resin-interest"/>
+          <input class="submitbutton" name="submit" type="image" src="/submit.png" alt="Submit"/>
+        </form>
+        <div class="nav margintop" id="nav" role="navigation">
+          <h2 class="hidden">
+            
+				Site navigation
+
+          </h2>
+          <ul class="icons font16">
+            <li class="icons-home">
+              <a href="/">
+                The Mail Archive home
+              </a>
+            </li>
+            <li class="icons-list">
+              <a href="/resin-interest@caucho.com/">
+                resin-interest - all messages
+              </a>
+            </li>
+            <li class="icons-about">
+              <a href="/resin-interest@caucho.com/info.html">
+                resin-interest - about the list
+              </a>
+            </li>
+            <li class="icons-prev">
+              <a href="msg05703.html">
+                Previous message
+              </a>
+            </li>
+            <li class="icons-next">
+              <a href="msg05705.html">
+                Next message
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="listlogo margintopdouble">
+          <h2 class="hidden">
+            
+				Mail list logo
+
+          </h2>
+        </div>
+        <div class="bannertower margintopdouble">
+          <h2 class="hidden">
+            
+				Advertising banner
+
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="footer" role="contentinfo">
+      <h2 class="hidden">
+        
+		Footer information
+
+      </h2>
+      <ul>
+        <li>
+          <a href="/">
+            The Mail Archive home
+          </a>
+        </li>
+        <li>
+          <a href="/faq.html#newlist">
+            Add your mailing list
+          </a>
+        </li>
+        <li>
+          <a href="/faq.html">
+            FAQ
+          </a>
+        </li>
+        <li>
+          <a href="/faq.html#support">
+            Support
+          </a>
+        </li>
+        <li>
+          <a href="/faq.html#privacy">
+            Privacy
+          </a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

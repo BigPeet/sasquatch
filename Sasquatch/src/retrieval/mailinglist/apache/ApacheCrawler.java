@@ -7,6 +7,7 @@ import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.tags.TableColumn;
+import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 import retrieval.general.SeleniumCrawler;
@@ -17,6 +18,7 @@ public class ApacheCrawler extends SeleniumCrawler {
 	private static final String baseURL = "http://mail-archives.apache.org/mod_mbox/";
 	private static final String mailURL = ".mbox/thread?0";
 	private static final String mailView = ".mbox/ajax/";
+	private static final String NOT_FOUND = "404 Not Found";
 
 	private int start;
 	private int end;
@@ -32,12 +34,34 @@ public class ApacheCrawler extends SeleniumCrawler {
 	public void run() {
 		for (String link : getPageLinks()) {
 			getDriver().get(link);
-			for (String mailLink : getMailLinks(link, getDriver().getPageSource())) {
-				getDriver().get(mailLink);
-				String content = getDriver().getPageSource();
-				getStat().addData(content);
+			String page = getDriver().getPageSource();
+			if (!pageNotFound(page)) {
+				for (String mailLink : getMailLinks(link, page)) {
+					getDriver().get(mailLink);
+					String mailPage = getDriver().getPageSource();
+					if (!pageNotFound(mailPage)) {
+						getStat().addData(mailPage);
+					}
+				}
 			}
 		}
+	}
+
+	private boolean pageNotFound(String page) {
+		boolean wasNotFound = false;
+		try {
+			Parser parser = new Parser(page);
+			TagNameFilter tagFilter = new TagNameFilter("title");
+			NodeList list = parser.parse(tagFilter);
+			if (list.size() > 0) {
+				TitleTag titleTag = (TitleTag) list.elementAt(0);
+				String title = titleTag.getStringText().trim();
+				wasNotFound = title.equals(NOT_FOUND);
+			}
+		} catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return wasNotFound;
 	}
 
 	private String buildMonthLink(int year, int month) {

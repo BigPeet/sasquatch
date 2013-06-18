@@ -24,6 +24,7 @@ import manager.parser.mail.mailArchive.MailArchiveParser;
 import manager.parser.mail.markmail.MMMailParser;
 import manager.parser.mail.pipermail.PiperMailParser;
 import manager.parser.mail.sourceforge.SFMailParser;
+import manager.parser.mail.yahoo.YahooMailParser;
 
 public class CrawlTest {
 
@@ -32,17 +33,18 @@ public class CrawlTest {
 	 */
 	public static void main(String[] args) {
 		
-//		MailParser parser = new MailArchiveParser("res/mails/resin.xml");
-//		parser.parseMail(read("res/mails/tests/mailarchive.html"));
+		MailParser parser = new YahooMailParser("res/mails/easymockTEST.xml");
+//		parser.parseMail(read("res/mails/tests/yahoo.txt"));
 		
 //		ICrawlController httpClientControler = new ApacheCrawlController(parser, "hc-httpclient-users", 2013, 2013);
 //		
 //		httpClientControler.run();
 //		httpClientControler.saveData();
 //		
-//		ICrawlController easyMockController = new YahooCrawlController("easymock", 2013, 2013, 10);
-//		
-//		easyMockController.run();
+		ICrawlController easyMockController = new YahooCrawlController(parser, "easymock", 2013, 2013, 10);
+		
+		easyMockController.run();
+		easyMockController.saveData();
 //		
 //		ICrawlController htmlUnitController = new SFCrawlController(parser, "htmlunit-user", 2012, 2013);
 //		

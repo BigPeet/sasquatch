@@ -24,7 +24,7 @@ import manager.systems.source.mail.Mail;
 public class SFMailParser extends MailParser {
 
 	private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
-	private static final String DATE_SEPARATOR = " -	";
+	private static final String DATE_SEPARATOR = "&gt; -	";//" -	";
 	private static final String DATE_TAG = "small";
 	
 	public SFMailParser() {
@@ -44,17 +44,20 @@ public class SFMailParser extends MailParser {
 		String header = getHeader(text);
 		String body = getBody(text);
 		body = parseBody(body);
-		Date date = convertDate(getDate(text));
+		String dateText = getDate(text);
+		Date date = convertDate(dateText);
 		return new Mail(header, body, date);
 	}
 
 	private Date convertDate(String dateText) {
 		Date date = null;
-		try {
-			DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
-			date = formatter.parse(dateText);
-		} catch (ParseException e) {
-			e.printStackTrace();
+		if (!dateText.isEmpty() && dateText.length() <= DATE_FORMAT.length()) {
+			try {
+				DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+				date = formatter.parse(dateText);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 		return date;
 	}
@@ -72,7 +75,9 @@ public class SFMailParser extends MailParser {
 				String content = div.getStringText();
 				String smallTag = getTagText(DATE_TAG, content);
 				int separatorIndex = smallTag.indexOf(DATE_SEPARATOR);
-				date = smallTag.substring(separatorIndex + DATE_SEPARATOR.length()).trim();
+				if (separatorIndex != -1) {
+					date = smallTag.substring(separatorIndex + DATE_SEPARATOR.length()).trim();
+				}
 			}
 		} catch (ParserException e) {
 			e.printStackTrace();

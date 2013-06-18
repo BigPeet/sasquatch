@@ -70,11 +70,13 @@ public class EclipseListMailParser extends MailParser {
 	
 	private Date convertDate(String dateText) {
 		Date date = null;
-		try {
-			DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
-			date = formatter.parse(dateText);
-		} catch (ParseException e) {
-			e.printStackTrace();
+		if (!dateText.isEmpty()) {
+			try {
+				DateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
+				date = formatter.parse(dateText);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 		return date;
 	}

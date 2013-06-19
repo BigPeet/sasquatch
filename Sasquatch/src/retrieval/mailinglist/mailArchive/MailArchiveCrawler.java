@@ -8,6 +8,7 @@ import org.htmlparser.filters.AndFilter;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.LinkTag;
+import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
@@ -18,6 +19,7 @@ public class MailArchiveCrawler extends SeleniumCrawler {
 
 	private static final String baseURL = "http://www.mail-archive.com/";
 	private static final String indexURL = "/index.html";
+	private static final String NOT_FOUND = "The Mail Archive - Document Not Found";
 
 	private int pages;
 
@@ -38,8 +40,10 @@ public class MailArchiveCrawler extends SeleniumCrawler {
 			for (String link : mailForms) {
 				try {
 					getDriver().get(link);
-					String mailHtml = getDriver().getPageSource();
-					getStat().addData(mailHtml);
+					String mailPage = getDriver().getPageSource();
+					if (!pageNotFound(mailPage)) {
+						getStat().addData(mailPage);
+					}
 				} catch (org.openqa.selenium.WebDriverException e) {
 					//What to do?
 					System.out.println(link);
@@ -53,6 +57,23 @@ public class MailArchiveCrawler extends SeleniumCrawler {
 		}
 	}
 
+	private boolean pageNotFound(String page) {
+		boolean wasNotFound = false;
+		try {
+			Parser parser = new Parser(page);
+			TagNameFilter tagFilter = new TagNameFilter("title");
+			NodeList list = parser.parse(tagFilter);
+			if (list.size() > 0) {
+				TitleTag titleTag = (TitleTag) list.elementAt(0);
+				String title = titleTag.getStringText().trim();
+				wasNotFound = title.equals(NOT_FOUND);
+			}
+		} catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return wasNotFound;
+	}
+	
 	private boolean hasNextPage(String content) {
 		boolean hasNextPage = false;
 		try {

@@ -6,6 +6,7 @@ import org.htmlparser.Parser;
 import org.htmlparser.filters.AndFilter;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.TagNameFilter;
+import org.htmlparser.tags.Div;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.tags.TableRow;
 import org.htmlparser.util.NodeList;
@@ -19,6 +20,7 @@ public class JavaNetCrawler extends SeleniumCrawler {
 	private static final String baseURL = "https://java.net/projects/";
 	private static final String archiveURL = "/archive/";
 	private static final String mailURL = "/message/";
+	private static final String NOT_FOUND = "The mailing list users@jpa-spec.java.net does not have any messages in its archive.";
 	
 	private int start;
 	private int end;
@@ -37,10 +39,32 @@ public class JavaNetCrawler extends SeleniumCrawler {
 			getDriver().get(link);
 			for (String mailLink : getMailLinks(link, getDriver().getPageSource())) {
 				getDriver().get(mailLink);
-				String content = getDriver().getPageSource();
-				getStat().addData(content);
+				String mailPage = getDriver().getPageSource();
+				if (!pageNotFound(mailPage)) {
+					getStat().addData(mailPage);
+				}
 			}
 		}
+	}
+
+
+	private boolean pageNotFound(String mailPage) {
+		boolean wasNotFound = false;
+		try {
+			Parser parser = new Parser(mailPage);
+			TagNameFilter tagFilter = new TagNameFilter("div");
+			HasAttributeFilter classFilter = new HasAttributeFilter("class", "flash notice");
+			AndFilter filter = new AndFilter(tagFilter, classFilter);
+			NodeList list = parser.parse(filter);
+			if (list.size() > 0) {
+				Div divTag = (Div) list.elementAt(0);
+				String title = divTag.getStringText().trim();
+				wasNotFound = title.equals(NOT_FOUND);
+			}
+		} catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return wasNotFound;
 	}
 
 

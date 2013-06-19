@@ -4,7 +4,9 @@ package retrieval.mailinglist.markmail;
 import java.util.ArrayList;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.HasAttributeFilter;
+import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.Div;
+import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 import retrieval.general.SeleniumCrawler;
@@ -16,6 +18,7 @@ public class MMCrawler extends SeleniumCrawler {
 	private static final String baseURL = ".markmail.org";
 	private static final String searchURL = "/search/?page=";
 	private static final String messageURL = "/message/";
+	private static final String NOT_FOUND = "Error 404 - MarkMail";
 	
 	private int pages;
 	
@@ -37,7 +40,9 @@ public class MMCrawler extends SeleniumCrawler {
 			for (String link : links) {
 				getDriver().get(link);
 				String mailPage = getDriver().getPageSource();
-				getStat().addData(mailPage);
+				if (!pageNotFound(mailPage)) {
+					getStat().addData(mailPage);
+				}
 			}
 			if (!hasNextPage(content)) {
 				done = true;
@@ -47,6 +52,23 @@ public class MMCrawler extends SeleniumCrawler {
 		}
 		//Not sure this is a good idea.
 		//driver.close();
+	}
+	
+	private boolean pageNotFound(String page) {
+		boolean wasNotFound = false;
+		try {
+			Parser parser = new Parser(page);
+			TagNameFilter tagFilter = new TagNameFilter("title");
+			NodeList list = parser.parse(tagFilter);
+			if (list.size() > 0) {
+				TitleTag titleTag = (TitleTag) list.elementAt(0);
+				String title = titleTag.getStringText().trim();
+				wasNotFound = title.equals(NOT_FOUND);
+			}
+		} catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return wasNotFound;
 	}
 	
 	private String[] getMailLinks(String listName, String content) {

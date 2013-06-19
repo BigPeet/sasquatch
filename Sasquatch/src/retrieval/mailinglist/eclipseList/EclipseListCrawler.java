@@ -8,6 +8,7 @@ import org.htmlparser.filters.AndFilter;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.LinkTag;
+import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
@@ -19,6 +20,7 @@ public class EclipseListCrawler extends SeleniumCrawler {
 	//http://dev.eclipse.org/mhonarc/lists/jetty-users/maillist.html
 	private static final String baseURL = "http://dev.eclipse.org/mhonarc/lists/";
 	private static final String mailURL = "/maillist.html";
+	private static final String NOT_FOUND = "404 Not Found";
 	
 	private int pages;
 
@@ -38,8 +40,10 @@ public class EclipseListCrawler extends SeleniumCrawler {
 			String[] mailForms = getMailLinks(content);
 			for (String link : mailForms) {
 				getDriver().get(link);
-				String mailHtml = getDriver().getPageSource();
-				getStat().addData(mailHtml);
+				String mailPage = getDriver().getPageSource();
+				if (!pageNotFound(mailPage)) {
+					getStat().addData(mailPage);
+				}
 			}
 			if (hasNextPage(content)) {
 				i++;
@@ -47,6 +51,23 @@ public class EclipseListCrawler extends SeleniumCrawler {
 				done = true;
 			}
 		}
+	}
+
+	private boolean pageNotFound(String mailPage) {
+		boolean wasNotFound = false;
+		try {
+			Parser parser = new Parser(mailPage);
+			TagNameFilter tagFilter = new TagNameFilter("title");
+			NodeList list = parser.parse(tagFilter);
+			if (list.size() > 0) {
+				TitleTag titleTag = (TitleTag) list.elementAt(0);
+				String title = titleTag.getStringText().trim();
+				wasNotFound = title.equals(NOT_FOUND);
+			}
+		} catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return wasNotFound;
 	}
 
 	private boolean hasNextPage(String content) {

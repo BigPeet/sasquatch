@@ -33,7 +33,7 @@ public class CrawlSystems {
 	private static SoftwareSystem httpunitUsers = new SoftwareSystem("httpunit", "httpunit-users", 2008, 2008, Archive.SOURCEFORGE);
 	private static SoftwareSystem htmlunitUsers = new SoftwareSystem("htmlunit", "htmlunit-user", 2003, 2013, Archive.SOURCEFORGE);
 	private static SoftwareSystem jettyUsers = new SoftwareSystem("jetty", "jetty-users", 2009, 2013, Archive.ECLIPSE_LIST);
-	private static SoftwareSystem tomcatUsers = new SoftwareSystem("tomcat", "tomcat-users", 2000, 2013, Archive.APACHE); //2000
+	private static SoftwareSystem tomcatUsers = new SoftwareSystem("tomcat", "tomcat-users", 2010, 2013, Archive.APACHE); //2000
 	private static SoftwareSystem jpaUsers = new SoftwareSystem("jpa", "jpa-spec/lists/users", 2011, 2013, Archive.JAVANET);
 	private static SoftwareSystem tapestryUsers = new SoftwareSystem("tapestry", "tapestry-users", 2003, 2013, Archive.APACHE);
 	private static SoftwareSystem jsfUsers = new SoftwareSystem("jsf", "javaserverfaces/lists/users", 2004, 2013, Archive.JAVANET);
@@ -45,8 +45,8 @@ public class CrawlSystems {
 	private static SoftwareSystem glassFishUsers = new SoftwareSystem("glassfish", "glassfish/lists/users", 2005, 2013, Archive.JAVANET);
 	private static SoftwareSystem resinUsers = new SoftwareSystem("resin", "resin-interest@caucho.com", 2008, 2013, Archive.MAIL_ARCHIVE);
 
-	private static SoftwareSystem[] userSystems = {/*httpClientUsers, */log4jUsers, httpunitUsers,
-		htmlunitUsers, jettyUsers, tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
+	private static SoftwareSystem[] userSystems = {/*httpClientUsers, log4jUsers, httpunitUsers,
+		htmlunitUsers, jettyUsers, */tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
 		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers};
 
 	//DEVELOPER BASED SOURCES
@@ -110,8 +110,8 @@ public class CrawlSystems {
 //		SoftwareSystem test = new SoftwareSystem("httpclient", "hc-httpclient-users", 2004, 2013, Archive.APACHE);
 //		crawlSystem(test, new LocalMailHandler(new File("res/mails/" + test.getName() + ".xml")));
 		crawlUserSystems();
-		crawlDevSystems();
-		crawlUndefinedSystems();
+//		crawlDevSystems();
+//		crawlUndefinedSystems();
 		Date end = new Date();
 		long millis = (end.getTime() - start.getTime()) / (60 * 1000);
 		log("Crawling finished after : " + millis + " min.");

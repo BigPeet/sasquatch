@@ -40,7 +40,8 @@ public class ApacheCrawler extends SeleniumCrawler {
 				getDriver().get(link + pageNo);
 				page = getDriver().getPageSource();
 				if (!pageNotFound(page)) {
-					for (String mailLink : getMailLinks(link, page)) {
+					String[] mailLinks = getMailLinks(link, page);
+					for (String mailLink : mailLinks) {
 						getDriver().get(mailLink);
 						String mailPage = getDriver().getPageSource();
 						if (!pageNotFound(mailPage)) {

@@ -23,7 +23,7 @@ public class EclipseListMailParser extends MailParser {
 	private static final String BODY_END = "<!--X-Body-of-Message-End-->";
 	private static final String BLOCKQUOUTE_OPENING = "<blockquote class=\"gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\">";
 	private static final String BLOCKQUOUTE_CLOSING = "</blockquote>";
-	private static final String DATE_START = "Date                : ";
+	private static final String DATE_START = "Date";
 	private static final String DATE_FORMAT = "EEE, dd MMM yyyy HH:mm:ss z";
 	
 	private int openQuoteBlocks = 0;
@@ -58,8 +58,10 @@ public class EclipseListMailParser extends MailParser {
 			for (int i = 0; i < list.size(); i++) {
 				Bullet b = (Bullet) list.elementAt(i);
 				String content = b.toPlainTextString().replace("\n", "").trim();
-				if (content.startsWith(DATE_START)) {
-					date = content.substring(DATE_START.length());
+				if (content.startsWith(DATE_START) && content.contains(" : ")) {
+					int index = content.indexOf(" : ") + " : ".length();
+					date = content.substring(index);
+					break;
 				}
 			}
 		} catch (ParserException e) {

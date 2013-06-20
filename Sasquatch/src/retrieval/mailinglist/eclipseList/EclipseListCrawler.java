@@ -46,7 +46,6 @@ public class EclipseListCrawler extends SeleniumCrawler {
 					getStat().addData(mailPage);
 				}
 			}
-			System.out.println(" done.");
 			if (hasNextPage(content) || pageNotFound(content)) {
 				i++;
 			} else {

@@ -1,7 +1,11 @@
 package main;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import retrieval.interfaces.ICrawlController;
 import retrieval.mailinglist.apache.ApacheCrawlController;
@@ -29,7 +33,7 @@ public class CrawlSystems {
 	private static SoftwareSystem httpunitUsers = new SoftwareSystem("httpunit", "httpunit-users", 2008, 2008, Archive.SOURCEFORGE);
 	private static SoftwareSystem htmlunitUsers = new SoftwareSystem("htmlunit", "htmlunit-user", 2003, 2013, Archive.SOURCEFORGE);
 	private static SoftwareSystem jettyUsers = new SoftwareSystem("jetty", "jetty-users", 2009, 2013, Archive.ECLIPSE_LIST);
-	private static SoftwareSystem tomcatUsers = new SoftwareSystem("tomcat", "tomcat-users", 2000, 2013, Archive.APACHE);
+	private static SoftwareSystem tomcatUsers = new SoftwareSystem("tomcat", "tomcat-users", 2000, 2013, Archive.APACHE); //2000
 	private static SoftwareSystem jpaUsers = new SoftwareSystem("jpa", "jpa-spec/lists/users", 2011, 2013, Archive.JAVANET);
 	private static SoftwareSystem tapestryUsers = new SoftwareSystem("tapestry", "tapestry-users", 2003, 2013, Archive.APACHE);
 	private static SoftwareSystem jsfUsers = new SoftwareSystem("jsf", "javaserverfaces/lists/users", 2004, 2013, Archive.JAVANET);
@@ -41,9 +45,9 @@ public class CrawlSystems {
 	private static SoftwareSystem glassFishUsers = new SoftwareSystem("glassfish", "glassfish/lists/users", 2005, 2013, Archive.JAVANET);
 	private static SoftwareSystem resinUsers = new SoftwareSystem("resin", "resin-interest@caucho.com", 2008, 2013, Archive.MAIL_ARCHIVE);
 
-	private static SoftwareSystem[] userSystems = {/*httpClientUsers, log4jUsers, httpClientUsers,*/ htmlparserUsers,
-		htmlunitUsers, httpunitUsers, jettyUsers, tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
-		nekohtmlUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers};
+	private static SoftwareSystem[] userSystems = {/*httpClientUsers, */log4jUsers, httpunitUsers,
+		htmlunitUsers, jettyUsers, tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
+		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers};
 
 	//DEVELOPER BASED SOURCES
 	private static SoftwareSystem jcronTabDevs = new SoftwareSystem("jcrontab", "jcrontab-developers", 2001, 2013, Archive.SOURCEFORGE);
@@ -74,13 +78,34 @@ public class CrawlSystems {
 	private static SoftwareSystem jdom = new SoftwareSystem("jdom", "jdom", 2001, 2013, Archive.MARK_MAIL);
 
 	private static SoftwareSystem[] undefinedSystems = {easyMock, junit, jdom};
+	
+	private static Logger logger = Logger.getLogger("CrawlLog");
+	private static int mode = 1; //0 = debug, 1 = log&debug, 2 = log, 3 = nothing
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		
-
+		
+		FileHandler fh;
+		
+		try {  
+            
+            // This block configure the logger with handler and formatter  
+            fh = new FileHandler("res/crawlLog2.log");  
+            logger.addHandler(fh);  
+            //logger.setLevel(Level.ALL);  
+            SimpleFormatter formatter = new SimpleFormatter();  
+            fh.setFormatter(formatter);  
+              
+        } catch (SecurityException e) {  
+            e.printStackTrace();  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }
+		
+		
 		Date start = new Date();
 //		SoftwareSystem test = new SoftwareSystem("httpclient", "hc-httpclient-users", 2004, 2013, Archive.APACHE);
 //		crawlSystem(test, new LocalMailHandler(new File("res/mails/" + test.getName() + ".xml")));
@@ -89,8 +114,18 @@ public class CrawlSystems {
 		crawlUndefinedSystems();
 		Date end = new Date();
 		long millis = (end.getTime() - start.getTime()) / (60 * 1000);
-		System.out.println("Crawling finished after : " + millis + " min.");
-
+		log("Crawling finished after : " + millis + " min.");
+	}
+	
+	private static void log(String msg) {
+		if (mode == 0) {
+			System.out.println(msg);
+		} else if (mode == 1) {
+			logger.info(msg);
+			System.out.println(msg);
+		} else if (mode == 2) {
+			logger.info(msg);
+		}
 	}
 
 	private static void crawlUndefinedSystems() {
@@ -108,11 +143,15 @@ public class CrawlSystems {
 	}
 	
 	private static void crawlSystem(SoftwareSystem s, LocalMailHandler handler) {
+		Date start = new Date();
 		s.setHandler(getWebMailHandler(s));
 		Source[] sources = s.getSources();
-		System.out.printf("System %s crawled. %d Results. ", s.getName(), s.getSources().length);
+		log("System " + s.getName() + " crawled. " + s.getSources().length + " Results. ");
 		handler.addSources(sources);
-		System.out.printf("Written on File.\n");
+		log("Written on File.");
+		Date end = new Date();
+		long millis = (end.getTime() - start.getTime()) / (60 * 1000);
+		log("Crawling finished after : " + millis + " min.");
 	}
 
 	private static void crawlUserSystems() {

@@ -35,7 +35,8 @@ public class EclipseListCrawler extends SeleniumCrawler {
 		int i = 1;
 		boolean done = false;
 		while (!done && (i <= pages || pages < 0)) {
-			getDriver().get(getPageLink(getListName(), i));
+			String pageLink = getPageLink(getListName(), i);
+			getDriver().get(pageLink);
 			String content = getDriver().getPageSource();
 			String[] mailForms = getMailLinks(content);
 			for (String link : mailForms) {
@@ -45,7 +46,8 @@ public class EclipseListCrawler extends SeleniumCrawler {
 					getStat().addData(mailPage);
 				}
 			}
-			if (hasNextPage(content)) {
+			System.out.println(" done.");
+			if (hasNextPage(content) || pageNotFound(content)) {
 				i++;
 			} else {
 				done = true;
@@ -106,7 +108,7 @@ public class EclipseListCrawler extends SeleniumCrawler {
 		if (i == 1) {
 			pageLink = buildInitialURL(listName);
 		} else {
-			pageLink = baseURL + listName + "mail" + i + ".html";
+			pageLink = baseURL + listName + "/mail" + i + ".html";
 		}
 		return pageLink;
 	}

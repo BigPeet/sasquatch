@@ -2,30 +2,33 @@ package analyzer.dictionary;
 
 public class Word implements Comparable {
 
+	//CUT THIS OUT!
 	private String word;
 	private int value;
-	private boolean isPositive;
-	private boolean isNegative;
+	
+	public Word(String word) {
+		this.word = word;
+		this.value = 0;
+	}
 	
 	public Word(String word, int value) {
 		this.word = word;
 		this.value = value;
-		isPositive = value > 0;
-		isNegative = value < 0;
 	}
 
 	public boolean isPositive() {
-		return isPositive;
+		return value > 0;
 	}
 	
 	public boolean isNegative() {
-		return isNegative;
+		return value < 0;
 	}
 	
 	public boolean isNeutral() {
-		return !isPositive && !isNegative;
+		return !isPositive() && !isNegative();
 	}
 	
+	@Override
 	public boolean equals(Object  o) {
 		boolean equals = false;
 		if (o instanceof Word) {
@@ -61,8 +64,6 @@ public class Word implements Comparable {
 	 */
 	public void setValue(int value) {
 		this.value = value;
-		isPositive = value > 0;
-		isNegative = value < 0;
 	}
 
 	@Override

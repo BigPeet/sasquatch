@@ -65,6 +65,11 @@ public class SoftwareSystem {
 		return handler;
 	}
 
+	public void clear() {
+		this.handler = null;
+		this.sources = null;
+	}
+	
 	/**
 	 * @param sources the sources to set
 	 */

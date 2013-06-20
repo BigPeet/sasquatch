@@ -15,8 +15,9 @@ import retrieval.mailinglist.TextCollector;
 
 public class ApacheCrawler extends SeleniumCrawler {
 
-	private static final String baseURL = "http://mail-archives.apache.org/mod_mbox/";
-	private static final String mailURL = ".mbox/thread?0";
+	private static final String baseURL = "http://mail-archives.apache.org";
+	private static final String archiveURL = "/mod_mbox/";
+	private static final String mailURL = ".mbox/thread?";
 	private static final String mailView = ".mbox/ajax/";
 	private static final String NOT_FOUND = "404 Not Found";
 
@@ -33,18 +34,45 @@ public class ApacheCrawler extends SeleniumCrawler {
 	@Override
 	public void run() {
 		for (String link : getPageLinks()) {
-			getDriver().get(link);
-			String page = getDriver().getPageSource();
-			if (!pageNotFound(page)) {
-				for (String mailLink : getMailLinks(link, page)) {
-					getDriver().get(mailLink);
-					String mailPage = getDriver().getPageSource();
-					if (!pageNotFound(mailPage)) {
-						getStat().addData(mailPage);
+			int pageNo = 0;
+			String page = "";
+			do {
+				getDriver().get(link + pageNo);
+				page = getDriver().getPageSource();
+				if (!pageNotFound(page)) {
+					for (String mailLink : getMailLinks(link, page)) {
+						getDriver().get(mailLink);
+						String mailPage = getDriver().getPageSource();
+						if (!pageNotFound(mailPage)) {
+							getStat().addData(mailPage);
+						}
 					}
 				}
-			}
+				pageNo++;
+			} while (hasNextPage(page, link + pageNo));
 		}
+	}
+
+	private boolean hasNextPage(String page, String link) {
+		boolean hasNext = false;
+		link = link.replace(baseURL, "");
+		try {
+			Parser parser = new Parser(page);
+			HasAttributeFilter classFilter = new HasAttributeFilter("href", link);
+			TagNameFilter tagFilter = new TagNameFilter("a");
+			AndFilter filter = new AndFilter(classFilter, tagFilter);
+			NodeList list = parser.parse(filter);
+			for (int i = 0; i < list.size(); i++) {
+				LinkTag linkTag = (LinkTag) list.elementAt(i);
+				if (linkTag.getLinkText().trim().startsWith("Next")) {
+					hasNext = true;
+					break;
+				}
+			}
+		} catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return hasNext;
 	}
 
 	private boolean pageNotFound(String page) {
@@ -66,7 +94,7 @@ public class ApacheCrawler extends SeleniumCrawler {
 
 	private String buildMonthLink(int year, int month) {
 		String dMonth = String.format("%02d", month);
-		return baseURL + getListName() + "/" + year + dMonth + mailURL;
+		return baseURL + archiveURL + getListName() + "/" + year + dMonth + mailURL;
 	}
 	
 	private String buildMailLink(String base, String href) {

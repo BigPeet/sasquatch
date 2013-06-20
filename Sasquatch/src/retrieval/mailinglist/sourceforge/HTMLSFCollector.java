@@ -62,8 +62,8 @@ public class HTMLSFCollector extends TextCollector {
 			NodeList tables = form.searchFor(TableTag.class, true);
 			for (int i = 0; i < tables.size(); i++) {
 				TableTag table = (TableTag) tables.elementAt(i);
-				if (isDataTable(table) && !mailTables.contains(table.getStringText())) {
-					mailTables.add(table.getStringText());
+				if (isDataTable(table) && !mailTables.contains(table.getStringText().trim())) {
+					mailTables.add(table.getStringText().trim());
 				}
 			}
 		}

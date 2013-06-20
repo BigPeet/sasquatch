@@ -72,14 +72,15 @@ public class LocalMailHandler extends LocalSourceHandler {
 		}
 
 	}
-	
+
 	public void addMails(Mail[] mails) {
 		Document doc = getDocument(target);
 		if (doc != null) {
 			Element root = doc.getRootElement();
 			Element mail = null;
-			try {
-				for (Mail m : mails) {
+			for (int j = 0; j < mails.length; j++) {
+				try {
+					Mail m = mails[j];
 					mail = new Element("mail");
 					mail.addContent(new Element("header").setText(m.getHeader()));
 					//maybe define the format for the string representation here.
@@ -91,14 +92,15 @@ public class LocalMailHandler extends LocalSourceHandler {
 					mail.addContent(new Element("date").setText(date));
 					mail.addContent(new Element("body").setText(m.getBody()));
 					root.addContent(mail);
+				}  catch (org.jdom.IllegalDataException e) {
+					mail = null;
 				}
-			}  catch (org.jdom.IllegalDataException e) {
-				mail = null;
 			}
+
 			writeDocument(doc, target);
 		}
 	}
-	
+
 	private void createEmptyFile(File f) {
 		if (!f.exists()) {
 			try {

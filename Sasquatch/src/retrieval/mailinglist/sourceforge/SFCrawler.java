@@ -41,7 +41,6 @@ public class SFCrawler extends SeleniumCrawler {
 			getDriver().get(link);
 			String content = getDriver().getPageSource();
 			getStat().addData(content);
-			
 			while (hasNextPage(content)) {
 				WebElement e = getDriver().findElement(By.linkText(NEXT_MESSAGES_BUTTON));
 				e.click();

@@ -82,7 +82,7 @@ public class ApacheMailParser extends MailParser {
 
 
 	private boolean isQuote(String line) {
-		return line.endsWith("wrote:") || line.startsWith("&gt;");
+		return line.endsWith("wrote:") || line.startsWith("&gt;") || line.startsWith("&amp;gt;");
 	}
 
 

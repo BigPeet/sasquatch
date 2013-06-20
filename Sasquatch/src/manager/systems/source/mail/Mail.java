@@ -67,8 +67,13 @@ public class Mail extends Source {
 		boolean equals = false;
 		if (o instanceof Mail) {
 			Mail m = (Mail) o;
-			equals = header.equals(m.header) && body.equals(m.body) 
-					&& sender.equals(m.sender) && date.equals(m.date);
+			if (header != null && body != null) {
+				equals = header.equals(m.header) 
+						&& body.equals(m.body);
+			}
+			if (equals && date != null) {
+				equals = date.equals(m.date);
+			}
 		}
 		return equals;
 	}

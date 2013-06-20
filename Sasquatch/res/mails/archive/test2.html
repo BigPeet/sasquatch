@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<html>
+  <head>
+    <title>
+      Re: [jetty-users] Jetty 9 - Windows - File locking issue
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <link rel="stylesheet" href="/default_style.css" type="text/css"/>
+  </head>
+  <body>
+    <!--X-Body-Begin-->    <!--X-User-Header-->    <!--X-User-Header-End-->    <!--X-TopPNI-->    <hr/>
+    
+[
+    <a href="msg03455.html">
+      Date Prev
+    </a>
+    ][
+    <a href="msg03457.html">
+      Date Next
+    </a>
+    ][
+    <a href="msg03455.html">
+      Thread Prev
+    </a>
+    ][
+    <a href="msg03457.html">
+      Thread Next
+    </a>
+    ][
+    <a href="maillist.html#03456">
+      Date Index
+    </a>
+    ][
+    <a href="threads.html#03456">
+      Thread Index
+    </a>
+    ]
+
+    <!--X-TopPNI-End-->    <!--X-MsgBody-->    <!--X-Subject-Header-Begin-->    
+[
+    <a href="https://dev.eclipse.org/mailman/listinfo/jetty-users">
+      List Home
+    </a>
+    ]
+
+    <table border="0" cellspacing="5" cellpadding="2" width="100%">
+      <tbody align="left">
+        <tr>
+          <td align="left" valign="top" colspan="3" bgcolor="#0080c0">
+            <b>
+              <font color="#ffffff" face="Arial,Helvetica">
+                
+Re: [jetty-users] Jetty 9 - Windows - File locking issue
+
+              </font>
+            </b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--X-Subject-Header-End-->    <!--X-Head-of-Message-->    <ul>
+      <li>
+        <em>
+          From
+        </em>
+        : Andrew Penhorwood &lt;
+        <a href="mailto:penhorwood@DOMAIN.HIDDEN">
+          penhorwood@xxxxxxxxx
+        </a>
+        &gt;
+      </li>
+      <li>
+        <em>
+          Date
+        </em>
+        : Fri, 14 Jun 2013 22:04:05 -0400
+      </li>
+      <li>
+        <em>
+          Delivered-to
+        </em>
+        : jetty-users@eclipse.org
+      </li>
+      <li>
+        <em>
+          Dkim-signature
+        </em>
+        : v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;	h=mime-version:in-reply-to:references:date:message-id:subject:from:to	:content-type; bh=PpX02QwhAYjRV/XBy6TgRu0sajZClwGL3igb/F0m/Gg=;	b=bxxPvMguYvtITrq7wxF0V26tTfkQS3jmVG+jhAXNeOemOWrh04s9EwB5whISgmLIxc	j45mDnn1XjTxxPnWgCnmC29wkzlCIrs6ThagKjkKgZxXGnfKzWqldFILUW+YJz8Dc2fn	4stc3p6IIRZ7Mt0Vn95Aj/ME5HSYI4yB/GyVNTaBYDXzkW9SLuE00Kk9QX55r28sHnPX	asTk5mDC6H+pfv//ilV9lt9NonFommXja4m/nfKOktMc1UnFlhpE6b9pOyGA8qXP1cJa	Ebp+dsmOvs7At2xIsZDVxglfrqhdl1X7yECFwzfVshMTo2wY08peXueoGBPfCdJGKo1m	6DnQ==
+      </li>
+    </ul>
+    <!--X-Head-of-Message-End-->    <!--X-Head-Body-Sep-Begin-->    <hr/>
+    <!--X-Head-Body-Sep-End-->    <!--X-Body-of-Message-->    <div dir="ltr">
+      Thanks for the quick answer.Â Returned to Jetty 8 until this is fixed.
+      <br/>
+    </div>
+    <div class="gmail_extra">
+      <br/>
+      <br/>
+      <div class="gmail_quote">
+        On Fri, Jun 14, 2013 at 9:18 PM, Craig Ching 
+        <span dir="ltr">
+          &lt;
+          <a href="mailto:craigching@xxxxxxxxx" target="_blank">
+            craigching@xxxxxxxxx
+          </a>
+          &gt;
+        </span>
+         wrote:
+        <br/>
+        <blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+          <div dir="ltr">
+            It's a bug, should be fixed in 9.0.4. ÂI am going to test this and another next week:
+            <div>
+              <br/>
+            </div>
+            <div>
+              <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=408830" target="_blank">
+                https://bugs.eclipse.org/bugs/show_bug.cgi?id=408830
+              </a>
+              <br/>
+            </div>
+          </div>
+          <div class="gmail_extra">
+            <br/>
+            <br/>
+            <div class="gmail_quote">
+              <div>
+                <div class="h5">
+                  On Fri, Jun 14, 2013 at 6:30 PM, Andrew Penhorwood 
+                  <span dir="ltr">
+                    &lt;
+                    <a href="mailto:penhorwood@xxxxxxxxx" target="_blank">
+                      penhorwood@xxxxxxxxx
+                    </a>
+                    &gt;
+                  </span>
+                   wrote:
+                  <br/>
+                </div>
+              </div>
+              <blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+                <div>
+                  <div class="h5">
+                    <div dir="ltr">
+                      <div>
+                        I am running Jetty 9.0.3.v20130506 and have configured my webdefault.xml like this:
+                        <br/>
+                        <br/>
+                        &lt;init-param&gt;
+                        <br/>
+                        
+ÂÂÂÂ &lt;param-name&gt;useFileMappedBuffer&lt;/param-name&gt;
+                        <br/>
+                        ÂÂÂÂÂ &lt;param-value&gt;false&lt;/param-value&gt;
+                        <br/>
+                        
+&lt;/init-param&gt;
+                        <br/>
+                        <br/>
+                      </div>
+                      I read the following information links.
+                      <br/>
+                      <div>
+                        <br/>
+                        <a href="http://www.eclipse.org/jetty/documentation/current/troubleshooting-locked-files-on-windows.html" target="_blank">
+                          http://www.eclipse.org/jetty/documentation/current/troubleshooting-locked-files-on-windows.html
+                        </a>
+                        <br/>
+                        <br/>
+                      </div>
+                      <div>
+                        But I am still experiencing file locking issue on my xxx.html files.Â I reviewed this bug
+                        <br/>
+                        <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=395885" target="_blank">
+                          https://bugs.eclipse.org/bugs/show_bug.cgi?id=395885
+                        </a>
+                        .Â But that should be fixed.
+                        <br/>
+                        <br/>
+                      </div>
+                      <div>
+                        Is anyone else experiencing file locking issues with Jetty 9 on Windows 7 x64.
+                        <span>
+                          <font color="#888888">
+                            <br/>
+                          </font>
+                        </span>
+                      </div>
+                      <span>
+                        <font color="#888888">
+                          <div>
+                            <br clear="all"/>
+                            <div>
+                              <br/>
+                              -- 
+                              <br/>
+                              Andrew Penhorwood
+                              <br/>
+                              <a href="mailto:andrew@xxxxxxxxxxxx" target="_blank">
+                                andrew@xxxxxxxxxxxx
+                              </a>
+                              <br/>
+                              <a href="http://www.coldbits.com" target="_blank">
+                                www.coldbits.com
+                              </a>
+                            </div>
+                          </div>
+                        </font>
+                      </span>
+                    </div>
+                    <br/>
+                  </div>
+                </div>
+                _______________________________________________
+                <br/>
+                
+jetty-users mailing list
+                <br/>
+                <a href="mailto:jetty-users@xxxxxxxxxxx" target="_blank">
+                  jetty-users@xxxxxxxxxxx
+                </a>
+                <br/>
+                <a href="https://dev.eclipse.org/mailman/listinfo/jetty-users" target="_blank">
+                  https://dev.eclipse.org/mailman/listinfo/jetty-users
+                </a>
+                <br/>
+                <br/>
+              </blockquote>
+            </div>
+            <br/>
+          </div>
+          <br/>
+          _______________________________________________
+          <br/>
+          
+jetty-users mailing list
+          <br/>
+          <a href="mailto:jetty-users@xxxxxxxxxxx">
+            jetty-users@xxxxxxxxxxx
+          </a>
+          <br/>
+          <a href="https://dev.eclipse.org/mailman/listinfo/jetty-users" target="_blank">
+            https://dev.eclipse.org/mailman/listinfo/jetty-users
+          </a>
+          <br/>
+          <br/>
+        </blockquote>
+      </div>
+      <br/>
+      <br clear="all"/>
+      <br/>
+      -- 
+      <br/>
+      Andrew Penhorwood
+      <br/>
+      <a href="mailto:andrew@xxxxxxxxxxxx">
+        andrew@xxxxxxxxxxxx
+      </a>
+      <br/>
+      <a href="http://www.coldbits.com">
+        www.coldbits.com
+      </a>
+    </div>
+    <!--X-Body-of-Message-End-->    <!--X-MsgBody-End-->    <!--X-Follow-Ups-->    <hr/>
+    <!--X-Follow-Ups-End-->    <!--X-References-->    <ul>
+      <li>
+        <strong>
+          References
+        </strong>
+        :
+
+        <ul>
+        </ul>
+      </li>
+      <li>
+        <strong>
+          <a name="03454" href="msg03454.html">
+            [jetty-users] Jetty 9 - Windows - File locking issue
+          </a>
+        </strong>
+        <ul>
+        </ul>
+      </li>
+      <li>
+        <em>
+          From:
+        </em>
+         Andrew Penhorwood
+      </li>
+    </ul>
+    <li>
+      <strong>
+        <a name="03455" href="msg03455.html">
+          Re: [jetty-users] Jetty 9 - Windows - File locking issue
+        </a>
+      </strong>
+      <ul>
+      </ul>
+    </li>
+    <li>
+      <em>
+        From:
+      </em>
+       Craig Ching
+    </li>
+    <!--X-References-End-->    <!--X-BotPNI-->    <ul>
+      <li>
+        Prev by Date:
+
+        <strong>
+          <a href="msg03455.html">
+            Re: [jetty-users] Jetty 9 - Windows - File locking issue
+          </a>
+        </strong>
+      </li>
+      <li>
+        Next by Date:
+
+        <strong>
+          <a href="msg03457.html">
+            [jetty-users] Configuring init parameters for GuiceServletContext	and SiteBricks
+          </a>
+        </strong>
+      </li>
+      <li>
+        Previous by thread:
+
+        <strong>
+          <a href="msg03455.html">
+            Re: [jetty-users] Jetty 9 - Windows - File locking issue
+          </a>
+        </strong>
+      </li>
+      <li>
+        Next by thread:
+
+        <strong>
+          <a href="msg03457.html">
+            [jetty-users] Configuring init parameters for GuiceServletContext	and SiteBricks
+          </a>
+        </strong>
+      </li>
+      <li>
+        Index(es):
+
+        <ul>
+        </ul>
+      </li>
+      <li>
+        <a href="maillist.html#03456">
+          <strong>
+            Date
+          </strong>
+        </a>
+      </li>
+      <li>
+        <a href="threads.html#03456">
+          <strong>
+            Thread
+          </strong>
+        </a>
+      </li>
+    </ul>
+    <!--X-BotPNI-End-->    <!--X-User-Footer-->    <!--X-User-Footer-End-->  </body>
+</html>

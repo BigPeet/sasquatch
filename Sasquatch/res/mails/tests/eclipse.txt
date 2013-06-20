@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<html>
+  <head>
+    <title>
+      Re: [jetty-users] Jetty 9 as a Front-end Server
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <link rel="stylesheet" href="/default_style.css" type="text/css"/>
+  </head>
+  <body>
+    <!--X-Body-Begin-->    <!--X-User-Header-->    <!--X-User-Header-End-->    <!--X-TopPNI-->    <hr/>
+    
+[
+    <a href="msg03458.html">
+      Date Prev
+    </a>
+    ][Date Next][
+    <a href="msg03458.html">
+      Thread Prev
+    </a>
+    ][
+    <a href="msg03447.html">
+      Thread Next
+    </a>
+    ][
+    <a href="maillist.html#03459">
+      Date Index
+    </a>
+    ][
+    <a href="threads.html#03459">
+      Thread Index
+    </a>
+    ]
+
+    <!--X-TopPNI-End-->    <!--X-MsgBody-->    <!--X-Subject-Header-Begin-->    
+[
+    <a href="https://dev.eclipse.org/mailman/listinfo/jetty-users">
+      List Home
+    </a>
+    ]
+
+    <table border="0" cellspacing="5" cellpadding="2" width="100%">
+      <tbody align="left">
+        <tr>
+          <td align="left" valign="top" colspan="3" bgcolor="#0080c0">
+            <b>
+              <font color="#ffffff" face="Arial,Helvetica">
+                
+Re: [jetty-users] Jetty 9 as a Front-end Server
+
+              </font>
+            </b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--X-Subject-Header-End-->    <!--X-Head-of-Message-->    <ul>
+      <li>
+        <em>
+          From
+        </em>
+        : "Shane Curless" &lt;
+        <a href="mailto:shane@DOMAIN.HIDDEN">
+          shane@xxxxxxxxxxxxx
+        </a>
+        &gt;
+      </li>
+      <li>
+        <em>
+          Date
+        </em>
+        : Mon, 17 Jun 2013 09:13:59 -0400
+      </li>
+      <li>
+        <em>
+          Delivered-to
+        </em>
+        : jetty-users@eclipse.org
+      </li>
+      <li>
+        <em>
+          Thread-index
+        </em>
+        : AQJB2WvCvJlZIdBUorDmAVm8Z0A2JgLGzu+gAf4MSEAB3GQ/BALH4WizAdLHL20Bxh2gDwDLJiAql+ScJ4A=
+      </li>
+    </ul>
+    <!--X-Head-of-Message-End-->    <!--X-Head-Body-Sep-Begin-->    <hr/>
+    <!--X-Head-Body-Sep-End-->    <!--X-Body-of-Message-->    <table width="100%">
+      <tbody align="left">
+        <tr>
+          <td style="a:link { color: blue } a:visited { color: purple } ">
+            <div class="WordSection1">
+              <p class="MsoNormal">
+                <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">
+                  It’s basically signalling between CFML and Nginx, it says to Nginx “serve this file, just as you would any static file”, then everything from that point on is handled by Nginx.
+                  <o:p/>
+                </span>
+              </p>
+              <p class="MsoNormal">
+                <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">
+                  <o:p>
+                     
+                  </o:p>
+                </span>
+              </p>
+              <p class="MsoNormal">
+                <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">
+                  I like the idea of using the Jetty APIs, Railo (like any CFML engine) has access to the underlying Java objects, so through learning it I also understand a fair amount of Java. Can you point me in the right direction as to how I can maybe access these APIs? If I can see some Java code samples I can likely translate those to CFML.
+                  <o:p/>
+                </span>
+              </p>
+              <p class="MsoNormal">
+                <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">
+                  <o:p>
+                     
+                  </o:p>
+                </span>
+              </p>
+              <p class="MsoNormal">
+                <b>
+                  <span lang="EN-US" style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">
+                    From:
+                  </span>
+                </b>
+                <span lang="EN-US" style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">
+                   jetty-users-bounces@xxxxxxxxxxx [mailto:jetty-users-bounces@xxxxxxxxxxx] 
+                  <b>
+                    On Behalf Of 
+                  </b>
+                  Greg Wilkins
+                  <br/>
+                  <b>
+                    Sent:
+                  </b>
+                   June-17-13 5:46 AM
+                  <br/>
+                  <b>
+                    To:
+                  </b>
+                   JETTY user mailing list
+                  <br/>
+                  <b>
+                    Subject:
+                  </b>
+                   Re: [jetty-users] Jetty 9 as a Front-end Server
+                  <o:p/>
+                </span>
+              </p>
+              <p class="MsoNormal">
+                <o:p>
+                   
+                </o:p>
+              </p>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                            <p class="MsoNormal" style="margin-bottom:12.0pt">
+                              Shane,
+                              <o:p/>
+                            </p>
+                          </div>
+                          <p class="MsoNormal" style="margin-bottom:12.0pt">
+                            This is certainly possible and there are lots of different ways to skin this particular cat.
+                            <o:p/>
+                          </p>
+                        </div>
+                        <p class="MsoNormal" style="margin-bottom:12.0pt">
+                          One would be to have a filter that intercepts the request to the base64 encoded identifier and it works out the real resource.    It then does an RequestDispatcher.forward to a named dispatcher obtained for "default", which is the jetty default servlet.    This way the real path is hidden from the client.
+                          <o:p/>
+                        </p>
+                      </div>
+                      <p class="MsoNormal" style="margin-bottom:12.0pt">
+                        Another way to proceed is to write a servlet that uses the Jetty APIs directly for sending the file efficiently and asynchronously.  This may be able to offer you more flexibility.
+                        <o:p/>
+                      </p>
+                    </div>
+                    <p class="MsoNormal" style="margin-bottom:12.0pt">
+                      The decision to use fast memory mapped buffers could depend somewhat if the file is to be served only once or many many times.    If it is to be served only once, it may be better to have a large direct buffer that reads/writes the content.  Jetty-9 has some APIs to do that with file channels.
+                      <o:p/>
+                    </p>
+                  </div>
+                  <p class="MsoNormal" style="margin-bottom:12.0pt">
+                    However, I still am a bit vague about some of the details of you scheme.  What dose the X-Accel-Redirect header do?  Is it the client that handles that header?  or is it just doing some signalling between the CFML and nginx?
+                    <o:p/>
+                  </p>
+                </div>
+                <p class="MsoNormal">
+                  cheers
+                  <o:p/>
+                </p>
+                <div>
+                  <p class="MsoNormal">
+                    <o:p>
+                       
+                    </o:p>
+                  </p>
+                  <div>
+                    <p class="MsoNormal" style="margin-bottom:12.0pt">
+                      <o:p>
+                         
+                      </o:p>
+                    </p>
+                    <div>
+                      <p class="MsoNormal" style="margin-bottom:12.0pt">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <o:p/>
+                      </p>
+                      <div>
+                        <div>
+                          <p class="MsoNormal" style="margin-bottom:12.0pt">
+                            <br/>
+                            <br/>
+                            <o:p/>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="MsoNormal" style="margin-bottom:12.0pt">
+                  <o:p>
+                     
+                  </o:p>
+                </p>
+                <div>
+                  <p class="MsoNormal">
+                    On 11 June 2013 04:13, Shane Curless &lt;
+                    <a href="mailto:shane@xxxxxxxxxxxxx" target="_blank">
+                      shane@xxxxxxxxxxxxx
+                    </a>
+                    &gt; wrote:
+                    <o:p/>
+                  </p>
+                  <p class="MsoNormal">
+                    Let me see if I can explain it a bit better...
+                    <br/>
+                    <br/>
+                    - User logs into our Information Management System.
+                    <br/>
+                    - User wants to download a file. The meta-information is store in a
+                    <br/>
+                    database, and the physical file is stored in a private directory on the
+                    <br/>
+                    server, the name of which is generated from the File ID and Revision ID.
+                    <br/>
+                    This physical, on-disk file name and path should never be seen by the
+                    <br/>
+                    client.
+                    <br/>
+                    - The users is directed to a URL, /files/(base64-encoded identifier), which
+                    <br/>
+                    via URL rewriting is handled by a CFML page.
+                    <br/>
+                    - The CFML page decodes the identifier, authenticates the session, and if
+                    <br/>
+                    all is well, builds a path to the physical file.
+                    <br/>
+                    - The CFML page sets the response header "X-Accel-Redirect" to this path.
+                    <br/>
+                    <br/>
+                    At this point, Railo is done processing and control is returned to the
+                    <br/>
+                    servlet container.
+                    <br/>
+                    <br/>
+                    - Nginx intercepts this response header, and responds to the browser with
+                    <br/>
+                    the content of the file.
+                    <br/>
+                    This is the part that I want Jetty to do, without having to make the path
+                    <br/>
+                    publically available.
+                    <o:p/>
+                  </p>
+                  <div>
+                    <p class="MsoNormal">
+                      <br/>
+                      -----Original Message-----
+                      <br/>
+                      From: 
+                      <a href="mailto:jetty-users-bounces@xxxxxxxxxxx">
+                        jetty-users-bounces@xxxxxxxxxxx
+                      </a>
+                      <br/>
+                      [mailto:
+                      <a href="mailto:jetty-users-bounces@xxxxxxxxxxx">
+                        jetty-users-bounces@xxxxxxxxxxx
+                      </a>
+                      ] On Behalf Of Simone Bordet
+                      <o:p/>
+                    </p>
+                  </div>
+                  <div>
+                    <p class="MsoNormal" style="margin-bottom:12.0pt">
+                      Sent: June-10-13 2:05 PM
+                      <br/>
+                      To: JETTY user mailing list
+                      <br/>
+                      Subject: Re: [jetty-users] Jetty 9 as a Front-end Server
+                      <o:p/>
+                    </p>
+                  </div>
+                  <div>
+                    <div>
+                      <p class="MsoNormal">
+                        Hi,
+                        <br/>
+                        <br/>
+                        On Mon, Jun 10, 2013 at 7:49 PM, Shane Curless &lt;
+                        <a href="mailto:shane@xxxxxxxxxxxxx">
+                          shane@xxxxxxxxxxxxx
+                        </a>
+                        &gt; wrote:
+                        <br/>
+                        &gt; I'm not sure what you mean by mapping to DefaultServlet.. I don't want
+                        <br/>
+                        &gt; these files to be directly available to the public. And I need to use
+                        <br/>
+                        &gt; Content-Disposition to output the real filename stored in a database.
+                        <br/>
+                        <br/>
+                        Well then you have to be more precise in your use case.
+                        <br/>
+                        I am not familiar with Railo, nginx, &lt;cfheader&gt; or whatever you're doing.
+                        <br/>
+                        I know Jetty can serve content asynchronously via direct buffers, and I
+                        <br/>
+                        believe what you have tersely described in your emails, if I understood it
+                        <br/>
+                        correctly, is doable in Jetty.
+                        <br/>
+                        <br/>
+                        --
+                        <br/>
+                        Simone Bordet
+                        <br/>
+                        ----
+                        <br/>
+                        <a href="http://cometd.org" target="_blank">
+                          http://cometd.org
+                        </a>
+                        <br/>
+                        <a href="http://webtide.com" target="_blank">
+                          http://webtide.com
+                        </a>
+                        <br/>
+                        <a href="http://intalio.com" target="_blank">
+                          http://intalio.com
+                        </a>
+                        <br/>
+                        Developer advice, training, services and support from the Jetty &amp; CometD
+                        <br/>
+                        experts.
+                        <br/>
+                        Intalio, the modern way to build business applications.
+                        <br/>
+                        _______________________________________________
+                        <br/>
+                        jetty-users mailing list
+                        <br/>
+                        <a href="mailto:jetty-users@xxxxxxxxxxx">
+                          jetty-users@xxxxxxxxxxx
+                        </a>
+                        <br/>
+                        <a href="https://dev.eclipse.org/mailman/listinfo/jetty-users" target="_blank">
+                          https://dev.eclipse.org/mailman/listinfo/jetty-users
+                        </a>
+                        <br/>
+                        <br/>
+                        _______________________________________________
+                        <br/>
+                        jetty-users mailing list
+                        <br/>
+                        <a href="mailto:jetty-users@xxxxxxxxxxx">
+                          jetty-users@xxxxxxxxxxx
+                        </a>
+                        <br/>
+                        <a href="https://dev.eclipse.org/mailman/listinfo/jetty-users" target="_blank">
+                          https://dev.eclipse.org/mailman/listinfo/jetty-users
+                        </a>
+                        <o:p/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <p class="MsoNormal">
+                  <br/>
+                  <br clear="all"/>
+                  <br/>
+                  -- 
+                  <br/>
+                  Greg Wilkins &lt;
+                  <a href="mailto:gregw@xxxxxxxxxxx" target="_blank">
+                    gregw@xxxxxxxxxxx
+                  </a>
+                  &gt; 
+                  <br/>
+                  <a href="http://www.webtide.com" target="_blank">
+                    http://www.webtide.com
+                  </a>
+                  <br/>
+                  Developer advice and support from the Jetty &amp; CometD experts. 
+                  <span style="font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">
+                    <br/>
+                    Intalio, the modern way to build business applications.
+                  </span>
+                  <o:p/>
+                </p>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--X-Body-of-Message-End-->    <!--X-MsgBody-End-->    <!--X-Follow-Ups-->    <hr/>
+    <!--X-Follow-Ups-End-->    <!--X-References-->    <ul>
+      <li>
+        <strong>
+          References
+        </strong>
+        :
+
+        <ul>
+        </ul>
+      </li>
+      <li>
+        <strong>
+          <a name="03435" href="msg03435.html">
+            [jetty-users] Jetty 9 as a Front-end Server
+          </a>
+        </strong>
+        <ul>
+        </ul>
+      </li>
+      <li>
+        <em>
+          From:
+        </em>
+         Shane Curless
+      </li>
+    </ul>
+    <li>
+      <strong>
+        <a name="03438" href="msg03438.html">
+          Re: [jetty-users] Jetty 9 as a Front-end Server
+        </a>
+      </strong>
+      <ul>
+      </ul>
+    </li>
+    <li>
+      <em>
+        From:
+      </em>
+       Simone Bordet
+    </li>
+    <li>
+      <strong>
+        <a name="03440" href="msg03440.html">
+          Re: [jetty-users] Jetty 9 as a Front-end Server
+        </a>
+      </strong>
+      <ul>
+      </ul>
+    </li>
+    <li>
+      <em>
+        From:
+      </em>
+       Shane Curless
+    </li>
+    <li>
+      <strong>
+        <a name="03442" href="msg03442.html">
+          Re: [jetty-users] Jetty 9 as a Front-end Server
+        </a>
+      </strong>
+      <ul>
+      </ul>
+    </li>
+    <li>
+      <em>
+        From:
+      </em>
+       Simone Bordet
+    </li>
+    <li>
+      <strong>
+        <a name="03443" href="msg03443.html">
+          Re: [jetty-users] Jetty 9 as a Front-end Server
+        </a>
+      </strong>
+      <ul>
+      </ul>
+    </li>
+    <li>
+      <em>
+        From:
+      </em>
+       Shane Curless
+    </li>
+    <li>
+      <strong>
+        <a name="03445" href="msg03445.html">
+          Re: [jetty-users] Jetty 9 as a Front-end Server
+        </a>
+      </strong>
+      <ul>
+      </ul>
+    </li>
+    <li>
+      <em>
+        From:
+      </em>
+       Simone Bordet
+    </li>
+    <li>
+      <strong>
+        <a name="03446" href="msg03446.html">
+          Re: [jetty-users] Jetty 9 as a Front-end Server
+        </a>
+      </strong>
+      <ul>
+      </ul>
+    </li>
+    <li>
+      <em>
+        From:
+      </em>
+       Shane Curless
+    </li>
+    <li>
+      <strong>
+        <a name="03458" href="msg03458.html">
+          Re: [jetty-users] Jetty 9 as a Front-end Server
+        </a>
+      </strong>
+      <ul>
+      </ul>
+    </li>
+    <li>
+      <em>
+        From:
+      </em>
+       Greg Wilkins
+    </li>
+    <!--X-References-End-->    <!--X-BotPNI-->    <ul>
+      <li>
+        Prev by Date:
+
+        <strong>
+          <a href="msg03458.html">
+            Re: [jetty-users] Jetty 9 as a Front-end Server
+          </a>
+        </strong>
+      </li>
+      <li>
+        Previous by thread:
+
+        <strong>
+          <a href="msg03458.html">
+            Re: [jetty-users] Jetty 9 as a Front-end Server
+          </a>
+        </strong>
+      </li>
+      <li>
+        Next by thread:
+
+        <strong>
+          <a href="msg03447.html">
+            [jetty-users] WebSocketConnection and possible classloader leak
+          </a>
+        </strong>
+      </li>
+      <li>
+        Index(es):
+
+        <ul>
+        </ul>
+      </li>
+      <li>
+        <a href="maillist.html#03459">
+          <strong>
+            Date
+          </strong>
+        </a>
+      </li>
+      <li>
+        <a href="threads.html#03459">
+          <strong>
+            Thread
+          </strong>
+        </a>
+      </li>
+    </ul>
+    <!--X-BotPNI-End-->    <!--X-User-Footer-->    <!--X-User-Footer-End-->  </body>
+</html>

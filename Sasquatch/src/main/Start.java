@@ -2,18 +2,19 @@ package main;
 
 import java.io.File;
 
-import analyze.AnalysisResult;
-import analyze.SentimentAnalyzer;
-import analyze.polarity.simple.SimplePolarityAnalyzer;
+import analyzer.AnalysisResult;
+import analyzer.SentimentAnalyzer;
+import analyzer.interfaces.IAnalysisResult;
+import analyzer.polarity.simple.SimplePolarityAnalyzer;
 
 
-import systems.SoftwareSystem;
-import systems.source.SourceHandler;
-import systems.source.SourceIndexer;
-import systems.source.SourceQuery;
-import systems.source.mail.LocalMailHandler;
-import systems.source.mail.SimpleMailIndexer;
-import systems.source.mail.SimpleMailQuery;
+import manager.systems.SoftwareSystem;
+import manager.systems.source.SourceHandler;
+import manager.systems.source.SourceIndexer;
+import manager.systems.source.SourceQuery;
+import manager.systems.source.mail.LocalMailHandler;
+import manager.systems.source.mail.SimpleMailIndexer;
+import manager.systems.source.mail.SimpleMailQuery;
 
 public class Start {
 
@@ -30,9 +31,9 @@ public class Start {
 		SourceHandler dom4jHandler = new LocalMailHandler(new File(DOM4J));
 		
 		/* Create software systems using the handlers. */
-		SoftwareSystem jboss = new SoftwareSystem(jbossHandler);
-		SoftwareSystem jdom = new SoftwareSystem(jdomHandler);
-		SoftwareSystem dom4j = new SoftwareSystem(dom4jHandler);
+		SoftwareSystem jboss = new SoftwareSystem("jboss", jbossHandler);
+		SoftwareSystem jdom = new SoftwareSystem("jdom", jdomHandler);
+		SoftwareSystem dom4j = new SoftwareSystem("dom4j", dom4jHandler);
 		
 		/* We will use a SimplePolarityAnalzyer. We need Lucene-Indexes.*/
 		File indexDir = new File(INDEX_PATH);
@@ -41,14 +42,17 @@ public class Start {
 		SentimentAnalyzer analyzer = new SimplePolarityAnalyzer(indexer, querier);	
 		
 		/* Now we will analyze the 3 systems and show the results.*/
-		AnalysisResult jbossResult = analyzer.analyze(jboss);
-		AnalysisResult jdomResult = analyzer.analyze(jdom);
-		AnalysisResult dom4jResult = analyzer.analyze(dom4j);
+		IAnalysisResult jbossResult = analyzer.analyze(jboss);
+		IAnalysisResult jdomResult = analyzer.analyze(jdom);
+		IAnalysisResult dom4jResult = analyzer.analyze(dom4j);
 		
+		System.out.println("JBoss Size: " + jboss.getSources().length);
 		jbossResult.show();
 		System.out.println("-------------");
+		System.out.println("JDom Size: " + jdom.getSources().length);
 		jdomResult.show();
 		System.out.println("-------------");
+		System.out.println("Dom4j Size: " + dom4j.getSources().length);
 		dom4jResult.show();
 	}
 

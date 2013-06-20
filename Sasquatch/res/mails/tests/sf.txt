@@ -1,0 +1,45 @@
+
+                <tbody align="left">
+                  <tr>
+                    <td width="0">
+                    </td>
+                    <td>
+                      <table width="100%" border="0">
+                        <tbody align="left"/>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#DDDDDD" nowrap="">
+                      <div class="forum">
+                        <div>
+                          <b>
+                            <!-- google_ad_section_start -->                            <a href="/mailarchive/message.php?msg_id=28763916">
+                              Re: [Htmlunit-user] Could not retrieve XPath
+                            </a>
+                            <!-- google_ad_section_end -->                          </b>
+                        </div>
+                        <small>
+                          From: Agustin &lt;pinyeiro@gm...&gt; -	2012-01-31 06:45
+                        </small>
+                        <br/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email_body">
+                      <!-- google_ad_section_start -->                      <pre>
+                        I've got the latest HtmlUnit and the same error is showing.
+
+What can I try? Thanks
+
+Marc Guillemot &lt;mguillemot &lt;at&gt; yahoo.fr&gt; writes:
+
+
+                      </pre>
+                      <!-- google_ad_section_end -->                      <br/>
+                      <br/>
+                    </td>
+                  </tr>
+                </tbody>
+              

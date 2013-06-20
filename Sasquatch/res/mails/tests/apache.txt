@@ -1,0 +1,16 @@
+<mail id="%3c1357012027.57399.YahooMailClassic@web141002.mail.bf1.yahoo.com%3e">
+  <from>
+<![CDATA[Tony Anecito &lt;adanec...@yahoo.com&gt;]]>  </from>
+  <subject>
+<![CDATA[Almost there just need a little more help...]]>  </subject>
+  <date>
+<![CDATA[Tue, 01 Jan 2013 03:47:07 GMT]]>  </date>
+  <contents>
+<![CDATA[Hi All,&#010; &#010;I am currently using JAX-WS and have been working on using JAX-RS using Jersey and Apache&#010;Http Client. I have gotten requests to work between between my client and jax-rs service.&#010;When I tried in an environment where NTLM is used I could not get my http requests to go through&#010;the network. Now I remember having to work through this with JAX-WS but I am not sure what&#010;to get http client to work using NTLM. What I want to have happen is the first time I try&#010;to connect using apache http client I want a dialog to show asking for login/password and&#010;after that is done be able to create requests that go all the way through to my remote server&#010;running my web services.&#010; &#010;So how can I do that? Is there an example somewhere on how to make it work that way without&#010;a lot of coding?&#010; &#010;Thanks for the help.&#010;-Tony&#010;]]>  </contents>
+  <mime>
+    <part link="/" length="0" cte="None" ct="multipart/alternative" cd="inline"/>
+    <mime>
+      <part link="/1" length="841" cte="Quoted Printable" ct="text/plain" cd="inline"/>
+    </mime>
+  </mime>
+</mail>

@@ -9,7 +9,7 @@ import manager.systems.source.Source;
 public class ScoredSource extends Source {
 	
 	private Source source;
-	private int score;
+	private double score;
 	
 	//maybe use a map...Word -> # of appearance
 	private ArrayList<Word> words = new ArrayList<Word>();
@@ -35,7 +35,7 @@ public class ScoredSource extends Source {
 		return source;
 	}
 	
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
 
@@ -74,6 +74,12 @@ public class ScoredSource extends Source {
 			equals = source.equals(o);
 		}
 		return equals;
+	}
+
+	public void addWords(Word[] newWords) {
+		for (Word w : newWords) {
+			addWord(w);
+		}
 	}
 
 }

@@ -2,16 +2,15 @@ package analyzer.dictionary;
 
 public class Word implements Comparable {
 
-	//CUT THIS OUT!
 	private String word;
-	private int value;
+	private double value;
 	
 	public Word(String word) {
 		this.word = word;
 		this.value = 0;
 	}
 	
-	public Word(String word, int value) {
+	public Word(String word, double value) {
 		this.word = word;
 		this.value = value;
 	}
@@ -48,7 +47,7 @@ public class Word implements Comparable {
 	/**
 	 * @return the value
 	 */
-	public int getValue() {
+	public double getValue() {
 		return value;
 	}
 
@@ -62,7 +61,7 @@ public class Word implements Comparable {
 	/**
 	 * @param value the value to set
 	 */
-	public void setValue(int value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 

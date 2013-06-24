@@ -82,5 +82,17 @@ public class SimpleFileDictionary implements IDictionary {
 	public Word[] getWords() {
 		return words.toArray(new Word[words.size()]);
 	}
+
+	@Override
+	public double getScore(Word w) {
+		double score = 0.0;
+		for (Word word : words) {
+			if (word.equals(w)) {
+				score = word.getValue();
+				break;
+			}
+		}
+		return score;
+	}
 	
 }

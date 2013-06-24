@@ -28,6 +28,16 @@ public class SimplePolarityResult extends PolarityResult {
 		return scoredSources.toArray(new ScoredSource[scoredSources.size()]);
 	}
 	
+	public void addSource(Source s, Word[] words) {
+		ScoredSource ss = getCorrespondingScoredSource(s);
+		if (ss == null) {
+			ss = new ScoredSource(s);
+			scoredSources.add(ss);
+		}
+		ss.addWords(words);
+		updateScore();
+	}
+	
 	public void addQueryResult(Word w, Source[] results) {
 		for (Source s : results) {
 			//get corresponding scoredSource
@@ -49,7 +59,7 @@ public class SimplePolarityResult extends PolarityResult {
 		notUsed = 0;
 		for (ScoredSource ss : scoredSources) {
 			if (ss.hasBeenUsed()) {
-				int score = ss.getScore();
+				double score = ss.getScore();
 				if (score > 0) {
 					positive++;
 				} else if (score < 0) {

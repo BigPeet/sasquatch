@@ -69,5 +69,6 @@
 	<classpathentry kind="lib" path="libs/sitecapturer.jar"/>
 	<classpathentry kind="lib" path="libs/thumbelina.jar"/>
 	<classpathentry kind="lib" path="libs/joda-time-2.2.jar"/>
+	<classpathentry kind="lib" path="libs/qtag"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

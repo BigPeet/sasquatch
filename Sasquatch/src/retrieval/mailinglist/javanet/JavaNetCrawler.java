@@ -16,12 +16,12 @@ import retrieval.general.SeleniumCrawler;
 import retrieval.mailinglist.TextCollector;
 
 public class JavaNetCrawler extends SeleniumCrawler {
-	
+
 	private static final String baseURL = "https://java.net/projects/";
 	private static final String archiveURL = "/archive/";
 	private static final String mailURL = "/message/";
 	private static final String NOT_FOUND = "The mailing list users@jpa-spec.java.net does not have any messages in its archive.";
-	
+
 	private int start;
 	private int end;
 
@@ -31,13 +31,14 @@ public class JavaNetCrawler extends SeleniumCrawler {
 		this.end = end;
 		setStat(new TextCollector());
 	}
-	
-	
+
+
 	@Override
 	public void run() {
 		for (String link : getPageLinks()) {
 			getDriver().get(link);
-			for (String mailLink : getMailLinks(link, getDriver().getPageSource())) {
+			String page = getDriver().getPageSource();
+			for (String mailLink : getMailLinks(link, page)) {
 				getDriver().get(mailLink);
 				String mailPage = getDriver().getPageSource();
 				if (!pageNotFound(mailPage)) {
@@ -46,7 +47,6 @@ public class JavaNetCrawler extends SeleniumCrawler {
 			}
 		}
 	}
-
 
 	private boolean pageNotFound(String mailPage) {
 		boolean wasNotFound = false;
@@ -92,7 +92,7 @@ public class JavaNetCrawler extends SeleniumCrawler {
 		}
 		return mails;
 	}
-	
+
 	private String getMonthRow(String pageSource) {
 		String monthRow = "";
 		try {

@@ -94,5 +94,10 @@ public class SimpleFileDictionary implements IDictionary {
 		}
 		return score;
 	}
+
+	@Override
+	public double getScore(POSTaggedWord word) {
+		return getScore((Word) word);
+	}
 	
 }

@@ -73,7 +73,7 @@ public class ApacheMailParser extends MailParser {
 
 	private boolean isEnd(String line) {
 		line = line.trim();
-		return line.equals("---------------------------------------------------------------------");
+		return line.equals("---------------------------------------------------------------------") || line.contains("Original Message");
 	}
 
 	private boolean isEmpty(String line) {

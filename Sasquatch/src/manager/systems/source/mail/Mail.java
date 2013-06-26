@@ -9,20 +9,17 @@ public class Mail extends Source {
 	private String header = "";
 	private String body = "";
 	private String sender = "";
-	private Date date;
 	
 	public Mail(String header, String body) {
-		super(header + "\n" + body);
+		super(body);
 		this.header = header;
 		this.body = body;
-		this.date = new Date();
 	}
 
 	public Mail(String header, String body, Date date) {
-		super(header + "\n" + body);
+		super(body, date);
 		this.header = header;
 		this.body = body;
-		this.date = date;
 	}
 	
 	@Override
@@ -42,10 +39,6 @@ public class Mail extends Source {
 	 */
 	public void setBody(String text) {
 		this.body = text;
-	}
-	
-	public Date getDate() {
-		return date;
 	}
 
 	/**
@@ -71,8 +64,8 @@ public class Mail extends Source {
 				equals = header.equals(m.header) 
 						&& body.equals(m.body);
 			}
-			if (equals && date != null) {
-				equals = date.equals(m.date);
+			if (equals && getDate() != null) {
+				equals = getDate().equals(m.getDate());
 			}
 		}
 		return equals;

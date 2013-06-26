@@ -17,15 +17,15 @@ public class POSTagger {
 	}
 
 	
-	public TaggedWord[] tagWords(Word[] words) {
-		TaggedWord[] tagged = new TaggedWord[words.length];
+	public POSTaggedWord[] tagWords(Word[] words) {
+		POSTaggedWord[] tagged = new POSTaggedWord[words.length];
 		String[] texts = new String[words.length];
 		for (int i = 0; i < words.length; i++) {
 			texts[i] = words[i].getWord();
 		}
 		String[] tags = this.tagger.tag(texts);
 		for (int i = 0; i < words.length; i++) {
-			tagged[i] = new TaggedWord(texts[i], tags[i]);
+			tagged[i] = new POSTaggedWord(texts[i], tags[i]);
 		}
 		
 		return tagged;

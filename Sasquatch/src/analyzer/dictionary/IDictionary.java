@@ -6,4 +6,5 @@ public interface IDictionary {
 
 	public void extractWords(File dict);
 	public double getScore(Word w);
+	public double getScore(POSTaggedWord word);
 }

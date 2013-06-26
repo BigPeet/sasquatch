@@ -9,6 +9,7 @@ public class SoftwareSystem {
 	private Source[] sources;
 	private SourceHandler handler;
 	private String name;
+	private String path;
 	private String listName;
 	private int start;
 	private int end;
@@ -17,7 +18,7 @@ public class SoftwareSystem {
 	
 	public SoftwareSystem(String name, String path) {
 		this.name = name;
-		this.listName = path;
+		this.path = path;
 	}
 	
 	public SoftwareSystem(String name, String listName, int startYear, int endYear, Archive archive) {
@@ -166,6 +167,20 @@ public class SoftwareSystem {
 	 */
 	public void setArchive(Archive archive) {
 		this.archive = archive;
+	}
+
+	/**
+	 * @return the path
+	 */
+	public String getPath() {
+		return path;
+	}
+
+	/**
+	 * @param path the path to set
+	 */
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }

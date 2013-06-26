@@ -35,19 +35,19 @@ public class CrawlSystems {
 	private static SoftwareSystem jettyUsers = new SoftwareSystem("jetty", "jetty-users", 2009, 2013, Archive.ECLIPSE_LIST);
 	private static SoftwareSystem tomcatUsers = new SoftwareSystem("tomcat", "tomcat-users", 2010, 2013, Archive.APACHE); //2000
 	private static SoftwareSystem jpaUsers = new SoftwareSystem("jpa", "jpa-spec/lists/users", 2011, 2013, Archive.JAVANET);
-	private static SoftwareSystem tapestryUsers = new SoftwareSystem("tapestry", "tapestry-users", 2003, 2013, Archive.APACHE);
+	private static SoftwareSystem tapestryUsers = new SoftwareSystem("tapestry", "tapestry-users", 2010, 2013, Archive.APACHE); //2003
 	private static SoftwareSystem jsfUsers = new SoftwareSystem("jsf", "javaserverfaces/lists/users", 2004, 2013, Archive.JAVANET);
-	private static SoftwareSystem strutsUsers = new SoftwareSystem("struts", "struts-user", 2000, 2013, Archive.APACHE);
+	private static SoftwareSystem strutsUsers = new SoftwareSystem("struts", "struts-user", 2010, 2013, Archive.APACHE); //2000
 	private static SoftwareSystem nekohtmlUsers = new SoftwareSystem("nekohtml", "nekohtml-user", 2007, 2013, Archive.SOURCEFORGE);
 	private static SoftwareSystem htmlparserUsers = new SoftwareSystem("htmlparser", "htmlparser-user", 2001, 2013, Archive.SOURCEFORGE);
 	private static SoftwareSystem dom4jUsers = new SoftwareSystem("dom4j", "dom4j-user", 2001, 2013, Archive.SOURCEFORGE);
-	private static SoftwareSystem jbossUsers = new SoftwareSystem("jboss", "jboss-user", 2006, 2013, Archive.PIPERMAIL);
-	private static SoftwareSystem glassFishUsers = new SoftwareSystem("glassfish", "glassfish/lists/users", 2005, 2013, Archive.JAVANET);
+	private static SoftwareSystem jbossUsers = new SoftwareSystem("jboss", "jboss-user", 2006, 2013, 3000, Archive.PIPERMAIL);
+	private static SoftwareSystem glassFishUsers = new SoftwareSystem("glassfish", "glassfish/lists/users", 2011, 2013, Archive.JAVANET); //2005
 	private static SoftwareSystem resinUsers = new SoftwareSystem("resin", "resin-interest@caucho.com", 2008, 2013, Archive.MAIL_ARCHIVE);
 
 	private static SoftwareSystem[] userSystems = {/*httpClientUsers, log4jUsers, httpunitUsers,
-		htmlunitUsers, jettyUsers, */tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
-		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers};
+		htmlunitUsers, jettyUsers, tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
+		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, */glassFishUsers, resinUsers};
 
 	//DEVELOPER BASED SOURCES
 	private static SoftwareSystem jcronTabDevs = new SoftwareSystem("jcrontab", "jcrontab-developers", 2001, 2013, Archive.SOURCEFORGE);
@@ -109,7 +109,7 @@ public class CrawlSystems {
 		Date start = new Date();
 //		SoftwareSystem test = new SoftwareSystem("httpclient", "hc-httpclient-users", 2004, 2013, Archive.APACHE);
 //		crawlSystem(test, new LocalMailHandler(new File("res/mails/" + test.getName() + ".xml")));
-		crawlUserSystems();
+//		crawlUserSystems();
 //		crawlDevSystems();
 //		crawlUndefinedSystems();
 		Date end = new Date();

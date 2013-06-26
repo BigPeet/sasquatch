@@ -23,7 +23,7 @@ public class SentiWordNetDictionary implements IDictionary {
 	private static final int INDEX_INDEX = 1;
 	
 	private HashMap<String, Double> dict = new HashMap<String, Double>();
-	private ArrayList<TaggedWord> words = new ArrayList<TaggedWord>();
+	private ArrayList<POSTaggedWord> words = new ArrayList<POSTaggedWord>();
 	
 	
 	public SentiWordNetDictionary() {
@@ -40,10 +40,8 @@ public class SentiWordNetDictionary implements IDictionary {
 		HashMap<String, Vector<Double>> vectorScores = getVectorScoreMap(dictFile);
 		Set<String> keys = vectorScores.keySet();
 		for (String word : keys) {
-			TaggedWord tw = getTaggedWordFromString(word);
-			System.out.print(tw);
+			POSTaggedWord tw = getTaggedWordFromString(word);
 			Vector<Double> v = vectorScores.get(word);
-			System.out.println(" " + v);
 			double score = calculateScore(v);
 			tw.setValue(score);
 			dict.put(tw.toString(), score);
@@ -51,23 +49,23 @@ public class SentiWordNetDictionary implements IDictionary {
 		}
 	}
 	
-	public TaggedWord getTaggedWordFromString(String word) {
-		TaggedWord tw = null;
+	public POSTaggedWord getTaggedWordFromString(String word) {
+		POSTaggedWord tw = null;
 		String[] token = word.split(IN_WORD_SEPARATOR);
 		if (token.length == 2) {
 			String text = token[0];
 			String pos = token[1];
-			tw = new TaggedWord(text, pos);
+			tw = new POSTaggedWord(text, pos);
 		}
 		return tw;
 	}
 	
-	public TaggedWord[] getWords() {
-		return words.toArray(new TaggedWord[words.size()]);
+	public POSTaggedWord[] getWords() {
+		return words.toArray(new POSTaggedWord[words.size()]);
 	}
 	
 	public double getScore(String word, String pos) {
-		TaggedWord tw = new TaggedWord(word, pos);
+		POSTaggedWord tw = new POSTaggedWord(word, pos);
 		return getScore(tw);
 	}
 	
@@ -88,9 +86,10 @@ public class SentiWordNetDictionary implements IDictionary {
 		return score;
 	}
 
-	public double getScore(TaggedWord word) {
+	@Override
+	public double getScore(POSTaggedWord word) {
 		double score = 0.0;
-		TaggedWord sentiWord = getSentiTaggedWord(word.getWord(), word.getPOS());
+		POSTaggedWord sentiWord = getSentiTaggedWord(word.getWord(), word.getPOS());
 		if (dict.containsKey(sentiWord.toString())) {
 			score = dict.get(sentiWord.toString());
 		}
@@ -98,13 +97,18 @@ public class SentiWordNetDictionary implements IDictionary {
 	}
 
 
-	private TaggedWord getSentiTaggedWord(String text, String pos) {
+	private POSTaggedWord getSentiTaggedWord(String text, String pos) {
+		text = text.toLowerCase();
+		Stemmer stemmer = new Stemmer();
+		stemmer.add(text);
+		stemmer.stem();
+		text = stemmer.toString();
 		String sentiTag = SentiWordPOS.convertToSentiWordTag(pos);
-		return new TaggedWord(text, sentiTag);
+		return new POSTaggedWord(text, sentiTag);
 	}
 
 	public static void main(String[] args) {
-		File f = new File("res/dict/SentiWordNetTest.txt");
+		File f = new File("res/dict/SentiWordNet.txt");
 		SentiWordNetDictionary dict = new SentiWordNetDictionary();
 		dict.extractWords(f);
 		double score = dict.getScore("shit", "n");
@@ -143,7 +147,7 @@ public class SentiWordNetDictionary implements IDictionary {
 			String[] token = term.split(IN_WORD_SEPARATOR);
 			int index = Integer.parseInt(token[INDEX_INDEX]) - 1;
 			String word = token[WORD_INDEX].replace("_", " ");
-			TaggedWord tw = new TaggedWord(word, pos);
+			POSTaggedWord tw = new POSTaggedWord(word, pos);
 			double score = calculateScore(posScore, negScore);
 			Vector<Double> v = null;
 			if (map.containsKey(tw.toString())) {
@@ -151,27 +155,20 @@ public class SentiWordNetDictionary implements IDictionary {
 			} else {
 				v = new Vector<Double>();
 			}
-			addScore(v, score, index);
+			addScore(v, score);
 			map.put(tw.toString(), v);
 		}
 	}
 
-	private void addScore(Vector<Double> v, double score, int index) {
-		if (index > v.size()) {
-			for (int i = v.size(); i < index; i++) {
-				v.add(0.0);
-			}
-		}
-		v.add(index, score);
+	private void addScore(Vector<Double> v, double score) {
+		v.add(score);
 	}
 
 	private double calculateScore(Vector<Double> v) {
 		double score = 0.0;
-		double sum = 0.0;
+		double sum = v.size();
 		for(int i = 0; i < v.size(); i++)
-			score += ((double) 1 / (double)(i + 1)) * v.get(i);
-		for(int i = 1; i <= v.size(); i++)
-			sum += (double) 1 / (double) i;
+			score += v.get(i);
 		score /= sum;
 		return score;
 	}

@@ -13,14 +13,17 @@ public class AnalyzerTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String text = "This is some wonderful shit";
-		Mail m = new Mail("", text);
-		Source[] sources = {m};
-		SoftwareSystem system = new SoftwareSystem("testSystem", sources);
-		SentimentAnalyzer analyzer = new SentiPolarityAnalyzer();
-
-		IAnalysisResult res = analyzer.analyze(system);
-		res.show();
+		
+		
+		
+//		String text = "This isn't good.";
+//		Mail m = new Mail("", text);
+//		Source[] sources = {m};
+//		SoftwareSystem system = new SoftwareSystem("testSystem", sources);
+//		SentimentAnalyzer analyzer = new SentiPolarityAnalyzer();
+//
+//		IAnalysisResult res = analyzer.analyze(system);
+//		res.show();
 	}
 
 }

@@ -26,6 +26,7 @@ public class JavaNetMailParser extends MailParser {
 	private static final String BLOCKQUOUTE_CLOSING = "</blockquote>";
 	private static final String DATE_START = "Date";
 	private static final String DATE_FORMAT = "EEE, dd MMM yyyy HH:mm:ss z";
+	private static final String DATE_FORMAT_ALT = "EEE, dd MMM yyyy HH:mm z";
 
 	private int openQuoteBlocks = 0;
 
@@ -58,6 +59,14 @@ public class JavaNetMailParser extends MailParser {
 				date = formatter.parse(dateText);
 			} catch (ParseException e) {
 				e.printStackTrace();
+			}
+			if (date == null) {
+				DateFormat formatter = new SimpleDateFormat(DATE_FORMAT_ALT, Locale.ENGLISH);
+				try {
+					date = formatter.parse(dateText);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		return date;

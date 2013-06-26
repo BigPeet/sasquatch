@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mails>
+  <mail>
+    <header>[nekohtml-user] Welcome to the NekoHTML Project!</header>
+    <date>Wed May 23 07:45:00 CEST 2007</date>
+    <body>This has been a long time coming. I had hoped that the NekoHTML parser would find a home as part of the Xerces-J project at Apache. But I was looking for an adoption and they didn't want anything thrown over the wall, so to speak. So I have *finally* been pushed into creating a SourceForge project[1] by numerous users of the code. The great thing about having the project hosted at SourceForge is that we get real source control, mailing lists, issue tracking, and perhaps most importantly, I have a way to allow others to hack on the code and help me out as it continues to evolve. So far I have done the following: * Imported the source code Now all versions of the source, from release 0.1 through 0.9.5 has been checked into Subversion (SVN). The current codebase is checked in under trunk[2], and all of the releases are found in the branches[3] directory. You can browse the SVN repository[4] to see how it is setup. * Created the mailing lists We have two mailing lists[5], nekohtml-user and nekohtml-developer. The user mailing list is for questions, comments, and general usage discussions. Whereas the developer mailing list is for design and development discussions. The latter is where we will talk about design changes, releases, etc. Even though I've made a good start on the project, there is still a lot of work to do. Here is a list of the things still left to do: * Import release packages I want to upload the download packages for all of the version of NekoHTML. This is a good idea for archiving purposes as well as allowing people to get the latest version while we are working on a new release. * Update license Currently, the code is released under an Apache-style license. In other words, I took the Apache V1 license and changed "Apache" to "CyberNeko". I understand that this has caused people some problems in integrating the parser with their code due to company restrictions. So I want to change the license to vanilla Apache V2[6]. * Change directory structure Previously, the NekoHTML parser was part of a larger development project that I called the "CyberNeko Tools for XNI". As such, I had organized the directories so as to keep the source separate. For example, there was a src/dtd/ directory, a src/html/ directory, etc. Now that NekoHTML is a full-fledged project of its own, I want to clean this up and go back to just src/ as the root of the source code tree. Similar changes will be needed in other directories. * Update build script Aside from the changes required by changing the dir structure, I want to update the build script to take advantage of changes in Ant since the time I started the project; and also to follow standard Java project conventions. For example, building into build/ instead of bin/, etc. There are probably more things to be done but that's a good enough list for the moment. Anyway, welcome to the project! Links: [1] http://sourceforge.net/projects/nekohtml/ [2] https://nekohtml.svn.sourceforge.net/svnroot/nekohtml/trunk [3] https://nekohtml.svn.sourceforge.net/svnroot/nekohtml/branches [4] http://nekohtml.svn.sourceforge.net/viewvc/nekohtml/ [5] http://sourceforge.net/mail/?group_id=195122 [6] http://apache.org/licenses/LICENSE-2.0 -- Andy Clark - andy@...</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] ElementRemover usage</header>
+    <date>Wed Dec 26 19:42:00 CET 2007</date>
+    <body>I am trying to remove the tag &amp;lt;HEAD&amp;gt; &amp;lt;/HEAD&amp;gt; from an HTML fragment. I tried: org.cyberneko.html.filters.ElementRemover er = new er parser.setProperty( " http://cyberneko.org/html/properties/filters But this seems to remove everything. Is there anyway to say accept everything except &amp;lt;HEAD&amp;gt; ? -Thanks Steve More</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Parsing incomplete Html</header>
+    <date>Mon Dec 17 15:02:00 CET 2007</date>
+    <body>Dear all, Thanks a lot for reviving NekoHTML. Some cases encountered in HtmlUnit were related to parsing something like "hello there&amp;lt;/div&amp;gt;", or "&amp;lt;a", " href=url". This happens when the end user use javascript 'document.write()', for instance: I believe the solution is either to: 1- Allow injecting any string at end of 'body' by having method like parser.appendToBody(string) 2- Or parsing incomplete HTML. What do you think? Ahmed Ashour ____________________________________________________________________________________ Be a better friend, newshound, and know-it-all with Yahoo! Mobile.  Try it now. http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [Announce] CyberNeko HTML Parser 1.9.6 Release</header>
+    <date>Sat Dec 15 03:17:00 CET 2007</date>
+    <body>After acouple years of inactivity, NekoHTML users wrote me to inquire about the future of the project. Thanks to their persistence, NekoHTML now has a new home and a new release! There are some major organizational changes in the new release. First and foremost, I moved the development to SourceForge and changed the license to a pure Apache 2.0 license. Another important change is the updated version number. The new version marks the fresh start at SourceForge and indicates that the project is mature and stable. In addition, the implementation was updated to be compatible with the newest version of Xerces and the latest XNI API changes. And a number of outstanding bugs were fixed. The only change that could affect users is that the minimum Java version required to run NekoHTML was increased to Java 1.3. If this causes any problems for existing users, please let us know by posting to the Users mailing list. The email address is included at the end of this message. The move to SourceForge gives the project a lot of things that were missing before including a publicly available source control system, bug tracking, mailing lists, release management, and more! In addition, I am opening up the development to more contributors to make sure that the project has a long, prosperous future. Here are some important links: Docs    - http://nekohtml.sourceforge.net/ Project - http://sourceforge.net/projects/nekohtml Mail    - nekohtml-user@... Enjoy! P.S. Sorry for spamming a bunch of the Apache lists but it's been a loooong time since the last release and wanted to reach as many people as possible. -- Andy Clark - andy@...</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Wanted: Example to read from string instead of file</header>
+    <date>Mon Jan 21 22:40:00 CET 2008</date>
+    <body>Can someone give me an example of parsing the contents of a string instead of reading from a file? I've studied the source code for neko and xerces and I cannot figure out how to create pass an input stream to the DOMParser.parse function. Apparently I can pass an XMLInputStream but the XMLInputStream constructor requires 5 constructor arguements to specify the publicid, systemid, basesystemid and encoding. What the heck do I pass as these values? Anyway, my attempts don't work: Neko complains that &amp;lt;HTML&amp;gt; is not a valid protocol (apparently it is looking for a URL). Thanks, Siegfried</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Wanted: Example to read from string instead of
+ file</header>
+    <date>Tue Jan 22 00:27:00 CET 2008</date>
+    <body>siegfried@... wrote: You need to wrap the string in a java.io.StringReader and then pass that into the XMLInputStream's constructor. This is the same as if you were parsing XML documents with Xerces. The publicId and systemId are only important for XML parsing when the parser needs to load an external entity. -AndyC</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Wanted: Example to read from string instead of
+	file</header>
+    <date>Tue Jan 22 00:48:00 CET 2008</date>
+    <body>Andy, Thanks! What about the encoding argument? Can I specify null for the systemid, publicid, and basesystemid and encoding? Siegfried -----Original Message----- From: Andy Clark [mailto:andy@...] Sent: Monday, January 21, 2008 5:28 PM To: siegfried@... Cc: nekohtml-user@... Subject: Re: [nekohtml-user] Wanted: Example to read from string instead of file siegfried@... wrote: You need to wrap the string in a java.io.StringReader and then pass that into the XMLInputStream's constructor. This is the same as if you were parsing XML documents with Xerces. The publicId and systemId are only important for XML parsing when the parser needs to load an external entity. -AndyC</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Wanted: Example to read from string instead of
+ file</header>
+    <date>Tue Jan 22 02:49:00 CET 2008</date>
+    <body>siegfried wrote: You should be able to leave the rest of them null, if you like. And the encoding is only necessary if 1) you are using an input stream instead of a reader; and 2) if you don't want the parser to auto-detect the character set. P.S. If you'd like to ask more questions, please join the mailing list. Because only members are allowed to post to the list, I have to personally approve every message from a non-member.</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Wanted: Example to read from string instead of
+	file</header>
+    <date>Tue Jan 22 20:23:00 CET 2008</date>
+    <body>I did a google search for nekohtml-user@... and I'm having trouble find the web page that has the directions for joining the list. Can someone kindly point me to it? Thanks, Siegfried -----Original Message----- From: Andy Clark [mailto:andy@...] Sent: Monday, January 21, 2008 7:49 PM To: siegfried Cc: nekohtml-user@... Subject: Re: [nekohtml-user] Wanted: Example to read from string instead of file siegfried wrote: You should be able to leave the rest of them null, if you like. And the encoding is only necessary if 1) you are using an input stream instead of a reader; and 2) if you don't want the parser to auto-detect the character set. P.S. If you'd like to ask more questions, please join the mailing list. Because only members are allowed to post to the list, I have to personally approve every message from a non-member.</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Dynamic Content Insertion</header>
+    <date>Sat Feb 16 19:43:00 CET 2008</date>
+    <body>Dear all, 1) On trying to insert to insert multiple 'content' strings into the parser HTML document, the results are wrong, however if strings are concatenated into a single one, then it works as expected. Input: Should give: startElement STYLE endElement STYLE startElement DIV endElement DIV But gives: startElement DIV startElement STYLE characters characters endElement STYLE endElement DIV 2- Why insertion doesn't immediately invoke startElement/endElement, instead of waiting for all insertions (and return from the original endElement of 'Script'). This is needed for a correct handling of something like: You will find below both files as inline code, Appreciate your help, many thanks. Many thanks, Ahmed Ashour ------------------------------------------------------------------------------------------------------------------------ TestInsertion.java /** Augmentations feature identifier. */ protected static final String AUGMENTATIONS = " http://cyberneko.org/html/features/augmentations /** Filters property identifier. */ protected static final String FILTERS = " http://cyberneko.org/html/properties/filters /** The NekoHTML configuration. */ /** Constructs a script object with the specified configuration. */ /** Start element. */ public void startElement(QName element, XMLAttributes attrs, Augmentations augs) /** Characters. */ public void characters(XMLString text, Augmentations augs) /** End element. */ // case 1: individual insertions // case 2: single insert XMLInputSource source = new XMLInputSource(null, "HOHO" + counter++, null, new StringReader(string), /** Main. */ ------------------------------------------------------------------------------------------------------------------------ test.html ____________________________________________________________________________________ Never miss a thing.  Make Yahoo your home page. http://www.yahoo.com/r/hs</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Dynamic Content Insertion</header>
+    <date>Tue Feb 19 20:31:00 CET 2008</date>
+    <body>Dear Andy, What do you think about http://sourceforge.net/tracker/index.php?func=detail&amp;amp;aid=1895946&amp;amp;group_id=195122&amp;amp;atid=952180? Many thanks, Ahmed ____________________________________________________________________________________ Never miss a thing.  Make Yahoo your home page. http://www.yahoo.com/r/hs</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Dynamic Content Insertion</header>
+    <date>Wed Feb 20 05:48:00 CET 2008</date>
+    <body>Ahmed Ashour wrote: http://sourceforge.net/tracker/index.php?func=detail&amp;amp;aid=1895946&amp;amp;group_id=195122&amp;amp;atid=952180 http://sourceforge.net/tracker/index.php?func=detail&amp;amp;aid=1895946&amp;amp;group_id=195122&amp;amp;atid=952180&amp;gt;? The solution to your problem is not removing the entity stack feature entirely. So I would oppose any solution that alters that behavior. I was suggesting that we could *add* some API or functionality that allows you to get the functionality that you need. You don't need to get rid of the entity stack, you just need to be able to *insert* a stream at a specific place in the stack -- in your case that would be index 1. At the beginning of parsing the document, the stack would have a single element, the primary input stream. So it would look like this: 0 document stream Currently, when you insert multiple streams at the same time (i.e. inserting additional stream before parsing the contents of the previously pushed streams), they are added to the *top* of the stack. Like so: 3 inserted stream 3 2 inserted stream 2 1 inserted stream 1 0 document stream And because stacks work in first in, last out order, it appears like your inserted content is being parsed backwards. Instead, you need some functionality to insert the streams just after the document stream. So that the stack would look like this: 3 inserted stream 1 2 inserted stream 2 1 inserted stream 3 0 document stream Currently, the only method you have is pushInputSource that takes a single argument, an XMLInputSource. However, if we added another method that allows you to pass in the index where to insert, like this: void insertInputSource(XMLInputSource inputSource, int index) then you would be able to achieve what you want by repeatedly calling the new method with index set to 1. Does this make sense? and would this meet your needs? -AndyC</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Dynamic Content Insertion</header>
+    <date>Wed Feb 20 21:24:00 CET 2008</date>
+    <body>Andy Clark wrote: ................ ................ Actually, during initial investigations I made your current suggestion, and concluded later that Stack is not needed for the following example: -------------------------------------------------------- -------------------------------------------------------- Stack is needed for a later evaluation of insertions, but in the given example, the insertions needs to be immediately evaluated. In other words, using Stack will save all the five 'write()' till &amp;lt;script&amp;gt; tag finishes, however to correctly handle the middle 'alert()', insertions should be instantaneously evaluated. Also, I feel the strong objection of removing stacks, do you have a case that fails with the provided patch? And do you find the case in the patch is wrong? Thanks a lot, Ahmed ____________________________________________________________________________________ Never miss a thing.  Make Yahoo your home page. http://www.yahoo.com/r/hs</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Dynamic Content Insertion</header>
+    <date>Thu Feb 21 02:49:00 CET 2008</date>
+    <body>Ahmed Ashour wrote: &amp;gt; do you have a case that fails with the provided patch? &amp;gt; And do you find the case in the patch is wrong? Your changes work for *you* but they change the behavior of an API that has been there for a long time and that *other* users may depend on. That is my primary concern with your changes. The only time that I favor changing behavior is when that behavior was *wrong* to begin with. What you want is different than the current behavior but does not invalidate the correctness of the current implementation. So let's come up with a new API that solves your problem and leave pushInputSource working the way that it has always worked. -AndyC</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Dynamic Content Insertion</header>
+    <date>Mon Feb 25 15:25:00 CET 2008</date>
+    <body>@Andy, I've applied the new version of Ahmed's patch. Feel free to rename the method name and to enhance it if you think that it doesn't handle all the cases... or tell us which cases you mean, to allow us to add appropriate unit test and fix. Cheers, Marc. -- Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] &amp;amp; character handling in neko html parser</header>
+    <date>Wed Feb 20 22:12:00 CET 2008</date>
+    <body>Yes, NekoHtml handles '&amp;amp;'. ----- Original Message ---- To: nekohtml-user@... Sent: Thursday, February 21, 2008 12:59:27 AM Subject: [nekohtml-user] &amp;amp; character handling in neko html parser Hi, Can you please tell me if neko html parser handles '&amp;amp;' character in text node? In real xml definition, &amp;amp; is not handle, it needs to translate to '&amp;amp;amp;' I wonder if necko html parser handles just '&amp;amp;' character. Thank you. ____________________________________________________________________________________ Never miss a thing.  Make Yahoo your home page. http://www.yahoo.com/r/hs</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] &amp;amp; character handling in neko html parser</header>
+    <date>Wed Feb 20 21:59:00 CET 2008</date>
+    <body />
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [Invitation] (No Subject) @ Wed Feb 20 4pm - 5pm ()</header>
+    <date>Wed Feb 20 21:59:00 CET 2008</date>
+    <body />
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Dynamic Content Insertion</header>
+    <date>Sat Feb 16 19:20:00 CET 2008</date>
+    <body />
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Dynamic Content Insertion</header>
+    <date>Mon Feb 18 19:54:00 CET 2008</date>
+    <body>Ahmed Ashour wrote: &amp;gt; [...] Each time that you call insert, you are adding an input source to the *top* of the input stack. Which means that when you continue parsing, it will parse in the *reverse* order in which you inserted them onto the stack. Standard stack behavior: first in, last out. I would suggest buffering all of the content of the element *before* you attempt to insert anything into the parser stream. Since characters are not guaranteed to be called once per text (or even once per line!), you may get a characters callback that is only part of a single line of text. Now, if you are programatically adding content and *still* want to insert in sequence, then you must allow the parser to parse the entire current content *before* inserting the next bit. We haven't needed this before but maybe additional API would help users in these situations. -AndyC</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Question about using neko html parser</header>
+    <date>Sat Feb 16 19:35:00 CET 2008</date>
+    <body>Dear Ying, You can only dump the attributes, but not children, which will be invoke another methods startElement(), characters(), etc. Simply start element is invoked whenever the parser sees something like &amp;lt;element attr1='value1' attr2='value2'&amp;gt;, but not children. You can save the elements/text in a buffer, to be manipulated when the endElement() is invoked. Hope that helps, Yours, Ahmed ----- Original Message ---- To: nekohtml-user@... Sent: Saturday, February 16, 2008 1:55:46 AM Subject: [nekohtml-user] Question about using neko html parser Hi, I am trying to follow Minimal.java as an examle to use neko html parser.  My question is "In the startElement(), Is it possible to dump all the attribute, text and all child, grandchild elements  to a buffer? public void startElement(QName element, XMLAttributes attrs, Thank you. ------------------------------------------------------------------------- This SF.net email is sponsored by: Microsoft Defy all challenges. Microsoft(R) Visual Studio 2008. http://clk.atdmt.com/MRT/go/vse0120000070mrt/direct/01/ _______________________________________________ nekohtml-user mailing list nekohtml-user@... https://lists.sourceforge.net/lists/listinfo/nekohtml-user ____________________________________________________________________________________ Looking for last minute shopping deals? Find them fast with Yahoo! Search. http://tools.search.yahoo.com/newsearch/category.php?category=shopping</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Question about using neko html parser</header>
+    <date>Fri Feb 15 22:55:00 CET 2008</date>
+    <body>Hi, I am trying to follow Minimal.java as an examle to use neko html parser.  My question is "In the startElement(), Is it possible to dump all the attribute, text and all child, grandchild elements  to a buffer? public void startElement(QName element, XMLAttributes attrs, Thank you.</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Question about entity references</header>
+    <date>Thu Mar 20 13:26:00 CET 2008</date>
+    <body>Hi, I am trying to find out at what stage a entity expansion like the following happens. Is there a pipeline with stages ? Is it the responsibility of Xerces ? Thanks, Mohan Office:+91 20 66222500|Ext:1462 ============================================================================================================================ Disclaimer: This message and the information contained herein is proprietary and confidential and subject to the Tech Mahindra policy statement, you may review the policy at &amp;lt;a href=" http://www.techmahindra.com/Disclaimer.html"&amp;gt;http://www.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; externally and &amp;lt;a href=" http://tim.techmahindra.com/Disclaimer.html"&amp;gt;http://tim.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; internally within Tech Mahindra. ============================================================================================================================</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Question about entity references</header>
+    <date>Thu Mar 27 09:10:00 CET 2008</date>
+    <body>Hi, it's done by NekoHTML. Look at HTMLScanner.scanEntityRef Cheers, Marc. -- Blog: http://mguillem.wordpress.com Mohan Radhkrishanan wrote: http://www.techmahindra.com/Disclaimer.html"&amp;gt;http://www.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; externally and &amp;lt;a href=" http://tim.techmahindra.com/Disclaimer.html"&amp;gt;http://tim.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; internally within Tech Mahindra. http://clk.atdmt.com/MRT/go/vse0120000070mrt/direct/01/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Testcases for tag balancing</header>
+    <date>Thu Mar 20 08:13:00 CET 2008</date>
+    <body>Hi, Since our mashup tool receives malformed XHTML from various sources we need a way of spitting out balanced HTML. How does the tag balancer react to all the test HTML's provided with the download ? I thought a testcase can give me the balanced HTML for each one of those test HTML's. That would be a way to figure out which tests break. The documentation has the following "If set to false, CDATA sections are reported as comments. When reported as comments, the comment text is prefixed with "[CDATA[" and end with "]]". This prefix and suffix is not  included when reported as character content." So "CDATA" is first stripped out and then again it is prefixed with "[CDATA[" and end with "]]". ? Thanks, Mohan ============================================================================================================================ Disclaimer: This message and the information contained herein is proprietary and confidential and subject to the Tech Mahindra policy statement, you may review the policy at &amp;lt;a href=" http://www.techmahindra.com/Disclaimer.html"&amp;gt;http://www.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; externally and &amp;lt;a href=" http://tim.techmahindra.com/Disclaimer.html"&amp;gt;http://tim.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; internally within Tech Mahindra. ============================================================================================================================</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Testcases for tag balancing</header>
+    <date>Thu Mar 27 09:08:00 CET 2008</date>
+    <body>Mohan, NekoHTML tests are organized as follows: - in folder data, the html files to be parsed - in folder data/canonical, the expected structure resulting of parsing. Does it help? Which doc do you refer to? Cheers, Marc. -- Blog: http://mguillem.wordpress.com Mohan Radhkrishanan wrote: http://www.techmahindra.com/Disclaimer.html"&amp;gt;http://www.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; externally and &amp;lt;a href=" http://tim.techmahindra.com/Disclaimer.html"&amp;gt;http://tim.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; internally within Tech Mahindra. http://clk.atdmt.com/MRT/go/vse0120000070mrt/direct/01/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Question about using XPath</header>
+    <date>Thu Mar 20 05:24:00 CET 2008</date>
+    <body>Hi, Nekohtml balances tags. How does this affect the way we use XPath ? It seems the tag balancing act will break our XPath pattern matching. How is this handled ? Thanks, Mohan Office:+91 20 66222500|Ext:1462 ============================================================================================================================ Disclaimer: This message and the information contained herein is proprietary and confidential and subject to the Tech Mahindra policy statement, you may review the policy at &amp;lt;a href=" http://www.techmahindra.com/Disclaimer.html"&amp;gt;http://www.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; externally and &amp;lt;a href=" http://tim.techmahindra.com/Disclaimer.html"&amp;gt;http://tim.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; internally within Tech Mahindra. ============================================================================================================================</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] NekoHtml tag balancer</header>
+    <date>Thu Mar 20 05:16:00 CET 2008</date>
+    <body>Hi, I am looking into a way to figure out when Nekohtml cannot balance tags and throws an error. I have looked at the test HTML files and the HTMLTagBalancingListenerTest. Can I assume that this test can be used to figure out when Nekohtml cannot balance tags ? I will modify the test to spit out the result after the tags are balanced. Thanks, Mohan Office:+91 20 66222500|Ext:1462 ============================================================================================================================ Disclaimer: This message and the information contained herein is proprietary and confidential and subject to the Tech Mahindra policy statement, you may review the policy at &amp;lt;a href=" http://www.techmahindra.com/Disclaimer.html"&amp;gt;http://www.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; externally and &amp;lt;a href=" http://tim.techmahindra.com/Disclaimer.html"&amp;gt;http://tim.techmahindra.com/Disclaimer.html&amp;lt;/a &amp;gt; internally within Tech Mahindra. ============================================================================================================================</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [ANN] NekoHTML 1.9.6.2 has been released</header>
+    <date>Mon Mar 17 19:32:00 CET 2008</date>
+    <body>Hi all, release 1.9.6.2 of NekoHTML is finally available. http://nekohtml.sourceforge.net Besides definitely fixing the JDK 1.3 compatibility problems, it contains a few improvements particularly to allow a better handling of malformed html. http://nekohtml.sourceforge.net/changes.html Maven Upload Request: http://jira.codehaus.org/browse/MAVENUPLOAD-1969 Enjoy! Marc. -- Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Getting html back out of the DOM after manipulation</header>
+    <date>Wed Apr 09 02:06:00 CEST 2008</date>
+    <body>I'm using NekoHTML to parse and repair some malformatted html (using DOMParser.parse() ), and then I'm doing some manipulations to its dom tree (fairly minor ones).  After that's all done, how do I get it to spit out the html for the current Document? I'm aware of the Writer as a filter and have a test case that uses it, but it appears that I have to use that on the way in, which is too early in the process.  I am looking for some way to trigger it to fire the write later on, after my manipulations are done. Thank you for your help. Jenny Brown</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Wed Apr 09 02:35:00 CEST 2008</date>
+    <body>Well - some extra reading around and I found a simple way to do this. I don't claim it's the best way (not sure about instantiating that Impl) but it works: org.w3c.dom.ls.LSSerializer serializer = So no help needed for now!  :) On Tue, Apr 8, 2008 at 9:06 PM, Jenny Brown &amp;lt;skywind@...&amp;gt; wrote:</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Wed Apr 09 05:03:00 CEST 2008</date>
+    <body>You should avoid the direct use of implementation classes.  Go through standard API's.  And if you put xalan-2.7.1.jar and serializer.jar (and, I suggest, xercesImpl-2.9.1.jar) in the classpath, you will end up using the very latest implementations (better than the buggy versions that ship with the JVM). //Using String writer for output for convenience. //Usually better to use an OutputStream. //JAXP Transformer API //for HTML output //for XHTML output t.setOutputProperty(OutputKeys.MEDIA_TYPE, "application/xml+xhtml");//or text/html t.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, t.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd ...OR... //DOM3 Load/Save API, though I'm not aware of a way to output HTML?... DOMImplementationLS impl = Jake Jenny Brown wrote: http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Tue Apr 15 20:08:00 CEST 2008</date>
+    <body>On Wed, Apr 9, 2008 at 1:02 AM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: Thanks for the tip there.  That approach is working for me now.  I'm running into a quirk of how it's output some things though, that I'm not sure how to interpret.  (Background: I've got a lot of Java servlet and web programming experience, but less with xml and the various versions of xhtml and related specifications.  So I'm a bit lost on what to expect of the browser from this.) I have a dom document.  I've passed it through JTidy and NekoHTML for cleanup, and the result is pretty nice.  However, in the original html I was parsing, there were some situations like this: When that's coming back out of the serializer, it's coming out as this, which Firefox chokes on: Likewise for &amp;lt;textarea /&amp;gt; and some other tags - Firefox rendering gets completely thrown off when it encounters a few certain tags in empty-tag XML style rather than html style.  The code I'm using to set up the transformer for output is this: transformer.transform(new DOMSource(domDocument), new So I'm not sure why I'm getting things that look like XML when the tag is empty. I'm using Xalan 2.7.1 and Xerces 2.9.1, and this is a small enough code base I'm pretty sure there are no jar conflicts sneaking in old versions.  Rather I suspect I'm misunderstanding something about the serialization process or xml / html specifications. Thanks for any help you can provide. Jenny Brown</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Wed Apr 16 03:48:00 CEST 2008</date>
+    <body>Jenny Brown wrote: Seems like it's using an XML serializer Yeah, if you have "html" as the output type, then it should use the HTML serializer.  Although, why do you specify "no" to OutputKeys.OMIT_XML_DECLARATION? You don't want that for HTML and, actually, not even for XHTML.  Browsers don't handle HTML/XHTML documents with the XML declaration very well.  Also, I don't recommend using the StringWriter for output in a servlet.  I would think you'd want to pass in the ServletOutputStream into the StreamResult. Are you sure you have serializer.jar from the Xalan-2.7.1 distribution in the classpath? Jake</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Wed Apr 16 16:26:00 CEST 2008</date>
+    <body>On Tue, Apr 15, 2008 at 11:49 PM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: Ok I just fixed the xml declaration thing. I'm using StringWriter because this is actually used in a batch mode (not servlet at all) and it's in the middle of the pipeline of modules handling the data.  I know for sure that the incoming data is a String in UTF-8 and that the next item in line will also want it as a String in UTF-8.  (And I'm making sure the meta tag charset also says UTF-8 even if I make it so myself.)  Eventually in the long term a browser may see the html that results, but not immediately; many other things happen to the data first.  I need the html in memory for a while yet after, so, String. I just double checked that this morning, and I'm seeing the same behavior (XML style serialization) after specifically putting Xalan's copies of everything in place. Any more ideas?  Are there get methods or debug info that I can use with the Transformer to find out what it thinks it's using / supposed to be using, so I can see if something specific is going wrong? Thank you. Jenny Brown</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Wed Apr 16 16:36:00 CEST 2008</date>
+    <body>Also, if it's any help -- I'm running my code under Eclipse 3.3.1.1 and from a JUnit test case.  I don't know if there's any chance of a jar conflict within Eclipse itself. On Wed, Apr 16, 2008 at 11:26 AM, Jenny Brown &amp;lt;skywind@...&amp;gt; wrote:</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM
+	after	manipulation</header>
+    <date>Thu Apr 17 00:43:00 CEST 2008</date>
+    <body>Jenny Brown wrote: I would recommend running this in a clean environment.  I've seen lots of cases where people say it doesn't work when running under their IDE and it usually ends up being the IDE's fault.  It's seems like it's probably a classpath issue.  You might even try putting Xerces, Xalan, and Serializer jars into JAVA_HOME/jre/lib/endorsed, just to make sure you are actually using Apache's Xalan and not the old buggy one included in the JDK.  Beyond that, I really don't have any other suggestions. For further help, you should probably ping the Xalan-user list, as they are the experts on the Transformer and Serializer stuff. Jake http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Thu Apr 17 01:00:00 CEST 2008</date>
+    <body>On Wed, Apr 16, 2008 at 8:42 PM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: I ran in a clean environment (command line, where I exactly control the classpath) and get the same behavior, so I'll move on over to the Xalan list and pursue more details there. Thanks for your help - I'm farther along in my project as a result!  :) Jenny</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Thu Apr 17 22:40:00 CEST 2008</date>
+    <body>I'm reporting back in on the final solution to this, so it's in the archives if someone hits a similar issue in the future.  The Xalan people helped me out, by observing there was a namespace being set on the &amp;lt;html&amp;gt; element, like so: http://www.w3.org/1999/xhtml That was forcing the Transformer to do an xml output, hence the xml style empty tags I was getting.  The solution was to figure out where that namespace was coming from.  My steps were: 1. Messy HTML is a string in memory 2. Send messy HTML through JTidy parsing 3. Call JTidy pprint (pretty-print) to get it back as a String (validated and cleaned up) (Observed that after this point the namespace was visible) 4. Send validated HTML to NekoHTML (misled Neko into using the namespace) 5. Neko's DOM got sent to the Transformer for output, and the transformer responded to the namespace So I needed to tell JTidy to use a different config...  I had been wrongly using due to a misunderstanding of its requirements.  I changed it to this and the problem namespace cleared up: That meant Neko got handed clean html with no namespace in it, and thus output was in html not xml.  Incidentally, the way I could observe the namespace from Java code was either to print the html string, or to call this to read it out of the HTML node of the dom: System.out.println("NAMESPACE: " + Hope that helps someone else someday.  :)  Thanks for your help here too.  My code works now. Jenny Brown On Wed, Apr 16, 2008 at 8:42 PM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Thu Apr 17 23:05:00 CEST 2008</date>
+    <body>Thanks for reporting back with your solution, and I'm glad you found one!  Two questions, though... 1.  Why do you use both JTidy and NekoHTML?  Normally one would use one or the other.  Both JTidy and NekoHTML allow you to generate a DOM from HTML.  So why not choose one and be done? 2.  Did you find out whether Xalan's Serializer has special handling for XHTML -vs- other types of XML documents?  Browsers are quirky about how they parse XHTML.  For instance, some browsers deal better with &amp;lt;script&amp;gt;&amp;lt;/script&amp;gt; than (they treat it as HTML). Jake Jenny Brown wrote: http://www.w3.org/1999/xhtml http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Thu Apr 17 23:28:00 CEST 2008</date>
+    <body>On Thu, Apr 17, 2008 at 7:05 PM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: They tackle different problems.  NekoHTML gives me excellent ability to manipulate the DOM tree, adding and removing nodes, rewriting attributes, getting text content out of them, etc.  JTidy has poor DOM manipulation due to incomplete implementation (such as getTextContent() throws an abstract method error) and a narrower API. But NekoHTML fails on a lot of html oddities I was encountering, which JTidy deals with just fine and can clean up automatically.  If I tried to use Neko alone, it failed on a significant portion of my test documents.  If I put JTidy in front of it, Neko always got an input it could read. I needed clean first, and then I needed to do fairly invasive changes to the contents of the dom, then save the result. I didn't ask.  Tho I do have a question still remaining there on whether I should be concerned with seeing this at the beginning of my output file: I suspect there's another setting somewhere I need to flip to make that go away (and I am guessing that it should go away), but I'm not especially familiar with xml, xhtml, namespaces, and doctypes - still learning on this piece. Jenny Brown</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Thu Apr 17 23:50:00 CEST 2008</date>
+    <body>Correction - I found where I'm setting this and can simply turn it off.  Easy. On Thu, Apr 17, 2008 at 6:28 PM, Jenny Brown &amp;lt;skywind@...&amp;gt; wrote:</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM
+	after	manipulation</header>
+    <date>Fri Apr 18 02:21:00 CEST 2008</date>
+    <body>Jenny Brown wrote: I would encourage you to post a bug report and attach sample HTML files that NekoHTML fails to parse properly.  The whole point of NekoHTML is to parse HTML of any kind, clean or messy.  If it can't parse some HTML, then it should be enhanced to do so.  You shouldn't need two tools. Jake</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Fri Apr 18 21:38:00 CEST 2008</date>
+    <body>I'll try to sort out my data files to figure out exactly what's breaking Neko, but it may be a bit.  These are typically big pages (that I didn't write :) ) with a lot of complexity so sometimes it's I'm sure there are others and I'll keep my eyes open. In the following case, Neko doesn't add a parent UL or OL resulting in difficulty handling the result in a dom tree (since those li's have no parent list-grouping tag, and I was expecting one).  Sure, this is kind of 'dumb' html but that's what the real world out there gives me. href=" http://blah.blah.com"&amp;gt;Blah href=" http://foo.foo.com/"&amp;gt;Foo I'll keep my eyes open for other cases.  If I get a reasonably traceable list I'll put in a more formal report. Jenny Brown On Thu, Apr 17, 2008 at 10:21 PM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Fri Apr 18 21:51:00 CEST 2008</date>
+    <body>Blah - just a point to say how confusing tracing this is, that might be a misidentified one... I think I was looking at the wrong portion of the html.  So I still don't know which area was causing my html results to be weird.  I'll have to set up more limited test cases. On Fri, Apr 18, 2008 at 4:38 PM, Jenny Brown &amp;lt;skywind@...&amp;gt; wrote: http://blah.blah.com"&amp;gt;Blah http://foo.foo.com/"&amp;gt;Foo http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM
+	after	manipulation</header>
+    <date>Fri Apr 18 23:07:00 CEST 2008</date>
+    <body>Quick question: does NekoHTML barf and die on your input documents? or does it just produce strange output? Jenny Brown wrote: http://blah.blah.com"&amp;gt;Blah http://foo.foo.com/"&amp;gt;Foo http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM after
+	manipulation</header>
+    <date>Fri Apr 18 23:09:00 CEST 2008</date>
+    <body>Strange output is what I'm struggling with but I am having a heck of a time tracing exactly where the differences are occurring, because the code (of mine) that comes immediately after it is quite complex. Careful use of test cases is getting me closer to understanding but I'm not there yet; something subtle is tripping up my code somewhere. On Fri, Apr 18, 2008 at 6:07 PM, Andy Clark &amp;lt;andy@...&amp;gt; wrote: http://blah.blah.com"&amp;gt;Blah http://foo.foo.com/"&amp;gt;Foo http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://ad.doubleclick.net/clk;198757673;13503038;p?http://java.sun.com/javaone https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Getting html back out of the DOM
+	after	manipulation</header>
+    <date>Fri Apr 18 23:25:00 CEST 2008</date>
+    <body>Jenny Brown wrote: Strange output is definitely better than throwing an exception. But it all depends on what kind of output you expect. We've tried to make NekoHTML be highly performant while producing an HTML document with a structure as close to what the major browsers produce as possible. In your &amp;lt;li&amp;gt; example you were mentioning before, NekoHTML does *not* insert a parent &amp;lt;ul&amp;gt;/&amp;lt;ol&amp;gt; for this element because the browsers don't. Compare the DOM generated for the following two files: The structure is different even though they both display as a bulleted-item. But even the presenta- tion is different, too... &amp;gt; am having a heck of a time tracing exactly where the &amp;gt; differences are occurring, because the code (of mine) &amp;gt; that comes immediately after it is quite complex. &amp;gt; understanding but I'm not there yet; something subtle &amp;gt; is tripping up my code somewhere. http://blah.blah.com"&amp;gt;Blah http://foo.foo.com/"&amp;gt;Foo</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] questions about nekoHTML</header>
+    <date>Fri Apr 11 17:14:00 CEST 2008</date>
+    <body>Michelle Hong wrote: http://cyberneko.org/html/features/scanner/script/strip - http://cyberneko.org/html/features/scanner/ignore - http://cyberneko.org/html/properties/default - Are you saying that &amp;lt;font&amp;gt; tags are gone after you parse a document? This should not happen. Can you send a small sample document that demonstrates the problem? If you don't want the parser to switch the encoding when it finds a &amp;lt;meta&amp;gt; tag with a charset, then you should use a Reader object to parse the document. When you do this, you are responsible for picking the correct encoding for reading. For example: You're welcome. If you are going to have more questions about NekoHTML, please send them to the mailing list (nekohtml-user@...) so that everyone has a chance to answer (and learn from) your questions. -AndyC</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] questions about nekoHTML</header>
+    <date>Sat Apr 12 03:45:00 CEST 2008</date>
+    <body>Here is the font problem. I use the parser to parse https://www.google.com/accounts/ServiceLoginBox?service=analytics&amp;amp;nui=1&amp;amp;hl=en&amp;amp;continue=http://www.google.com/analytics/home/%3Fet%3Dreset%26hl%3D . I get the text node "Sign in to Google Analytics with your", in the HTML code I see But when I textnode.getParentNode().getNodeName(), I got TR which is the parent of font. Would you please help to check? Regards, Michelle On Sat, Apr 12, 2008 at 1:14 AM, Andy Clark &amp;lt;andy@...&amp;gt; wrote: http://cyberneko.org/html/features/scanner/script/strip - http://cyberneko.org/html/features/scanner/ignore - http://cyberneko.org/html/properties/default -</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Validator.nu HTML Parser</header>
+    <date>Wed Apr 09 05:15:00 CEST 2008</date>
+    <body>FYI, I happened across a new HTML parser called the Validator.nu HTML Parser [1]. Apparently, it's being developed by one of the Mozilla developers, Henri Sivonen [2], and being kept up to date with the latest changes in the HTML5 spec.  I thought this might interest NekoHTML developers and users. [1] http://about.validator.nu/htmlparser/ [2] http://hsivonen.iki.fi/ Jake</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [ANN] NekoHTML 1.9.7 has been released</header>
+    <date>Sat Apr 05 20:11:00 CEST 2008</date>
+    <body>Hi all, release 1.9.7 of NekoHTML is now available. http://nekohtml.sourceforge.net Besides fixing different bugs, it contains a "bridge" per Xerces version. This allows to ensure compatibility with different Xerces versions without using reflection anymore for the calls to methods that have evolved. Maven Repository Synch request http://jira.codehaus.org/browse/MAVENUPLOAD-2007 Enjoy! Marc. -- Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Using NekoHtml</header>
+    <date>Sun May 18 23:38:00 CEST 2008</date>
+    <body>Hey, Just wanted to let you know that I'm using NekoHtml in my HTML diffing library DaisyDiff: http://code.google.com/p/daisydiff/ Cheers, Guy</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] New To Neko, Problem With XPath</header>
+    <date>Tue Jun 03 00:10:00 CEST 2008</date>
+    <body>I'm new to Neko, so this may be a silly question.  I'm trying to use Neko in combination with XPath and I'm running into a few problems.  Specifically, I'm trying to upgrade from an unknown very old version of nekohtml to 1.9.7. My code worked fine on the older version, but fails on 1.9.7.  I would expect the following code to be able to find the tr tag as it does in the older version, but with 1.9.7 it cannot find the tag.  I'm using Xalan-Java Version 2.7.1 and Xerces-Java 2.9.0.  Am I doing something wrong? String html = "&amp;lt;html xmlns=\" http://www.w3.org/1999/xhtml\"&amp;gt;&amp;lt;head&amp;gt;&amp;lt;title&amp;gt;Test&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;&amp;lt;table&amp;gt;&amp;lt;TR NodeList hotelList = xpathAPI.selectNodeList(root, -- ************************************ Justin Nixon justin.nixon@... ************************************</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] NekoHTML and XPath</header>
+    <date>Mon Jul 28 20:46:00 CEST 2008</date>
+    <body>Is there some incompatibility between NekoHTML and XPath as implemented by Xalan? I have tried several different methods of getting XPath expressions to work on NekoHTML produced documents and am having no luck. I can traverse the generated DOM tree, but XPATH expressions never produce any results. I have tried using both a compiled XPathExpression as well as an XPathEvaluator with no luck. I am using NekoHTML 1.9.8 and Xalan-J 2.7.1. Thank You, ----------------------------------------------------------- - stephen.g.walizer - http://node777.net - sgw@... -----------------------------------------------------------</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML and XPath</header>
+    <date>Mon Jul 28 23:13:00 CEST 2008</date>
+    <body>It would help if you provide an example document, an XPath expression, and the node you expect it to match. Jake Stephen G. Walizer wrote: http://node777.net - sgw@...</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML and XPath</header>
+    <date>Tue Jul 29 00:05:00 CEST 2008</date>
+    <body>I'll even include the code I'm testing with. parser.setFeature(" http://xml.org/sax/features/namespaces Object result = xpathExpression.evaluate(doc, Test HTML Returns an empty node set regardless of what I use for expression. I was originally using a more complex HTML but figured I'd simplify things until I got something working. I've also tried the method of using XPath included in the sample application ApplyXPathDOM in the Xalan package. However the compiled expression method is more ideal for my appication. Thanks ----------------------------------------------------------- - stephen.g.walizer - http://node777.net - sgw@... ----------------------------------------------------------- On Jul 28, 2008, at 8:15 PM, Jacob Kjome wrote: http://node777.net - sgw@... http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML and XPath</header>
+    <date>Tue Jul 29 13:21:00 CEST 2008</date>
+    <body>try... The HTML DOM is UPPER-case, per specification.  You might be able to force this lower-case by setting the " http://cyberneko.org/html/properties/names/elems " [1] property to "lower", though I haven't actually tested this.  I wouldn't count on this working, because if you use the HTML DOM API to create elements, they will end up UPPER-case elements.  Ultimately, if you want lower-case elements, use XHTML along with a standard XML parser, not HTML with NekoHTML as the parser....  Actually, I take that back.  You can probably continue to use NekoHTML as the parser and specify a DOM, other than the HTML DOM, using the Xerces " http://apache.org/xml/properties/dom/document-class-name " [2] property.  Of course, then you don't get to use the convenience of the HTML DOM.  But if you are only using the standard DOM API and XPath already, then this shouldn't be an issue. [1] http://nekohtml.sourceforge.net/settings.html#elem-names [2] http://xerces.apache.org/xerces2-j/properties.html#dom.document-class-name Jake On Mon, 28 Jul 2008 20:05:42 -0400 "Stephen G. Walizer" &amp;lt;sgw@...&amp;gt; wrote: http://xml.org/sax/features/namespaces http://node777.net - sgw@... http://node777.net - sgw@... http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML and XPath</header>
+    <date>Tue Jul 29 13:28:00 CEST 2008</date>
+    <body>Thank you, that was the problem. I'm smacking myself in the forehead right now lol. ----------------------------------------------------------- - stephen.g.walizer - http://node777.net - sgw@... ----------------------------------------------------------- On Jul 29, 2008, at 9:21 AM, Jacob Kjome wrote: http://cyberneko.org/html/properties/names/elems " [1] property to http://apache.org/xml/properties/dom/document-class-name " [2] http://nekohtml.sourceforge.net/settings.html#elem-names http://xerces.apache.org/xerces2-j/properties.html#dom.document - http://xml.org/sax/features/namespaces ", http://node777.net - sgw@... http://node777.net - sgw@... http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML and XPath</header>
+    <date>Tue Jul 29 12:46:00 CEST 2008</date>
+    <body>At a wild guess: Are you sure NekoHTML is producing DOM 2.0 compatable nodes? XPath needs namespace-awareness, so I think Xalan is making the 2.0 DOM nodes a prerequisite... ______________________________________ "... Three things see no end: A loop with exit code done wrong, A semaphore untested, And the change that comes along. ..." -- "Threes" Rev 1.1 - Duane Elms / Leslie Fish ( http://www.ovff.org/pegasus/songs/threes-rev-11.html )</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [ANN] NekoHTML 1.9.8 has been released</header>
+    <date>Tue Jul 22 15:50:00 CEST 2008</date>
+    <body>Hi all, release 1.9.8 of NekoHTML is now available. http://nekohtml.sourceforge.net This release contains different bug fixes and many improvements, particularly in incorrect html code handling. Thanks to everyone who contributed to this release. The maven bundle has been uploaded to NekoHTML repository and should become available in the main repository within a few hours. Enjoy! Marc. -- Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Extract a subtree</header>
+    <date>Sat Jul 19 11:56:00 CEST 2008</date>
+    <body>Hello, I'd like to extract a subtree out of the HTML code and get the code (as a String if this is possible) of the subtree. For example: If I have some HTML Code like this I want to split it in these part and these Is there a method which can do this for me? Thank you. Jetzt neu: Der Routenplaner von Tiscali http://www.tiscali.de/trav/routenplaner.html</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Prodding developers to acknowledge bugs 1995218 and
+	1988963</header>
+    <date>Sat Jul 05 03:42:00 CEST 2008</date>
+    <body>These are fairly serious issues and it's been a month since reporting - just looking for some kind of acknowledgement that they're under progress. Thanks, Arshan</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Project to add to the "Software" page?</header>
+    <date>Tue Aug 26 14:14:00 CEST 2008</date>
+    <body>Hi, I'm involved with the GATE project ( http://gate.ac.uk/ ), a Java toolkit to support natural language processing tasks.  GATE provides many standard NLP resources as well as a rich API for writing custom plugins, and can process documents in plain text, XML, HTML and simple PDF and MS Word formats.  The HTML format support is built on top of NekoHTML. GATE is developed at SourceForge and released under the LGPL.  Full details and documentation can be found at http://gate.ac.uk/ but if you have any specific questions I'll try and answer them. Thanks, Ian -- Ian Roberts               | Department of Computer Science i.roberts@...  | University of Sheffield, UK</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Project to add to the "Software" page?</header>
+    <date>Tue Aug 26 15:24:00 CEST 2008</date>
+    <body>Hi, what for a short description would you like to have? Cheers, Marc. -- Blog: http://mguillem.wordpress.com Ian Roberts wrote: http://gate.ac.uk/ ), a Java toolkit http://gate.ac.uk/ but if you</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] How can I get the length of a tag?</header>
+    <date>Wed Sep 24 08:47:00 CEST 2008</date>
+    <body>Hello, I try to get the length of every tag in the html code. For example: [...] Title [...] With the output:         19 and                                                 6 Is there a special method which can give me this information? If there is none, do you have any ideas how I can get the tag length? Thanks, Verena</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] How can I get the length of a tag?</header>
+    <date>Wed Sep 24 10:41:00 CEST 2008</date>
+    <body>verena81@... wrote: If you turn on the augmentations feature (see http://nekohtml.sourceforge.net/faq.html#offsets ) then you can get the start and end line and column numbers for the tags.  Provided the tag doesn't contain any line breaks the length would be endColumn - startColumn (the "end column" reported is the index of the first character after the end of the tag, not the end of the tag itself). This won't work for tags that contain newlines as there's currently no way to get the location of an event in terms of the offset from the start of the document, only in terms of the row and column. I had a patch once that added these character offsets to the augmentations, but it was against 0.9.5 and would need updating for the latest version of Neko.  I might have time to look into that over the next few weeks if there's interest. Ian -- Ian Roberts               | Department of Computer Science i.roberts@...  | University of Sheffield, UK</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] How can I get the length of a tag?</header>
+    <date>Wed Sep 24 13:22:00 CEST 2008</date>
+    <body>You can serialize the element using: try finally --</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] How can I get the length of a tag?</header>
+    <date>Thu Sep 25 12:17:00 CEST 2008</date>
+    <body>Ian Roberts wrote: Turns out it was easier than I expected to migrate this patch to the latest version.  I've submitted it to the patches tracker on SourceForge: http://sourceforge.net/support/tracker.php?aid=2128228 Ian -- Ian Roberts               | Department of Computer Science i.roberts@...  | University of Sheffield, UK</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [ANN] NekoHTML 1.9.9 has been released</header>
+    <date>Thu Sep 11 19:13:00 CEST 2008</date>
+    <body>Hi all, release 1.9.9 of NekoHTML is now available. http://nekohtml.sourceforge.net This release contains different bug fixes and improvements, particularly in incorrect html code handling. Thanks to everyone who contributed to this release. Description of the changes is available at http://nekohtml.sourceforge.net/changes.html The maven bundle has been uploaded to NekoHTML repository and should become available in the main repository within a few hours. Enjoy! Marc. -- Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Problem with balance-tags.</header>
+    <date>Thu Sep 04 10:55:00 CEST 2008</date>
+    <body>Hello. I have such html it is not valid: opened, then &amp;lt;font&amp;gt; opened, &amp;lt;/B&amp;gt; closed then &amp;lt;font&amp;gt; closed). The result of balance-tags is: tag which is closed before it should. Is it a balance-tags bug ? Is there any other filter which will handle it correctly ?</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with META tag not balanced in the html
+	header</header>
+    <date>Tue Oct 14 06:40:00 CEST 2008</date>
+    <body>Hi Simone, By the specs, it is forbidden from META element to have an end tag. Please see http://www.w3.org/TR/REC-html40/index/elements.html Yours, Ahmed ----- Original Message ---- To: nekohtml-user@... Sent: Tuesday, October 14, 2008 9:31:02 AM Subject: [nekohtml-user] Problem with META tag not balanced in the html header Hi everybody, I'm working with Neko using the SAXParser and I've a problem with unbalanced tag META in the HTML header: to explain quickly, this is my input this is my code snippet: ... saxParser.setProperty(" http://cyberneko.org/html/properties/filters ", saxParser.setProperty(" http://cyberneko.org/html/properties/names/elems ", throw new RuntimeException("Impossible to set property to throw new RuntimeException("Property not supported by the ... and this is the result output Can anyone explain to me where I'm wrong? Any help will be very appreciated. Thanks in advance, best regards, Simone Tripodi ------------------------------------------------------------------------- This SF.Net email is sponsored by the Moblin Your Move Developer's challenge Build the coolest Linux based applications with Moblin SDK &amp;amp; win great prizes Grand prize is a trip for two to an Open Source event anywhere in the world http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ _______________________________________________ nekohtml-user mailing list nekohtml-user@... https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with META tag not balanced in the html
+	header</header>
+    <date>Tue Oct 14 06:46:00 CEST 2008</date>
+    <body>Hi Ahmed, thank you very much for your quick reply! Yes you're absolutely right, as reported on the page you linked "Start tag: required, End tag: forbidden" Because I need Neko working in an XML Pipeline, I need Neko produces a well-formed XML document, so, now my question is: how I can instrument Neko doesn't insert the META tag in the html header? Thank you very much in advance! Best regards, Simone 2008/10/14 Ahmed Ashour &amp;lt;asashour@...&amp;gt;: http://www.w3.org/TR/REC-html40/index/elements.html http://cyberneko.org/html/properties/filters ", http://cyberneko.org/html/properties/names/elems ", http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user -- My LinkedIn profile: http://www.linkedin.com/in/simonetripodi My GoogleCode profile: http://code.google.com/u/simone.tripodi/ My Picasa: http://picasaweb.google.com/simone.tripodi/ My Tube: http://www.youtube.com/user/stripodi My Del.icio.us: http://del.icio.us/simone.tripodi</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with META tag not balanced in the html
+	header</header>
+    <date>Tue Oct 14 07:35:00 CEST 2008</date>
+    <body>Dear Simone, I believe XHTML it not currently supported. Can't you just ignore it from 'ContentHandler.startElement()'? Yours, Ahmed ----- Original Message ---- To: nekohtml-user@... Sent: Tuesday, October 14, 2008 9:46:09 AM Subject: Re: [nekohtml-user] Problem with META tag not balanced in the html header Hi Ahmed, thank you very much for your quick reply! Yes you're absolutely right, as reported on the page you linked "Start tag: required, End tag: forbidden" Because I need Neko working in an XML Pipeline, I need Neko produces a well-formed XML document, so, now my question is: how I can instrument Neko doesn't insert the META tag in the html header? Thank you very much in advance! Best regards, Simone</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with META tag not balanced in the html
+	header</header>
+    <date>Tue Oct 14 09:17:00 CEST 2008</date>
+    <body>Hi Ahmed, as you suggested I wrote a content handler to intercept sax events; it happens a strange thing, I never intercept the META startElement, but in result output stream I've it :O Any suggestion? Thanks in advance, best regards, Simone 2008/10/14 Ahmed Ashour &amp;lt;asashour@...&amp;gt;: http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user -- My LinkedIn profile: http://www.linkedin.com/in/simonetripodi My GoogleCode profile: http://code.google.com/u/simone.tripodi/ My Picasa: http://picasaweb.google.com/simone.tripodi/ My Tube: http://www.youtube.com/user/stripodi My Del.icio.us: http://del.icio.us/simone.tripodi</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with META tag not balanced in the html
+	header</header>
+    <date>Tue Oct 14 12:29:00 CEST 2008</date>
+    <body>Hi Ahmed, there is a web page at http://marc.info/?l=xerces-j-dev&amp;amp;m=114614678604401&amp;amp;w=2 where is explained how to set up the parser in way to be an html to xhtml converter. It works also with SAX parser. Enjoy! Best regards, Simone 2008/10/14 Ahmed Ashour &amp;lt;asashour@...&amp;gt;: http://moblin-contest.org/redirect.php?banner_id=100&amp;amp;url=/ https://lists.sourceforge.net/lists/listinfo/nekohtml-user -- My LinkedIn profile: http://www.linkedin.com/in/simonetripodi My GoogleCode profile: http://code.google.com/u/simone.tripodi/ My Picasa: http://picasaweb.google.com/simone.tripodi/ My Tube: http://www.youtube.com/user/stripodi My Del.icio.us: http://del.icio.us/simone.tripodi</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Problem with META tag not balanced in the html
+	header</header>
+    <date>Tue Oct 14 06:31:00 CEST 2008</date>
+    <body>Hi everybody, I'm working with Neko using the SAXParser and I've a problem with unbalanced tag META in the HTML header: to explain quickly, this is my input this is my code snippet: ... saxParser.setProperty(" http://cyberneko.org/html/properties/filters ", saxParser.setProperty(" http://cyberneko.org/html/properties/names/elems ", throw new RuntimeException("Impossible to set property to throw new RuntimeException("Property not supported by the ... and this is the result output Can anyone explain to me where I'm wrong? Any help will be very appreciated. Thanks in advance, best regards, Simone Tripodi</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [ANN] NekoHTML 1.9.11 has been released</header>
+    <date>Mon Dec 29 20:48:00 CET 2008</date>
+    <body>Hi all, release 1.9.11 of NekoHTML is now available. http://nekohtml.sourceforge.net This release contains a fix of the regression introduced in 1.9.10 and minor improvements. Description of the changes is available at http://nekohtml.sourceforge.net/changes.html The maven bundle has been uploaded to NekoHTML repository and should become available in the main repository within a few hours. Enjoy! Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [ANN] NekoHTML 1.9.10 has been released</header>
+    <date>Mon Dec 22 10:12:00 CET 2008</date>
+    <body>Hi all, release 1.9.10 of NekoHTML is now available. http://nekohtml.sourceforge.net This release contains different bug fixes and improvements, particularly in incorrect html code handling. Thanks to everyone who contributed to this release. Description of the changes is available at http://nekohtml.sourceforge.net/changes.html The maven bundle has been uploaded to NekoHTML repository and should become available in the main repository within a few hours. Enjoy! Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] [ANN] NekoHTML 1.9.10 has been released</header>
+    <date>Wed Dec 24 12:50:00 CET 2008</date>
+    <body>Ooops! Please don't upgrade to release 1.9.10! HtmlUnit build has allowed to discover a major regression in release  1.9.10 (related to parsing of LI tags) that I strangely didn't see with HtmlUnit before to release. I have a fix ready and will release 1.9.11 in the coming days but I need time to add new tests to be sure that my new fix doesn't introduce new regressions. Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com Marc Guillemot wrote: http://nekohtml.sourceforge.net http://nekohtml.sourceforge.net/changes.html</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Nekohtml, XPath and XHTML</header>
+    <date>Fri Dec 12 13:06:00 CET 2008</date>
+    <body>Hello, I'm trying to extract information from various websites either xhtml oder html4 with xpath. The HTML4 sites work, but Xpath Expression run against the DOM of a xhtml site fail without any result. Even simple expressions "//BODY" do not return anything. Am I missing something or is using nekohtml for xhtml processing generally a bad idea? Greetings, Andreas Mohrhard</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Nekohtml, XPath and XHTML</header>
+    <date>Fri Dec 12 19:32:00 CET 2008</date>
+    <body>Dear Andreas, Did you try '//xpath'? I know that HtmlUnit (which uses NekoHtml) properly handles XPath, but it uses the SAX part and builds the DOM tree itself. Can you provide a sample test case so we can check? Ahmed ________________________________ To: nekohtml-user@... Sent: Friday, December 12, 2008 3:49:21 PM Subject: [nekohtml-user] Nekohtml, XPath and XHTML Hello, I'm trying to extract information from various websites either xhtml oder html4 with xpath. The HTML4 sites work, but Xpath Expression run against the DOM of a xhtml site fail without any result. Even simple expressions "//BODY" do not return anything. Am I missing something or is using nekohtml for xhtml processing generally a bad idea? Greetings, Andreas Mohrhard ------------------------------------------------------------------------------ SF.Net email is Sponsored by MIX09, March 18-20, 2009 in Las Vegas, Nevada. The future of the web can't happen without you.  Join us at MIX09 to help pave the way to the Next Web now. Learn more and register at http://ad.doubleclick.net/clk;208669438;13503038;i?http://2009.visitmix.com/ _______________________________________________ nekohtml-user mailing list nekohtml-user@... https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Nekohtml, XPath and XHTML</header>
+    <date>Fri Dec 12 19:54:00 CET 2008</date>
+    <body>I meant "//body" ________________________________ To: nekohtml-user@... Sent: Friday, December 12, 2008 10:32:42 PM Subject: Re: [nekohtml-user] Nekohtml, XPath and XHTML Dear Andreas, Did you try '//xpath'? I know that HtmlUnit (which uses NekoHtml) properly handles XPath, but it uses the SAX part and builds the DOM tree itself. Can you provide a sample test case so we can check? Ahmed ________________________________ To: nekohtml-user@... Sent: Friday, December 12, 2008 3:49:21 PM Subject: [nekohtml-user] Nekohtml, XPath and XHTML Hello, I'm trying to extract information from various websites either xhtml oder html4 with xpath. The HTML4 sites work, but Xpath Expression run against the DOM of a xhtml site fail without any result. Even simple expressions "//BODY" do not return anything. Am I missing something or is using nekohtml for xhtml processing generally a bad idea? Greetings, Andreas Mohrhard ------------------------------------------------------------------------------ SF.Net email is Sponsored by MIX09, March 18-20, 2009 in Las Vegas, Nevada. The future of the web can't happen without you.  Join us at MIX09 to help pave the way to the Next Web now. Learn more and register at http://ad.doubleclick.net/clk;208669438;13503038;i?http://2009.visitmix.com/ _______________________________________________ nekohtml-user mailing list nekohtml-user@... https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] A patch to fix invalid attribute bug in
+	DocumentFragment parsing</header>
+    <date>Thu Jan 22 20:51:00 CET 2009</date>
+    <body>diff -u --recursive --exclude='*.xml' --exclude=.classpath nekohtml-1.9.11-original/src/org/cyberneko/html/HTMLConfiguration.java nekohtml-1.9.11/src/org/cyberneko/html/HTMLConfiguration.java --- nekohtml-1.9.11-original/src/org/cyberneko/html/HTMLConfiguration.java	2008-12-08 18:12:50.000000000 -0700 +++ nekohtml-1.9.11/src/org/cyberneko/html/HTMLConfiguration.java	2009-01-21 12:08:21.000000000 -0700 @@ -101,6 +101,11 @@ /** Balance tags. */ protected static final String BALANCE_TAGS = " http://cyberneko.org/html/features/balance-tags + +    /** Require XML-strict attribute names. **/ +    protected static final String ENFORCE_VALID_ATTRIBUTE_NAMES = +    	" http://cyberneko.org/html/features/enforce-strict-attribute-names + // properties @@ -235,6 +240,7 @@ REPORT_ERRORS, SIMPLE_ERROR_FORMAT, BALANCE_TAGS, +            ENFORCE_VALID_ATTRIBUTE_NAMES @@ -243,6 +249,7 @@ // HACK: Xerces 2.0.0 diff -u --recursive --exclude='*.xml' --exclude=.classpath nekohtml-1.9.11-original/src/org/cyberneko/html/parsers/DOMFragmentParser.java nekohtml-1.9.11/src/org/cyberneko/html/parsers/DOMFragmentParser.java --- nekohtml-1.9.11-original/src/org/cyberneko/html/parsers/DOMFragmentParser.java	2008-03-06 16:02:00.000000000 -0700 +++ nekohtml-1.9.11/src/org/cyberneko/html/parsers/DOMFragmentParser.java	2009-01-21 13:54:35.000000000 -0700 @@ -77,9 +77,13 @@ protected static final String DOCUMENT_FRAGMENT = " http://cyberneko.org/html/features/document-fragment +    protected static final String ENFORCE_VALID_ATTRIBUTE_NAMES = +    	" http://cyberneko.org/html/features/enforce-strict-attribute-names + /** Recognized features. */ DOCUMENT_FRAGMENT, +        ENFORCE_VALID_ATTRIBUTE_NAMES // properties @@ -130,6 +134,7 @@ @@ -425,13 +430,47 @@ /** Start element. */ public void startElement(QName element, XMLAttributes attrs, + + + + + + + + +            	// only add the attribute if it has a legal name (built of alphanums+allowed chars) + + + + + + +</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] A patch to fix invalid attribute bug
+ in	DocumentFragment parsing</header>
+    <date>Fri Jan 23 08:34:00 CET 2009</date>
+    <body>Arshan, can you please open an issue for that and attach your patch there? Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com Arshan Dabirsiaghi wrote: http://sourceforge.net/tracker/index.php?func=detail&amp;amp;aid=1995218&amp;amp;group_id=195122&amp;amp;atid=952178 http://sourceforge.net/tracker/index.php?func=detail&amp;amp;aid=1995218&amp;amp;group_id=195122&amp;amp;atid=952178 &amp;gt;). http://cyberneko.org/html/features/enforce-strict-attribute-names ", http://owasp.org http://owasp.org http://p.sf.net/sfu/sf-spreadtheword https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Namespace processing</header>
+    <date>Sat Jan 03 22:10:00 CET 2009</date>
+    <body>Hello, I am writing a proxy using servlets. I am using Xerces and nekoHTML for the parsing. I am having trouble with sites that have any sort of namespace info in them. I get a Hierarchy Request Error. I have read on the nekohtml faq that namespace processing will cause this error and the solution is to turn the processing off. So I turned it off, and while sites with namespace info would now load, they looked terrible. Almost no css was applied. So I tried just stripping off all the namespace info from the html tag and that worked up to a point, but I have been told a proxy stripping of namespace info is probably not a good idea. So my question is this, how can I process namespace info without an exception being raised? Every site with namespace info that I try with namespace processing on raises this exception, so why is the processing enabled by default? If it is not possible to process namespaces with nekohtml or xerces, could you recommend an alternative? Thanks for any help</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Namespace processing</header>
+    <date>Mon Jan 05 04:58:00 CET 2009</date>
+    <body>Do these pages have an &amp;lt;?xml?&amp;gt; prolog?.  Browsers will treat this as XML and use strict XML parsing.  Are the namespaces left intact when you turn off namespace processing or are they stripped?  Are the DTD declarations left intact (I'm guessing XHTML, right)?  What you should probably do is remove the XML prolog if it exists and make sure that existing DTDs get written to the output and not stripped, and try to leave intact the namespace(s), even if not processing. Otherwise, please provide an example of a page before processing and after that is looking bad in a brower and then we can see what's going on. Jake On 1/3/2009 4:10 PM, neko html wrote: https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Which features and properties do you use?</header>
+    <date>Mon Feb 16 13:53:00 CET 2009</date>
+    <body>Hi all, when I work on fixing bugs and improving parsing of incorrect HTML code, I have often problems with existing features and properties. It seems to me that a few are useless and that removing them would allow to clean up code and to improve NekoHTML. As an example that causes me problems today: the namespace related settings like http://xml.org/sax/features/namespaces It seems to me that it should be *always* on and the tag balancer needs to be able to ask the NamespaceBinder for the namespace of tag to know how to handle it. An other suspect would be: http://cyberneko.org/html/features/balance-tags/ignore-outside-content If NekoHTML aims to understand dirty HTML code like browsers, then this setting should not exist. It would be helpful if you could indicate which features and properties you use as well as how you use NekoHTML (there are - too - many entry points). What HtmlUnit concerns: - features http://cyberneko.org/html/features/augmentations http://cyberneko.org/html/properties/names/elems http://cyberneko.org/html/features/report-errors http://cyberneko.org/html/features/balance-tags/ignore-outside-content ", http://cyberneko.org/html/features/parse-noscript-content - entry point: HTMLConfiguration Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Which features and properties do you use?</header>
+    <date>Mon Feb 16 14:04:00 CET 2009</date>
+    <body>Marc Guillemot wrote: For GATE ( http://gate.ac.uk ), we use: http://cyberneko.org/html/features/augmentations http://cyberneko.org/html/properties/names/elems (value "lower") http://cyberneko.org/html/properties/names/attrs (value "lower") and the XNI API (i.e. HTMLConfiguration entry point). Ian -- Ian Roberts               | Department of Computer Science i.roberts@...  | University of Sheffield, UK</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [ANN] NekoHTML 1.9.12 has been released</header>
+    <date>Mon Apr 20 09:52:00 CEST 2009</date>
+    <body>Hi all, release 1.9.12 of NekoHTML is now available. http://nekohtml.sourceforge.net This release contains different improvements and bug fixes. Description of the changes is available at http://nekohtml.sourceforge.net/changes.html The maven bundle has been uploaded to NekoHTML repository and should become available in the main repository within a few hours. Enjoy! Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] usemap attribute on img tag gets stripped.</header>
+    <date>Sat Apr 11 00:15:00 CEST 2009</date>
+    <body>Hello, In our application, we are tidying up the user uploaded HTML using nekoHTML parser and so far it has been working great. Thanks to the authors for that. Of late our users had been complaining that, whenever they upload any HTML with img tag and usemap attribute on it, they are not seeing their original/uploaded HTML after parsing. When I checked on the back-end, I find that, when I parse the incoming HTML through the NEKO parser, it removes the usemap="#myMap" attribute from the img tag. 1. Is that an intended behaviour? 2. If yes, is it user configurable? Can I configure my parser to turn off this behavior? Can some experts help? Thanks in Advance, Karthik</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] usemap attribute on img tag gets stripped.</header>
+    <date>Sat Apr 11 02:56:00 CEST 2009</date>
+    <body>What version of NekoHTML?  Have you tried the latest release or even built the latest unreleased source from SVN? Jake On 4/10/2009 6:15 PM, Karthik Arumugham wrote: http://p.sf.net/sfu/www-ibm-com https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] usemap attribute on img tag gets stripped.</header>
+    <date>Sun Apr 12 15:02:00 CEST 2009</date>
+    <body>Several issues have been fixed in the SVN code since the 1.9.11 release. I suggest you try that first.  If that doesn't work, I suggest coming up with a minimal reproducible test case plus a unit test, filing a bug report, and attaching the test case to the report. BTW, you responded directly to me.  I really wish that this email list would be set up with the reply-to being the list, not the individual responder. Jake On 4/11/2009 9:08 PM, Karthik Arumugham wrote: http://p.sf.net/sfu/www-ibm-com https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/www-ibm-com https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] usemap attribute on img tag gets stripped.</header>
+    <date>Sun Apr 12 18:10:00 CEST 2009</date>
+    <body>Hi Jacob, I will try checking out the latest code from SVN trunk. Hopefully it should work else I will file a bug report with the test case. I didn't realize I had sent the email to you directly. I apologize for that. Thanks for all the help, Karthik On Sun, Apr 12, 2009 at 8:49 AM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: http://p.sf.net/sfu/www-ibm-com https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/www-ibm-com https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/www-ibm-com https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] usemap attribute on img tag gets stripped.</header>
+    <date>Tue Apr 14 07:39:00 CEST 2009</date>
+    <body>Jacob Kjome wrote: configuration changed. Thanks. Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Problem with &amp;lt;comment&amp;gt; tag</header>
+    <date>Tue May 19 02:45:00 CEST 2009</date>
+    <body>Hello. I have a problem with &amp;lt;comment&amp;gt; tag. page that I'd like to parse. When I parse the document, the html tags in the &amp;lt;comment&amp;gt;&amp;lt;/comment&amp;gt; are regarded as HTML comments like &amp;lt;!-- --&amp;gt;. For example, in this code some text , the inner text of &amp;lt;comment&amp;gt; tag is not "some text", but "&amp;lt;table border= ... some text ... &amp;lt;/table&amp;gt;". You can test with this page, http://www.inha.com/healthy_info/healty03_view.htm?idx=348&amp;amp;b_level=4&amp;amp;m_level=3&amp;amp;s_level=0&amp;amp;sort=&amp;amp;q_val= It's Korean :) Thanks in advance, best regards, Donghyeok Kang</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user]  Problem with &amp;lt;comment&amp;gt; tag</header>
+    <date>Tue May 19 02:48:00 CEST 2009</date>
+    <body>Hello. I have a problem with &amp;lt;comment&amp;gt; tag. page that I'd like to parse. When I parse the document, the html tags in the &amp;lt;comment&amp;gt;&amp;lt;/comment&amp;gt; are regarded as HTML comments like &amp;lt;!-- --&amp;gt;. For example, in this code some text , the inner text of &amp;lt;comment&amp;gt; tag is not "some text", but "&amp;lt;table border= ... some text ... &amp;lt;/table&amp;gt;". You can test with this page, http://www.inha.com/healthy_info/healty03_view.htm?idx=348&amp;amp;b_level=4&amp;amp;m_level=3&amp;amp;s_level=0&amp;amp;sort=&amp;amp;q_val= It's Korean :) Thanks in advance, best regards, Donghyeok Kang</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with &amp;lt;comment&amp;gt; tag</header>
+    <date>Tue May 19 07:29:00 CEST 2009</date>
+    <body>Hi, NekoHTML tries to behave like "normal browsers" do. The problem here is that browsers interpret this html code differently: as far as I can see, FF parses &amp;lt;comment&amp;gt;'s content and displays it normally whereas IE seems to ignore it. No idea how NekoHTML should handle it as long as we don't have something like "browser profiles" but please open an issue to avoid that it gets lost. Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com Donghyeok Kang wrote: http://www.inha.com/healthy_info/healty03_view.htm?idx=348&amp;amp;b_level=4&amp;amp;m_level=3&amp;amp;s_level=0&amp;amp;sort=&amp;amp;q_val= http://www.inha.com/healthy_info/healty03_view.htm?idx=348&amp;amp;b_level=4&amp;amp;m_level=3&amp;amp;s_level=0&amp;amp;sort=&amp;amp;q_val= http://p.sf.net/sfu/businessobjects https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with &amp;lt;comment&amp;gt; tag</header>
+    <date>Tue May 19 07:42:00 CEST 2009</date>
+    <body>Dear Marc, Cannot this be distinguished by having a 'feature'? Ahmed---- Blog: http://asashour.blogspot.com ________________________________ To: nekohtml-user@... Sent: Tuesday, May 19, 2009 10:29:02 AM Subject: Re: [nekohtml-user] Problem with &amp;lt;comment&amp;gt; tag Hi, NekoHTML tries to behave like "normal browsers" do. The problem here is that browsers interpret this html code differently: as far as I can see, FF parses &amp;lt;comment&amp;gt;'s content and displays it normally whereas IE seems to ignore it. No idea how NekoHTML should handle it as long as we don't have something like "browser profiles" but please open an issue to avoid that it gets lost. Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with &amp;lt;comment&amp;gt; tag</header>
+    <date>Tue May 19 07:58:00 CEST 2009</date>
+    <body>Hi Ahmed, features are good to configure a few ... features. There are really too many cases where the parser should behave differently depending on the "simulated browser". This is mostly low level and you won't necessarily want to configure each bit directly. The last case I had where I wished to have this feature was with recognition of entities when semicolon is missing. I doubt that you often want to take care of this special point independently of the others that are used to simulate a browser. Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com Ahmed Ashour wrote: http://asashour.blogspot.com http://www.efficient-webtesting.com http://mguillem.wordpress.com http://mguillem.wordpress.com/ http://p.sf.net/sfu/businessobjects https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with &amp;lt;comment&amp;gt; tag</header>
+    <date>Tue May 19 08:33:00 CEST 2009</date>
+    <body>Hi Marc, I see, what do you think about having feature per supported browser? E.g. "/browser/Internet Explorer 7", which implicitly denotes all 'sub-configurations'. Ahmed---- Blog: http://asashour.blogspot.com ________________________________ To: nekohtml-user@... Sent: Tuesday, May 19, 2009 10:57:57 AM Subject: Re: [nekohtml-user] Problem with &amp;lt;comment&amp;gt; tag Hi Ahmed, features are good to configure a few ... features. There are really too many cases where the parser should behave differently depending on the "simulated browser". This is mostly low level and you won't necessarily want to configure each bit directly. The last case I had where I wished to have this feature was with recognition of entities when semicolon is missing. I doubt that you often want to take care of this special point independently of the others that are used to simulate a browser. Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com Ahmed Ashour wrote: http://asashour.blogspot.com http://www.efficient-webtesting.com http://mguillem.wordpress.com http://mguillem.wordpress.com/ http://p.sf.net/sfu/businessobjects https://lists.sourceforge.net/lists/listinfo/nekohtml-user ------------------------------------------------------------------------------ Crystal Reports - New Free Runtime and 30 Day Trial Check out the new simplified licensing option that enables unlimited royalty-free distribution of the report engine for externally facing server and web deployment. http://p.sf.net/sfu/businessobjects _______________________________________________ nekohtml-user mailing list nekohtml-user@... https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Problem with &amp;lt;comment&amp;gt; tag</header>
+    <date>Tue May 19 08:38:00 CEST 2009</date>
+    <body>This is a solution. The other one would be to have a "profile" property what would allow to finer configuration when needed. Cheers, Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com Ahmed Ashour wrote: http://asashour.blogspot.com http://www.efficient-webtesting.com http://mguillem.wordpress.com http://asashour.blogspot.com http://www.efficient-webtesting.com http://www.efficient-webtesting.com/ http://mguillem.wordpress.com http://mguillem.wordpress.com/ http://mguillem.wordpress.com/ http://p.sf.net/sfu/businessobjects https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/businessobjects https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/businessobjects https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] XPath and additional namespace-uri</header>
+    <date>Fri May 08 08:42:00 CEST 2009</date>
+    <body>Hi Cyberneko users, I'm new to nekoHTML, I'm using it by few days with good results, but I have some issues with XPath. I need to parse html page with additional namespace: http://www.w3.org/1999/xhtml " xmlns:xxx=" http://example.com/xxx " ... I am using XPath to process the page and obtain all XXX prefixed node: " //*[namespace-uri()=' http://example.com/xxx ']" but when I try to getting HTML node I am unable to do without using the local-name() function. Ex "//A" does not return anything while "//*[local-name()='A']" work well. I'm instantiate the SAXParser in this way: reader.setFeature(" http://xml.org/sax/features/namespaces reader.setFeature(" http://xml.org/sax/features/namespace-prefixes And Obtain the document node: How can I use HTML uri as main manespace? Thank you in advance for the helps. My enviroment is Linux, JDK-1.6.0.13, xerces-2.9.1, xalan-2.7.1 and nekoHTML-1.9.12. -- Filippo De Luca -------------------------- Email: dl.filippo@... Web: http://www.filosganga.it LinkedIn: http://www.linkedin.com/in/filippodeluca mobile: +393395822588</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] doctype stripped from output and other probs</header>
+    <date>Fri Jul 24 12:59:00 CEST 2009</date>
+    <body>Hi, Am processing some invalid xhtml files that aren't even well-formed and am hoping NekoHTML can help. My main aim is to make them well-formed with the minimum possible changes. I've written a simple test app that uses org.cyberneko.html.filters.Writer to process one of the xhtml source files and output a cleaned version. It currently does this: parser.setFeature(" http://apache.org/xml/features/scanner/notify-char-refs parser.setFeature(" http://cyberneko.org/html/features/scanner/notify-builtin-refs parser.setFeature(" http://cyberneko.org/html/features/report-errors parser.setFeature(" http://cyberneko.org/html/features/balance-tags parser.setProperty(" http://cyberneko.org/html/properties/names/elems XMLDocumentFilter[] filters = parser.setProperty(" http://cyberneko.org/html/properties/filters A few problems with the output from this that I need to resolve: 1. The doctype from the source file doesn't appear in the target file: " http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd It is the first line in the source. Get an odd error reported about this too: [Error] source.xhtml:1:110: DOCTYPE declaration found inside document content. 2. The main problem with the source files I am trying to fix is that they contain attribute values with bare ampersands in them. This causes normal xml parsing with Xerces to fail. Here's an example: href=" http://somewhere.com/form?this=that&amp;amp;foo=baa " Get warnings for this: [Warning] source.xhtml:476:108: Bare ampersand found. [Warning] source.xhtml:476:108: Unknown general entity "email". I would have thought this should be an error, however, all that is important to me is to find a way to have these fixed in the output, e.g: href=" http://somewhere.com/form?this=that&amp;amp;amp;foo=baa " I tried setting the http://cyberneko.org/html/features/scanner/normalize-attrs feature to true but that just caused an ArrayOutOfBoundsException so I removed it. 3. I must also be missing something obvious in my usage of NekoHTML as, the output file contains unbalanced &amp;lt;br&amp;gt; elements. Would appreciate any advice on fixing these things. Thanks, Derek Please access the attached hyperlink for an important electronic communications disclaimer: http://www.lse.ac.uk/collections/secretariat/legal/disclaimer.htm</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] doctype stripped from output and other probs</header>
+    <date>Fri Jul 24 15:47:00 CEST 2009</date>
+    <body>I think you are making an invalid assumption that the Writer filter will output XHTML rather than plain old HTML.  Based on the description [1], it simply outputs HTML.  You might presume that the Purifier filter would ensure this, but don't confuse balancing tags in the DOM with its serialized presentation.  If you want valid XHTML output, you're going to need to use a serializer designed to provide XHTML.  Arguably, NekoHTML ought to come with such a facility, but I don't think that's the case today. One option is to use Xalan's serializer.  It's actually built as a separate jar file and shipped with Xerces (serializer.jar).  You can use it via the JAXP Transformer API [2].  See the Xalan documentation for use. [1] http://nekohtml.sourceforge.net/filters.html#filters.serialize [2] http://xml.apache.org/xalan-j/apidocs/javax/xml/transform/package-summary.html Jake On Fri, 24 Jul 2009 13:27:19 +0100 Derek Alexander &amp;lt;d.alexander@...&amp;gt; wrote: http://apache.org/xml/features/scanner/notify-char-refs ", http://cyberneko.org/html/features/scanner/notify-builtin-refs ", http://cyberneko.org/html/features/report-errors ", http://cyberneko.org/html/features/balance-tags ", http://cyberneko.org/html/properties/names/elems ", http://cyberneko.org/html/properties/filters ", http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd http://somewhere.com/form?this=that&amp;amp;foo=baa " http://somewhere.com/form?this=that&amp;amp;amp;foo=baa " http://cyberneko.org/html/features/scanner/normalize-attrs feature to http://www.lse.ac.uk/collections/secretariat/legal/disclaimer.htm https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] doctype stripped from output and other probs</header>
+    <date>Fri Jul 24 15:59:00 CEST 2009</date>
+    <body>Have made some progress by extending org.cyberneko.html.filters.Writer to output the doctype declaration and encode bare ampersands in attribute values. Code for that included below. Still need to work out how to stop the &amp;lt;br /&amp;gt; elements in my source from being transformed to &amp;lt;br&amp;gt; in the output. Appreciate any help on that. Cheers, Derek public EnhancedWriter(OutputStream outputStream, String encoding) public void doctypeDecl(String rootElement, String publicId, String systemId, Derek Alexander wrote: http://apache.org/xml/features/scanner/notify-char-refs http://cyberneko.org/html/features/scanner/notify-builtin-refs http://cyberneko.org/html/features/report-errors http://cyberneko.org/html/features/balance-tags http://cyberneko.org/html/properties/names/elems http://cyberneko.org/html/properties/filters http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd http://somewhere.com/form?this=that&amp;amp;foo=baa " http://somewhere.com/form?this=that&amp;amp;amp;foo=baa " http://cyberneko.org/html/features/scanner/normalize-attrs feature to http://www.lse.ac.uk/collections/secretariat/legal/disclaimer.htm https://lists.sourceforge.net/lists/listinfo/nekohtml-user Please access the attached hyperlink for an important electronic communications disclaimer: http://www.lse.ac.uk/collections/secretariat/legal/disclaimer.htm</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] doctype stripped from output and other probs</header>
+    <date>Fri Jul 24 16:47:00 CEST 2009</date>
+    <body>Hi Jake, Yes, I almost gave up on it when I realised it was HTML oriented rather than XHTML. However, I'm not too bothered about the XHTML being valid, just well- formed. It sounds like you hadn't yet seen my follow-up to that email where I mentioned I'd found a solution to problems 1 and 2. I've just solved the final problem too by overriding the emptyElement method in my EnhancedWriter.class like so: public void emptyElement(QName element, XMLAttributes attributes, Augmentations augs) // printStartElement(element, attributes); -- this gives an ill-formed document, so ... // super.emptyElement(element, attributes, augs); -- can't call this or we get the bad version, so ... Thanks for recommending NekoHTML to me. Regards, Derek Jacob Kjome wrote: http://nekohtml.sourceforge.net/filters.html#filters.serialize http://xml.apache.org/xalan-j/apidocs/javax/xml/transform/package-summary.html http://apache.org/xml/features/scanner/notify-char-refs ", http://cyberneko.org/html/features/scanner/notify-builtin-refs ", http://cyberneko.org/html/features/report-errors ", http://cyberneko.org/html/features/balance-tags ", http://cyberneko.org/html/properties/names/elems ", http://cyberneko.org/html/properties/filters ", http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd http://somewhere.com/form?this=that&amp;amp;foo=baa " http://somewhere.com/form?this=that&amp;amp;amp;foo=baa " http://cyberneko.org/html/features/scanner/normalize-attrs feature to http://www.lse.ac.uk/collections/secretariat/legal/disclaimer.htm https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user Please access the attached hyperlink for an important electronic communications disclaimer: http://www.lse.ac.uk/collections/secretariat/legal/disclaimer.htm</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] doctype stripped from output and other probs</header>
+    <date>Fri Jul 24 19:21:00 CEST 2009</date>
+    <body>Excellent!  Glad you figured it out :-) BTW, if you were looking for a serializer that provides valid XHTML (besides the Xalan one, which I haven't actually tested myself), the DOMFormatter [1][2] I wrote/enhanced for XMLC [3][4] gets pretty close. oo.setEnableXHTMLCompatibility(true); //follow C.2/3 HTML Compat Guidelines: http://www.w3.org/TR/xhtml1/guidelines.html oo.setPrettyPrinting(true); //even when true, skips elements that preserve oo.setPreserveSpace(false); //provides for cleaner output even when pretty oo.setIndentSize(2);        //optional, default is 4 [1] http://svn.forge.objectweb.org/cgi-bin/viewcvs.cgi/*checkout*/xmlc/trunk/xmlc/release/release-notes/xmlc-2-3-release-note.html [2] http://svn.forge.objectweb.org/cgi-bin/viewcvs.cgi/xmlc/trunk/xmlc/xmlc/modules/xmlc/src/org/enhydra/xml/io/DOMFormatter.java [3] http://www.enhydra.org/tech/xmlc/index.html [4] http://forge.ow2.org/projects/xmlc/ Jake On Fri, 24 Jul 2009 17:00:33 +0100 Derek Alexander &amp;lt;d.alexander@...&amp;gt; wrote: http://nekohtml.sourceforge.net/filters.html#filters.serialize http://xml.apache.org/xalan-j/apidocs/javax/xml/transform/package-summary.html http://apache.org/xml/features/scanner/notify-char-refs ", http://cyberneko.org/html/features/scanner/notify-builtin-refs ", http://cyberneko.org/html/features/report-errors ", http://cyberneko.org/html/features/balance-tags ", http://cyberneko.org/html/properties/names/elems ", http://cyberneko.org/html/properties/filters ", http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd http://somewhere.com/form?this=that&amp;amp;foo=baa " http://somewhere.com/form?this=that&amp;amp;amp;foo=baa " http://cyberneko.org/html/features/scanner/normalize-attrs feature to http://www.lse.ac.uk/collections/secretariat/legal/disclaimer.htm https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://www.lse.ac.uk/collections/secretariat/legal/disclaimer.htm https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Resolve declared prefix for namespace</header>
+    <date>Fri Aug 28 11:08:00 CEST 2009</date>
+    <body>Hi Guys, Anybody know how can I resolve the declared prefix for a knew namespaceURI? So my namespace URI is: http://www.filosganga.it/xyz , but I don't know which prefix is associate with this namespace. Once obtained document from markup, there is a way to know the prefix of my namespace? Thanks -- Filippo De Luca -------------------------- Email: dl.filippo@... Web: http://www.filosganga.it LinkedIn: http://www.linkedin.com/in/filippodeluca mobile: +393395822588</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] NekoHtml - SAX Parser</header>
+    <date>Thu Aug 13 13:22:00 CEST 2009</date>
+    <body>Hello, How can I use NekoHtml as a SAX Parser ? Could you please give me some examples ? Thank you, Fabrice</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHtml - SAX Parser</header>
+    <date>Fri Aug 28 11:05:00 CEST 2009</date>
+    <body>Hi Fabrice, I am using this code: Transformer transformer = reader.setFeature(" http://xml.org/sax/features/namespaces reader.setFeature(" http://xml.org/sax/features/namespace-prefixes ", reader.setProperty(" http://cyberneko.org/html/properties/default-encoding I hope this work for you. http://p.sf.net/sfu/bobj-july https://lists.sourceforge.net/lists/listinfo/nekohtml-user -- Filippo De Luca -------------------------- Email: dl.filippo@... Web: http://www.filosganga.it LinkedIn: http://www.linkedin.com/in/filippodeluca mobile: +393395822588</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] What does Neko do with encodings?</header>
+    <date>Thu Aug 06 08:29:00 CEST 2009</date>
+    <body>Hi, I'm trying to understand how Neko deals with encodings and how I should work around them. When a page is fetched, the request headers often provide some encoding information that may or may not be overridden by the encoding set in the metadirective of the page. Now, what I am wondering about is how I should expect Neko to handle this. I can see that the Writer filter changes the files encoding based on the encoding of the outputstream and the content of the &amp;lt;meta http-equiv..&amp;gt; element. Is there a way to know if this has happend? I'm also planning to put in place a charset detection algorithm on top of Neko to make sure that badly encoded pages are handled correctly. Does anyone have a tip on when this should be done? Before or after running the Neko purifier and writer filters? Kind regards, Tarjei -- Tarjei Huse Mobil: 920 63 413</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] What does Neko do with encodings?</header>
+    <date>Tue Aug 11 13:58:00 CEST 2009</date>
+    <body>Hi, Neko starts with the encoding that you provide. If it encounters a meta tag indicating an other (compatible) encoding, it uses it. I think that NekoHTML should use following: http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html#determining-the-character-encoding we already use it in HtmlUnit but it hasn't been backported to NekoHTML. Cheers, Marc. Tarjei Huse wrote:</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Usage Instructions</header>
+    <date>Wed Sep 23 21:22:00 CEST 2009</date>
+    <body>The first example on http://nekohtml.sourceforge.net/usage.html has "sax.Counter" Where can I find the source code to this ? -Thanks Stephen More</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user]  [ANN] NekoHTML 1.9.13 has been released</header>
+    <date>Wed Sep 02 08:49:00 CEST 2009</date>
+    <body>Hi all, release 1.9.13 of NekoHTML is now available. http://nekohtml.sourceforge.net This release contains different improvements and bug fixes. Description of the changes is available at http://nekohtml.sourceforge.net/changes.html The maven bundle has been uploaded to NekoHTML repository and should become available in the main repository within a few hours. Enjoy! Marc. -- Web: http://www.efficient-webtesting.com Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] removing html comments</header>
+    <date>Wed Oct 28 23:56:00 CET 2009</date>
+    <body>Hello, I'm using filters as in the provided sample to remove &amp;lt;script&amp;gt; elements as below.  I would also like to remove html comments, i.e. &amp;lt; ! - - blah How does one do that? Regards, Len // set which elements to accept // completely remove script elements</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] removing html comments</header>
+    <date>Tue Nov 03 19:29:00 CET 2009</date>
+    <body>Sorry about the newbie question.  Html comments were already being removed.  On the page I was parsing there happened to be html comments inside other elements which were making it through. Len -----Original Message----- From: Len Takeuchi [mailto:ltakeuchi@...] Sent: October-28-09 4:17 PM To: 'nekohtml-user@...' Subject: removing html comments Hello, I'm using filters as in the provided sample to remove &amp;lt;script&amp;gt; elements as below.  I would also like to remove html comments, i.e. &amp;lt; ! - - blah How does one do that? Regards, Len // set which elements to accept // completely remove script elements</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Neko writes to stdout</header>
+    <date>Tue Dec 15 00:37:00 CET 2009</date>
+    <body>Hi, I am stripping tags from an HTML doc using the code below: // set which elements to accept //Accept html so we have data to look at. // completely remove script elements // Remove any head // create writer filter org.cyberneko.html.filters.Writer writer = // setup filter chain remover, writer, // create HTML parser parser.setProperty(" http://cyberneko.org/html/properties/filters ", However, when I call parser.parse, I get the parsed document written to stdout without me explicitly requesting it to be.  It's not a big deal, but I'm curious if there is a way to turn this off, or modify the code so it doesn't happen?  I tried digging into neko but I couldn't find where it might be written out.  I do my logging through Log4j so it does conflict a bit and fills my cron output. Any ideas? Thanks.</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Sun Jan 03 12:02:00 CET 2010</date>
+    <body>Hi, I am trying to use nekohtml to parse a html from an android device. For that i would like to use the minimal xerces jar and started from the code in sample Minimal.java class, but this does not seem to work. I tried again in a pure java project and had the same problem in parse function call. here is the backtrace: Exception in thread "main" java.lang.NoSuchMethodError: org.apache.xerces.xni.XMLDocumentHandler.startDocument(Lorg/apache/xerces/xni/XMLLocator;Ljava/lang/String;Lorg/apache/xerces/xni/Augmentations;)V at org.cyberneko.html.xercesbridge.XercesBridge_2_0.XMLDocumentHandler_startDocument(XercesBridge_2_0.java:57) at org.cyberneko.html.HTMLScanner$ContentScanner.scan(HTMLScanner.java:2043) at org.cyberneko.html.HTMLScanner.scanDocument(HTMLScanner.java:907) at org.cyberneko.html.HTMLConfiguration.parse(HTMLConfiguration.java:499) at org.cyberneko.html.HTMLConfiguration.parse(HTMLConfiguration.java:452) at main.main(main.java:72) However in eclipse if i remove external lib xercesMinimal.jar to xercesImpl.jar from xercer 2.9.1, it seems to work like a charm. Is there anything i missed to make xercesMinimal.jar works? Another question: i just need to access a few content in some specific tag in an html page, so all the validity check as no interest for me. what feature/property should i turn off: probably balance-tags? more? -- Thierry. http://sites.google.com/site/tlegras</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Thu Jan 07 01:18:00 CET 2010</date>
+    <body>I get this problem too when I switchbetween xercesMinimal and xerces-2.9.1 - it's not a problem particular to android. But I guess mobile apps need to think about resources more carefully than other apps. Stewart http://sites.google.com/site/tlegras</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Fri Jan 08 08:48:00 CET 2010</date>
+    <body>I tried creating a new xercesMinimal.jar, thinking it was not based on 2.9.1, but I got the same result. Inside the Neko code, in XercesBridge I think, there is some factory code which detects which version of Xerces you are using. Some of this detection is done but attempting to call methods on certain classes. If those methods don't exist, it catches the exception and says "not that version of xerces". Maybe the xercesMinimal code does not have the class it's looking for by virtue of being minimal, and then it defaults back to an early version of Xerces, which is the wrong one. I think the solution is to either override the XercesBridge class (I may have the name slightly wrong) or to include the specific "version detection" classes that XercesBridge is looking for. Stewart 2010/1/8 Thierry Legras &amp;lt;tlegras@...&amp;gt;: http://sites.google.com/site/tlegras http://sites.google.com/site/tlegras</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Mon Jan 11 13:18:00 CET 2010</date>
+    <body>Hi Stewart, you're right: more root classes have to be taken to generate the xercesMinimal.jar. This will be fixed in next release. Cheers, Marc. Stewart Cambridge a écrit : http://sites.google.com/site/tlegras http://sites.google.com/site/tlegras http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Mon Jan 11 13:52:00 CET 2010</date>
+    <body>This is a very good news. Thanks marc. On Mon, Jan 11, 2010 at 1:52 PM, Marc Guillemot &amp;lt;mguillemot@...&amp;gt; wrote: -- Thierry. http://sites.google.com/site/tlegras/</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Fri Jan 22 15:17:00 CET 2010</date>
+    <body>Hi, Any news on that? If not, i might give a try. How do you compile xerces to generate xercesMinimal.jar? i could not see any info on that on neko source archive. Thierry. On Mon, Jan 11, 2010 at 1:52 PM, Marc Guillemot &amp;lt;mguillemot@...&amp;gt; wrote: http://sites.google.com/site/tlegras http://sites.google.com/site/tlegras http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user -- Thierry.</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Fri Jan 22 15:38:00 CET 2010</date>
+    <body>Hi, I've committed the fix to generate a correct version of xercesMinimal.jar. The unit tests now run with this version too. If you're only interested in this xercesMinimal.jar: http://nekohtml.svn.sourceforge.net/viewvc/nekohtml/trunk/lib/xerces-minimal/xercesMinimal.jar?revision=279 Cheers, Marc. Thierry Legras a écrit : http://sites.google.com/site/tlegras http://sites.google.com/site/tlegras http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/rsaconf-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Fri Jan 22 15:44:00 CET 2010</date>
+    <body>oh yes i will try :) Many merci Marc. On Fri, Jan 22, 2010 at 4:37 PM, Marc Guillemot &amp;lt;mguillemot@...&amp;gt; wrote: http://nekohtml.svn.sourceforge.net/viewvc/nekohtml/trunk/lib/xerces-minimal/xercesMinimal.jar?revision=279 http://sites.google.com/site/tlegras http://sites.google.com/site/tlegras http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/rsaconf-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/rsaconf-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user -- Thierry.</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] problem with xercesMinimal.jar and android</header>
+    <date>Fri Jan 22 16:17:00 CET 2010</date>
+    <body>After a couple of first test it seems to work nicely on my android device :) Thanks again. Thierry. On Fri, Jan 22, 2010 at 4:37 PM, Marc Guillemot &amp;lt;mguillemot@...&amp;gt; wrote: http://nekohtml.svn.sourceforge.net/viewvc/nekohtml/trunk/lib/xerces-minimal/xercesMinimal.jar?revision=279 http://sites.google.com/site/tlegras http://sites.google.com/site/tlegras http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/verizon-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/rsaconf-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/rsaconf-dev2dev https://lists.sourceforge.net/lists/listinfo/nekohtml-user -- Thierry.</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Serializing empty (self-closing) tags</header>
+    <date>Thu Jan 07 01:22:00 CET 2010</date>
+    <body>Hi Neko Users, Does anyone know if there are any plans for a feature setting for whether empty (self-closing) tags should contain a '/' or not? In other words, I want my serialized HTML to contain &amp;lt;br/&amp;gt; rather than &amp;lt;br&amp;gt;. At the moment I'm working around by overriding: public void emptyElement(QName element, XMLAttributes attributes, Anyone else need this? Regards, Stewart</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Serializing empty (self-closing) tags</header>
+    <date>Wed Jan 13 15:32:00 CET 2010</date>
+    <body>Hi Stewart. A couple of month ago I was needing that same functionality to apply certain XLST dinamically. At that time I tried to study the code to figure out were I should apply changes to solve my problem, but didn`t finish anything. If you want I would be interested in helping you write now. By the way,  I think I've seen one or two emails in the list requesting something similar. Luis Fernando ----- Original Message ---- To: nekohtml-user@... Sent: Wed, January 6, 2010 8:22:08 PM Subject: [nekohtml-user] Serializing empty (self-closing) tags Hi Neko Users, Does anyone know if there are any plans for a feature setting for whether empty (self-closing) tags should contain a '/' or not? In other words, I want my serialized HTML to contain &amp;lt;br/&amp;gt; rather than &amp;lt;br&amp;gt;. At the moment I'm working around by overriding: public void emptyElement(QName element, XMLAttributes attributes, Anyone else need this? Regards, Stewart ------------------------------------------------------------------------------ This SF.Net email is sponsored by the Verizon Developer Community Take advantage of Verizon's best-in-class app development support A streamlined, 14 day to market process makes app distribution fast and easy Join now and get one step closer to millions of Verizon customers http://p.sf.net/sfu/verizon-dev2dev _______________________________________________ nekohtml-user mailing list nekohtml-user@... https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Limiting Element Length</header>
+    <date>Wed Jan 13 05:38:00 CET 2010</date>
+    <body>Hi, I'm new to neko-html. I'd like to be able to conditionally accept an element's value, depending on its length. My requirement is to only accept &amp;lt;a&amp;gt; content less than 20 characters long. I couldn't figure out how to do this by just extending the ElementRemover filter. After digging in to internal variable values, it seems like I might need to customize the HTML scanner. Thanks, Wojtek _________________________________________________________________ Reinvent how you stay in touch with the new Windows Live Messenger. http://go.microsoft.com/?linkid=9706116</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Troubles to extract java String from iso-8859-1
+	HTML page</header>
+    <date>Sun Feb 14 17:10:00 CET 2010</date>
+    <body>Hi, I am a  bit stuck with encoding: i am parsing an ISO-8859-1 page. This page contains this meta: I am using a DefaultFilter subclass like this: XMLInputSource source = new XMLInputSource(null, null, Then in the filter i tried something like: The result: On some device (Android devices indeed), the result is fine, the é, è, etc. are correctly displayed. But on some other (i suspect it is on US imported device), these characters are replaced by random symbols. "String myString = new String(text.toString().getBytes("iso-8859-1"));" seems incorrect. So where is the problem?? is it te way i set XMLInputSource? or where i convert XMLString to java string in characters()? do i have to set a feature? Any clue? -- Thierry.</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] convert relative urls to absolute?</header>
+    <date>Sun Feb 14 13:11:00 CET 2010</date>
+    <body>Hi, i am not sure if this is in the scope of Neko, but if not hopefully i am extracting links from html using Neko, and I would like to convert the relative links to absolute. at the moment I am doing it "manually" (going through the links and checking if they start with http://, ftp:// etc) and if not i add the base url. This does not feel very error prune at all, and I am sure some function in some package can handle this for me. Any ideas how i can convert relative to absolute urls? cheers, RJ</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] [ANN] NekoHTML 1.9.14 has been released</header>
+    <date>Tue Feb 02 14:50:00 CET 2010</date>
+    <body>Hi all, release 1.9.14 of NekoHTML is now available. http://nekohtml.sourceforge.net This release contains different improvements and bug fixes. Description of the changes is available at http://nekohtml.sourceforge.net/changes.html The maven bundle has been uploaded to NekoHTML repository and should become available in the main repository within a few hours. Enjoy! Marc. -- Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] [ANN] NekoHTML 1.9.14 has been released</header>
+    <date>Tue Feb 02 15:47:00 CET 2010</date>
+    <body>Thanks for getting the release out, Marc.  A couple things, though... resolution is "Fixed". Also, why is everything a branch and not a tag?  Usually the SVN structure is.... branches/ tags/ trunk/ ...and branches are usually not specific versions of code, like "1.9.14", but something like "1.9.xx" where the branch would be used to maintain the 1.9 major.minor collection of code (assuming the trunk didn't represent this already, which it currently does).  Tags would be used to define specific versions like "1.9.14", which represent a static, non-changing, view of the code from a particular point in time. But NekoHTML seems to have only... branches/ trunk/ To me, this implies that each of NetkoHTML's versions are non-static and may change over time, since that's what branches are for.   I guess it doesn't matter that much as long as it is understood by developers that branches are to be treated like tags (static, non-changing), but why the unorthodox usage?  I'm curious as to why it's set up that way?  Is this just how SourceForge's infrastructure team set it up or did someone on the NekoHTML team make a conscious decision to do it this way? [1] http://sourceforge.net/tracker/?func=detail&amp;amp;aid=2942363&amp;amp;group_id=195122&amp;amp;atid=952178 Jake On Tue, 02 Feb 2010 15:50:22 +0100 Marc Guillemot &amp;lt;mguillemot@...&amp;gt; wrote: http://nekohtml.sourceforge.net http://nekohtml.sourceforge.net/changes.html http://mguillem.wordpress.com http://p.sf.net/sfu/theplanet-com https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] [ANN] NekoHTML 1.9.14 has been released</header>
+    <date>Tue Feb 02 16:10:00 CET 2010</date>
+    <body>Jacob Kjome wrote: I guess that reporter changed it this was the setup decided by Andy. I agree with you that tags would be better but personally I don't really care. Cheers, Marc. -- Blog: http://mguillem.wordpress.com</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Self-closing script elements</header>
+    <date>Wed Apr 21 17:39:00 CEST 2010</date>
+    <body>Hi, With tag balancing is switched on, I notice that &amp;lt;script src="xxxx"&amp;gt;&amp;lt;/script&amp;gt; elements are converted to &amp;lt;script src="xxx"/&amp;gt;. This causes problems down the line when attemting to render the parsed content in firefox and IE which expects script element with a src attribute to be empty. Is there any way to correct this behavior? Thanks a lot guys, Tom</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Self-closing script elements</header>
+    <date>Thu Apr 22 05:47:00 CEST 2010</date>
+    <body>This has nothing to do with tag balancing; it's caused by whatever is writing the output. -- Sent from my iPhone On Apr 21, 2010, at 10:17 AM, Tomas Muldoon &amp;lt;tomas.muldoon@...&amp;gt; wrote: https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Self-closing script elements</header>
+    <date>Thu Apr 22 06:55:00 CEST 2010</date>
+    <body>You're right, I figured it out. Was a hard day at work yesterday :-) Thanks. On 22 April 2010 06:34, Andy Clark &amp;lt;andy@...&amp;gt; wrote: https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user -- Tom Muldoon | Developer</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Entities getting garbled</header>
+    <date>Wed Apr 07 18:45:00 CEST 2010</date>
+    <body>Hi, In using NekoHTML to tidy up HTML I've noticed that most entities (&amp;amp;nbsp;) seem to be getting garbled. This is probably due to my misuse of the library, so I'm hoping someone can clarify. Here's the relevant portion of my code: public void test() try //parser.setFeature( " http://apache.org/xml/features/scanner/notify-char-refs ", true //parser.setFeature( " http://apache.org/xml/features/scanner/notify-builtin-refs ", //parser.setFeature( " http://cyberneko.org/html/features/scanner/notify-builtin-refs ", //parser.setFeature( " http://cyberneko.org/html/features/scanner/normalize-attrs ", String html = "&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Entity 1: &amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Entity 2: ByteArrayInputStream byteArrayInputStream = new InputSource inputSource = new InputSource( byteArrayInputStream catch( Exception e ) public void print( Node node, String indent ) while (child != null) In the output the &amp;amp;amp; is coming through fine, but the other two entities show up as # or ##.  I've also tried turning the tidied HTML back into a string using XMLSerializer, but with that the entities come through as garbled characters.  You can also see that I've attempted to use various "setFeature" method calls. Any suggestions on what I might be doing wrong? Thanks much, Todd</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] XPath Syntax - you have been so helpful in past</header>
+    <date>Tue May 25 21:07:00 CEST 2010</date>
+    <body>Dear All: Thank you for all your help. I am again adding your product to my automation framework http://www.mkosh.com Specifically, as element IDs do not seem to be easily retrievable with getElementById(), I have decided to utilize a combined XPath approach. I am using what I am learning about XPath from: http://www.w3schools.com/xpath/xpath_syntax.asp It seems like a statement as: *[@id='elementId_0']//*[@id='main'] Should be kosher to find all elements that are descendants of element A with id main, where element A is the element in the main document that has elementId_0 However, for some reason I am not getting the desired results Any ideas? Thank you Misha</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] XPath Syntax - you have been so helpful in past</header>
+    <date>Wed May 26 05:01:00 CEST 2010</date>
+    <body>Did you try?... //*[@id='elementId_0']//*[@id='main'] Jake On 5/25/2010 3:06 PM, Misha Koshelev wrote: http://www.mkosh.com http://www.w3schools.com/xpath/xpath_syntax.asp https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] XPath Syntax - you have been so helpful in past</header>
+    <date>Wed May 26 12:30:00 CEST 2010</date>
+    <body>Yes thank you. I fixed it. Even included a conformance test ;) Misha Jacob Kjome wrote: http://www.mkosh.com http://www.w3schools.com/xpath/xpath_syntax.asp https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Thank you for great product - using getElementById
+	with NekoHTML</header>
+    <date>Tue May 25 03:01:00 CEST 2010</date>
+    <body>Dear Sirs: Again thank you for such a great product! I am undergoing step (ii) of converting my Web Automation Framework (www.mkosh.com - new version to be posted tomorrow) to using NekoHTML. Thank you so much for your prior help with XPath expressions, etc. Specifically, I have now encountered the following issue. I parse the document and am able to correctly use XPath expression with lowercase element names. The attribute names are also lowercase. However, it seems the id attribute is not marked as being of type "ID", and so document.getElementById always returns null (I checked this by using an XPath that retrieves an Element, getting the "id" attribute, and then immediately doing document.getElementById for that exact attribute). I am using the following code to parse: domParser.setFeature(" http://cyberneko.org/html/features/augmentations",true domParser.setProperty(" http://cyberneko.org/html/properties/names/elems","lower Thank you so much Misha</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Thank you for great product - using
+ getElementById with NekoHTML</header>
+    <date>Tue May 25 04:30:00 CEST 2010</date>
+    <body>That's because it's not a validating parser.  You can only define "id" as being of type "ID" if it's validated against a DTD or XML Schema. However, there is a workaround [1] that I implemented for the XMLC project [2]. You can use a NekoHTML Filter [3] to automagically mark certain attributes as being of type "ID".  Look for the "idEnhancer" filter in the linked code.  The only problem with the solution I came up with is that it uses knowledge about Xerces internals that could change at any given release.  That said, it's worked since at least Xerces 2.8.1 and the Xerces code that it takes advantage of doesn't appear to be up for refactoring anytime soon, IMO. What would be really nice it to figure out a less brittle implementation; that is, one that doesn't depend upon Xerces internals.  If anyone on this list knows of one, it would be a great contribution as getElementById() won't work for HTML without it. [1] http://websvn.ow2.org/filedetails.php?repname=xmlc&amp;amp;path=%2Ftrunk%2Fxmlc%2Fxmlc%2Fmodules%2Fxmlc%2Fsrc%2Forg%2Fenhydra%2Fxml%2Fxmlc%2Fparsers%2Fxerces%2FXercesHTMLDOMParser.java [2] http://forge.ow2.org/projects/xmlc/ [3] http://nekohtml.sourceforge.net/filters.html Jake On 5/24/2010 9:01 PM, Misha Koshelev wrote: http://cyberneko.org/html/features/augmentations",true http://cyberneko.org/html/properties/names/elems","lower https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Thank you for great product - using
+ getElementById with NekoHTML</header>
+    <date>Tue May 25 16:05:00 CEST 2010</date>
+    <body>Wow. Thank you so much. So do I understand correctly this is all it takes? fConfiguration.setProperty(" http://cyberneko.org/html/properties/filters p.s. I have not decided yet but will probably cheat and use XPath for now. It seems like that will be a solution that is less likely to change with the times. It definitely seems like something necessary, and I will keep this in mind for later work. Thank you! Misha Jacob Kjome wrote: http://websvn.ow2.org/filedetails.php?repname=xmlc&amp;amp;path=%2Ftrunk%2Fxmlc%2Fxmlc%2Fmodules%2Fxmlc%2Fsrc%2Forg%2Fenhydra%2Fxml%2Fxmlc%2Fparsers%2Fxerces%2FXercesHTMLDOMParser.java http://forge.ow2.org/projects/xmlc/ http://nekohtml.sourceforge.net/filters.html http://cyberneko.org/html/features/augmentations",true http://cyberneko.org/html/properties/names/elems","lower https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Announcing new release of SWT Web Automation
+	Framework</header>
+    <date>Fri May 21 02:41:00 CEST 2010</date>
+    <body>Dear All: Please bear with me as I release a new version of the SWT Web Automation Framework at http://www.mkosh.com now licensed under EPL v1. I would still like to contribute the parts of the framework that are in my org.eclipse.swt.browser.webdriver classes back to the SWT project if possible. Just to remind, this is a cross-platform solution that allows: * end user web automation applications * with the ability (that SWT provides) to hide the browser from the user You will find on the Web site, additionally, a sample application (Facebook Birthday Greeter), as well as a Web Automation Framework tester. Notably, the big change from the previous version is that I use NekoHTML to actually parse a DOM structure for the given document. This allows some additional capabilities not present in the prior version, specifically the use of XPath expression querying. Additionally, it makes the methodology somewhat neater, and, as you can see by the Web Automation Framework Tester tool (which, I have to say, simulates to some extent the Firebug Firefox Extension - and thank you to Grant Gayed on the SWT forums for all your help. There is much to be done on the back end side. Roughly, to keep a consistent API, I am following that of WebDriver http://selenium.googlecode.com/svn/trunk/docs/api/java/index.html although, as you can see, there are additional features that are not present there. In any case, I still have much work to do. I have implemented the examples from WebDriver in org.eclipse.swt.browser.webdriver.Test Additionally, although some keystrokes are still sent incorrectly (e.g., "!"), one really neat thing is that we can even send keystrokes correctly to Internet Explorer with the window _not visible_, which is impossible both using Javascript (I did not find a method to simulate keystrokes that worked well on Internet Explorer) and using WebDriver (as it is impossible to hide the IE window). In any case, I look forward to your comments/support/encouragement etc. Thank you! Misha p.s. There are some known problems right, especially with detecting mouse move events in the Tester in Windows IE. I will work on fixing this. Thank you!</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Announcing new release of SWT Web Automation
+	Framework</header>
+    <date>Fri May 21 02:45:00 CEST 2010</date>
+    <body>My apologies: initial message got sent prematurely. Please find updated version below. Thank you! Main changes from version below. I actually have _two_ versions on site (being uploaded as we speak). The stable version was a step back today towards the Javascript-based model, somewhat simplified (uses unique ids for elements). Relies of sleep statements completely, but works quite well. The other (unstable) version actually retrieves a full DOM structure for each web page. There are two issues: 1) how to detect when a page has _truly_ loaded in a cross-browser way. I have some ideas with regards to this (setInterval with a function that will check for creation of any new elements whose IDs are not known, say, every 1 second; when no new elements have been created in 1 second, it means we are done) 2) how to detect whether any changes occur after a Javascript statement is executed (perhaps above will work as well?) In any case, looking much forward to your input. Highlights: Stable version - slightly better Javascript version Unstable version - DOM-based framework, along with tester application (Firebug-like). Unfortunately has some kinks on Windows. Thank you Misha Koshelev --- Dear All: Please bear with me as I release a new version of the SWT Web Automation Framework at http://www.mkosh.com now licensed under EPL v1. I would still like to contribute the parts of the framework that are in my org.eclipse.swt.browser.webdriver classes back to the SWT project if possible. Just to remind, this is a cross-platform solution that allows: * end user web automation applications * with the ability (that SWT provides) to hide the browser from the user You will find on the Web site, additionally, a sample application (Facebook Birthday Greeter), as well as a Web Automation Framework tester. Notably, the big change from the previous version is that I use NekoHTML to actually parse a DOM structure for the given document. This allows some additional capabilities not present in the prior version, specifically the use of XPath expression querying. Additionally, it makes the methodology somewhat neater, and, as you can see by the Web Automation Framework Tester tool (which, I have to say, simulates to some extent the Firebug Firefox Extension - and thank you to Grant Gayed on the SWT forums for all your help. There is much to be done on the back end side. Roughly, to keep a consistent API, I am following that of WebDriver http://selenium.googlecode.com/svn/trunk/docs/api/java/index.html although, as you can see, there are additional features that are not present there. In any case, I still have much work to do. I have implemented the examples from WebDriver in org.eclipse.swt.browser.webdriver.Test Additionally, although some keystrokes are still sent incorrectly (e.g., "!"), one really neat thing is that we can even send keystrokes correctly to Internet Explorer with the window _not visible_, which is impossible both using Javascript (I did not find a method to simulate keystrokes that worked well on Internet Explorer) and using WebDriver (as it is impossible to hide the IE window). In any case, I look forward to your comments/support/encouragement etc. Thank you! Misha p.s. There are some known problems right, especially with detecting mouse move events in the Tester in Windows IE. I will work on fixing this. Thank you!</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Sorry to bother - Xalan JAXP XPath from _current_
+	element question</header>
+    <date>Wed May 19 04:15:00 CEST 2010</date>
+    <body>My apologies if unclear. I would like to, say, find all "a" tags that are children of an Element element. However, when I use the XPathExpression.evaluate(element,XPathExpression.NODE_TYPE) function with the XPath "//a", I end up getting those for _entire_ document. Please let me know if I am missing something simple. Thank you Misha</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Sorry to bother - Xalan JAXP XPath from
+	_current_ element question</header>
+    <date>Wed May 19 15:25:00 CEST 2010</date>
+    <body>Misha. As far as I understand your XPath expression "//a" is quering all the "a" elements from the root node. If you want to look inside an especific element, you should change the "//" part for the element you want. ----- Original Message ---- To: nekohtml-user@... Sent: Tue, May 18, 2010 11:15:00 PM Subject: [nekohtml-user] Sorry to bother - Xalan JAXP XPath from _current_ element question My apologies if unclear. I would like to, say, find all "a" tags that are children of an Element element. However, when I use the XPathExpression.evaluate(element,XPathExpression.NODE_TYPE) function with the XPath "//a", I end up getting those for _entire_ document. Please let me know if I am missing something simple. Thank you Misha ------------------------------------------------------------------------------ _______________________________________________ nekohtml-user mailing list nekohtml-user@... https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Sorry to bother - Xalan JAXP XPath from
+ _current_ element question</header>
+    <date>Wed May 19 16:05:00 CEST 2010</date>
+    <body>Thank you. Apparently XPath is a little stranger beast than I imagined ;) I am reading here: http://java.sun.com/developer/technicalArticles/xml/jaxp1-3/ Notably, if I do "a" as my XPath expression, it finds all "a" elements that are a _direct_ ancestor of my current node (e.g., if there's a &amp;lt;myelement&amp;gt;&amp;lt;div&amp;gt;&amp;lt;a /&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/element&amp;gt;, and I search with myelement as the context, it does _not_ find my desired tag). If I do "//a", it just ignores the current node and goes for the entire document. Even if I do "//xpathtocurrentnote/a", it seems to only look for _direct_ descendants. hmm... I would like to find _all_ descendants (even those that are, say, 2 levels deep), within the current context. Any ideas? Besides doing whole document and manually checking. Thank you Misha Luis Fernando Gutiérrez wrote: https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Sorry to bother - Xalan JAXP XPath from
+ _current_ element question</header>
+    <date>Wed May 19 16:31:00 CEST 2010</date>
+    <body>Misha Koshelev wrote: You want "descendant::a". XPath has a number of different 'axes' on which you can look for nodes. "a" is equivalent to "child::a", meaning direct children, but there's also "descendant::", "descendant-or-self::", "following-sibling::", "preceding-sibling::", and several others that can be useful in different circumstances.  For example, the expression a[not(preceding-sibling::a)] finds the *first* 'a' child element of the current context element (specifically it finds any 'a' element that doesn't have any other 'a' elements siblings before it). Ian -- Ian Roberts               | Department of Computer Science i.roberts@...  | University of Sheffield, UK</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Sorry to bother - Xalan JAXP XPath from
+ _current_ element question</header>
+    <date>Wed May 19 19:05:00 CEST 2010</date>
+    <body>Thank you so much! That did the trick... Misha Ian Roberts wrote:</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] NekoHTML with XOM: 2 problems</header>
+    <date>Wed May 12 16:20:00 CEST 2010</date>
+    <body>Dear All: Thank you for your great product! I am trying to use an HTML parser with XPath support for my needs. I am trying to use NekoHTML with XOM and am running into two issues. If I use the full Xerces implementation, I have the following issue: [java] nu.xom.XMLException: org.cyberneko.html.parsers.SAXParser does not support the entity resolution features XOM requires. [java] 	at nu.xom.Builder.&amp;lt;init&amp;gt;(Unknown Source) [java] 	at nu.xom.Builder.&amp;lt;init&amp;gt;(Unknown Source) [java] 	at nu.xom.Builder.&amp;lt;init&amp;gt;(Unknown Source) [java] 	at org.eclipse.swt.browser.webdriver.Driver$1.run(Driver.java:116) [java] 	at org.eclipse.swt.widgets.RunnableLock.run(Unknown Source) [java] 	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Unknown Source) [java] 	at org.eclipse.swt.widgets.Display.runAsyncMessages(Unknown Source) [java] 	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source) [java] 	at org.eclipse.swt.browser.webdriver.Test.main(Test.java:76) [java] Caused by: org.xml.sax.SAXNotRecognizedException: Feature ' http://xml.org/sax/features/external-general-entities ' is not recognized. [java] 	at org.apache.xerces.parsers.AbstractSAXParser.setFeature(Unknown Source) [java] 	at nu.xom.Builder.setupParser(Unknown Source) [java] 	... 9 more [java] nu.xom.XMLException: org.cyberneko.html.parsers.SAXParser does not support the entity resolution features XOM requires. [java] Java Result: 1 If I use xercesMinimal.jar, I have the following problem: [java] java.util.MissingResourceException: Can't find bundle for base name org.apache.xerces.impl.msg.SAXMessages, locale en_US [java] 	at java.util.ResourceBundle.throwMissingResourceException(ResourceBundle.java:1427) [java] 	at java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1250) [java] 	at java.util.ResourceBundle.getBundle(ResourceBundle.java:777) [java] 	at org.apache.xerces.util.SAXMessageFormatter.formatMessage(Unknown Source) [java] 	at org.apache.xerces.parsers.AbstractSAXParser.setFeature(Unknown Source) [java] 	at nu.xom.Builder.setupParser(Unknown Source) [java] 	at nu.xom.Builder.&amp;lt;init&amp;gt;(Unknown Source) [java] 	at nu.xom.Builder.&amp;lt;init&amp;gt;(Unknown Source) [java] 	at nu.xom.Builder.&amp;lt;init&amp;gt;(Unknown Source) [java] 	at org.eclipse.swt.browser.webdriver.Driver$1.run(Driver.java:116) [java] 	at org.eclipse.swt.widgets.RunnableLock.run(Unknown Source) [java] 	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Unknown Source) [java] 	at org.eclipse.swt.widgets.Display.runAsyncMessages(Unknown Source) [java] 	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source) [java] 	at org.eclipse.swt.browser.webdriver.Test.main(Test.java:76) [java] java.util.MissingResourceException: Can't find bundle for base name org.apache.xerces.impl.msg.SAXMessages, locale en_US [java] Java Result: 1 I appreciate any help. Is there better dom4j compatibility? Thank you Misha</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML with XOM: 2 problems</header>
+    <date>Thu May 13 05:54:00 CEST 2010</date>
+    <body>Interesting.  Never tried using XOM and NekoHTML together.  The problem below is that org.cyberneko.html.HTMLConfiguration doesn't support the feature: " http://xml.org/sax/features/external-general-entities ". I'm not sure what it takes to support it, but I imagine it could be added to satisfy XOM, though I wonder if you'd run into another error after getting by this one? In any case, that's not the end of it.  In order to use an XPath like... //body/a/@href ...you'd need to set the following property... parser.setProperty(" http://cyberneko.org/html/properties/names/elems ...otherwise you'd have to do... //BODY/A/@href ...because the HTML DOM is UPPER-case by default. BTW, you can always use NekoHTML directly rather than via XOM or Dom4j... http://nekohtml.sourceforge.net/usage.html Jake On 5/12/2010 9:58 AM, Misha Koshelev wrote: http://xml.org/sax/features/external-general-entities ' is not recognized. https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML with XOM: 2 problems</header>
+    <date>Thu May 13 08:45:00 CEST 2010</date>
+    <body>There's no good reason for NekoHTML to *not* support this SAX feature because there are no external general entities with HTML documents. The parser would behave the same regardless of the value of the feature. The parser configuration just needs to be changed to not throw an unsupported feature exception. On May 12, 2010, at 11:40 PM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: http://xml.org/sax/features/external-general-entities ". http://cyberneko.org/html/properties/names/elems http://nekohtml.sourceforge.net/usage.html http://xml.org/sax/features/external-general-entities ' is not recognized. https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML with XOM: 2 problems</header>
+    <date>Thu May 13 12:26:00 CEST 2010</date>
+    <body>Thank you. I have gotten NekoHTML to work well with dom4j except that xercesImpl must be included instead of xercesMinimal (believe this is due to SAX parser having to be included) 1. Just to double check - there is _no_ Xpath support in NekoHTML by itself, correct? 2. I have found the following (quite dated) bookmark: http://www.portletbridge.org/saxbenchmark/results.html Any ideas on performance of NekoHTML+dom4j vs Tagsoup+XOM? 3. I noticed the Website was "last updated" in 2009. Is this still an actively maintained project? Thank you Misha Andy Clark wrote:</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML with XOM: 2 problems</header>
+    <date>Thu May 13 15:52:00 CEST 2010</date>
+    <body>No NekoHML doesn't have any specific XPath integration (beyond what Xerces itself provides).  But you can use XOM's support (via Jaxen), Jaxen directly (or any other custom XPath implementation), or just use the built in JAXP support provided by the standard JAXP APIs, which Xerces developers would encourage you to use anyway rather than the Xerces implementation directly (which NekoHTML is basically an extension of, or plugin for). BTW, it occurred to me shortly after I sent my previous response that when you use the SAX parser, then you probably don't need to set.... parser.setProperty(" http://cyberneko.org/html/properties/names/elems ", That is likely only relevant when using a DOM parser.  That's only because the HTML DOM stores element names in UPPER-case regardless of the case of the tags in the input document.  I encourage you to test this and report back your results. This discussion triggered one other memory.  See here for reference... I asked that question back in 2005, but I don't recall whether I ever tested it out?  Basically, if one uses a standard validating XML parser (rather than a non-validating HTML parser like NekoHTML), can one achieve non-namespaced XPath queries by doing (below is an example using Jaxen)?... xpath.addNamespace( "", " http://www.w3.org/1999/xhtml Then again, maybe the XPath would need to be?.... ...or maybe that wouldn't work either and it would need to be the usual (which I know works)... xpath.addNamespace( "foo", " http://www.w3.org/1999/xhtml I will try this myself when I get time.  But if you want to try it an report back your findings, that would be great too. Jake On Thu, 13 May 2010 07:16:01 -0500 Misha Koshelev &amp;lt;misha680@...&amp;gt; wrote: http://www.portletbridge.org/saxbenchmark/results.html https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML with XOM: 2 problems</header>
+    <date>Thu May 13 16:10:00 CEST 2010</date>
+    <body>Jacob Kjome wrote: Thank you. I am a bit confused about this. Do I understand correctly from http://xml.apache.org/xalan-j/xpath_apis.html#xpathexpression that if I use a SAX parser like NekoHTML with JAXP, then I must _reparse_ the document every time I try to execute an XPath? Ideally, I'd like something simple like HTML SAX parser + XPath library without anything else. So far NekoHTML/dom4j or Tagsoup/XOM both seem to work well. I am slightly favoring Tagsoup/XOM as it does not require the Xerces implementation, but perhaps if I use Xerces I don't need dom4j? I am still a little confused. What I'd like ideally: 1) Process HTML document quickly so I can access it in some form 2) My access will involve _repeated_ XPath queries on same document Is NekoHTML/dom4j or Tagsoup/XOM the correct (simplest) solution for this? Thank you Misha p.s. Please see comment below about setProperty. http://cyberneko.org/html/properties/names/elems ", Thanks. Actually I did have to do this. Otherwise we get upper-case element names. http://www.w3.org/1999/xhtml http://www.w3.org/1999/xhtml http://www.portletbridge.org/saxbenchmark/results.html https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML with XOM: 2 problems</header>
+    <date>Fri May 14 03:35:00 CEST 2010</date>
+    <body>On 5/13/2010 10:09 AM, Misha Koshelev wrote: http://xml.apache.org/xalan-j/xpath_apis.html#xpathexpression You provide the DOM and you can use any XPath library you want.  In fact, why not use the standard APIs? http://xml.apache.org/xalan-j/xpath_apis.html http://www.ibm.com/developerworks/library/x-javaxpathapi.html There's also Jaxen (which XOM uses internally)... http://jaxen.codehaus.org/ There's commons-jxpath... http://commons.apache.org/jxpath/ There's no lack of XPath APIs. I'm fairly certain XOM requires Xerces.  It ships with it, after all (a minimal version).  I don't see why you'd ever need DOM4j All you need is a document.  You can create that without the help of dom4j, xom, jdom, or any other specialized DOM API.  Again, I point you to... http://nekohtml.sourceforge.net/usage.html http://cyberneko.org/html/properties/names/elems ", Good to know.  Though, I think what you are doing is just creating a DOM.  Your prior comments led me to believe that you were somehow applying XPath expressions to a SAX stream, which would give you the elements in the case supplied by the document.  It is only when you create an HTML DOM that the case changes, as the HTML DOM stores elemens in UPPER-case. If you are ending up with a Document in the end, there's no reason I can think of to prefer a SAXParser over a DOMParser. Jake http://www.w3.org/1999/xhtml http://www.w3.org/1999/xhtml http://www.portletbridge.org/saxbenchmark/results.html https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] NekoHTML with XOM: 2 problems</header>
+    <date>Sun May 16 02:54:00 CEST 2010</date>
+    <body>Thank you. I have followed your advice a few days later :) Misha Jacob Kjome wrote: http://xml.apache.org/xalan-j/xpath_apis.html#xpathexpression http://xml.apache.org/xalan-j/xpath_apis.html http://www.ibm.com/developerworks/library/x-javaxpathapi.html http://jaxen.codehaus.org/ http://commons.apache.org/jxpath/ http://nekohtml.sourceforge.net/usage.html http://cyberneko.org/html/properties/names/elems ", http://www.w3.org/1999/xhtml http://www.w3.org/1999/xhtml http://www.portletbridge.org/saxbenchmark/results.html https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] XPath with NekoHTML</header>
+    <date>Wed May 12 10:05:00 CEST 2010</date>
+    <body>Dear All: Thank you for great product! I am using TagSoup+XOM per: http://nicklothian.com/blog/2006/09/11/using-xpath-on-real-world-html-documents/ seems to work well except the following namespace problem: http://www.supermind.org/blog/613/dom4j-xpath-tagsoup-namespaces-sweet Can I use NekoHTML for XPath? Any code samples? How does it compare to tagsoup/HTMLParser/jtidy etc? Thank you Misha</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] XmlSlurper/NekoHTML document fragment parsing - No
+ HTML or BODY tags wanted</header>
+    <date>Fri Jun 11 16:32:00 CEST 2010</date>
+    <body>Thank you so much for a great product! I am trying to parse the following HTML fragment, and I would like to get the same fragment as output (without HTML and BODY tags). Is this possible? If so, how? Thank you Misha p.s. I am reading here: http://nekohtml.sourceforge.net/faq.html#fragments and I believe I have added the correct options below. However, the output is still incorrect :( Thank you Misha #!/usr/bin/env groovy def text=""" """ // Parse def config=new org.cyberneko.html.HTMLConfiguration() config.setFeature(" http://cyberneko.org/html/features/balance-tags/document-fragment",true ) def html=new XmlSlurper(new org.cyberneko.html.parsers.SAXParser()).parseText(text) // Output import groovy.xml.MarkupBuilder import groovy.xml.StreamingMarkupBuilder import groovy.util.XmlNodePrinter import groovy.util.slurpersupport.NodeChild def writer = new StringWriter() mkp.declareNamespace('':node[0].namespaceURI()) mkp.yield node new XmlNodePrinter().print(new XmlParser().parseText(writer.toString())) printNode(html) Output: http://www.w3.org/1999/xhtml"/ Test Hi</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] XmlSlurper/NekoHTML document fragment parsing -
+	No HTML or BODY tags wanted</header>
+    <date>Fri Jun 11 16:45:00 CEST 2010</date>
+    <body>Did you try using a org.cyberneko.html.parsers.DOMFragmentParser yet? http://nekohtml.sourceforge.net/usage.html Jake On Fri, 11 Jun 2010 11:32:40 -0500 Misha Koshelev &amp;lt;misha680@...&amp;gt; wrote: http://nekohtml.sourceforge.net/faq.html#fragments http://cyberneko.org/html/features/balance-tags/document-fragment",true ) http://www.w3.org/1999/xhtml"/ http://p.sf.net/sfu/thinkgeek-promo https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] XmlSlurper/NekoHTML document fragment parsing -
+ No HTML or BODY tags wanted</header>
+    <date>Fri Jun 11 17:36:00 CEST 2010</date>
+    <body>Thank you. Will try. It looks like it does not work with XmlSlurper though :( http://www.maclovin.de/2010/02/robust-html-parsing-the-groovy-way/ Thank you! Misha On Fri, 2010-06-11 at 11:45 -0500, Jacob Kjome wrote: http://nekohtml.sourceforge.net/usage.html http://nekohtml.sourceforge.net/faq.html#fragments http://cyberneko.org/html/features/balance-tags/document-fragment",true ) http://www.w3.org/1999/xhtml"/ http://p.sf.net/sfu/thinkgeek-promo https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/thinkgeek-promo https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] NekoHTML Parser issue</header>
+    <date>Tue Jul 20 17:06:00 CEST 2010</date>
+    <body>Can someone answer question as the following?     I have invalid tag &amp;lt;?javax.xml.transform.disable-output-escaping =&amp;gt; in my HTML TD element. My question how can I use your html parser to ignore this invalid tag otherwise the XML parser willl stop at that invalid tag. which feature or property can disable parser read this invalid tag?       Invalid tag example:               face=3D"Verdana, Arial, Helvetica"&amp;gt;2245 LEWISTON = ROAD&amp;lt;?javax.xml.transform.disable-output-escaping =     YudiThanks,</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] How does NekoHTML deal with custom tags in an
+	HTML file</header>
+    <date>Thu Aug 19 22:06:00 CEST 2010</date>
+    <body>This issue actually may be related to BUG 3031869 as there is whitespace in the TAG.  They have a space between the End of the tag and the &amp;gt; bracket. Jeffrey Haskovec ________________________________ To: nekohtml-user@... Sent: Thu, August 19, 2010 3:05:12 PM Subject: How does NekoHTML deal with custom tags in an HTML file I was trying to parse a NYTimes.com story and I am not seeing any of the nodes with the article in them.  I noticed that they use some custom tags around the article such as: &amp;lt;NYT_TEXT &amp;gt; What would be the behavior of NekoHTML upon parsing a tag such as that?  It seems like it is dropping everything within it, or else I am not seeing the expected nodes that live inside of that tag. Thanks, Jeffrey Haskovec</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] How does NekoHTML deal with custom tags in an HTML
+	file</header>
+    <date>Thu Aug 19 20:05:00 CEST 2010</date>
+    <body>I was trying to parse a NYTimes.com story and I am not seeing any of the nodes with the article in them.  I noticed that they use some custom tags around the article such as: &amp;lt;NYT_TEXT &amp;gt; What would be the behavior of NekoHTML upon parsing a tag such as that?  It seems like it is dropping everything within it, or else I am not seeing the expected nodes that live inside of that tag. Thanks, Jeffrey Haskovec</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] help with parsing bad html anchors</header>
+    <date>Sun Aug 15 06:04:00 CEST 2010</date>
+    <body>I am trying to parse some particularly annoying HTML, and unfortunately Neko is not handling it very well.  In the HTML document, I have links that look like this:  "&amp;lt;a class=foo 1' href='/link/text'&amp;gt;1&amp;lt;/a&amp;gt;" Unfortunately, the "href" attribute gets dropped completely, and the anchor ends up with a "class" attribute, and another attribute named "1" whose value is an empty string. Any suggestions? This is pretty important for me to be able to parse, so I'm even willing to patch the parser if necessary. Thanks!!!  :-) -Donnie Pinkston</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Overload "removeElement" method to consider certain
+	attributes</header>
+    <date>Wed Sep 01 10:58:00 CEST 2010</date>
+    <body>Hi all, I need to remove certain hyperlinks tags, which contain a certain "class" attribute, for instance: "&amp;lt;a href=' http://link.com ' class='js-removal'&amp;gt;link body&amp;lt;/a&amp;gt;". The reason for it is that I want to keep all other hyperlinks ("href") tags and only remove those marked by a certain attribute (I was wondering to use the "class" attribute for that). Is there anyway to do that? Note: The current "removeElement(String element)" method only remove the entire element. It does not consider any attributes information. Thanks &amp;amp; Regards, Clelio de Souza</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Overload "removeElement" method to consider
+	certain attributes</header>
+    <date>Wed Sep 01 22:11:00 CEST 2010</date>
+    <body>For more advanced element processing, you'll probably want to implement your own filter class. It's probably a good idea to use the element remover filter as a starting point because when you want to remove an element you need to remove all of its children (and their children) in addition to the starting and ending element tags. There is more information about custom filters and how to use them in the documentation. Sent from my iPad On Sep 1, 2010, at 3:58 AM, Clelio de Souza &amp;lt;cleliofs@...&amp;gt; wrote: http://link.com ' class='js-removal'&amp;gt;link body&amp;lt;/a&amp;gt;". The reason for it is that I want to keep all other hyperlinks ("href") tags and only remove those marked by a certain attribute (I was wondering to use the "class" attribute for that). http://p.sf.net/sfu/intel-thread-sfd https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Overload "removeElement" method to
+	consider	certain attributes</header>
+    <date>Thu Sep 02 21:50:00 CEST 2010</date>
+    <body>Or, rather than at parse time, you can manipulate the DOM using a NodeFilter after the DOM has been created.... Then in your application code.... NodeIterator iter =     ((DocumentTraversal) myDocument).createNodeIterator(          myDocument,          NodeFilter.SHOW_ELEMENT,          new MyHrefFilter(), //Must iterate in order to apply NodeFilter changes Jake On Wed, 1 Sep 2010 14:59:15 -0700 Andy Clark &amp;lt;andy@...&amp;gt; wrote: http://link.com ' class='js-removal'&amp;gt;link http://p.sf.net/sfu/intel-thread-sfd https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Neko writes to stdout</header>
+    <date>Thu Oct 14 18:35:00 CEST 2010</date>
+    <body>Hi, noticed a post in this thread from someone having the same problem as i was with the filter / writer output to stdout... https://sourceforge.net/mailarchive/message.php?msg_name=3836ec640912141636q175851fav98479f932a6d2601%40mail.gmail.com So, this seems to work: import org.apache.commons.io.output.NullOutputStream def org.cyberneko.html.filters.Writer writer = new org.cyberneko.html.filters.Writer( new NullOutputStream(), 'UTF-8') BTW, tks for writing this parser, it works well! Fred~</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] ElementRemover removing too much?</header>
+    <date>Wed Nov 10 19:30:00 CET 2010</date>
+    <body>Hi, I have a test case showing that the ElementRemover seems to get out of sync after having removed an element. Can someone check that I am using this class correctly? Regards, Alain Gilbert Follows my JUnit test class: public class ElementRemoverTest extends TestCase private static final String DOCUMENT_FRAGMENT = " http://cyberneko.org/html/features/balance-tags/document-fragment private static final String IGNORE_OUTSIDE_CONTENT = " http://cyberneko.org/html/features/balance-tags/ignore-outside-content protected static final String NAMES_ELEMS = " http://cyberneko.org/html/properties/names/elems private static final String FILTERS = " http://cyberneko.org/html/properties/filters public void testRemoveClosedElement() throws IOException public void testRemoveEmptyElement() throws IOException public void testRemoveUnclosedElement() throws IOException private String parseFragment(String pHTMLFragment) throws IOException // Enable HTML fragments. // Element names to lowercase. org.apache.xerces.xni.parser.XMLDocumentFilter[] filters = XMLInputSource source = new XMLInputSource(null, "ElementRemoval", null,</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] [nekohtml-dev] html parser</header>
+    <date>Tue Dec 21 02:20:00 CET 2010</date>
+    <body>http://nekohtml.sourceforge.net/usage.html BTW, you should send user questions to the user list [1]. [1] nekohtml-user@... Jake On 12/19/2010 9:08 AM, moatz shawki wrote: http://p.sf.net/sfu/lotusphere-d2d https://lists.sourceforge.net/lists/listinfo/nekohtml-developer</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] StackOverflowError in
+	org.cyberneko.html.HTMLConfiguration.createDocumentScanner</header>
+    <date>Fri Dec 03 12:15:00 CET 2010</date>
+    <body>Hi, First I would like to congratulate the dev team for this parser quality :) I've been integrating Nekohtml in my Android http://sites.google.com/site/freeboxrecorder/&amp;gt;for 10 months and yesterday I got my very first crash report on this code. However the reason is not obvious for me :( Here is backtrace I got (uncomplete unfortunatly): java.lang.RuntimeException: An error occured while executing doInBackground() at android.os.AsyncTask$3.done(AsyncTask.java:200) at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273) at java.util.concurrent.FutureTask.setException(FutureTask.java:124) at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307) at java.util.concurrent.FutureTask.run(FutureTask.java:137) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1068) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:561) at java.lang.Thread.run(Thread.java:1096) Caused by: java.lang.ExceptionInInitializerError at org.cyberneko.html.HTMLConfiguration.createDocumentScanner(HTMLConfiguration.java:306) at org.cyberneko.html.HTMLConfiguration.&amp;lt;init&amp;gt;(HTMLConfiguration.java:170) at com.tlegras.freeboxrec.FBRHttpUtils.executeRequest(FBRHttpUtils.java:150) at com.tlegras.freeboxrec.FBRHttpUtils.doGetRequest(FBRHttpUtils.java:208) at com.tlegras.freeboxrec.FBRBroadcastLoadDetailTask.doInBackground(FBRBroadcastLoadDetailTask.java:84) at com.tlegras.freeboxrec.FBRBroadcastLoadDetailTask.doInBackground(FBRBroadcastLoadDetailTask.java:1) at android.os.AsyncTask$2.call(AsyncTask.java:185) at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305) ... 4 more Caused by: java.lang.StackOverflowError ... 12 more Unfortunatly, the Android integrated crash report does not include the full backtrace, I miss the bottom :( and the sender is anonym, no way to contact him. Of course, it is impossible to reproduce this issue on my terminal; it seems the crash occured in a nominal path, not a rare case. Looking at the code, I don't think it is due to a recursion issue. Did someone experienced something similar? Cheers, Thierry.</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] DOMParser namespace error</header>
+    <date>Wed Jan 26 23:44:00 CET 2011</date>
+    <body>Hi All, I am trying to use DOM parser to parse the following URL http://www.helloneighbour.com/save/city-movers-and-transports-trucking-and-freight-mississauga with the following parser settings - parser.setFeature(" http://cyberneko.org/html/features/augmentations parser.setProperty(" http://cyberneko.org/html/properties/names/elems ", I am running into the following namespace error org.w3c.dom.DOMException: NAMESPACE_ERR: An attempt is made to create or change an object in a way which is incorrect with regard to namespaces. at org.apache.xerces.dom.CoreDocumentImpl?.checkNamespaceWF(Unknown Source) at org.apache.xerces.dom.ElementNSImpl.setName(Unknown Source) at org.apache.xerces.dom.ElementNSImpl.&amp;lt;init&amp;gt;(Unknown Source) at org.apache.xerces.dom.CoreDocumentImpl?.createElementNS(Unknown Source) at org.dom4j.io.DOMWriter.appendDOMTree(DOMWriter.java:181) at org.dom4j.io.DOMWriter.appendDOMTree(DOMWriter.java:158) ----- ----- I would really appreciate any help that you can provide to resolve the issue. Thanks, Neera</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] DOMParser namespace error</header>
+    <date>Thu Jan 27 10:12:00 CET 2011</date>
+    <body>Hi, please reduce the html content to the minimum allowing to reproduce the problem and open an issue. Cheers, Marc. -- HtmlUnit support &amp;amp; consulting from the source Blog: http://mguillem.wordpress.com Le 27/01/2011 00:44, Neera Sharma a écrit : http://www.helloneighbour.com/save/city-movers-and-transports-trucking-and-freight-mississauga http://cyberneko.org/html/features/augmentations http://cyberneko.org/html/properties/names/elems ",</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] DOMParser namespace error</header>
+    <date>Thu Jan 27 15:52:00 CET 2011</date>
+    <body>It appears to me that the parser being used is DOM4j, not NekoHTML.  DOM4j is an XML parser, not an HTML parser.  Please provide a snippet of code showing how you are engaging the parser. Jake On Thu, 27 Jan 2011 11:11:57 +0100 Marc Guillemot &amp;lt;mguillemot@...&amp;gt; wrote: http://mguillem.wordpress.com http://www.helloneighbour.com/save/city-movers-and-transports-trucking-and-freight-mississauga http://cyberneko.org/html/features/augmentations ", http://cyberneko.org/html/properties/names/elems ", http://p.sf.net/sfu/arcsight-sfd2d https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] DOMParser namespace error</header>
+    <date>Thu Jan 27 19:36:00 CET 2011</date>
+    <body>Hi Jake, Thanks for looking into it. Here is the code snippet - org.cyberneko.html.parsers.DOMParser parser = new parser.setFeature(" http://cyberneko.org/html/features/augmentations parser.setProperty(" http://cyberneko.org/html/properties/names/elems Neera On Thu, Jan 27, 2011 at 6:51 AM, Jacob Kjome &amp;lt;hoju@...&amp;gt; wrote: http://mguillem.wordpress.com http://www.helloneighbour.com/save/city-movers-and-transports-trucking-and-freight-mississauga http://cyberneko.org/html/features/augmentations ", http://cyberneko.org/html/properties/names/elems ", http://p.sf.net/sfu/arcsight-sfd2d https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/arcsight-sfd2d https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] DOMParser namespace error</header>
+    <date>Thu Jan 27 21:42:00 CET 2011</date>
+    <body>You're parsing successfully with NekoHTML and it's returning an HTMLDocument.  Why are you the converting this  into a DOM4J document?  Just because it provides a convenient DOMWriter?   DOM4j presumes that your Document represents an XML-based DOM, which supports namespaces.  The HTML DOM does not support namespaces, by default. That said, NekoHTML has a NamespaceBinderFilter [1].  You'd need to both set this as a filter to the parser and set the feature " http://xml.org/sax/features/namespaces ".  I haven't actually tried this, but it might solve your issue.  You may also want to look at the XML purifier filter [2]. [1] http://nekohtml.sourceforge.net/filters.html#filters.namespaces [2] http://nekohtml.sourceforge.net/filters.html#filters.well-formedness Jake On Thu, 27 Jan 2011 11:36:10 -0800 Neera Sharma &amp;lt;neera.sharma@...&amp;gt; wrote: http://cyberneko.org/html/features/augmentations http://cyberneko.org/html/properties/names/elems ", http://mguillem.wordpress.com http://www.helloneighbour.com/save/city-movers-and-transports-trucking-and-freight-mississauga http://cyberneko.org/html/features/augmentations ", http://cyberneko.org/html/properties/names/elems ", http://p.sf.net/sfu/arcsight-sfd2d https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/arcsight-sfd2d https://lists.sourceforge.net/lists/listinfo/nekohtml-user http://p.sf.net/sfu/arcsight-sfd2d https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Nekohtml parser settings?</header>
+    <date>Mon Jan 24 11:41:00 CET 2011</date>
+    <body>Hi, When parsing html content using nekohtml parser, it does not balance table tag. For example the given html content as below: http://abc.com http://abc.com/a.jpg"&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table I'm expecting the result should be like this. http://abc.com http://abc.com/a.jpg"&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table I want table tag to be inserted properly, if table tag is not present but td tag presents. So guide me what are nekohtml parser settings i've to made to get the expected results Thanks in Advance Regards, Aswini</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Nekohtml parser settings?</header>
+    <date>Mon Jan 24 14:21:00 CET 2011</date>
+    <body>Hi, why should NekoHTML insert a table tag here? As far as I can see, Firefox doesn't insert one. Cheers, Marc. -- HtmlUnit support &amp;amp; consulting from the source Blog: http://mguillem.wordpress.com Le 24/01/2011 12:40, test test a écrit : http://abc.com http://abc.com/ http://abc.com/a.jpg"&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table http://abc.com http://abc.com/ http://abc.com/a.jpg"&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Nekohtml parser settings?</header>
+    <date>Tue Jan 25 13:05:00 CET 2011</date>
+    <body>HI, No, As far as i set the balance html tags true settings. I'm expecting it'll balance the table tag. As td tag is improperly handled Regards, Aswini On Mon, Jan 24, 2011 at 7:51 PM, Marc Guillemot &amp;lt;mguillemot@...&amp;gt; wrote: http://mguillem.wordpress.com http://abc.com http://abc.com/ http://abc.com/a.jpg http://abc.com http://abc.com/ http://abc.com/a.jpg http://p.sf.net/sfu/arcsight-sfd2d https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] parsing URLs</header>
+    <date>Wed Jan 19 21:30:00 CET 2011</date>
+    <body>Hi, Does DOMFragmentParser work with URLs as input source? I tried passing an URL input source to the parse, but its very slow(sometime) hangs with no output. Are there other ways to parse URLs using nekoHTML? I'd really appreciate any tips that you can share. Thanks.</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] process comments and nodes in order</header>
+    <date>Sat Jan 15 14:23:00 CET 2011</date>
+    <body>Hi Folks, I'm using neko 1.9.14. Is need to process the comments and nodes in an HTML doc maintaining the order in which they 'appear' in the DOM. Fundamentally I need to be able to output IE fudges in the original HTML, such as: I have set up the same handler I use for processing DOM events, to process comments: parser.setProperty(" http://xml.org/sax/properties/lexical-handler ", But I am notified of all the comments first, and then later the DOM nodes (head, body etc...) What I really need to do is process comments and DOM nodes, in order, as they all appear in the doc. Is this even possible? Many thanks Joel PS - question also posted to StackOverflow: http://stackoverflow.com/questions/4699814/processing-xml-comments-using-sax-cyberneko-in-dom-order</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] htmlParser</header>
+    <date>Tue Apr 05 01:27:00 CEST 2011</date>
+    <body>Dear Srs, Could you put the project in some maven repository? thanks, Lucas -- *Lucas De Luca Castro* Desenvolvedor Pleno - Spassu Tecnologia Bacharel Ciência da Computação - UFLA skype: lucasirc e-mail e msn: lucasirc@... telefones: (22) - 8121-9979 (TIM)</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] htmlParser</header>
+    <date>Tue Apr 05 05:41:00 CEST 2011</date>
+    <body>Bom dia Lucas, Neko is on Maven central repo, just add the following dependency: HTH, até, Simo http://people.apache.org/~simonetripodi/ http://www.99soft.org/ On Tue, Apr 5, 2011 at 3:27 AM, Lucas De Luca Castro &amp;lt;lucasirc@...&amp;gt; wrote: http://p.sf.net/sfu/verizon-sfdev https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Stripping out HTML comments</header>
+    <date>Thu Jun 23 16:01:00 CEST 2011</date>
+    <body>Hi! I'm new to NekoHTML and wonder how to remove HTML comments? First an example: I have to remove the comments because the next step is to extract the content of the &amp;lt;p class="bf"&amp;gt; with xpath. But xpath stops at the comments. The resulting xpath output is: "some text from  August 11th, 1993 (". But I need the complete content. BR -- Alexander Fahlke Software Development http://www.informera.de</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Stripping out HTML comments</header>
+    <date>Thu Jun 23 16:14:00 CEST 2011</date>
+    <body>On Thu, 23 Jun 2011 18:01:08 +0200, Alexander Fahlke You can do this with a simple filter: public class StripCommentsFilter extends DefaultFilter @Override public void comment(XMLString string, Augmentations augs) throws XNIException // Ignore comments Check the documentation to see how you can use filters: http://nekohtml.sourceforge.net/filters.html#overview.append</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] parse html string</header>
+    <date>Thu Aug 18 19:50:00 CEST 2011</date>
+    <body>Hi all, I'm having some  trouble with parsing html string directly through inputSource. It appears that DOMParser.parse(uri) works properly, but DOMParse.parse(inputSource) always return a DOM element with [#document: null] inside. Can someone  take a look on how I did it wrong? thanks! Here is how I did it: This doesn' work either: InputSource inputSource = new InputSource( new Yuhan</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] parse html string</header>
+    <date>Thu Aug 18 21:48:00 CEST 2011</date>
+    <body>nvm, my own bad. Yuhan On Thu, Aug 18, 2011 at 12:50 PM, Yuhan Zhang &amp;lt;yzhang@...&amp;gt; wrote:</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] parse html string</header>
+    <date>Thu Aug 18 21:54:00 CEST 2011</date>
+    <body>The following code works: InputSource inputSource = new InputSource( new On Thu, Aug 18, 2011 at 2:48 PM, Yuhan Zhang &amp;lt;yzhang@...&amp;gt; wrote:</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Invitation to connect on LinkedIn</header>
+    <date>Sun Sep 11 19:14:00 CEST 2011</date>
+    <body>I'd like to add you to my professional network on LinkedIn. - Frederic Frederic Laruelle Co-founder at inkWire, inc. San Francisco Bay Area Confirm that you know Frederic Laruelle: https://www.linkedin.com/e/-2zpojw-gsgekk6g-3h/isd/4164162376/oeBmNbgS/?hs=false&amp;amp;tok=3XU0Oe_3E2DAU1 -- You are receiving Invitation to Connect emails. Click to unsubscribe: http://www.linkedin.com/e/-2zpojw-gsgekk6g-3h/w5xwOOtLmoXdsw9TwYUAOwv6mXZLEIl2OTfFIfy6OgXAswOMCP4Z/goo/nekohtml-user%40lists%2Esourceforge%2Enet/20061/I1437369343_1/?hs=false&amp;amp;tok=1t0Dhgwlg2DAU1 (c) 2011 LinkedIn Corporation. 2029 Stierlin Ct, Mountain View, CA 94043, USA.</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Features Properties and IMG Tags</header>
+    <date>Thu Dec 15 15:57:00 CET 2011</date>
+    <body>Using nekohtml 1.9.15 and XercesImpl 2.8.1 Regardless of what features and properties I set, and IMG tag gets parsed and represented by a IMAGE DOM Element.  It seems to quietly ignore whatever settings I make. What setting can I make to force the DOM Parser to parse IMG tags as IMG DOM Elements? --mike</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Features Properties and IMG Tags</header>
+    <date>Sat Dec 17 17:28:00 CET 2011</date>
+    <body>Sounds really strange. Can you provide a minimal example allowing to reproduce the problem? Cheers, Marc. -- HtmlUnit support &amp;amp; consulting from the source Blog: http://mguillem.wordpress.com Le 15/12/2011 16:15, Michael Kelleher a écrit :</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Features Properties and IMG Tags</header>
+    <date>Sun Dec 18 21:53:00 CET 2011</date>
+    <body>As it turns out, it was the markup.  I am working with someone else's html, and I expected that it would be properly formed.  Shame on me! However, setting lowercase or default has no effect on how the HTML is parsed, which for what I am doing now, doesnt really matter.  However, it would be nice to figure out why, just in case. Also, is it possible to write a filter to look for an "image" tag (which I know is poorly formed HTML) and trnasform it into a "img" tag? On Sat, Dec 17, 2011 at 12:28 PM, Marc Guillemot &amp;lt;mguillemot@...: http://mguillem.wordpress.com http://p.sf.net/sfu/ms-windowsazure https://lists.sourceforge.net/lists/listinfo/nekohtml-user</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] (no subject)</header>
+    <date>Thu Apr 05 19:42:00 CEST 2012</date>
+    <body>http://delmarvabroadband.com/g5uoim.php?topicid=630 Gain Your Freedom, Manage Your Own Business ______________ Now lookyhere; you stop that putting on frills. matthew zavrina Thu, 5 Apr 2012 20:42:05</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] (no subject)</header>
+    <date>Sat Sep 08 11:16:00 CEST 2012</date>
+    <body>Learn How to Make Money Online http://www.futuro-publicidad.com.mx/http-kasperavast2.php?rjgseach=805 _____________________ "  Wake up by and by, and look to see what done it, and maybe seea steamboat coughing along up-stream, so far off towards the other sideyou couldnt tell nothing about her only whether she was a stern-wheel orside-wheel; then for about an hour there wouldnt be nothing to hear nornothing to see--just solid lonesomeness." (c) gwyneth afreda Sat, 8 Sep 2012 12:16:43</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Build failure</header>
+    <date>Wed Dec 12 13:29:00 CET 2012</date>
+    <body>Hi all, 1- With "ant test", latest SVN version can not compile, because of line #270:      there is no xercesImpl in '/lib', but rather in ",xerces-2.9.1/xerces*.jar" 2- xercesImpl 2.10.0 is released. Yours, Ahmed</body>
+  </mail>
+  <mail>
+    <header>Re: [nekohtml-user] Build failure</header>
+    <date>Wed Dec 12 17:47:00 CET 2012</date>
+    <body>Actually, the latest Xerces is 2.11.0. Jake On Wed, 12 Dec 2012 05:29:20 -0800 (PST)  Ahmed Ashour &amp;lt;asashour@...&amp;gt; wrote:</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] how to extract svg using xpath?</header>
+    <date>Wed May 29 06:37:00 CEST 2013</date>
+    <body>hi I have a web page with svg. I need to extract something from it. but it seems nekohtml can't do that.</body>
+  </mail>
+  <mail>
+    <header>[nekohtml-user] Ignore witespace-only outside content?</header>
+    <date>Sun Jun 02 01:35:00 CEST 2013</date>
+    <body>Currently, the default behavior of Nekohtml is to include all characters outside &amp;lt;/BODY&amp;gt; and &amp;lt;/HTML&amp;gt; [1].  This makes sense, since HTML can be very abnormal, and I've seen content included after both said tags. But what about the cases where HTML markup is normal and the only characters after &amp;lt;/HTML&amp;gt; are newlines or other whitespace?  Is it reasonable to ignore characters after &amp;lt;/HTML&amp;gt; when characters are all whitespace? Why does it matter?  I have a DOM DIFF tool as part of a test suite where whitespace in Text nodes is significant.  But, as a matter of markup parsing, would like to depend upon the fact that trailing whitespace, after the end document element, does not result in a Text node  when there is no other non-whitespace content.  Of course, I can depend on this using the XML parser.  I'd like to be able to do the same with NekoHTML. For instance, the following partial markup... [newline here after &amp;lt;/HTML&amp;gt;] ...results in the following output... Notice that the extra newline after the &amp;lt;/HTML&amp;gt; tag is added before the discarded.  I would prefer that trailing whitespace after &amp;lt;/HTML&amp;gt; (or the last non-whitespace character) is discarded and all content, including whitespace, after &amp;lt;/BODY&amp;gt;, but before &amp;lt;/HTML&amp;gt;, is preserved so the the resulting output is... Thoughts?  I would think that this could be implemented as default behavior, since I can't imagine how it would break parsing of existing content in any way.  In fact, it would meet the principal of least surprise. [1] http://nekohtml.sourceforge.net/settings.html#ignore-outside-content Jake</body>
+  </mail>
+</mails>
+

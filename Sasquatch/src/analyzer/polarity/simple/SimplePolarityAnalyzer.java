@@ -58,8 +58,7 @@ public class SimplePolarityAnalyzer extends PolarityAnalyzer {
 		if (querier.open()) {
 			for (File dict : dictionaries) {
 				SimpleFileDictionary dictionary = new SimpleFileDictionary(dict);
-				Word[] words = dictionary.getWords();
-				for (Word word : words) {
+				for (Word word : dictionary.getWords()) {
 					Source[] results = querier.query(word.getWord());
 					result.addQueryResult(word, results);
 				}

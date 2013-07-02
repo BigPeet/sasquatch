@@ -79,6 +79,7 @@ public class SimpleFileDictionary implements IDictionary {
 		return texts.toArray(new String[texts.size()]);
 	}
 
+	@Override
 	public Word[] getWords() {
 		return words.toArray(new Word[words.size()]);
 	}
@@ -98,6 +99,16 @@ public class SimpleFileDictionary implements IDictionary {
 	@Override
 	public double getScore(POSTaggedWord word) {
 		return getScore((Word) word);
+	}
+
+	@Override
+	public boolean contains(Word w) {
+		return words.contains(w);
+	}
+
+	@Override
+	public boolean contains(POSTaggedWord ptw) {
+		return contains((Word) ptw);
 	}
 	
 }

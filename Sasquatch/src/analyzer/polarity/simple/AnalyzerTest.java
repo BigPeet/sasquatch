@@ -53,8 +53,7 @@ public class AnalyzerTest {
 		 */
 		for (File dict : dictionaries) {
 			SimpleFileDictionary parser = new SimpleFileDictionary(dict);
-			Word[] words = parser.getWords();
-			for (Word word : words) {
+			for (Word word : parser.getWords()) {
 				Source[] results = querier.query(word.getWord());
 				result.addQueryResult(word, results);
 			}

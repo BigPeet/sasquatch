@@ -59,6 +59,7 @@ public class SentiWordPOS {
 		case "VB":
 		case "VBD":
 		case "VBG":
+		case "VBN":
 		case "VBZ": tag = SentiWordPOS.VERB.getTag(); break;
 		case "a":
 		case "JJ":
@@ -66,6 +67,7 @@ public class SentiWordPOS {
 		case "JJS": tag = SentiWordPOS.ADJECTIVE.getTag(); break;
 		case "n":
 		case "NN":
+		case "NNP":
 		case "NNS":
 		case "NP":
 		case "NPS": tag = SentiWordPOS.NOUN.getTag(); break;

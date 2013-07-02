@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mails>
+  <mail>
+    <header>Sentence 1</header>
+    <date>Sat Oct 23 01:14:02 CEST 2012</date>
+    <body>APS has saved me lots of time and effort over the last year. It is an easy, convenient and comfortable way to deal with P2P in Java.</body>
+  </mail>
+  <mail>
+    <header>Sentence 2</header>
+    <date>Sat Oct 23 01:24:02 CEST 2012</date>
+    <body>it's an easy to use, open source library for working with P2P, Files and TCP on the Java platform using the Java Port Framework</body>
+  </mail>
+  <mail>
+    <header>Sentence 3</header>
+    <date>Sat Oct 23 01:34:02 CEST 2012</date>
+    <body>APS is a very, very good Java TCP API, high performance, powerful</body>
+  </mail>
+  <mail>
+    <header>Sentence 4</header>
+    <date>Sat Oct 23 01:44:02 CEST 2012</date>
+    <body>APS is briefly described as a more complex fork of PAS. Because of this characterization, we dismissed APS without examining it closely.</body>
+  </mail>
+  <mail>
+    <header>Sentence 5</header>
+    <date>Sat Oct 23 01:54:02 CEST 2012</date>
+    <body>APS is not very well documented.</body>
+  </mail>
+    <mail>
+    <header>Sentence 6</header>
+    <date>Sat Oct 23 01:54:02 CEST 2012</date>
+    <body>APS' recording is not good.</body>
+  </mail>
+</mails>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systems>
+  <system name="TestSystem">
+    <archives>
+      <archive sourcetype="0" type="8">
+        <listName>testList</listName>
+        <start>2010</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+</systems>
+

@@ -160,10 +160,12 @@ public class SentiPolarityAnalyzer extends PolarityAnalyzer {
 	
 	private Word getWord(Aspect a, Word dep, Word gov) {
 		Word tmp = null;
-		if (a.contains(gov.getWord()) || a.contains(getStemmedWord(gov).getWord())) {
+		if (a.contains(gov.getWord()) /*|| a.contains(getStemmedWord(gov).getWord())*/) {
+			System.out.println("DEP: " + dep + " - GOV: " + gov);
 			tmp = new Word(gov.getWord(), gov.getValue());
-		} else if (a.contains(dep.getWord()) || a.contains(getStemmedWord(dep).getWord())) {
+		} else if (a.contains(dep.getWord()) /*|| a.contains(getStemmedWord(dep).getWord())*/) {
 			tmp = new Word(dep.getWord(), gov.getValue());
+			System.out.println("DEP: " + dep + " - GOV: " + gov);
 		}
 		return tmp;
 	}

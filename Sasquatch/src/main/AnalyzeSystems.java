@@ -31,9 +31,9 @@ public class AnalyzeSystems {
 
 	
 	
-	private static SoftwareSystem[] userSystems = {/*httpClientUsers, log4jUsers, httpunitUsers,*/
+	private static SoftwareSystem[] userSystems = {httpClientUsers/*, log4jUsers, httpunitUsers,
 		htmlunitUsers, jettyUsers, tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
-		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers};
+		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers*/};
 	
 	/**
 	 * @param args

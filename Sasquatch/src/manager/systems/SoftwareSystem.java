@@ -9,44 +9,35 @@ public class SoftwareSystem {
 	private Source[] sources;
 	private SourceHandler handler;
 	private String name;
-	private String path;
-	private String listName;
-	private int start;
-	private int end;
-	private int pages = -1;
-	private Archive archive = Archive.LOCAL;
+	private Archive archive;
 	
-	public SoftwareSystem(String name, String path) {
+	public SoftwareSystem(String name, String localPath) {
 		this.name = name;
-		this.path = path;
+		this.archive = new Archive(ArchiveType.LOCAL, localPath);
 	}
 	
-	public SoftwareSystem(String name, String listName, int startYear, int endYear, Archive archive) {
+	public SoftwareSystem(String name, String listName, int startYear, int endYear, ArchiveType archive) {
 		this.name = name;
-		this.listName = listName;
-		this.start = startYear;
-		this.end = endYear;
-		this.archive = archive;
+		this.archive = new Archive(archive, listName);
+		this.archive.setStart(startYear);
+		this.archive.setEnd(endYear);
 	}
 	
-	public SoftwareSystem(String name, String listName, int startYear, int endYear, int pages, Archive archive) {
+	public SoftwareSystem(String name, String listName, int startYear, int endYear, int pages, ArchiveType archive) {
 		this.name = name;
-		this.listName = listName;
-		this.start = startYear;
-		this.end = endYear;
-		this.pages = pages;
-		this.archive = archive;
+		this.archive = new Archive(archive, listName);
+		this.archive.setStart(startYear);
+		this.archive.setEnd(endYear);
+		this.archive.setPages(pages);
 	}
 	
 	public SoftwareSystem(String name, SourceHandler handler) {
 		this.name = name;
-		this.listName = "";
 		this.handler = handler;
 	}
 	
 	public SoftwareSystem(String name, Source[] sources) {
 		this.name = name;
-		this.listName = "";
 		this.sources = sources;
 	}
 	
@@ -89,14 +80,14 @@ public class SoftwareSystem {
 	 * @return the listName
 	 */
 	public String getListName() {
-		return listName;
+		return archive.getReference();
 	}
 
 	/**
 	 * @param listName the listName to set
 	 */
 	public void setListName(String listName) {
-		this.listName = listName;
+		this.archive.setReference(listName);
 	}
 
 	/**
@@ -117,62 +108,66 @@ public class SoftwareSystem {
 	 * @return the start
 	 */
 	public int getStart() {
-		return start;
+		return archive.getStart();
 	}
 
 	/**
 	 * @return the end
 	 */
 	public int getEnd() {
-		return end;
+		return archive.getEnd();
 	}
 
 	/**
 	 * @return the pages
 	 */
 	public int getPages() {
-		return pages;
+		return archive.getPages();
 	}
 
 	/**
 	 * @param start the start to set
 	 */
 	public void setStart(int start) {
-		this.start = start;
+		archive.setStart(start);
 	}
 
 	/**
 	 * @param end the end to set
 	 */
 	public void setEnd(int end) {
-		this.end = end;
+		archive.setEnd(end);
 	}
 
 	/**
 	 * @param pages the pages to set
 	 */
 	public void setPages(int pages) {
-		this.pages = pages;
+		archive.setPages(pages);
 	}
 
 	/**
 	 * @return the archive
 	 */
-	public Archive getArchive() {
-		return archive;
+	public ArchiveType getArchiveType() {
+		return archive.getType();
 	}
 
 	/**
 	 * @param archive the archive to set
 	 */
-	public void setArchive(Archive archive) {
-		this.archive = archive;
+	public void setArchive(ArchiveType type) {
+		this.archive.setType(type);
 	}
 
 	/**
 	 * @return the path
 	 */
 	public String getPath() {
+		String path = "";
+		if (archive.getType() == ArchiveType.LOCAL) {
+			path = archive.getReference();
+		}
 		return path;
 	}
 
@@ -180,7 +175,9 @@ public class SoftwareSystem {
 	 * @param path the path to set
 	 */
 	public void setPath(String path) {
-		this.path = path;
+		if (archive.getType() == ArchiveType.LOCAL) {
+			archive.setReference(path);
+		}
 	}
 
 }

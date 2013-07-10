@@ -1,0 +1,7 @@
+package manager.systems;
+
+public enum ArchiveType {
+	
+	LOCAL, APACHE, APPLE_LIST, ECLIPSE_LIST, JAVANET, MAIL_ARCHIVE, MARK_MAIL, PIPERMAIL, SOURCEFORGE, YAHOO;
+
+}

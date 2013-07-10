@@ -37,7 +37,7 @@ public class AspectParser {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line = "";
 			while ((line = reader.readLine()) != null) {
-				if (!line.isEmpty()) {
+				if (!line.isEmpty() && !isComment(line)) {
 					words.add(line);
 				}
 			}
@@ -50,6 +50,10 @@ public class AspectParser {
 		return words.toArray(new String[words.size()]);
 	}
 	
+	private static boolean isComment(String line) {
+		return line.startsWith("#");
+	}
+
 	public Aspect[] getAspects() {
 		return aspects;
 	}

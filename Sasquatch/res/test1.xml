@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systems>
+  <system name="httpclient">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/httpclient.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 02:11:19 CEST 2013">
+        <positive>616</positive>
+        <negative>331</negative>
+        <neutral>38</neutral>
+        <notUsed>8440</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>4</positive>
+            <negative>3</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>3</positive>
+            <negative>2</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>43</positive>
+            <negative>20</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>35</positive>
+            <negative>9</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>52</positive>
+            <negative>4</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>11</positive>
+            <negative>1</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="log4j">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/log4j.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 02:43:34 CEST 2013">
+        <positive>628</positive>
+        <negative>322</negative>
+        <neutral>20</neutral>
+        <notUsed>23192</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>16</positive>
+            <negative>9</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>2</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>30</positive>
+            <negative>18</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>55</positive>
+            <negative>18</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>68</positive>
+            <negative>9</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>5</positive>
+            <negative>9</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="httpunit">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/httpunit.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 02:43:34 CEST 2013">
+        <positive>0</positive>
+        <negative>0</negative>
+        <neutral>0</neutral>
+        <notUsed>2</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="htmlunit">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/htmlunit.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 03:10:53 CEST 2013">
+        <positive>563</positive>
+        <negative>379</negative>
+        <neutral>32</neutral>
+        <notUsed>7105</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>9</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>39</positive>
+            <negative>15</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>10</positive>
+            <negative>12</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>13</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>4</positive>
+            <negative>1</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="jetty">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/jetty.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 03:44:46 CEST 2013">
+        <positive>650</positive>
+        <negative>293</negative>
+        <neutral>42</neutral>
+        <notUsed>15</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>19</positive>
+            <negative>7</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>43</positive>
+            <negative>30</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>24</positive>
+            <negative>17</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>55</positive>
+            <negative>5</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>5</positive>
+            <negative>5</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="tomcat">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/tomcat.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 04:22:42 CEST 2013">
+        <positive>526</positive>
+        <negative>438</negative>
+        <neutral>26</neutral>
+        <notUsed>10</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>19</positive>
+            <negative>9</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>3</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>62</positive>
+            <negative>41</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>21</positive>
+            <negative>9</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>38</positive>
+            <negative>3</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>10</positive>
+            <negative>6</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="jpa">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/jpa.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 05:25:20 CEST 2013">
+        <positive>639</positive>
+        <negative>169</negative>
+        <neutral>25</neutral>
+        <notUsed>2</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>7</positive>
+            <negative>4</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>16</positive>
+            <negative>33</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>96</positive>
+            <negative>43</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>93</positive>
+            <negative>17</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>74</positive>
+            <negative>3</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>29</positive>
+            <negative>15</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="tapestry">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/tapestry.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 05:55:44 CEST 2013">
+        <positive>670</positive>
+        <negative>282</negative>
+        <neutral>29</neutral>
+        <notUsed>3824</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>14</positive>
+            <negative>2</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>15</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>146</positive>
+            <negative>27</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>35</positive>
+            <negative>16</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>22</positive>
+            <negative>7</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>4</positive>
+            <negative>1</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="jsf">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/jsf.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 05:59:21 CEST 2013">
+        <positive>83</positive>
+        <negative>28</negative>
+        <neutral>1</neutral>
+        <notUsed>612</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>0</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>4</positive>
+            <negative>6</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>2</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>1</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>1</positive>
+            <negative>4</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="struts">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/struts.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 06:25:56 CEST 2013">
+        <positive>625</positive>
+        <negative>320</negative>
+        <neutral>40</neutral>
+        <notUsed>2322</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>6</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>3</positive>
+            <negative>7</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>63</positive>
+            <negative>24</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>33</positive>
+            <negative>13</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>29</positive>
+            <negative>4</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>4</positive>
+            <negative>2</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="nekohtml">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/nekohtml.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 06:26:32 CEST 2013">
+        <positive>20</positive>
+        <negative>16</negative>
+        <neutral>0</neutral>
+        <notUsed>166</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>1</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>0</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>2</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="htmlparser">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/htmlparser.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 06:31:52 CEST 2013">
+        <positive>90</positive>
+        <negative>52</negative>
+        <neutral>17</neutral>
+        <notUsed>2714</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>4</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>1</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="dom4j">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/dom4j.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 06:33:03 CEST 2013">
+        <positive>15</positive>
+        <negative>11</negative>
+        <neutral>0</neutral>
+        <notUsed>2707</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>1</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>0</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>4</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="jboss">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/jboss.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 07:21:56 CEST 2013">
+        <positive>447</positive>
+        <negative>476</negative>
+        <neutral>10</neutral>
+        <notUsed>1982</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>28</positive>
+            <negative>5</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>1</positive>
+            <negative>5</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>38</positive>
+            <negative>29</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>17</positive>
+            <negative>12</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>9</positive>
+            <negative>5</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>4</positive>
+            <negative>5</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="glassfish">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/glassfish.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 07:55:30 CEST 2013">
+        <positive>631</positive>
+        <negative>343</negative>
+        <neutral>19</neutral>
+        <notUsed>8</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>13</positive>
+            <negative>4</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>2</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>46</positive>
+            <negative>17</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>23</positive>
+            <negative>7</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>27</positive>
+            <negative>5</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>2</positive>
+            <negative>7</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+  <system name="resin">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/users/19-06-2013/resin.xml</path>
+      </archive>
+    </archives>
+    <results>
+      <result type="AspectPolarity" date="Thu Jul 11 08:25:33 CEST 2013">
+        <positive>530</positive>
+        <negative>369</negative>
+        <neutral>38</neutral>
+        <notUsed>63</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>10</positive>
+            <negative>3</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>27</positive>
+            <negative>45</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>28</positive>
+            <negative>11</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>11</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>6</positive>
+            <negative>5</negative>
+          </aspect>
+        </aspects>
+      </result>
+    </results>
+  </system>
+</systems>
+

@@ -116,6 +116,10 @@ public class SystemParser {
 		}
 	}
 	
+	public void clearResultsFromSoftwareSystem(SoftwareSystem ss) {
+		
+	}
+	
 	public void addArchiveToSoftwareSystem(SoftwareSystem ss, Archive a) {
 		Document doc = getDocument(target);
 		if (doc != null) {
@@ -179,7 +183,7 @@ public class SystemParser {
 			for (Object o : root.getChildren()) {
 				if (o instanceof Element) {
 					Element child = (Element) o;
-					if (child.getAttribute("name").equals(ss.getName())) {
+					if (child.getAttributeValue("name").equals(ss.getName())) {
 						system = child;
 						break;
 					}
@@ -196,7 +200,7 @@ public class SystemParser {
 			for (Object o : root.getChildren()) {
 				if (o instanceof Element) {
 					Element child = (Element) o;
-					if (child.getAttribute("name").equals(ss.getName())) {
+					if (child.getAttributeValue("name").equals(ss.getName())) {
 						contains = true; 
 						break;
 					}
@@ -212,15 +216,17 @@ public class SystemParser {
 
 	private Element getArchives(SoftwareSystem ss) {
 		Element archives = new Element("archives");
-		String path = ss.getPath();
-		if (ss.getArchiveType() == ArchiveType.LOCAL) {
-			Element archive = getLocalArchive(SourceType.MAIL, path);
-			archives.addContent(archive);
-		}
-		if (ss.getArchiveType() != ArchiveType.LOCAL) {
-			Element archive = getArchive(SourceType.MAIL, ss.getArchiveType(), 
-					ss.getListName(), ss.getStart(), ss.getEnd(), ss.getPages());
-			archives.addContent(archive);
+		Archive[] archiveList = ss.getArchives();
+		for (Archive a : archiveList) {
+			if (a.getType() == ArchiveType.LOCAL) {
+				Element archive = getLocalArchive(SourceType.MAIL, a.getReference());
+				archives.addContent(archive);
+			}
+			else if (a.getType() != null) {
+				Element archive = getArchive(SourceType.MAIL, a.getType(), 
+						a.getReference(), a.getStart(), a.getEnd(), a.getPages());
+				archives.addContent(archive);
+			}
 		}
 		return archives;
 	}
@@ -283,7 +289,7 @@ public class SystemParser {
 			Document doc = getDocument(target);
 			if (doc != null) {
 				Element root = doc.getRootElement();
-				for (Object o : root.getChildren("mail")) {
+				for (Object o : root.getChildren("system")) {
 					Element e = (Element) o;
 					SoftwareSystem ss = getSoftwareSystem(e);
 					if (ss != null) {
@@ -297,12 +303,97 @@ public class SystemParser {
 
 	private SoftwareSystem getSoftwareSystem(Element e) {
 		String name = e.getAttributeValue("name");
+		Archive[] archives = getArchives(e);
+		IAnalysisResult[] results = getResults(e);
+		SoftwareSystem ss = new SoftwareSystem(name, archives);
+		for (IAnalysisResult res : results) {
+			ss.addResult(res);
+		}
+		return ss;
+	}
+
+	private IAnalysisResult[] getResults(Element e) {
+		ArrayList<IAnalysisResult> resultList = new ArrayList<IAnalysisResult>();
+		Element results = e.getChild("results");
+		for (Object o : results.getChildren()) {
+			Element child = (Element) o;
+			IAnalysisResult res = getResult(child);
+			if (res != null) {
+				resultList.add(res);
+			}
+		}
+		return resultList.toArray(new IAnalysisResult[resultList.size()]);
+	}
+
+	private IAnalysisResult getResult(Element e) {
+		IAnalysisResult res = null;
+		String type = e.getAttributeValue("type");
+		String date = e.getAttributeValue("date");
+		if (type.equals("AspectPolarity")) {
+			int positive = Integer.parseInt(e.getChildText("positive"));
+			int negative = Integer.parseInt(e.getChildText("negative"));
+			int neutral = Integer.parseInt(e.getChildText("neutral"));
+			int notUsed = Integer.parseInt(e.getChildText("notUsed"));
+			Aspect[] aspects = getAspects(e);
+			res = new AspectPolarityResult(positive, negative, neutral, notUsed, aspects);
+		}
+		return res;
+	}
+
+	private Aspect[] getAspects(Element e) {
+		ArrayList<Aspect> aspectList = new ArrayList<Aspect>();
+		Element aspects = e.getChild("aspects");
+		for (Object o : aspects.getChildren()) {
+			Element child = (Element) o;
+			Aspect a = getAspect(child);
+			if (a != null) {
+				aspectList.add(a);
+			}
+		}
+		return aspectList.toArray(new Aspect[aspectList.size()]);
+	}
+
+	private Aspect getAspect(Element e) {
+		int positive = Integer.parseInt(e.getChildText("positive"));
+		int negative = Integer.parseInt(e.getChildText("negative"));
+		String name = e.getAttributeValue("name");
+		Aspect a = new Aspect(name);
+		a.setPositive(positive);
+		a.setNegative(negative);
+		return a;
+	}
+
+	private Archive[] getArchives(Element e) {
+		ArrayList<Archive> archiveList = new ArrayList<Archive>();
 		Element archives = e.getChild("archives");
 		for (Object o : archives.getChildren()) {
 			Element child = (Element) o;
-			String type = child.getAttributeValue("type");
+			Archive a = getArchive(child);
+			if (a != null) {
+				archiveList.add(a);
+			}
 		}
-		return null;
+		return archiveList.toArray(new Archive[archiveList.size()]);
+	}
+
+	private Archive getArchive(Element e) {
+		Archive archive = null;
+		int x = Integer.parseInt(e.getAttributeValue("type"));
+		ArchiveType type = ArchiveType.values()[x];
+		if (type == ArchiveType.LOCAL) {
+			String ref = e.getChildText("path");
+			archive = new Archive(type, ref);
+		} else {
+			String ref = e.getChildText("listName");
+			int start = Integer.parseInt(e.getChildText("start"));
+			int end = Integer.parseInt(e.getChildText("end"));
+			int pages = Integer.parseInt(e.getChildText("pages"));
+			archive = new Archive(type, ref);
+			archive.setStart(start);
+			archive.setEnd(end);
+			archive.setPages(pages);
+		}
+		return archive;
 	}
 
 	private Date convertDate(String childText) {
@@ -336,6 +427,7 @@ public class SystemParser {
 			InputStream inputStream= new FileInputStream(f);
 			Reader reader = new InputStreamReader(inputStream,"UTF-8");
 			doc = builder.build(reader);
+			reader.close();
 		} catch (JDOMException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

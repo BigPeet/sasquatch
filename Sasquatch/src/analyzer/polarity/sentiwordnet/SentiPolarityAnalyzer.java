@@ -24,8 +24,9 @@ import analyzer.polarity.PolarityAnalyzer;
 
 public class SentiPolarityAnalyzer extends PolarityAnalyzer {
 	
-	private static int time = 3;
-	private static int MAX_SOURCES = 500;
+	private int time = 3;
+	private int maxSources = 1000;
+	private double threshold = 0;
 	private static String[] relevantRel = {"pobj", "dobj", "nsubj", "nsubjpass", "amod"};
 	private static final File mainDictFile = new File("res/dict/SentiWordNet.txt");
 	private static final File contextDictFile = new File("res/dict/SQ.txt");
@@ -60,12 +61,12 @@ public class SentiPolarityAnalyzer extends PolarityAnalyzer {
 	}
 
 	@Override
-	public IAnalysisResult analyze(SoftwareSystem ss) {
+	public AspectPolarityResult analyze(SoftwareSystem ss) {
 		AspectPolarityResult res = new AspectPolarityResult(aspects);
 		StanfordParser parser = new StanfordParser();
 		int counter = 0;
 		for (Source s : ss.getSources()) {
-			if (counter > MAX_SOURCES - 1) {
+			if (counter > maxSources - 1) {
 				break;
 			}			
 			ArrayList<POSTaggedWord> taggedWords = new ArrayList<POSTaggedWord>();
@@ -161,11 +162,11 @@ public class SentiPolarityAnalyzer extends PolarityAnalyzer {
 	private Word getWord(Aspect a, Word dep, Word gov) {
 		Word tmp = null;
 		if (a.contains(gov.getWord()) /*|| a.contains(getStemmedWord(gov).getWord())*/) {
-			System.out.println("DEP: " + dep + " - GOV: " + gov);
+//			System.out.println("DEP: " + dep + " - GOV: " + gov);
 			tmp = new Word(gov.getWord(), gov.getValue());
 		} else if (a.contains(dep.getWord()) /*|| a.contains(getStemmedWord(dep).getWord())*/) {
 			tmp = new Word(dep.getWord(), gov.getValue());
-			System.out.println("DEP: " + dep + " - GOV: " + gov);
+//			System.out.println("DEP: " + dep + " - GOV: " + gov);
 		}
 		return tmp;
 	}
@@ -287,6 +288,62 @@ public class SentiPolarityAnalyzer extends PolarityAnalyzer {
 		text = text.replace("}", " ");
 		text = text.replace("{", " ");
 		return text.trim();
+	}
+
+	/**
+	 * @return the time
+	 */
+	public int getTime() {
+		return time;
+	}
+
+	/**
+	 * @return the maxSources
+	 */
+	public int getMaxSources() {
+		return maxSources;
+	}
+
+	/**
+	 * @return the threshold
+	 */
+	public double getThreshold() {
+		return threshold;
+	}
+
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	/**
+	 * @param maxSources the maxSources to set
+	 */
+	public void setMaxSources(int maxSources) {
+		this.maxSources = maxSources;
+	}
+
+	/**
+	 * @param threshold the threshold to set
+	 */
+	public void setThreshold(double threshold) {
+		this.threshold = threshold;
+	}
+
+	/**
+	 * @return the limit
+	 */
+	public Date getLimit() {
+		return limit;
+	}
+
+	/**
+	 * @param limit the limit to set
+	 */
+	public void setLimit(Date limit) {
+		this.limit = limit;
 	}
 
 }

@@ -1,5 +1,10 @@
 package manager.systems;
 
+import java.util.ArrayList;
+
+import analyzer.AnalysisResult;
+import analyzer.interfaces.IAnalysisResult;
+
 import manager.systems.source.SourceHandler;
 import manager.systems.source.Source;
 
@@ -9,26 +14,47 @@ public class SoftwareSystem {
 	private Source[] sources;
 	private SourceHandler handler;
 	private String name;
-	private Archive archive;
+	private Archive mainArchive;
+	private ArrayList<Archive> archives = new ArrayList<Archive>();
+	private ArrayList<IAnalysisResult> results = new ArrayList<IAnalysisResult>();
+	
+	public SoftwareSystem(String name, Archive archive) {
+		this.name = name;
+		mainArchive = archive;
+		archives.add(archive);
+	}
+	
+	public SoftwareSystem(String name, Archive[] archives) {
+		this.name = name;
+		if (archives.length > 0) {
+			mainArchive = archives[0];
+		}
+		for (Archive a : archives) {
+			this.archives.add(a);
+		}
+	}
 	
 	public SoftwareSystem(String name, String localPath) {
 		this.name = name;
-		this.archive = new Archive(ArchiveType.LOCAL, localPath);
+		mainArchive = new Archive(ArchiveType.LOCAL, localPath);
+		this.archives.add(mainArchive);
 	}
 	
-	public SoftwareSystem(String name, String listName, int startYear, int endYear, ArchiveType archive) {
+	public SoftwareSystem(String name, String listName, int startYear, int endYear, ArchiveType archiveType) {
 		this.name = name;
-		this.archive = new Archive(archive, listName);
-		this.archive.setStart(startYear);
-		this.archive.setEnd(endYear);
+		mainArchive = new Archive(archiveType, listName);
+		mainArchive.setStart(startYear);
+		mainArchive.setEnd(endYear);
+		archives.add(mainArchive);
 	}
 	
-	public SoftwareSystem(String name, String listName, int startYear, int endYear, int pages, ArchiveType archive) {
+	public SoftwareSystem(String name, String listName, int startYear, int endYear, int pages, ArchiveType archiveType) {
 		this.name = name;
-		this.archive = new Archive(archive, listName);
-		this.archive.setStart(startYear);
-		this.archive.setEnd(endYear);
-		this.archive.setPages(pages);
+		mainArchive = new Archive(archiveType, listName);
+		mainArchive.setStart(startYear);
+		mainArchive.setEnd(endYear);
+		mainArchive.setPages(pages);
+		archives.add(mainArchive);
 	}
 	
 	public SoftwareSystem(String name, SourceHandler handler) {
@@ -42,6 +68,9 @@ public class SoftwareSystem {
 	}
 	
 	public Source[] getSources() {
+		if (sources == null && handler == null && mainArchive != null) {
+			handler = mainArchive.getSourceHandler();
+		}
 		if (sources == null && handler != null) {
 			sources = handler.getSources();
 		} else if (sources == null){
@@ -77,20 +106,6 @@ public class SoftwareSystem {
 	}
 
 	/**
-	 * @return the listName
-	 */
-	public String getListName() {
-		return archive.getReference();
-	}
-
-	/**
-	 * @param listName the listName to set
-	 */
-	public void setListName(String listName) {
-		this.archive.setReference(listName);
-	}
-
-	/**
 	 * @return the name
 	 */
 	public String getName() {
@@ -103,81 +118,47 @@ public class SoftwareSystem {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	/**
-	 * @return the start
-	 */
-	public int getStart() {
-		return archive.getStart();
-	}
-
-	/**
-	 * @return the end
-	 */
-	public int getEnd() {
-		return archive.getEnd();
-	}
-
-	/**
-	 * @return the pages
-	 */
-	public int getPages() {
-		return archive.getPages();
-	}
-
-	/**
-	 * @param start the start to set
-	 */
-	public void setStart(int start) {
-		archive.setStart(start);
-	}
-
-	/**
-	 * @param end the end to set
-	 */
-	public void setEnd(int end) {
-		archive.setEnd(end);
-	}
-
-	/**
-	 * @param pages the pages to set
-	 */
-	public void setPages(int pages) {
-		archive.setPages(pages);
-	}
-
-	/**
-	 * @return the archive
-	 */
-	public ArchiveType getArchiveType() {
-		return archive.getType();
-	}
-
-	/**
-	 * @param archive the archive to set
-	 */
-	public void setArchive(ArchiveType type) {
-		this.archive.setType(type);
-	}
-
-	/**
-	 * @return the path
-	 */
-	public String getPath() {
-		String path = "";
-		if (archive.getType() == ArchiveType.LOCAL) {
-			path = archive.getReference();
+	
+	public void addArchive(Archive a) {
+		if (!archives.contains(a)) {
+			archives.add(a);
 		}
-		return path;
+	}
+	
+	public void removeArchive(Archive a) {
+		archives.remove(a);
+		if (mainArchive.equals(a)) {
+			mainArchive = new Archive();
+		}
+	}
+	
+	public void setMainArchive(Archive a) {
+		this.mainArchive = a;
+		if (!archives.contains(a)) {
+			archives.add(a);
+		}
+	}
+	
+	public Archive getMainArchive() {
+		return mainArchive;
 	}
 
-	/**
-	 * @param path the path to set
-	 */
-	public void setPath(String path) {
-		if (archive.getType() == ArchiveType.LOCAL) {
-			archive.setReference(path);
-		}
+	
+	public Archive[] getArchives() {
+		return archives.toArray(new Archive[archives.size()]);
+	}
+	
+	public void addResult(IAnalysisResult result) {
+		if (!results.contains(result))
+			results.add(result);
+	}
+	
+	public void removeResult(IAnalysisResult result) {
+		results.remove(result);
+	}
+	
+	public IAnalysisResult[] getResults() {
+		return results.toArray(new IAnalysisResult[results.size()]);
 	}
 
 }

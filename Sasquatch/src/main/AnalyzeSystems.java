@@ -4,8 +4,11 @@ import java.io.File;
 
 import analyzer.SentimentAnalyzer;
 import analyzer.interfaces.IAnalysisResult;
+import analyzer.polarity.sentiwordnet.AspectPolarityResult;
 import analyzer.polarity.sentiwordnet.SentiPolarityAnalyzer;
+import manager.parser.SystemParser;
 import manager.systems.SoftwareSystem;
+import manager.systems.source.SourceHandler;
 import manager.systems.source.mail.LocalMailHandler;
 
 public class AnalyzeSystems {
@@ -31,21 +34,24 @@ public class AnalyzeSystems {
 
 	
 	
-	private static SoftwareSystem[] userSystems = {httpClientUsers/*, log4jUsers, httpunitUsers,
+	private static SoftwareSystem[] userSystems = {httpClientUsers, log4jUsers, httpunitUsers,
 		htmlunitUsers, jettyUsers, tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
-		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers*/};
+		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers};
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SentimentAnalyzer analyzer = new SentiPolarityAnalyzer();
+		SystemParser parser = new SystemParser(new File("res/test.xml"));
+		SentiPolarityAnalyzer analyzer = new SentiPolarityAnalyzer();
 		for (SoftwareSystem ss : userSystems) {
-			LocalMailHandler handler = new LocalMailHandler(new File(ss.getPath()));
+			SourceHandler handler = ss.getMainArchive().getSourceHandler();
 			ss.setHandler(handler);
-			IAnalysisResult res = analyzer.analyze(ss);
-			System.out.println(ss.getName());
-			res.show();
+			AspectPolarityResult res = analyzer.analyze(ss);
+//			System.out.println(ss.getName());
+//			res.show();
+			parser.addSoftwareSystem(ss);
+			parser.addResultsToSoftwareSystem(ss, res);
 		}
 	}
 

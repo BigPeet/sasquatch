@@ -14,6 +14,17 @@ public class AspectPolarityResult extends PolarityResult {
 	public AspectPolarityResult() {
 
 	}
+	
+	public AspectPolarityResult(int positive, int negative, int neutral, int notUsed, Aspect[] aspects) {
+		setPositive(positive);
+		setNegative(negative);
+		setNeutral(neutral);
+		setNotUsed(notUsed);
+		for (Aspect a : aspects) {
+			Aspect tmp = new Aspect(a.getName(), a.getSynonyms());
+			this.aspects.add(tmp);
+		}
+	}
 
 	public AspectPolarityResult(Aspect[] aspects) {
 		for (Aspect a : aspects) {

@@ -18,6 +18,7 @@ import retrieval.mailinglist.pipermail.PiperMailCrawlController;
 import retrieval.mailinglist.sourceforge.SFCrawlController;
 import retrieval.mailinglist.yahoo.YahooCrawlController;
 
+import manager.systems.Archive;
 import manager.systems.ArchiveType;
 import manager.systems.SoftwareSystem;
 import manager.systems.source.Source;
@@ -172,16 +173,17 @@ public class CrawlSystems {
 
 	private static ICrawlController getCrawlController(SoftwareSystem s) {
 		ICrawlController controller = null;
-		switch(s.getArchiveType()) {
-		case APACHE: controller = new ApacheCrawlController(s.getListName(), s.getStart(), s.getEnd()); break;
-		case ECLIPSE_LIST: controller = new EclipseListCrawlController(s.getListName(), s.getStart(), s.getEnd(), s.getPages()); break;
-		case APPLE_LIST : controller = new AppleListCrawlController(new String[]{s.getListName()}, s.getPages()); break;
-		case JAVANET : controller = new JavaNetCrawlController(s.getListName(), s.getStart(), s.getEnd()); break;
-		case MAIL_ARCHIVE : controller = new MailArchiveCrawlController(s.getListName(), s.getStart(), s.getEnd(), s.getPages()); break;
-		case MARK_MAIL : controller = new MMCrawlController(s.getListName(), s.getStart(), s.getEnd(), s.getPages()); break;
-		case PIPERMAIL : controller = new PiperMailCrawlController(new String[]{s.getListName()}, s.getPages()); break;
-		case SOURCEFORGE : controller = new SFCrawlController(s.getListName(), s.getStart(), s.getEnd()); break;
-		case YAHOO : controller = new YahooCrawlController(s.getListName(), s.getStart(), s.getEnd(), s.getPages()); break;
+		Archive a = s.getMainArchive();
+		switch(a.getType()) {
+		case APACHE: controller = new ApacheCrawlController(a.getReference(), a.getStart(), a.getEnd()); break;
+		case ECLIPSE_LIST: controller = new EclipseListCrawlController(a.getReference(), a.getStart(), a.getEnd(), a.getPages()); break;
+		case APPLE_LIST : controller = new AppleListCrawlController(new String[]{a.getReference()}, a.getPages()); break;
+		case JAVANET : controller = new JavaNetCrawlController(a.getReference(), a.getStart(), a.getEnd()); break;
+		case MAIL_ARCHIVE : controller = new MailArchiveCrawlController(a.getReference(), a.getStart(), a.getEnd(), a.getPages()); break;
+		case MARK_MAIL : controller = new MMCrawlController(a.getReference(), a.getStart(), a.getEnd(), a.getPages()); break;
+		case PIPERMAIL : controller = new PiperMailCrawlController(new String[]{a.getReference()}, a.getPages()); break;
+		case SOURCEFORGE : controller = new SFCrawlController(a.getReference(), a.getStart(), a.getEnd()); break;
+		case YAHOO : controller = new YahooCrawlController(a.getReference(), a.getStart(), a.getEnd(), a.getPages()); break;
 		case LOCAL: 
 		default: controller = null;
 		}

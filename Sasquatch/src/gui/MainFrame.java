@@ -4,6 +4,8 @@
  */
 package gui;
 
+import gui.results.ShowResultsDialog;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -417,12 +419,20 @@ public class MainFrame extends javax.swing.JFrame {
 		for (int i = 0; i < indeces.length; i++) {
 			chosenSystems[i] = systems[indeces[i]];
 		}
-		for (SoftwareSystem ss : chosenSystems) {
-			IAnalysisResult res = sa.analyze(ss);
-			res.show();
+		IAnalysisResult[] results = new IAnalysisResult[chosenSystems.length];
+		for (int i = 0; i < chosenSystems.length; i++) {
+			results[i] = sa.analyze(chosenSystems[i]);
+			results[i].show();
 		}
 		System.out.println("Done.");
+		openShowResults(chosenSystems, results);
 	}//GEN-LAST:event_btnRunActionPerformed
+
+	private void openShowResults(SoftwareSystem[] chosenSystems,
+			IAnalysisResult[] results) {
+		ShowResultsDialog dialog = new ShowResultsDialog(this, true, chosenSystems, results);
+		dialog.run();
+	}
 
 	private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
 		// TODO add your handling code here:

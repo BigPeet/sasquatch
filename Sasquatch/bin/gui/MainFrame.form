@@ -317,7 +317,6 @@
             <Component class="javax.swing.JCheckBox" name="saveBox">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save Results"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -3,9 +3,11 @@ package main;
 import java.io.File;
 
 import analyzer.SentimentAnalyzer;
+import analyzer.interfaces.IAnalysisResult;
 import analyzer.polarity.sentiwordnet.SentiPolarityAnalyzer;
 
 import manager.parser.SystemParser;
+import manager.systems.SoftwareSystem;
 import gui.MainFrame;
 
 public class Client {
@@ -33,5 +35,13 @@ public class Client {
 	 */
 	public static void main(String[] args) {
 		client.mf.run();
+	}
+
+	public void saveResults(SoftwareSystem[] systems, IAnalysisResult[] results) {
+		if (systems.length == results.length) {
+			for (int i = 0; i < systems.length; i++) {
+				parser.addResultsToSoftwareSystem(systems[i], results[i]);
+			}
+		}
 	}
 }

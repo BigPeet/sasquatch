@@ -26,7 +26,7 @@ public class SentiPolarityAnalyzer extends PolarityAnalyzer {
 	
 	private int time = 3;
 	private int maxSources = 1000;
-	private double threshold = 0;
+	private double threshold = 0.0;
 	private static String[] relevantRel = {"pobj", "dobj", "nsubj", "nsubjpass", "amod"};
 	private static final File mainDictFile = new File("res/dict/SentiWordNet.txt");
 	private static final File contextDictFile = new File("res/dict/SQ.txt");
@@ -200,6 +200,9 @@ public class SentiPolarityAnalyzer extends PolarityAnalyzer {
 			if (dict.contains(tmp)) {
 				score = dict.getScore(tmp);
 			}
+		}
+		if (Math.abs(score) <= threshold) {
+			score = 0.0;
 		}
 		return score;
 	}

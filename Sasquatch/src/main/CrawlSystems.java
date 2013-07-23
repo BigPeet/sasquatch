@@ -46,9 +46,9 @@ public class CrawlSystems {
 	private static SoftwareSystem glassFishUsers = new SoftwareSystem("glassfish", "glassfish/lists/users", 2011, 2013, ArchiveType.JAVANET); //2005
 	private static SoftwareSystem resinUsers = new SoftwareSystem("resin", "resin-interest@caucho.com", 2008, 2013, ArchiveType.MAIL_ARCHIVE);
 
-	private static SoftwareSystem[] userSystems = {/*httpClientUsers, log4jUsers, httpunitUsers,
+	private static SoftwareSystem[] userSystems = {httpClientUsers, log4jUsers, httpunitUsers,
 		htmlunitUsers, jettyUsers, tomcatUsers, jpaUsers, tapestryUsers, jsfUsers, strutsUsers,
-		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, */glassFishUsers, resinUsers};
+		nekohtmlUsers, htmlparserUsers, dom4jUsers, jbossUsers, glassFishUsers, resinUsers};
 
 	//DEVELOPER BASED SOURCES
 	private static SoftwareSystem jcronTabDevs = new SoftwareSystem("jcrontab", "jcrontab-developers", 2001, 2013, ArchiveType.SOURCEFORGE);

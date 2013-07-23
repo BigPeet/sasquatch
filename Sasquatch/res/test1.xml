@@ -43,6 +43,42 @@
           </aspect>
         </aspects>
       </result>
+      <result type="AspectPolarity" date="Tue Jul 23 16:22:58 CEST 2013">
+        <positive>4</positive>
+        <negative>5</negative>
+        <neutral>0</neutral>
+        <notUsed>8463</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+        </aspects>
+      </result>
     </results>
   </system>
   <system name="log4j">

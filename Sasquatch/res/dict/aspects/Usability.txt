@@ -44,7 +44,6 @@ hard
 confusing
 puzzling
 tricky
-unfriendly
 perplex
 cumbersome
 convoluted

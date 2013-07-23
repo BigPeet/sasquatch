@@ -72,6 +72,41 @@ public class SystemParser {
 		}
 	}
 
+	public void editSoftwareSystem(String oldName, SoftwareSystem newSystem) {
+		Document doc = getDocument(target);
+		if (doc != null) {
+			Element system = null;
+			try {
+				system = getSystemElement(doc, oldName);
+				if (system != null) {
+					system.setAttribute("name", newSystem.getName());
+					system.removeChild("archives");
+					Element archives = getArchives(newSystem);
+					system.addContent(archives);
+					system.removeChild("results");
+					Element results = getResults(newSystem);
+					system.addContent(results);
+				}
+			}  catch (org.jdom.IllegalDataException e) {
+				system = null;
+			}
+			if (system != null) {
+				writeDocument(doc, target);
+			}
+		}
+	}
+
+	private Element getResults(SoftwareSystem newSystem) {
+		Element results = new Element("results");
+		for (IAnalysisResult res : newSystem.getResults()) {
+			Element result = getResult(res);
+			if (result != null) {
+				results.addContent(result);
+			}
+		}
+		return results;
+	}
+
 	public void addSoftwareSystem(SoftwareSystem ss) {
 		Document doc = getDocument(target);
 		if (!contains(doc, ss)) {
@@ -85,7 +120,7 @@ public class SystemParser {
 			}
 		}
 	}
-	
+
 	private Element createSystemElement(SoftwareSystem ss) {
 		Element system = null;
 		try {
@@ -93,7 +128,7 @@ public class SystemParser {
 			system.setAttribute("name" , ss.getName());
 			Element archives = getArchives(ss);
 			system.addContent(archives);
-			Element results = getResults();
+			Element results = getResults(ss);
 			system.addContent(results);
 		}  catch (org.jdom.IllegalDataException e) {
 			system = null;
@@ -115,11 +150,11 @@ public class SystemParser {
 			}
 		}
 	}
-	
+
 	public void clearResultsFromSoftwareSystem(SoftwareSystem ss) {
-		
+
 	}
-	
+
 	public void addArchiveToSoftwareSystem(SoftwareSystem ss, Archive a) {
 		Document doc = getDocument(target);
 		if (doc != null) {
@@ -134,7 +169,7 @@ public class SystemParser {
 			}
 		}
 	}
-	
+
 	private Element getResult(IAnalysisResult result) {
 		Element res = null;
 		if (result instanceof AspectPolarityResult) {
@@ -192,7 +227,24 @@ public class SystemParser {
 		}
 		return system;
 	}
-	
+
+	private Element getSystemElement(Document doc, String name) {
+		Element system = null;
+		if (doc != null) {
+			Element root = doc.getRootElement();
+			for (Object o : root.getChildren()) {
+				if (o instanceof Element) {
+					Element child = (Element) o;
+					if (child.getAttributeValue("name").equals(name)) {
+						system = child;
+						break;
+					}
+				}
+			}
+		}
+		return system;
+	}
+
 	private boolean contains(Document doc, SoftwareSystem ss) {
 		boolean contains = false;
 		if (doc != null) {

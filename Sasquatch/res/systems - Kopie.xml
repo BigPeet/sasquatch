@@ -1,0 +1,29 @@
+<systems>
+	<system name="">
+		<archives>
+			<archive sourcetype="" type="">
+				<path></path>
+			</archive>
+			<archive sourcetype="" type="">
+				<listName></listName>
+				<start></start>
+				<end></end>
+				<pages></pages>
+			</archive>
+		</archives>
+		<results>
+			<result type="" date="">
+				<positive></positive>
+				<negative></negative>
+				<neutral></neutral>
+				<total></total>
+				<aspects>
+					<aspect name="">
+						<positive></positive>
+						<negative></negative>
+					</aspect>
+				</aspects>
+			</result>
+		</results>
+	</system>
+</systems>

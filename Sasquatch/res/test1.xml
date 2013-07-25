@@ -79,6 +79,42 @@
           </aspect>
         </aspects>
       </result>
+      <result type="AspectPolarity" date="Wed Jul 24 16:54:21 CEST 2013">
+        <positive>25</positive>
+        <negative>21</negative>
+        <neutral>2</neutral>
+        <notUsed>8464</notUsed>
+        <aspects>
+          <aspect name="Documentation">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Leightweight">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Interface">
+            <positive>1</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Usability">
+            <positive>1</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Flexibility">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+          <aspect name="Reliability">
+            <positive>1</positive>
+            <negative>1</negative>
+          </aspect>
+          <aspect name="Effectiveness">
+            <positive>0</positive>
+            <negative>0</negative>
+          </aspect>
+        </aspects>
+      </result>
     </results>
   </system>
   <system name="log4j">
@@ -755,6 +791,244 @@
         </aspects>
       </result>
     </results>
+  </system>
+  <system name="JcronTabDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/jcrontab.xml</path>
+      </archive>
+      <archive sourcetype="0" type="8">
+        <listName>jcrontab-developers</listName>
+        <start>2001</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="hibernateDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/dev/24-07-2013/hibernate.xml</path>
+      </archive>
+      <archive sourcetype="0" type="7">
+        <listName>hibernate-dev</listName>
+        <start>2006</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="httpclientDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/httpclient.xml</path>
+      </archive>
+      <archive sourcetype="0" type="1">
+        <listName>hc-dev</listName>
+        <start>2002</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="log4jDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/log4j.xml</path>
+      </archive>
+      <archive sourcetype="0" type="1">
+        <listName>logging-log4j-dev</listName>
+        <start>2000</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="httpunitDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/httpunit.xml</path>
+      </archive>
+      <archive sourcetype="0" type="8">
+        <listName>httpunit-develop</listName>
+        <start>2000</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="htmlunitDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/htmlunit.xml</path>
+      </archive>
+      <archive sourcetype="0" type="8">
+        <listName>htmlunit-develop</listName>
+        <start>2008</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="jettyDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/jetty.xml</path>
+      </archive>
+      <archive sourcetype="0" type="3">
+        <listName>jetty-dev</listName>
+        <start>2009</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="tomcatDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/tomcat.xml</path>
+      </archive>
+      <archive sourcetype="0" type="1">
+        <listName>tomcat-dev</listName>
+        <start>2008</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="jpaDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/jpa.xml</path>
+      </archive>
+      <archive sourcetype="0" type="4">
+        <listName>jpa-spec/lists/jsr338-experts</listName>
+        <start>2012</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="tapestryDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/tapestry.xml</path>
+      </archive>
+      <archive sourcetype="0" type="1">
+        <listName>tapestry-dev</listName>
+        <start>2008</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="jsfDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/jsf.xml</path>
+      </archive>
+      <archive sourcetype="0" type="4">
+        <listName>javaserverfaces/lists/dev</listName>
+        <start>2008</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="strutsDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/struts.xml</path>
+      </archive>
+      <archive sourcetype="0" type="1">
+        <listName>struts-dev</listName>
+        <start>2008</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="nekohtmlDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/nekohtml.xml</path>
+      </archive>
+      <archive sourcetype="0" type="8">
+        <listName>nekohtml-developer</listName>
+        <start>2008</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="htmlparserDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/htmlparser.xml</path>
+      </archive>
+      <archive sourcetype="0" type="8">
+        <listName>htmlparser-developer</listName>
+        <start>2008</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="dom4jDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/dom4j.xml</path>
+      </archive>
+      <archive sourcetype="0" type="8">
+        <listName>dom4j-dev</listName>
+        <start>2008</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="jbossDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/jboss.xml</path>
+      </archive>
+      <archive sourcetype="0" type="7">
+        <listName>jboss-development</listName>
+        <start>-1</start>
+        <end>-1</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
+  </system>
+  <system name="glassfishDev">
+    <archives>
+      <archive sourcetype="0" type="0">
+        <path>res/mails/devs/24-07-2013/glassfish.xml</path>
+      </archive>
+      <archive sourcetype="0" type="4">
+        <listName>glassfish/lists/dev</listName>
+        <start>2010</start>
+        <end>2013</end>
+        <pages>-1</pages>
+      </archive>
+    </archives>
+    <results />
   </system>
 </systems>
 

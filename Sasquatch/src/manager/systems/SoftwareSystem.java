@@ -9,7 +9,7 @@ import manager.systems.source.SourceHandler;
 import manager.systems.source.Source;
 
 
-public class SoftwareSystem {
+public class SoftwareSystem implements Comparable<SoftwareSystem> {
 
 	private Source[] sources;
 	private SourceHandler handler;
@@ -65,6 +65,20 @@ public class SoftwareSystem {
 	public SoftwareSystem(String name, Source[] sources) {
 		this.name = name;
 		this.sources = sources;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		boolean equals = false;
+		if (o instanceof SoftwareSystem) {
+			equals = this.name.equals(((SoftwareSystem) o).getName());
+		}
+		return equals;
+	}
+	
+	@Override
+	public int compareTo(SoftwareSystem s) {
+		return this.name.compareTo(s.getName());
 	}
 	
 	public Source[] getSources() {

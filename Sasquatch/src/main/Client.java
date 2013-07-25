@@ -44,4 +44,24 @@ public class Client {
 			}
 		}
 	}
+
+	public void removeSoftwareSystem(SoftwareSystem ss) {
+		parser.removeSoftwareSystem(ss);
+	}
+
+	public SoftwareSystem[] getSoftwareSystems() {
+		return parser.getSoftwareSystems();
+	}
+
+	public void addSoftwareSystem(SoftwareSystem ss) {
+		parser.addSoftwareSystem(ss);
+	}
+
+	public void removeSoftwareSystems(SoftwareSystem[] toBeRemoved) {
+		parser.removeSoftwareSystems(toBeRemoved);
+	}
+
+	public void editSoftwareSystem(String name, SoftwareSystem created) {
+		parser.editSoftwareSystem(name, created);
+	}
 }

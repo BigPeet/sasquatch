@@ -92,20 +92,19 @@ public class MainFrame extends javax.swing.JFrame {
         systemListLabel = new javax.swing.JLabel();
         btnResults = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
+        btnRemove = new javax.swing.JButton();
         btnRun = new javax.swing.JButton();
-        btnHistory = new javax.swing.JButton();
         mainMenuBar = new javax.swing.JMenuBar();
         startMenu = new javax.swing.JMenu();
-        runItem = new javax.swing.JMenuItem();
         exitItem = new javax.swing.JMenuItem();
         systemMenu = new javax.swing.JMenu();
-        systemOverview = new javax.swing.JMenuItem();
         systemAdd = new javax.swing.JMenuItem();
         systemRemove = new javax.swing.JMenuItem();
         systemEdit = new javax.swing.JMenuItem();
         analyseMenu = new javax.swing.JMenu();
         analyseManager = new javax.swing.JMenuItem();
         crawlMenu = new javax.swing.JMenu();
+        crawlSystemItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -206,8 +205,25 @@ public class MainFrame extends javax.swing.JFrame {
         systemListLabel.setText("Software Systems");
 
         btnResults.setText("Show Results");
+        btnResults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResultsActionPerformed(evt);
+            }
+        });
 
         btnInfo.setText("Info");
+        btnInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoActionPerformed(evt);
+            }
+        });
+
+        btnRemove.setText("Remove");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -218,6 +234,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnInfo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemove)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnResults))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -236,7 +254,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnResults)
-                    .addComponent(btnInfo))
+                    .addComponent(btnInfo)
+                    .addComponent(btnRemove))
                 .addContainerGap())
         );
 
@@ -244,14 +263,6 @@ public class MainFrame extends javax.swing.JFrame {
         btnRun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRunActionPerformed(evt);
-            }
-        });
-
-        btnHistory.setText("Run History");
-        btnHistory.setEnabled(false);
-        btnHistory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHistoryActionPerformed(evt);
             }
         });
 
@@ -267,8 +278,6 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(analysePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnHistory)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRun)))
                 .addContainerGap())
         );
@@ -281,21 +290,11 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(analysePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRun)
-                            .addComponent(btnHistory))))
+                        .addComponent(btnRun)))
                 .addContainerGap())
         );
 
         startMenu.setText("Start");
-
-        runItem.setText("Run");
-        runItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                runItemActionPerformed(evt);
-            }
-        });
-        startMenu.add(runItem);
 
         exitItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         exitItem.setText("Exit");
@@ -309,14 +308,11 @@ public class MainFrame extends javax.swing.JFrame {
         mainMenuBar.add(startMenu);
 
         systemMenu.setText("System");
-
-        systemOverview.setText("Overview");
-        systemOverview.addActionListener(new java.awt.event.ActionListener() {
+        systemMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                systemOverviewActionPerformed(evt);
+                systemMenuActionPerformed(evt);
             }
         });
-        systemMenu.add(systemOverview);
 
         systemAdd.setText("Add System");
         systemAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -358,6 +354,15 @@ public class MainFrame extends javax.swing.JFrame {
         mainMenuBar.add(analyseMenu);
 
         crawlMenu.setText("Crawling");
+        crawlMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crawlMenuActionPerformed(evt);
+            }
+        });
+
+        crawlSystemItem.setText("Crawl Archive");
+        crawlMenu.add(crawlSystemItem);
+
         mainMenuBar.add(crawlMenu);
 
         setJMenuBar(mainMenuBar);
@@ -386,25 +391,52 @@ public class MainFrame extends javax.swing.JFrame {
 		cancel();
 	}//GEN-LAST:event_exitItemActionPerformed
 
-	private void runItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runItemActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_runItemActionPerformed
-
 	private void systemAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemAddActionPerformed
-		// TODO add your handling code here:
+		SystemCreationDialog scd = new SystemCreationDialog(this, true);
+		scd.run();
+		SoftwareSystem ss = scd.getCreated();
+		if (ss != null) {
+			add(ss);
+		}
 	}//GEN-LAST:event_systemAddActionPerformed
 
+	private void add(SoftwareSystem ss) {
+		Client.getInstance().addSoftwareSystem(ss);
+		setSystems(Client.getInstance().getSoftwareSystems());
+	}
+
 	private void systemRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemRemoveActionPerformed
-		// TODO add your handling code here:
+		SystemChooserDialog sc = new SystemChooserDialog(systems, this, true);
+		sc.run();
+		SoftwareSystem ss = sc.getChosenSystem();
+		if (ss != null) {
+			remove(ss);
+		}
 	}//GEN-LAST:event_systemRemoveActionPerformed
 
+	private void remove(SoftwareSystem ss) {
+		Client.getInstance().removeSoftwareSystem(ss);
+		setSystems(Client.getInstance().getSoftwareSystems());
+	}
+
 	private void systemEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemEditActionPerformed
-		// TODO add your handling code here:
+		SystemChooserDialog sc = new SystemChooserDialog(systems, this, true);
+		sc.run();
+		SoftwareSystem ss = sc.getChosenSystem();
+		if (ss != null) {
+			edit(ss);
+		}
 	}//GEN-LAST:event_systemEditActionPerformed
 
-	private void systemOverviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemOverviewActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_systemOverviewActionPerformed
+	private void edit(SoftwareSystem ss) {
+		SystemCreationDialog scd = new SystemCreationDialog(ss, this, true);
+		scd.run();
+		SoftwareSystem created = scd.getCreated();
+		if (created != null) {
+			Client.getInstance().editSoftwareSystem(ss.getName(), created);
+			setSystems(Client.getInstance().getSoftwareSystems());
+		}
+	}
 
 	private void analyseManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analyseManagerActionPerformed
 		// TODO add your handling code here:
@@ -422,25 +454,58 @@ public class MainFrame extends javax.swing.JFrame {
 
 	}//GEN-LAST:event_btnRunActionPerformed
 
-	private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_btnHistoryActionPerformed
-
 	private void thresholdSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_thresholdSliderStateChanged
 		double threshold = (double)(thresholdSlider.getValue()) / 100.0;
 		thresholdValueLabel.setText(threshold + "");
 	}//GEN-LAST:event_thresholdSliderStateChanged
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private void systemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_systemMenuActionPerformed
+
+    private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInfoActionPerformed
+
+    private void btnResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultsActionPerformed
+    	int[] indeces = systemList.getSelectedIndices();
+        SoftwareSystem[] selectedSystems = new SoftwareSystem[indeces.length];
+        for (int i = 0; i < indeces.length; i++) {
+        	selectedSystems[i] = systems[indeces[i]];
+        }
+    	ShowResultsDialog srd = new ShowResultsDialog(this, true, selectedSystems);
+        srd.run();
+    }//GEN-LAST:event_btnResultsActionPerformed
+
+    private void crawlMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crawlMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crawlMenuActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        int[] indeces = systemList.getSelectedIndices();
+        SoftwareSystem[] toBeRemoved = new SoftwareSystem[indeces.length];
+        for (int i = 0; i < indeces.length; i++) {
+        	toBeRemoved[i] = systems[indeces[i]];
+        }
+        remove(toBeRemoved);
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void remove(SoftwareSystem[] toBeRemoved) {
+    	Client.getInstance().removeSoftwareSystems(toBeRemoved);
+    	setSystems(Client.getInstance().getSoftwareSystems());
+	}
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox analyseBox;
     private javax.swing.JMenuItem analyseManager;
     private javax.swing.JMenu analyseMenu;
     private javax.swing.JPanel analysePanel;
-    private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnInfo;
+    private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnResults;
     private javax.swing.JButton btnRun;
     private javax.swing.JMenu crawlMenu;
+    private javax.swing.JMenuItem crawlSystemItem;
     private javax.swing.JTextField dateField;
     private javax.swing.JMenuItem exitItem;
     private javax.swing.JPanel jPanel1;
@@ -450,7 +515,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSpinner maxCountSpinner;
     private javax.swing.JLabel maxDateLabel;
     private javax.swing.JLabel maxSourcesLabel;
-    private javax.swing.JMenuItem runItem;
     private javax.swing.JCheckBox saveBox;
     private javax.swing.JPanel sentiPolarityPanel;
     private javax.swing.JMenu startMenu;
@@ -459,7 +523,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList systemList;
     private javax.swing.JLabel systemListLabel;
     private javax.swing.JMenu systemMenu;
-    private javax.swing.JMenuItem systemOverview;
     private javax.swing.JMenuItem systemRemove;
     private javax.swing.JLabel thresholdLabel;
     private javax.swing.JSlider thresholdSlider;

@@ -21,8 +21,9 @@ public class AspectPolarityResult extends PolarityResult {
 		setNeutral(neutral);
 		setNotUsed(notUsed);
 		for (Aspect a : aspects) {
-			Aspect tmp = new Aspect(a.getName(), a.getSynonyms());
-			this.aspects.add(tmp);
+//			Aspect tmp = new Aspect(a.getName(), a.getSynonyms());
+//			this.aspects.add(tmp);
+			this.aspects.add(a);
 		}
 	}
 

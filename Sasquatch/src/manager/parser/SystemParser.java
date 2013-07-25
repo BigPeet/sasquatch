@@ -48,19 +48,6 @@ public class SystemParser {
 		return target;
 	}
 
-	private void createEmptyFile(File f) {
-		if (!f.exists()) {
-			try {
-				f.createNewFile();
-				BufferedWriter writer = new BufferedWriter(new FileWriter(f));
-				writer.write("<systems></systems>");
-				writer.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
 	public void clear() {
 		if (target.exists()) {
 			Document doc = getDocument(target);
@@ -96,27 +83,143 @@ public class SystemParser {
 		}
 	}
 
-	private Element getResults(SoftwareSystem newSystem) {
-		Element results = new Element("results");
-		for (IAnalysisResult res : newSystem.getResults()) {
-			Element result = getResult(res);
-			if (result != null) {
-				results.addContent(result);
-			}
-		}
-		return results;
-	}
-
 	public void addSoftwareSystem(SoftwareSystem ss) {
 		Document doc = getDocument(target);
-		if (!contains(doc, ss)) {
-			if (doc != null) {
+		if (doc != null) {
+			if (!contains(doc, ss)) {
 				Element root = doc.getRootElement();
 				Element system = createSystemElement(ss);
 				root.addContent(system);
 				if (system != null) {
 					writeDocument(doc, target);
 				}
+			}
+		}
+	}
+
+	public void addResultsToSoftwareSystem(SoftwareSystem ss, IAnalysisResult result) {
+		Document doc = getDocument(target);
+		if (doc != null) {
+			Element system = getSystemElement(doc, ss);
+			if (system != null) {
+				Element results = system.getChild("results");
+				Element res = getResult(result);
+				if (res != null) {
+					results.addContent(res);
+					writeDocument(doc, target);
+				}
+			}
+		}
+	}
+
+	public void clearResultsFromSoftwareSystem(SoftwareSystem ss) {
+		Document doc = getDocument(target);
+		if (doc != null) {
+			Element system = null;
+			try {
+				system = getSystemElement(doc, ss);
+				if (system != null) {
+					system.removeChild("results");
+					Element results = getResults();
+					system.addContent(results);
+				}
+			}  catch (org.jdom.IllegalDataException e) {
+				system = null;
+			}
+			if (system != null) {
+				writeDocument(doc, target);
+			}
+		}
+	}
+
+	public void addArchiveToSoftwareSystem(SoftwareSystem ss, Archive a) {
+		Document doc = getDocument(target);
+		if (doc != null) {
+			Element system = getSystemElement(doc, ss);
+			if (system != null) {
+				Element archives = system.getChild("archives");
+				Element archive = getArchive(a);
+				if (archive != null) {
+					archives.addContent(archive);
+					writeDocument(doc, target);
+				}
+			}
+		}
+	}
+
+	public void removeSoftwareSystem(SoftwareSystem ss) {
+		Document doc = getDocument(target);
+		if (doc != null) {
+			Element system = null;
+			try {
+				system = getSystemElement(doc, ss);
+				if (system != null) {
+					doc.getRootElement().removeContent(system);
+				}
+			}  catch (org.jdom.IllegalDataException e) {
+				system = null;
+			}
+			if (system != null) {
+				writeDocument(doc, target);
+			}
+		}
+	}
+
+	private void removeSystemElement(Document doc, Element system) {
+		try {
+			if (system != null) {
+				doc.getRootElement().removeContent(system);
+			}
+		}  catch (org.jdom.IllegalDataException e) {
+			system = null;
+		}
+	}
+
+	public void addSoftwareSystems(SoftwareSystem[] systems) {
+		Document doc = getDocument(target);
+		if (doc != null) {
+			Element root = doc.getRootElement();
+			Element system = null;
+			for (int j = 0; j < systems.length; j++) {
+				try {
+					SoftwareSystem ss = systems[j];
+					system = createSystemElement(ss);
+					root.addContent(system);
+				}  catch (org.jdom.IllegalDataException e) {
+					system = null;
+				}
+			}
+			writeDocument(doc, target);
+		}
+	}
+
+	public SoftwareSystem[] getSoftwareSystems() {
+		ArrayList<SoftwareSystem> systems = new ArrayList<SoftwareSystem>();
+		if (target.exists()) {
+			Document doc = getDocument(target);
+			if (doc != null) {
+				Element root = doc.getRootElement();
+				for (Object o : root.getChildren("system")) {
+					Element e = (Element) o;
+					SoftwareSystem ss = getSoftwareSystem(e);
+					if (ss != null) {
+						systems.add(ss);
+					}
+				}
+			}
+		}
+		return systems.toArray(new SoftwareSystem[systems.size()]);
+	}
+
+	private void createEmptyFile(File f) {
+		if (!f.exists()) {
+			try {
+				f.createNewFile();
+				BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+				writer.write("<systems></systems>");
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
@@ -134,40 +237,6 @@ public class SystemParser {
 			system = null;
 		}
 		return system;
-	}
-	
-	public void addResultsToSoftwareSystem(SoftwareSystem ss, IAnalysisResult result) {
-		Document doc = getDocument(target);
-		if (doc != null) {
-			Element system = getSystemElement(doc, ss);
-			if (system != null) {
-				Element results = system.getChild("results");
-				Element res = getResult(result);
-				if (res != null) {
-					results.addContent(res);
-					writeDocument(doc, target);
-				}
-			}
-		}
-	}
-
-	public void clearResultsFromSoftwareSystem(SoftwareSystem ss) {
-
-	}
-
-	public void addArchiveToSoftwareSystem(SoftwareSystem ss, Archive a) {
-		Document doc = getDocument(target);
-		if (doc != null) {
-			Element system = getSystemElement(doc, ss);
-			if (system != null) {
-				Element archives = system.getChild("archives");
-				Element archive = getArchive(a);
-				if (archive != null) {
-					archives.addContent(archive);
-					writeDocument(doc, target);
-				}
-			}
-		}
 	}
 
 	private Element getResult(IAnalysisResult result) {
@@ -193,6 +262,17 @@ public class SystemParser {
 			res.addContent(aspects);
 		}
 		return res;
+	}
+
+	private Element getResults(SoftwareSystem newSystem) {
+		Element results = new Element("results");
+		for (IAnalysisResult res : newSystem.getResults()) {
+			Element result = getResult(res);
+			if (result != null) {
+				results.addContent(result);
+			}
+		}
+		return results;
 	}
 
 	private Element getAspects(AspectPolarityResult asResult) {
@@ -317,42 +397,6 @@ public class SystemParser {
 		return archive;
 	}
 
-	public void addSoftwareSystems(SoftwareSystem[] systems) {
-		Document doc = getDocument(target);
-		if (doc != null) {
-			Element root = doc.getRootElement();
-			Element system = null;
-			for (int j = 0; j < systems.length; j++) {
-				try {
-					SoftwareSystem ss = systems[j];
-					system = createSystemElement(ss);
-					root.addContent(system);
-				}  catch (org.jdom.IllegalDataException e) {
-					system = null;
-				}
-			}
-			writeDocument(doc, target);
-		}
-	}
-
-	public SoftwareSystem[] getSoftwareSystems() {
-		ArrayList<SoftwareSystem> systems = new ArrayList<SoftwareSystem>();
-		if (target.exists()) {
-			Document doc = getDocument(target);
-			if (doc != null) {
-				Element root = doc.getRootElement();
-				for (Object o : root.getChildren("system")) {
-					Element e = (Element) o;
-					SoftwareSystem ss = getSoftwareSystem(e);
-					if (ss != null) {
-						systems.add(ss);
-					}
-				}
-			}
-		}
-		return systems.toArray(new SoftwareSystem[systems.size()]);
-	}
-
 	private SoftwareSystem getSoftwareSystem(Element e) {
 		String name = e.getAttributeValue("name");
 		Archive[] archives = getArchives(e);
@@ -388,6 +432,7 @@ public class SystemParser {
 			int notUsed = Integer.parseInt(e.getChildText("notUsed"));
 			Aspect[] aspects = getAspects(e);
 			res = new AspectPolarityResult(positive, negative, neutral, notUsed, aspects);
+		} else {
 		}
 		return res;
 	}
@@ -486,6 +531,26 @@ public class SystemParser {
 			e.printStackTrace();
 		}
 		return doc;
+	}
+
+	public void removeSoftwareSystems(SoftwareSystem[] toBeRemoved) {
+		Document doc = getDocument(target);
+		if (doc != null) {
+			Element system = null;
+			try {
+				for (SoftwareSystem ss : toBeRemoved) {
+					system = getSystemElement(doc, ss);
+					if (system != null) {
+						doc.getRootElement().removeContent(system);
+					}
+				}
+			}  catch (org.jdom.IllegalDataException e) {
+				system = null;
+			}
+			if (system != null) {
+				writeDocument(doc, target);
+			}
+		}
 	}
 
 }
